@@ -1,0 +1,14 @@
+==========================================
+TILE2 Simulation
+Test case: TILE2_2X2
+==========================================
+===============================          0 Comp Results    ======================================
+Item0   Comp Pass! error percent_r: 0.000000%, golden result: 0.000000, dut result: 0.000000
+Item1   Comp Pass! error percent_r: 0.000000%, golden result: 36983456312467494277788729344.000000, dut result: 36983456312467494277788729344.000000
+Item0   Comp Pass! error percent_i: 0.000000%, golden result: 107409128.000000, dut result: 107409128.000000
+Item1   Comp Pass! error percent_i: 0.000000%, golden result: 0.000000, dut result: 0.000000
+===============================          1 Comp Results    ======================================
+Item0   Comp Pass! error percent_r: 0.000000%, golden result: 0.000000, dut result: 0.000000
+Item1   Comp Pass! error percent_r: 0.000000%, golden result: 36983456312467494277788729344.000000, dut result: 36983456312467494277788729344.000000
+Item0   Comp Pass! error percent_i: 0.000000%, golden result: 107409128.000000, dut result: 107409128.000000
+Item1   Comp Pass! error percent_i: 0.000000%, golden result: 0.000000, dut result: 0.000000

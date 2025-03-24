@@ -1,0 +1,14 @@
+==========================================
+TILE2 Simulation
+Test case: TILE2_2X2
+==========================================
+===============================          0 Column Results    ======================================
+Item0   error percent_r: 0.000000%, golden result: aaaabbbb, dut result: aaaabbbb
+Item1   error percent_r: 0.000000%, golden result: eeeeffff, dut result: eeeeffff
+Item0   error percent_i: 0.000000%, golden result: ccccdddd, dut result: ccccdddd
+Item1   error percent_i: 0.000000%, golden result: 11112222, dut result: 11112222
+===============================          1 Column Results    ======================================
+Item0   error percent_r: 0.000000%, golden result: aaaabbbb, dut result: aaaabbbb
+Item1   error percent_r: 0.000000%, golden result: eeeeffff, dut result: eeeeffff
+Item0   error percent_i: 0.000000%, golden result: ccccdddd, dut result: ccccdddd
+Item1   error percent_i: 0.000000%, golden result: 11112222, dut result: 11112222

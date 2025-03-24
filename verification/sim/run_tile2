@@ -1,0 +1,96 @@
+#!/bin/csh -f
+################################################################################
+# simulation top script
+# change modelsim in this file dir and run "do this_file.do"
+# project dir ---+---> hdl source dir
+#                +---> sim script dir
+#
+################################################################################
+
+# check if current dir has modelsim config file
+set has_config  [file exists modelsim.do]
+# config modelsim 
+if {$has_config==1} { do modelsim.do  ; }
+
+echo "+====================================="
+echo "| Creat Lib Work soc                  "
+echo "+====================================="
+vlib work
+vmap work work 
+
+echo "+====================================="
+echo "| Complile RTL Code of soc            "
+echo "+====================================="
+vlog +define+TILE2\
+     -f ../filelist/filelist_tile2.f  
+
+echo "+====================================="
+echo "| Compiler Pass                       "
+echo "| Being to Run Simulation             "
+echo "+====================================="
+vsim work.tb_tile2 -t 1ns
+
+###################################### mus  ####################################
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/clock   
+add wave -noupdate -format logic -radix decimal tb_tile2/clock_count   
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/reset              
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_en 
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_in_valid
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/adder/io_in_a
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/adder/io_in_b
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/adder/io_out_s
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/divider/io_in_a
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/divider/io_in_b
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/divider/io_out_s
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/atan/io_in_tan
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/atan/io_out_atan
+
+
+         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_out_ug         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/cos/io_out_cos
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/cos/io_out_sin
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_1_0_Re
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_1_0_Im
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/axpy/io_in_scalar_1
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/axpy/io_in_scalar_2
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_out_axpy_1_Re
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_ug_ready         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_ug_i             
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_pg_ready         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_pg_i             
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_e_upg            
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_e_ug             
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_e_pg             
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_e_upg_ready      
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_e_ug_ready       
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_e_pg_ready       
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_mem0_fi         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_mem1_fi         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_tsqr_en         
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/u_tb_tile2/u_tile2/cnt         
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/u_tb_tile2/u_tile2/nxt_cnt         
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/ug_ram         
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/u_tr_ram/ram         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_tr_mem_ena         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_tr_mem_wea       
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_tr_mem_addra     
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_tr_mem_dina      
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/u_d0_ram/ram         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_d0_mem_ena         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_d0_mem_wea       
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_d0_mem_addra     
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_d0_mem_dina 
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_d1_mem_ena         
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_d1_mem_wea       
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_d1_mem_addra     
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_d1_mem_dina   
+     
+
+run 10us

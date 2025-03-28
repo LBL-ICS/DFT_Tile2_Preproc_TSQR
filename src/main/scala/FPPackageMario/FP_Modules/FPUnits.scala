@@ -1,8 +1,12 @@
 package FP_Modules
 import Binary_Modules.BinaryDesigns._
+import FP_Modules.FPUnits.{FP_add, FP_div, FP_mult, FP_sqrt}
 import FormatConvert._
+import Preprocessor.preprocessor
 import chisel3._
+import chisel3.stage.ChiselGeneratorAnnotation
 import chisel3.util.{Counter, ShiftRegister, log2Ceil}
+import circt.stage.ChiselStage
 
 import java.io.PrintWriter
 import scala.collection.mutable
@@ -820,4 +824,12 @@ object FPUnits {
 
   }
 
+}
+
+
+object fp_mul extends App {
+  (new ChiselStage).execute(
+    Array("--target", "systemverilog", "--target-dir", "verification/dut" ),
+    Seq(ChiselGeneratorAnnotation(() => new FP_div(32,15)))
+  )
 }

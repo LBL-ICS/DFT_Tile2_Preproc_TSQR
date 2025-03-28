@@ -11,7 +11,7 @@ cModel Technology
 dC:/Mirror/tile2/sim
 vcordic_32_20
 Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z1 !s110 1742835190
+Z1 !s110 1742929353
 !i10b 1
 !s100 VNhTQ6mcO59JX:af4DW_L0
 I>K6A]<e7BE2;OSO@[8M0c2
@@ -19,7 +19,7 @@ Z2 VDg1SIo80bB@j0V0VzS_@n1
 Z3 !s105 tile2_sv_unit
 S1
 Z4 dC:/TRIG-PREPROCESSING/Pre-TSQR/verification/sim
-Z5 w1742415887
+Z5 w1742929350
 Z6 8../dut/tile2.sv
 Z7 F../dut/tile2.sv
 L0 1662
@@ -27,7 +27,7 @@ Z8 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z9 !s108 1742835190.000000
+Z9 !s108 1742929353.000000
 Z10 !s107 ..\dut\define.sv|../dut/tile2.sv|../tb/tb_tile2.sv|../dut/simple_dual.sv|../dut/define.sv|
 Z11 !s90 -reportprogress|300|+define+TILE2|-f|../filelist/filelist_tile2.f|
 !i113 1
@@ -60,7 +60,7 @@ R13
 ndivider_@b@w25
 vdoublex_axpy
 R0
-Z14 !s110 1742835191
+R1
 !i10b 1
 !s100 OW7d[JTbBW@z0?8><=1Ki2
 I?c1c9;I^WlYTJ^;^;g@QB2
@@ -71,7 +71,7 @@ R4
 R5
 R6
 R7
-L0 2467
+Z14 L0 2467
 R8
 r1
 !s85 0
@@ -309,7 +309,7 @@ R13
 n@f@p_floor_32
 vFP_mult_32_1_v2
 R0
-R14
+R1
 !i10b 1
 !s100 `R=l`W_F5ii2mBXnS4]Jf3
 Ig4Q=Y::_jkZVz<DZcH2CB3
@@ -357,6 +357,31 @@ R11
 R12
 R13
 n@f@p_mult_32_3_v2
+vFPReg
+R0
+!s110 1742886148
+!i10b 1
+!s100 kHfb2BNWZzLoQ1Sn7lGmB2
+I;SM3V>M>k>1X@ZKdB>z0[1
+R2
+R3
+S1
+R4
+w1742886066
+R6
+R7
+R14
+R8
+r1
+!s85 0
+31
+!s108 1742886148.000000
+R10
+R11
+!i113 1
+R12
+R13
+n@f@p@reg
 vfull_adder
 R0
 R1
@@ -605,10 +630,10 @@ R12
 R13
 vpp_controller
 R0
-R14
+R1
 !i10b 1
-!s100 T7<lR_ZD=VkW<2BXh]nPd0
-I@zY5ZCDI?HA:[lP@NUgBC3
+!s100 _6?SIe<gCO_POW=Z:dTRF0
+IcSXW9`FOP8O8H>8WAaUS:3
 R2
 R3
 S1
@@ -655,13 +680,13 @@ vtb_tile2
 R0
 R1
 !i10b 1
-!s100 @hfD4AhKe7B8Gf^ckezHj2
-I^9?:9PPiMAfDWkR3zVJSG2
+!s100 [j`ga4l2C1PZbJ`V9dhNI0
+I4om1[9W?5JS;:QGT^U>Gl2
 R2
 !s105 tb_tile2_sv_unit
 S1
 R4
-w1742579500
+w1742923624
 8../tb/tb_tile2.sv
 F../tb/tb_tile2.sv
 L0 14
@@ -677,10 +702,10 @@ R12
 R13
 vtile2
 R0
-R14
+R1
 !i10b 1
-!s100 gTGDoY]9W441W17b[GW^O1
-IK`]FTD5Rf]XB1[?`h7knZ3
+!s100 nF?fH_WI>mj>A`fEHIc<F3
+I6K1C>dBG1dCRmo4K4RYYF3
 R2
 R3
 S1
@@ -688,7 +713,7 @@ R4
 R5
 R6
 R7
-L0 2721
+L0 2749
 R8
 r1
 !s85 0

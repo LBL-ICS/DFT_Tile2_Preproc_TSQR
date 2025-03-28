@@ -53,13 +53,13 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int) extends Module
   val tile2_d1_mem_wea = Output(UInt((bw * streaming_width/4).W))
   val tile2_d1_mem_addra = Output(UInt((bw.W)))
   val tile2_d1_mem_dina = Output(UInt((bw * streaming_width).W))
-
+  val tsqr_fi = Input(Bool())
 
 
 })
 
 
-  val VECTOR_LAT = 93
+  val VECTOR_LAT = 105
 //   io.tile2_tr_mem_ena := 0.U
 //   io.tile2_tr_mem_wea := 0.U
 //   io.tile2_tr_mem_addra := 0.U
@@ -104,15 +104,15 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int) extends Module
   axpy.in_scalar_1:= sin_reg
   axpy.in_scalar_2:= cos_reg
 
-  when(io.tile2_pg_ready && io.tile2_ug_ready){
-  for(i <-0 until streaming_width){
-    axpy.in_complex_1(i).Re := io.tile2_pg_i(streaming_width*bw-(i*bw)-1,(streaming_width*bw-(bw*(i+1))))(bw-1,bw/2)
-    axpy.in_complex_1(i).Im := io.tile2_pg_i(streaming_width*bw-(i*bw)-1,(streaming_width*bw-(bw*(i+1))))((bw/2)-1,0)
-    axpy.in_complex_2(i).Re := io.tile2_ug_i(streaming_width*bw-(i*bw)-1,(streaming_width*bw-(bw*(i+1))))(bw-1,bw/2)
-    axpy.in_complex_2(i).Im := io.tile2_ug_i(streaming_width*bw-(i*bw)-1,(streaming_width*bw-(bw*(i+1))))((bw/2)-1,0)
-  }
-  }
 
+  for(i <-0 until streaming_width) {
+    axpy.in_complex_1(i).Re := io.tile2_pg_i(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))(bw - 1, bw / 2)
+    axpy.in_complex_1(i).Im := io.tile2_pg_i(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))((bw / 2) - 1, 0)
+    axpy.in_complex_2(i).Re := io.tile2_ug_i(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))(bw - 1, bw / 2)
+    axpy.in_complex_2(i).Im := io.tile2_ug_i(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))((bw / 2) - 1, 0)
+
+
+  }
 
 
 
@@ -125,13 +125,13 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int) extends Module
   for(i <- 0 until streaming_width){
         new_ug(i) := Cat(axpy.out_axpy(i).Re, axpy.out_axpy(i).Im)
       }
-  io.out_ug:= Cat(new_ug.reverse)
+  io.out_ug:= Cat(new_ug)
 
 
   val controller = Module(new pp_controller(bw, streaming_width, streaming_width*2) )
 
 
-  val latency = 93
+  val latency = 99
   val shift_reg = RegInit(VecInit.fill(latency)(0.U(bw.W)))
   shift_reg(0) := io.in_valid
   for(i <- 1 until latency){
@@ -142,7 +142,7 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int) extends Module
   controller.io.ug_in := io.out_ug
   controller.io.mem0_fi := io.tile2_mem0_fi
   controller.io.mem1_fi := io.tile2_mem1_fi
-
+  controller.io.tsqr_fi := io.tsqr_fi
   //outputs
   io.tile2_tr_mem_ena:= controller.io.in_en_tr
   io.tile2_d0_mem_ena:= controller.io.in_en_d0
@@ -240,6 +240,7 @@ class doublex_axpy(bw: Int, streaming_width:Int) extends Module{
   }
 }
 
+
 class ComplexNum(bw: Int) extends Bundle{
   val Re = UInt(bw.W)
   val Im = UInt(bw.W)
@@ -265,6 +266,7 @@ class pp_controller(bw: Int, streaming_width:Int, columns: Int) extends Module {
       val tsqr_en = Output(Bool())
       val mem0_fi = Input(Bool())
       val mem1_fi = Input(Bool())
+      val tsqr_fi = Input(Bool())
 
     }
   }
@@ -305,6 +307,16 @@ class pp_controller(bw: Int, streaming_width:Int, columns: Int) extends Module {
     tr_trigger := true.B  //
   }
 
+  val tsqr_en_reg = RegInit(false.B)
+  io.tsqr_en := tsqr_en_reg
+  when(io.tsqr_fi){
+
+    tsqr_en_reg := false.B
+
+  }
+
+
+
   val mem0_flag = RegInit(false.B)
   val mem1_flag = RegInit(false.B)
   when(io.mem0_fi) {
@@ -324,7 +336,7 @@ class pp_controller(bw: Int, streaming_width:Int, columns: Int) extends Module {
     addr_counter := addr_counter + 1.U
     when(addr_counter === (columns - 1).U) {
       first_cycle_tr := false.B
-      first_cycle_d1 := true.B
+      first_cycle_d0 := true.B
       addr_counter := 0.U
     }.otherwise {
       addr_counter := addr_counter + 1.U
@@ -383,13 +395,18 @@ class pp_controller(bw: Int, streaming_width:Int, columns: Int) extends Module {
     when(addr_counter === (columns - 1).U) {
       first_cycle_d0 := false.B
       first_cycle_d1 := true.B
-      io.tsqr_en := true.B
+      tsqr_en_reg := true.B
       addr_counter := 0.U
     }.otherwise {
       addr_counter := addr_counter + 1.U
     }
 }
 }
+
+
+
+
+
 
 
 class preprocessor2( bw: Int, streaming_width:Int, ram_depth: Int) extends Module {

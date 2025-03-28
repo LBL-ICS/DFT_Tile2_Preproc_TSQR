@@ -43,6 +43,7 @@ wire [31:0] io_tile2_d1_mem_addrb;
 reg [31:0] io_tile2_d1_mem_doutb;
 reg [31:0] clock_count;
 wire io_out_ug;
+reg io_tsqr_fi;
 
 //---------------------------------------------------------
 //--- Golden model and memory initialization
@@ -96,6 +97,7 @@ tile2 u_tile2 (
     .io_tile2_d1_mem_wea(io_tile2_d1_mem_wea),
     .io_tile2_d1_mem_addra(io_tile2_d1_mem_addra),
     .io_tile2_d1_mem_dina(io_tile2_d1_mem_dina),
+    .io_tsqr_fi(io_tsqr_fi),
     .io_out_ug(io_out_ug)
 );
 
@@ -123,10 +125,10 @@ initial begin
     io_tile2_e_upg_ready = 1'b0;
     io_tile2_ug_ready = 1'b0;
     io_tile2_pg_ready = 1'b0;
-
-    io_tile2_e_ug = 32'h40400000;
-    io_tile2_e_pg = 32'h40800000;
-    io_tile2_e_upg = 32'h40000000; 
+    io_tsqr_fi = 1'b0;
+    io_tile2_e_ug = 32'h0;
+    io_tile2_e_pg = 32'h0;
+    io_tile2_e_upg = 32'h0; 
     io_tile2_ug_i = 128'h0;
     io_tile2_pg_i = 128'h0;
     #100;
@@ -142,10 +144,10 @@ initial begin
         io_tile2_e_pg_ready = 1'b1;
         io_tile2_e_upg_ready = 1'b1;
         @(posedge clock);
-        io_tile2_e_ug_ready = 1'b0;
-        io_tile2_e_pg_ready = 1'b0;
-        io_tile2_e_upg_ready = 1'b0;
-        repeat (87) @(posedge clock);
+       // io_tile2_e_ug_ready = 1'b0;
+       // io_tile2_e_pg_ready = 1'b0;
+       // io_tile2_e_upg_ready = 1'b0;
+        repeat (93) @(posedge clock);
 
      //   for (j = 0; j < 2; j = j + 1) begin
             io_tile2_ug_ready = 1'b1;

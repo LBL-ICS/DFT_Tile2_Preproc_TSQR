@@ -58,7 +58,40 @@ add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axp
 add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_1_0_Im
 #add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/axpy/io_in_scalar_1
 #add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/axpy/io_in_scalar_2
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_1_1_Re
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_1_1_Im
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_2_0_Re
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_2_0_Im
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/axpy/io_in_scalar_1
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/axpy/io_in_scalar_2
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_2_1_Re
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_in_complex_2_1_Im
+
+
+
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/mult_results_Re_1_0
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/mult_results_Re_1_1
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/mult_results_Im_1_0
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/mult_results_Im_1_1
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/mult_results_Re_2_0
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/mult_results_Re_2_1
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/mult_results_Im_2_0
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/mult_results_Im_2_1
+
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/add_results_Re_0
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/add_results_Re_1
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/add_results_Im_0
+#add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/add_results_Im_1
+
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_out_axpy_0_Re
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_out_axpy_0_Im
+
 add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_out_axpy_1_Re
+add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/doublex_axpy/io_out_axpy_1_Im
+
 
 add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_ug_ready         
 add wave -noupdate -format logic -radix hexadecimal tb_tile2/u_tile2/io_tile2_ug_i             

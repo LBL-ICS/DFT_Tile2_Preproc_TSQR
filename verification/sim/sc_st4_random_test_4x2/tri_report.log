@@ -1,0 +1,12 @@
+==========================================
+Single-core Simulation
+Test case: ST16_RANDOM_TEST_4X2
+==========================================
+===============================          0 Column Results    ======================================
+Item0 Re  Comp FAIL! error real percent: 15.835199%, golden real result: 1.592293, dut real result: 1.340150
+Item0 Im Comp FAIL! error imaginary percent: 14630101610583141814700504113453675315200.000000%, golden imaginary result: 0.000000, dut imaginary result: 0.859880
+===============================          1 Column Results    ======================================
+Item0 Re  Comp FAIL! error real percent: 63.814045%, golden real result: 0.222252, dut real result: 0.080424
+Item0 Im Comp FAIL! error imaginary percent: 44.947493%, golden imaginary result: 0.197461, dut imaginary result: 0.286214
+Item1 Re  Comp FAIL! error real percent: 81.837334%, golden real result: 1.254000, dut real result: 0.227760
+Item1 Im Comp FAIL! error imaginary percent: 20980834378353415694995874884049960960000.000000%, golden imaginary result: 0.000000, dut imaginary result: 1.233143

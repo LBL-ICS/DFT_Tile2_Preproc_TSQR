@@ -1,0 +1,49 @@
+#!/bin/csh -f
+################################################################################
+# simulation top mcript
+# change modelsim in this file dir and run "do this_file.do"
+# project dir ---+---> hdl source dir
+#                +---> sim mcript dir
+#
+################################################################################
+
+# check if current dir has modelsim config file
+set has_config  [file exists modelsim.do]
+# config modelsim 
+if {$has_config==1} { do modelsim.do  ; }
+
+echo "+====================================="
+echo "| Creat Lib Work soc                  "
+echo "+====================================="
+vlib work
+vmap work work 
+
+echo "+====================================="
+echo "| Complile RTL Code of soc            "
+echo "+====================================="
+vlog +define+SINGLE_CORE\
+     +define+ST_WIDTH_4\
+     +define+ST16_RANDOM_TEST_4X2\
+     -f ../filelist/filelist_st4_1c.f  
+     #+define+ST16_RANDOM_TEST_16X8\
+     #+define+ST16_RANDOM_TEST_24X8\
+     #+define+ST16_RANDOM_TEST_32X8\
+
+echo "+====================================="
+echo "| Compiler Pass                       "
+echo "| Being to Run Simulation             "
+echo "+====================================="
+vsim -voptargs=+acc=npr work.tsqr_mc_st4_tb -t 1ns
+
+###################################### mus  ####################################
+add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/u_tsqr_mc/clk        
+add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/u_tsqr_mc/rst        
+add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/u_tsqr_mc/tsqr_en    
+add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/u_tsqr_mc/tile_no    
+add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/*  
+add wave -position insertpoint sim:/tsqr_mc_st4_tb/u_tsqr_mc/*
+add wave -position insertpoint sim:/tsqr_mc_st4_tb/dmx_ram
+add wave -position insertpoint sim:/tsqr_mc_st4_tb/tri_ram
+
+run 20 us                                                                            
+

@@ -1,4 +1,4 @@
-`include "define.sv"
+`include "define.v"
 module simple_dual(input                        clka ,
                    input                        ena  ,
                    input      [`RAM_WEA_WIDTH-1:0]  wea  ,

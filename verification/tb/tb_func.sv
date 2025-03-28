@@ -23,7 +23,6 @@ integer int_exp   ;
 real mantissa_val ; // Divide by 2^23
 real fp_output    ; 
 
-begin
 // Extracting sign, exponent, and mantissa
 sign     = ieee754_data[31];
 exponent = ieee754_data[30:23];
@@ -37,12 +36,11 @@ mantissa = ieee754_data[22:0];
 // Calculating floating-point value
 int_exp      = exponent - 127;
 mantissa_val = 1.0 + (mantissa / 8388608.0); // Divide by 2^23
-ieee754_to_fp   = (sign ? -1 : 1) * mantissa_val * (2.0 ** int_exp);
+fp_output    = (sign ? -1 : 1) * mantissa_val * (2.0 ** int_exp);
 //$display("debug task, int exp is %d", int_exp);
 //$display("debug task, mantissa val is %f", mantissa_val);
-//$display("debug task, fp_output is %f", ieee754_to_fp);
-
-end
+//$display("debug task, fp_output is %f", fp_output);
+return fp_output;
 endfunction
 
 /*

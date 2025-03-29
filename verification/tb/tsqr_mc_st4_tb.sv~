@@ -150,8 +150,6 @@ always @(posedge clk) begin
   end
 end
 
-integer ref_report;
-integer trl_report; 
 integer tri_report; 
 integer tri_report_ieee754; 
 
@@ -183,7 +181,7 @@ initial begin
       // ********************************
       for(col_index=0; col_index<`MATRIX_WIDTH;) begin
         gol_col=tri_ram[col_index];
-        dut_col=u_tsqr_mc.hh_core.simple_dual_19_2.ram[col_index];
+        dut_col=u_tsqr_mc.hh_core.simple_dual_19.ram[col_index];
         `include "error_percent_abs_cal_tri.sv"
         `include "comp_abs_tri.sv"
         `include "comp_tri_ieee754.sv"

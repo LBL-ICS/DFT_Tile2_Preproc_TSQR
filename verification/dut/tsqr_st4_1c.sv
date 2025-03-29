@@ -496,6 +496,7 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
+/*
 module simple_dual_19(
   input          io_clka,
   input          io_clkb,
@@ -624,6 +625,7 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
+*/
 module full_subber_19(
   input  [7:0] io_in_a,
   input  [7:0] io_in_b,

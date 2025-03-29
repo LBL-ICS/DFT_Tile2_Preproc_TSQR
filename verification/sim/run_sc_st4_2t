@@ -40,13 +40,38 @@ add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/u_tsqr_mc/clk
 add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/u_tsqr_mc/rst        
 add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/u_tsqr_mc/tsqr_en    
 add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/u_tsqr_mc/tile_no    
-add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/*  
-add wave -position insertpoint sim:/tsqr_mc_st4_tb/u_tsqr_mc/*
-add wave -position insertpoint sim:/tsqr_mc_st4_tb/dmx_ram
-add wave -position insertpoint sim:/tsqr_mc_st4_tb/tri_ram
-add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19.ram
-add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19_1.ram
-add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19_2.ram
+#add wave -noupdate -format logic -unsigned tsqr_mc_st4_tb/*  
+#add wave -position insertpoint sim:/tsqr_mc_st4_tb/u_tsqr_mc/*
+#add wave -position insertpoint sim:/tsqr_mc_st4_tb/dmx_ram
+#add wave -position insertpoint sim:/tsqr_mc_st4_tb/tri_ram
+#add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19.ram
+#add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19_1.ram
+#add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19_2.ram
 
+add wave -position insertpoint /tsqr_mc_st4_tb/tri_ram
+add wave -position insertpoint /tsqr_mc_st4_tb/dmx_ram
+add wave -position insertpoint /tsqr_mc_st4_tb/wr_fi
+add wave -position insertpoint /tsqr_mc_st4_tb/gol_col
+add wave -position insertpoint /tsqr_mc_st4_tb/dut_col
+add wave -position insertpoint /tsqr_mc_st4_tb/col_index
+
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_clka
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_clka
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_clkb
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_clkb
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_ena
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_ena
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_enb
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_enb
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_wea
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_wea
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_addra
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_addra
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_addrb
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_addrb
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_dina
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_dina
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_2_io_doutb
+add wave -position insertpoint /tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/io_doutb
 run 20 us                                                                            
 

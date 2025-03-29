@@ -1,8 +1,8 @@
 `ifdef ST_WIDTH_INF_4        
-gol_yjp0   = gol_col[`MATRIX_WIDTH*64-0*64-1:`MATRIX_WIDTH*64-1*64];    
-gol_yjp1   = gol_col[`MATRIX_WIDTH*64-1*64-1:`MATRIX_WIDTH*64-2*64];    
-dut_yjp0   = dut_col[`MATRIX_WIDTH*64-0*64-1:`MATRIX_WIDTH*64-1*64];    
-dut_yjp1   = dut_col[`MATRIX_WIDTH*64-1*64-1:`MATRIX_WIDTH*64-2*64];    
+gol_yjp0   = gol_col[127:64];    
+gol_yjp1   = gol_col[63 : 0];    
+dut_yjp0   = dut_col[127:64];    
+dut_yjp1   = dut_col[63 : 0];    
 
 if(ieee754_to_fp(gol_yjp0[63:32])<0) begin gol_re_yjp0  =-ieee754_to_fp(gol_yjp0[63:32]); end else begin gol_re_yjp0=ieee754_to_fp(gol_yjp0[63:32]); end     
 if(ieee754_to_fp(gol_yjp1[63:32])<0) begin gol_re_yjp1  =-ieee754_to_fp(gol_yjp1[63:32]); end else begin gol_re_yjp1=ieee754_to_fp(gol_yjp1[63:32]); end     

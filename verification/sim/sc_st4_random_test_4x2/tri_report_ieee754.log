@@ -1,8 +1,8 @@
 ===============================          0 Column Results    ======================================
-Item0   error re percent: 15.835199%, golden re result: 00000002, dut re result: 00000001
-Item0   error im percent: 14630101610583141814700504113453675315200.000000%, golden im result: 00000000, dut im result: 00000001
+Item0   error re percent: 94.949172%, golden re result: bfcbd043, dut re result: bda4b554
+Item0   error im percent: 4869680794897223428433106560814468300800.000000%, golden im result: 00000000, dut im result: 3e928aa8
 ===============================          1 Column Results    ======================================
-Item0   error re percent: 63.814045%, golden re result: 00000000, dut re result: 00000000
-Item0   error im percent: 44.947493%, golden im result: 00000000, dut im result: 00000000
-Item1   error re percent: 81.837334%, golden re result: 00000001, dut re result: 00000000
-Item1   error im percent: 20980834378353415694995874884049960960000.000000%, golden im result: 00000000, dut im result: 00000001
+Item0   error re percent: 502.987072%, golden re result: be639602, dut re result: bfab8a0c
+Item0   error im percent: 335.469314%, golden im result: 3e4a3319, dut im result: 3f5c211a
+Item1   error re percent: 87.255479%, golden re result: 3fa08310, dut re result: be23a6df
+Item1   error im percent: 14721994109653926255306760727492663705600.000000%, golden im result: 00000000, dut im result: 3f5d830f

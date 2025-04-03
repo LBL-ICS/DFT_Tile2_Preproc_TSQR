@@ -15,9 +15,12 @@
 //--------------------------------------------------------- 
 //--- test cases  
 //--------------------------------------------------------- 
-`ifdef ST16_RANDOM_TEST_4X2
+`ifdef ST4_RANDOM_TEST_4X2
   `define TILE_NO 2 
   `define TILE_NO_2 
+`elsif ST4_RANDOM_TEST_6X2
+  `define TILE_NO 3 
+  `define TILE_NO_3 
 `endif
 
 module tsqr_mc_st4_tb();
@@ -52,10 +55,14 @@ reg [`TILE_NO*`MATRIX_WIDTH*64-1:0] dmx_ram[0:`MATRIX_WIDTH-1] ;
 initial begin
 $display("=== The maxix factoriation Starts! (%d ns) ====", $time);
 `ifdef SINGLE_CORE
-  `ifdef ST16_RANDOM_TEST_4X2
-     $display("Initilize The Memory in ST16_RANDOM_TEST_ (%d ns) in Single-core Design",$time);
+  `ifdef ST4_RANDOM_TEST_4X2
+     $display("Initilize The Memory in ST4_RANDOM_TEST_4X2 (%d ns) in Single-core Design",$time);
      $readmemh("../golden/sc_st4_random_test_4x2/dmx_ieee754.txt" , dmx_ram);
      $readmemh("../golden/sc_st4_random_test_4x2/tri_ieee754.txt" , tri_ram);
+   `elsif ST4_RANDOM_TEST_6X2
+     $display("Initilize The Memory in ST4_RANDOM_TEST_6X2 (%d ns) in Single-core Design",$time);
+     $readmemh("../golden/sc_st4_random_test_6x2/dmx_ieee754.txt" , dmx_ram);
+     $readmemh("../golden/sc_st4_random_test_6x2/tri_ieee754.txt" , tri_ram);
   `endif
 `endif
 end
@@ -116,7 +123,11 @@ initial begin
       dma_mem_ena = `MEM_NO'b010;
       dma_mem_dina=dmx_ram[i][`MATRIX_WIDTH*(`TILE_NO-0-1)*64-1:`MATRIX_WIDTH*(`TILE_NO-0-2)*64];
       #10;
-      dma_mem_addra = i;
+`ifdef TILE_NO_3 
+      dma_mem_ena = `MEM_NO'b001;
+      dma_mem_dina=dmx_ram[i][`MATRIX_WIDTH*(`TILE_NO-0-2)*64-1:`MATRIX_WIDTH*(`TILE_NO-0-3)*64];
+      #10;
+`endif
       i=i+1;
     end
     dma_mem_ena = `MEM_NO'b000;
@@ -165,15 +176,20 @@ initial begin
       // ********************************
       // ---------- open report ---------
       // ********************************
-`ifdef ST16_RANDOM_TEST_4X2
-  `ifdef SINGLE_CORE
-      tri_report=$fopen("../sim/sc_st4_random_test_4x2/tri_report.log", "w");
-      tri_report_ieee754=$fopen("../sim/sc_st4_random_test_4x2/tri_report_ieee754.log", "w");
-      $fwrite(tri_report, "==========================================\n");
-      $fwrite(tri_report, "Single-core Simulation\n"                    );
-      $fwrite(tri_report, "Test case: ST16_RANDOM_TEST_4X2\n"        );
-      $fwrite(tri_report, "==========================================\n");
-  `endif
+`ifdef ST4_RANDOM_TEST_4X2
+  tri_report=$fopen("../sim/sc_st4_random_test_4x2/tri_report.log", "w");
+  tri_report_ieee754=$fopen("../sim/sc_st4_random_test_4x2/tri_report_ieee754.log", "w");
+  $fwrite(tri_report, "==========================================\n");
+  $fwrite(tri_report, "Single-core Simulation\n"                    );
+  $fwrite(tri_report, "Test case: ST4_RANDOM_TEST_4X2\n"        );
+  $fwrite(tri_report, "==========================================\n");
+`elsif ST4_RANDOM_TEST_6X2
+  tri_report=$fopen("../sim/sc_st4_random_test_6x2/tri_report.log", "w");
+  tri_report_ieee754=$fopen("../sim/sc_st4_random_test_6x2/tri_report_ieee754.log", "w");
+  $fwrite(tri_report, "==========================================\n");
+  $fwrite(tri_report, "Single-core Simulation\n"                    );
+  $fwrite(tri_report, "Test case: ST4_RANDOM_TEST_6X2\n"        );
+  $fwrite(tri_report, "==========================================\n");
 `endif
 
       // ********************************

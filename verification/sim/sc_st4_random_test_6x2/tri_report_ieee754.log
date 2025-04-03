@@ -1,0 +1,8 @@
+===============================          0 Column Results    ======================================
+Item0   error re percent: 136.535524%, golden re result: c0164b89, dut re result: 3f5ba4f4
+Item0   error im percent: 135.099263%, golden im result: 4015b7ac, dut im result: bf5232ec
+===============================          1 Column Results    ======================================
+Item0   error re percent: 169.181697%, golden re result: c02925bf, dut re result: 3fea09c4
+Item0   error im percent: 229.886949%, golden im result: bf633b52, dut im result: c03b66e6
+Item1   error re percent: 57.741058%, golden re result: c01b5365, dut re result: bf83472e
+Item1   error im percent: 120.554000%, golden im result: 40257173, dut im result: bf080550

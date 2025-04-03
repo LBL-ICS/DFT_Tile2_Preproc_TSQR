@@ -23,7 +23,7 @@ echo "| Complile RTL Code of soc            "
 echo "+====================================="
 vlog +define+SINGLE_CORE\
      +define+ST_WIDTH_4\
-     +define+ST16_RANDOM_TEST_4X2\
+     +define+ST4_RANDOM_TEST_4X2\
      -f ../filelist/filelist_st4_1c.f  
      #+define+ST16_RANDOM_TEST_16X8\
      #+define+ST16_RANDOM_TEST_24X8\

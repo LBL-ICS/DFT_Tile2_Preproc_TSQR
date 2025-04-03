@@ -1,6 +1,6 @@
 ==========================================
 Single-core Simulation
-Test case: ST16_RANDOM_TEST_4X2
+Test case: ST4_RANDOM_TEST_4X2
 ==========================================
 ===============================          0 Column Results    ======================================
 Item0 Re Comp Pass! error real percent: 0.000000%, golden real result: 2.000000, dut real result: 2.000000

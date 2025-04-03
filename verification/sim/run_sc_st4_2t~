@@ -23,7 +23,7 @@ echo "| Complile RTL Code of soc            "
 echo "+====================================="
 vlog +define+SINGLE_CORE\
      +define+ST_WIDTH_4\
-     +define+ST16_RANDOM_TEST_4X2\
+     +define+ST4_RANDOM_TEST_4X2\
      -f ../filelist/filelist_st4_1c.f  
      #+define+ST16_RANDOM_TEST_16X8\
      #+define+ST16_RANDOM_TEST_24X8\
@@ -47,7 +47,8 @@ add wave -position insertpoint sim:/tsqr_mc_st4_tb/u_tsqr_mc/fsms_0/*
 add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19/*
 add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19_1/*
 add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19_2/*
+add wave -position insertpoint u_tsqr_mc.hh_core.simple_dual_19_2/ram
 add wave -position insertpoint u_tsqr_mc.hh_core.u_hh_datapath.FP_DDOT_dp_complex_19/*
 
-run 20 us                                                                            
+run 50 us                                                                            
 

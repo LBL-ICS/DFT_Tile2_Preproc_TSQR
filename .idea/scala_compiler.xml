@@ -4,7 +4,7 @@
     <profile name="sbt 1" modules="tsqr-factorization-design-with-chisel-hcl_5753" />
     <profile name="sbt 2" modules="TSQR-Chisel-HCL">
       <plugins>
-        <plugin path="C:\Users\bobbi\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\edu\berkeley\cs\chisel3-plugin_2.13.7\3.5.0\chisel3-plugin_2.13.7-3.5.0.jar" />
+        <plugin path="C:\Users\Desert Fox\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\chipsalliance\chisel-plugin_2.13.12\6.0.0\chisel-plugin_2.13.12-6.0.0.jar" />
       </plugins>
     </profile>
   </component>

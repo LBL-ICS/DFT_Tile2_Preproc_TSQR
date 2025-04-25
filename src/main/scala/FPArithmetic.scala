@@ -3,7 +3,8 @@ import chisel3._
 import chisel3.util._
 
 import FloatingPointDesigns.Arithmetic._
-import Chisel.log2Ceil
+import chisel3.util.{ShiftRegister, log2Ceil}
+
 import IEEEConversions.FPConvert._
 
 object FPArithmetic { // you might see errors from the IDE in the FP_adders, but you can ignore them

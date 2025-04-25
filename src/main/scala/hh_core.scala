@@ -4,19 +4,22 @@
  * Release version: 1
  * **********************************/
 
+
 package tsqr_hh_core
+
+import chisel3.{util, _}
 import tsqr_hh_datapath.hh_datapath_chisel._
-import Binary_Modules.BinaryDesigns._
-import FP_Modules.FloatingPointDesigns._
-import chisel3._
+import chisel3.stage.ChiselGeneratorAnnotation
+import circt.stage.{ChiselStage, FirtoolOption}
 import chisel3.util._
-import Chisel.{log2Ceil, log2Floor}
-import chisel3.stage.{ChiselGeneratorAnnotation, ChiselStage}
+import chisel3.util.{ShiftRegister, log2Ceil}
 //import chisel3.stage.ChiselGeneratorAnnotation
 import chiseltest.RawTester.test
-import chisel3.tester._
+import chisel3.stage.ChiselGeneratorAnnotation
+
 import firrtl.AnnotationSeq
 import firrtl.options.TargetDirAnnotation
+import chisel3.dontTouch
 
 
 import java.io.PrintWriter
@@ -92,6 +95,7 @@ object hh_core_chisel{
                 val rtri_mem_addrb = Input(UInt((log2Ceil(streaming_width)-1).W))
                 val rtri_mem_doutb = Output(UInt((streaming_width*(bw/2)).W))
                 val hh_dout = Output(UInt((streaming_width*bw).W))
+
             }
         }
 
@@ -99,11 +103,21 @@ object hh_core_chisel{
         withClockAndReset (io.clk, io.rst){
             val hh0_din_rdy = Reg(Bool())
             val hh1_din_rdy = Reg(Bool())
+            val hh_st_shifted = RegInit(false.B)
             val hh_din_wire = Wire(UInt((streaming_width*bw).W))
             val hh_din_reg = Reg(UInt((streaming_width*bw).W))
             val hh_din_update = Wire(UInt((streaming_width*bw).W))
             val hh_dout_update = Wire(UInt((streaming_width*bw).W))
             val hh_din = Reg(UInt((streaming_width*bw).W))
+
+
+            when(io.rst){
+                hh_st_shifted := false.B
+            }.otherwise{
+
+                hh_st_shifted := io.hh_st
+            }
+
 
             when(io.rst){
                 hh0_din_rdy := 0.U
@@ -129,6 +143,7 @@ object hh_core_chisel{
             }
 
             val dmx_mem_doutb = Wire(UInt((streaming_width*bw/2).W))
+            dontTouch(dmx_mem_doutb)
 
             when(hh0_din_rdy){
                 dmx_mem_doutb := io.dmx0_mem_doutb
@@ -139,17 +154,20 @@ object hh_core_chisel{
             }
 
             val myTriMemVec = Wire(Vec(streaming_width/2, UInt(width = bw.W)))
+            dontTouch(myTriMemVec)
 
             for(i <- 0 until streaming_width/2){
                 myTriMemVec(i) := io.rtri_mem_doutb(streaming_width*bw/2-(i*bw)-1,(streaming_width*bw/2-(bw*(i+1))))
             }
 
             val myTriMemVec2 = Wire(Vec(streaming_width/2, UInt(width = bw.W)))
+            dontTouch(myTriMemVec2)
             for(i <- 0 until streaming_width/2){
                 myTriMemVec2(streaming_width/2 -1-i) :=  myTriMemVec(i.U + io.hh_cnt)
             }
 
             val myTriMemWire = Wire(UInt((streaming_width*bw/2).W))
+            dontTouch(myTriMemWire)
             myTriMemWire := myTriMemVec2.asUInt
 
             when(hh0_din_rdy | hh1_din_rdy){
@@ -161,23 +179,26 @@ object hh_core_chisel{
             }
 
             val myHhdoutVec = Wire(Vec(streaming_width, UInt(width = bw.W)))
+            dontTouch(myHhdoutVec)
 
             for(i <- 0 until streaming_width){
                 myHhdoutVec(i) := io.hh_dout(streaming_width*bw-(i*bw)-1,(streaming_width*bw-(bw*(i+1))))
             }
 
             val myHhdoutVec2 = Wire(Vec(streaming_width, UInt(width = bw.W)))
+            dontTouch(myHhdoutVec2)
             for(i <- 0 until streaming_width){
                 myHhdoutVec2(streaming_width -1-i) :=  myHhdoutVec(i.U + io.hh_cnt + 0.U)
             }
 
             val myHhdoutWire = Wire(UInt((streaming_width*bw).W))
             myHhdoutWire := myHhdoutVec2.asUInt
+            dontTouch(myHhdoutWire)
 
             when(io.rst){
                 hh_dout_update := 0.U
             }.elsewhen(io.hh_st){
-                hh_dout_update := RegNext(myHhdoutWire) >> (io.hh_cnt*bw.U)
+                hh_dout_update := myHhdoutWire>> (io.hh_cnt*bw.U) // removed an extra regnext dania
             }.otherwise{
                 hh_dout_update := hh_din_reg
             }
@@ -282,12 +303,18 @@ object hh_core_chisel{
                 val doutb = Output(UInt((streaming_width*bw/2).W))
             }
         }
+
+
+
         withClock (io.clka){
             val doutb = Reg(UInt((streaming_width*bw/2).W))
             io.doutb := doutb
-            val ram = Mem(streaming_width/2, UInt((streaming_width*bw/2).W)) 
+            val ram = Mem(streaming_width/2, UInt((streaming_width*bw/2).W))
+            val ramMirror = RegInit(VecInit(Seq.fill(streaming_width / 2)(0.U((streaming_width * bw / 2).W))))
+            dontTouch(ramMirror)
             val ramtemp = Wire(Vec(streaming_width/2, UInt(width = (bw).W)))
             val dintemp = Wire(Vec(streaming_width/2, UInt(width = (bw).W)))
+
             when(io.ena){
                 for(i <- 0 until streaming_width/2){
                 //dintemp(streaming_width/2-1-i) := (io.dina(streaming_width*bw/2-1-(i*bw),streaming_width*bw/2-((i+1)*bw)))&(Cat((io.wea(streaming_width*2-1-(i*4),streaming_width*2-((i+1)*4))),(io.wea(streaming_width*2-1-(i*4),streaming_width*2-((i+1)*4))),(io.wea(streaming_width*2-1-(i*4),streaming_width*2-((i+1)*4))),(io.wea(streaming_width*2-1-(i*4),streaming_width*2-((i+1)*4))),(io.wea(streaming_width*2-1-(i*4),streaming_width*2-((i+1)*4))),(io.wea(streaming_width*2-1-(i*4),streaming_width*2-((i+1)*4))),(io.wea(streaming_width*2-1-(i*4),streaming_width*2-((i+1)*4))),(io.wea(streaming_width*2-1-(i*4),streaming_width*2-((i+1)*4)))))
@@ -296,12 +323,14 @@ object hh_core_chisel{
                 ramtemp(streaming_width/2-1-i) := ((ram(io.addra))(streaming_width*bw/2-1-(i*bw),streaming_width*bw/2-((i+1)*bw)))& ~(Cat((io.wea(streaming_width*4-1-(i*8),streaming_width*4-((i+1)*8))),(io.wea(streaming_width*4-1-(i*8),streaming_width*4-((i+1)*8))),(io.wea(streaming_width*4-1-(i*8),streaming_width*4-((i+1)*8))),(io.wea(streaming_width*4-1-(i*8),streaming_width*4-((i+1)*8))),(io.wea(streaming_width*4-1-(i*8),streaming_width*4-((i+1)*8))),(io.wea(streaming_width*4-1-(i*8),streaming_width*4-((i+1)*8))),(io.wea(streaming_width*4-1-(i*8),streaming_width*4-((i+1)*8))),(io.wea(streaming_width*4-1-(i*8),streaming_width*4-((i+1)*8)))))  
                 }
                 ram.write(io.addra, ramtemp.asUInt + dintemp.asUInt)
+                ramMirror(io.addra) := ramtemp.asUInt + dintemp.asUInt
             }.otherwise{
                 for(i <- 0 until streaming_width/2){
                 dintemp(i) := 0.U
                 ramtemp(i) := 0.U
                 }
             }
+
             withClock (io.clkb){
                 when(io.enb){
                     doutb := RegNext(ram.read(io.addrb))

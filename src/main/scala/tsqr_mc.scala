@@ -8,15 +8,18 @@ package tsqr_mc_package
 import tsqr_fsm_package.chisel_fsm._
 import tsqr_hh_core.hh_core_chisel._
 import Binary_Modules.BinaryDesigns._
-import FP_Modules.FloatingPointDesigns._
+import FPPackageMario.FP_Modules.FPUnits._
 import chisel3._
 import chisel3.util._
-import Chisel.{log2Ceil, log2Floor}
+import chisel3.util.{log2Ceil, log2Floor}
 import chiseltest.RawTester.test
-import chisel3.tester._
+
 import chisel3.{RawModule, withClockAndReset}
 import java.io.PrintWriter
 import scala.collection.mutable
+import Preprocessor.preprocessor
+
+
 
 object Main{
 
@@ -24,9 +27,9 @@ object Main{
     
     val startTimeMillis = System.currentTimeMillis()
 
-    val sw2 = new PrintWriter("tile4.v")
+    val sw2 = new PrintWriter("verification/dut/tsqr_st4_1c.sv")
     //tsqr_mc(bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: Int)
-    sw2.println(getVerilogString(new tile4(19, 64, 16, 16, 1)))
+    sw2.println(getVerilogString(new tile4(19, 64, 4, 16, 1)))
     //sw2.println(getVerilogString(new hh_core(64, 16, 16)))
     sw2.close()
     val endTimeMillis = System.currentTimeMillis()
@@ -41,125 +44,76 @@ object Main{
  * **************************************************************************/
 
  
-/*
-class hh_core(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends BlackBox{
-    val io = IO(new Bundle {
-        val clk = Input(Clock())
-                val rst = Input(Bool())
-                val hh_cnt = Input(UInt((CNT_WIDTH).W))
-                val d1_rdy = Input(Bool())
-                val d1_vld = Input(Bool())
-                val d2_rdy = Input(Bool())
-                val d2_vld = Input(Bool())
-                val vk1_rdy = Input(Bool())
-                val vk1_vld = Input(Bool())
-                val d3_rdy = Input(Bool())
-                val d3_vld = Input(Bool())
-                val tk_rdy = Input(Bool())
-                val tk_vld = Input(Bool())
-                val d4_rdy = Input(Bool())
-                val d4_vld = Input(Bool())
-                val d5_rdy = Input(Bool())
-                val d5_vld = Input(Bool())
-                val yjp_rdy = Input(Bool())
-                val yjp_vld = Input(Bool())
-                val yj_sft = Input(Bool())
-                val d4_sft = Input(Bool())
-                val hh_st = Input(Bool())
-                val mem0_fi = Input(Bool())
-                val mem1_fi = Input(Bool())
-                val dmx0_mem_ena = Input(Bool())
-                val dmx0_mem_wea = Input(UInt((streaming_width*2).W))
-                val dmx0_mem_addra = Input(UInt((log2Ceil(streaming_width)-1).W))
-                val dmx0_mem_dina = Input(UInt((streaming_width*16).W))
-                val dmx0_mem_enb = Input(Bool())
-                val dmx0_mem_addrb = Input(UInt((log2Ceil(streaming_width)-1).W))
-                val dmx0_mem_doutb = Output(UInt((streaming_width*16).W))
-                val dmx1_mem_ena = Input(Bool())
-                val dmx1_mem_wea = Input(UInt((streaming_width*2).W))
-                val dmx1_mem_addra = Input(UInt((log2Ceil(streaming_width)-1).W))
-                val dmx1_mem_dina = Input(UInt((streaming_width*16).W))
-                val dmx1_mem_enb = Input(Bool())
-                val dmx1_mem_addrb = Input(UInt((log2Ceil(streaming_width)-1).W))
-                val dmx1_mem_doutb = Output(UInt((streaming_width*16).W))
-                val rtri_mem_ena = Input(Bool())
-                val rtri_mem_wea = Input(UInt((streaming_width*2).W))
-                val rtri_mem_addra = Input(UInt((log2Ceil(streaming_width)-1).W))
-                val rtri_mem_dina = Input(UInt((streaming_width*16).W))
-                val rtri_mem_enb = Input(Bool())
-                val rtri_mem_addrb = Input(UInt((log2Ceil(streaming_width)-1).W))
-                val rtri_mem_doutb = Output(UInt((streaming_width*16).W))
-                val hh_dout = Output(UInt((streaming_width*bw).W))
-    })
-}*/
-/*
-class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends BlackBox{
-    val io = IO(new Bundle {
-        val clk = Input(Clock())
-        val rst = Input(Bool())
-        val tsqr_en = Input(Bool())
-        val tile_no = Input(UInt((CNT_WIDTH).W))
-        val hh_cnt = Output(UInt((CNT_WIDTH).W))
-        val mx_cnt = Output(UInt((CNT_WIDTH).W))
-        val d1_rdy = Output(Bool())
-        val d1_vld = Output(Bool())
-        val d2_rdy = Output(Bool())
-        val d2_vld = Output(Bool())
-        val vk1_rdy = Output(Bool())
-        val vk1_vld = Output(Bool())
-        val d3_rdy = Output(Bool())
-        val d3_vld = Output(Bool())
-        val tk_rdy = Output(Bool())
-        val tk_vld = Output(Bool())
-        val d4_rdy = Output(Bool())
-        val d4_vld = Output(Bool())
-        val d5_rdy = Output(Bool())
-        val d5_vld = Output(Bool())
-        val yjp_rdy = Output(Bool())
-        val yjp_vld = Output(Bool())
-        val yj_sft = Output(Bool())
-        val d4_sft = Output(Bool())
-        val hh_st = Output(Bool())
-        val mem0_fi = Output(Bool())
-        val mem1_fi = Output(Bool())
-        val tsqr_fi = Output(Bool())
 
-        val dmx0_mem_ena = Output(Bool())
-        val dmx0_mem_wea = Output(UInt((streaming_width*2).W))
-        val dmx0_mem_addra = Output(UInt((log2Ceil(streaming_width)-1).W))
-        val dmx0_mem_enb = Output(Bool())
-        val dmx0_mem_addrb = Output(UInt((log2Ceil(streaming_width)-1).W))
-        val dmx1_mem_ena = Output(Bool())
-        val dmx1_mem_wea = Output(UInt((streaming_width*2).W))
-        val dmx1_mem_addra = Output(UInt((log2Ceil(streaming_width)-1).W))
-        val dmx1_mem_enb = Output(Bool())
-        val dmx1_mem_addrb = Output(UInt((log2Ceil(streaming_width)-1).W))
-        val rtri_mem_ena = Output(Bool())
-        val rtri_mem_wea = Output(UInt((streaming_width*2).W))
-        val rtri_mem_addra = Output(UInt((log2Ceil(streaming_width)-1).W))
-        val rtri_mem_enb = Output(Bool())
-        val rtri_mem_addrb = Output(UInt((log2Ceil(streaming_width)-1).W))  
-    })
-}
-*/
 class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: Int)extends RawModule{
     val clk = IO(Input(Clock()))
     val rst = IO(Input(Bool()))
-    val tsqr_en = IO(Input(Bool()))
+    //val tsqr_en = IO(Input(Bool()))
     val tile_no = IO(Input(UInt((CNT_WIDTH).W)))
-    val dma_mem_ena = IO(Input(UInt((core_count*3).W)))
-    val dma_mem_wea = IO(Input(UInt((streaming_width*4).W)))
-    val dma_mem_addra = IO(Input(UInt(((log2Ceil(streaming_width)-1)).W)))
-    val dma_mem_dina = IO(Input(UInt((streaming_width*bw/2).W)))
+    val e_upg = IO(Input(UInt((bw/2).W)))
+    val e_ug = IO(Input(UInt((bw/2).W)))
+    val e_pg = IO(Input(UInt((bw/2).W)))
+    val pg_ready = IO(Input(Bool()))
+    val ug_ready = IO(Input(Bool()))
+    val e_pg_ready = IO(Input(Bool()))
+    val e_upg_ready = IO(Input(Bool()))
+    val e_ug_ready = IO(Input(Bool()))
+    val pg_i = IO(Input(UInt((bw * streaming_width/2).W)))
+    val ug_i = IO(Input(UInt((bw * streaming_width/2).W)))
     val dma_mem_enb = IO(Input(UInt((core_count*3).W)))
     val dma_mem_addrb = IO(Input(UInt(((log2Ceil(streaming_width)-1)).W)))
     val dma_mem_doutb = IO(Output(UInt((streaming_width*bw/2).W)))
     val mem0_fi_c = IO(Output((Vec(core_count, Bool()))))
     val mem1_fi_c = IO(Output((Vec(core_count, Bool()))))
     val tsqr_fi = IO(Output(Bool()))
+  val mx_cnt = IO(Output((UInt((CNT_WIDTH).W))))
+
+
+
+
+
+
+  override def desiredName = s"tsqr_st${streaming_width}_c${core_count}"
+
+
 
     withClockAndReset(clk,rst){
-   
+
+
+
+      val pp = Module(new preprocessor(bw, streaming_width/2, 32, streaming_width/2))
+      pp.io.tile2_en := true.B
+      pp.io.tile2_e_pg_ready := e_pg_ready
+      pp.io.tile2_e_ug_ready := e_ug_ready
+      pp.io.tile2_e_upg_ready := e_upg_ready
+      pp.io.tile2_pg_i := pg_i
+      pp.io.tile2_pg_ready := pg_ready
+      pp.io.tile2_ug_i := ug_i
+      pp.io.tile2_ug_ready := ug_ready
+      pp.io.tile2_e_pg := e_pg
+      pp.io.tile2_e_ug := e_ug
+      pp.io.tile2_e_upg := e_upg
+      pp.io.tile2_mem0_fi := mem0_fi_c(0)
+      pp.io.tile2_mem1_fi := mem1_fi_c(0)
+      pp.io.tsqr_fi := tsqr_fi
+
+
+      val dma_mem_ena = RegInit(0.U(3.W))
+      val dma_mem_wea = RegInit(0.U((bw * streaming_width/4).W))
+      val dma_mem_addra = RegInit(0.U((bw.W)))
+      val dma_mem_dina = RegInit(0.U((bw * streaming_width).W))
+      val tsqr_en = RegInit(false.B)
+
+       tsqr_en := pp.io.tile2_tsqr_en
+       dma_mem_ena := pp.io.tile2_mem_ena
+       dma_mem_addra := pp.io.tile2_mem_addra
+       dma_mem_wea := pp.io.tile2_mem_wea
+       dma_mem_dina := pp.io.tile2_mem_dina
+
+
+
+
+
     val  mx_cnt_c = Wire(Vec(core_count, UInt((CNT_WIDTH).W)))
     val  hh_cnt_c = Wire(Vec(core_count, UInt((CNT_WIDTH).W)))
     val  d1_rdy_c = Wire(Vec(core_count, Bool()))
@@ -1764,18 +1718,7 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
     val dmx0_mem_doutb_c = Wire(Vec(core_count, UInt((streaming_width*bw/2).W)))
     val dmx1_mem_doutb_c = Wire(Vec(core_count, UInt((streaming_width*bw/2).W)))
 
-   /* when(rst){
-        dma_mem_doutb := 0.U
-    }.otherwise{
-        if((PriorityEncoderOH(dma_mem_enb)+1.U)%3.U == 0){
-            dma_mem_doutb := rtri_mem_doutb_c(core_count.U-(((PriorityEncoderOH(dma_mem_enb)+1.U))/3.U))
-        }else if((PriorityEncoder(dma_mem_enb)+1.U)%3.U == 2){
-            dma_mem_doutb := dmx0_mem_doutb_c(core_count.U-(((PriorityEncoderOH(dma_mem_enb)+2.U))/3.U))
-        }else{
-            dma_mem_doutb := dmx1_mem_doutb_c(core_count.U-(((PriorityEncoderOH(dma_mem_enb)+3.U))/3.U))
-        }
-    }
-*/
+
     when(rst){
         dma_mem_doutb := 0.U
         }.elsewhen(dma_mem_enb(2) === 1.U){
@@ -1859,6 +1802,7 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
         fsms(i).tile_no := tile_no_c(i)
         hh_cnt_c(i) := fsms(i).hh_cnt
         mx_cnt_c(i) := fsms(i).mx_cnt
+        mx_cnt := fsms(i).mx_cnt
         d1_rdy_c(i) := fsms(i).d1_rdy
         d1_vld_c(i) := fsms(i).d1_vld
         d2_rdy_c(i) := fsms(i).d2_rdy

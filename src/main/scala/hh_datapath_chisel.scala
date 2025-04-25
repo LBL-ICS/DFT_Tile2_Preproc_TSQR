@@ -14,12 +14,14 @@
 
 package tsqr_hh_datapath
 import Binary_Modules.BinaryDesigns._
-import FP_Modules.FloatingPointDesigns._
 import chisel3._
 import chisel3.util._
-import Chisel.{log2Ceil, log2Floor}
+import chisel3.util.{log2Ceil, log2Floor}
+import FPPackageMario.FP_Modules.FPUnits.{FP_add, FP_div, FP_mult, FP_sqrt}
+import ComplexModules.FPComplex
+
 import chiseltest.RawTester.test
-import chisel3.tester._
+
 import chisel3.{RawModule, withClockAndReset}
 import ComplexModules.FPComplex._
 
@@ -69,7 +71,7 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
 
 
 
-    val yj_reg_vec = Reg(Vec(streaming_width/2,UInt(((log2Ceil(streaming_width)*13+24+129+22)*2*bw).W)))
+    val yj_reg_vec = Reg(Vec(streaming_width/2,UInt(((log2Ceil(streaming_width)*1+3+16+2+1)*2*bw).W)))
     val yj0 = Reg(UInt((streaming_width*bw).W)) 
 
     when(io.rst){
@@ -79,10 +81,10 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
    }.elsewhen(io.yj_sft){
       yj0 := yj_reg_vec(streaming_width/2-1)(streaming_width*bw-1,0)
       //yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*13+12+129+10-2)*2*bw -1),streaming_width*32))
-      yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*13+24+129+22)*2*bw -1),streaming_width*bw))
+      yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*1+3+16+2+1)*2*bw -1),streaming_width*bw))
       for(i <- 1 until streaming_width/2){
       //yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*32-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*13+12+129+10-2)*2*bw-1),streaming_width*32))
-      yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*bw-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*13+24+129+22)*2*bw-1),streaming_width*bw))
+      yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*bw-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*1+3+16+2+1)*2*bw-1),streaming_width*bw))
     }}
 
 /*
@@ -211,14 +213,14 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
     }
 
    /////VIVADO///// val d4_update_reg = Reg(UInt(((26)*bw).W))
-   val d4_update_reg = Reg(UInt(((126)*bw).W))
+   val d4_update_reg = Reg(UInt(((15)*bw).W)) // old is 126, possibly latency of divider
     when(io.rst){
       d4_update := 0.U
       d4_update_reg := 0.U
     }.elsewhen(io.d4_sft){
       d4_update := d4_update_reg(bw-1, 0)
       //d4_update_reg := Cat(ddot_dout, d4_update_reg(26*bw-1,bw))//126
-      d4_update_reg := Cat(ddot_dout, d4_update_reg(126*bw-1,bw))
+      d4_update_reg := Cat(ddot_dout, d4_update_reg(15*bw-1,bw))
     }
 
     when(io.d1_vld){
@@ -229,6 +231,7 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
 
     when(io.d3_vld){
       d3 := ddot_dout(bw-1,bw/2)
+
     }.otherwise{
       d3 := d3_reg
     }
@@ -321,41 +324,15 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
 
     ddot_dout := Cat(ddot.out_s.Re,ddot.out_s.Im)
 
-    
-
     val hqr3 = Module(new FP_square_root_newfpu(bw/2,3,name)).io//stays the same for complex
     hqr3.in_en := true.B
+    //hqr3.in_valid := true.B
     hqr3.in_a := d1
     d2_update := hqr3.out_s
     
     
 
-    /*
-    class sqrtbb_viv(bw:Int)extends BlackBox{
-        val io = IO {
-            new Bundle() {
-                val aclk = Input(Clock())
-                val s_axis_a_tvalid = Input(Bool())
-                val s_axis_a_tdata = Input(UInt((bw).W))
-                val m_axis_result_tdata = Output((UInt((bw).W)))
-                val m_axis_result_tvalid = Output(Bool())
-                val s_axis_a_tready = Output(Bool())
-            }
-        }
-    }
 
-    val hqr3 = Module(new sqrtbb_viv(bw/2)).io
-    hqr3.aclk := io.clk
-    hqr3.s_axis_a_tvalid := true.B
-    hqr3.s_axis_a_tdata := d1
-    d2_update := hqr3.m_axis_result_tdata
-*/
-
-
-   /*val hqr5= Module(new hqr5(bw)).io
-   hqr5.in_a := x1
-   hqr5.in_b := d2
-   vk1_update := hqr5.out_s*/
 
    val hqr5= Module(new hqr5_complex(bw/2,name)).io
    hqr5.in_a.Re := x1(bw-1,bw/2)
@@ -371,36 +348,7 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
    tk_update := hqr7.out_s
 
 
-/*
-   class divider_viv(bw:Int)extends BlackBox{
-        val io = IO {
-            new Bundle() {
-                val aclk = Input(Clock())
-                val s_axis_a_tvalid = Input(Bool())
-                val s_axis_a_tdata = Input(UInt((bw).W))
-                val s_axis_a_tready = Output(Bool())
 
-                val m_axis_result_tdata = Output((UInt((bw).W)))
-                val m_axis_result_tvalid = Output(Bool())
-
-
-                val s_axis_b_tvalid = Input(Bool())
-                val s_axis_b_tdata = Input(UInt((bw).W))
-                val s_axis_b_tready = Output(Bool())
-            }
-        }
-    }
-
-    */
-   /*
-   val hqr7= Module(new divider_viv(bw/2)).io
-   hqr7.aclk := io.clk
-   hqr7.s_axis_b_tdata := d3
-   hqr7.s_axis_b_tvalid := true.B
-   hqr7.s_axis_a_tvalid := true.B
-   hqr7.s_axis_a_tdata := "hc0000000".U
-   tk_update := hqr7.m_axis_result_tdata
-   */
 
 
    val hqr10= Module(new FPComplexMult_v2(bw/2,name)).io//changes made for complex
@@ -508,3 +456,56 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
   }
       
 }
+
+
+class hqr5(bw: Int, name:Int) extends Module{
+  override def desiredName = s"hqr5_${name}"
+  require(bw == 16 || bw == 32 || bw == 64 || bw == 128)
+  val io = IO(new Bundle() {
+    val in_a = Input(UInt(bw.W))//x1
+    val in_b = Input(UInt(bw.W))//d2
+    val out_s = Output(UInt(bw.W))//vk1
+  })
+  val adder = Module(new FP_add(bw,1)).io
+  val subtractor = Module(new FP_add(bw,1)).io
+  adder.in_en := true.B
+  adder.in_valid := true.B
+  adder.in_a := io.in_a
+  adder.in_b := io.in_b
+  subtractor.in_en := true.B
+  subtractor.in_valid := true.B
+  subtractor.in_a := io.in_a
+  subtractor.in_b := (io.in_b.asSInt^((1.U << (bw - 1)).asSInt)).asUInt
+
+  when(io.in_a(bw-1)){
+    io.out_s := subtractor.out_s
+  }.otherwise{
+    io.out_s := adder.out_s
+  }
+}
+
+
+
+
+class hqr7(bw: Int, name: Int) extends Module{
+  override def desiredName = s"hqr7_${name}"
+  require(bw == 16 || bw == 32 || bw == 64 || bw == 128)
+  val io = IO(new Bundle() {
+    val in_a = Input(UInt(bw.W))
+    val out_s = Output(UInt(bw.W))
+  })
+  val multiplier = Module(new FP_mult(bw, 1)).io
+  val reciprocal = Module(new FP_div(bw,15)).io
+  multiplier.in_en := true.B
+  reciprocal.in_en := true.B
+  multiplier.in_valid := true.B
+  reciprocal.in_valid := true.B
+
+  reciprocal.in_a := "h3F800000".U
+  reciprocal.in_b := io.in_a
+  multiplier.in_a := "hc0000000".U
+  multiplier.in_b := reciprocal.out_s
+
+  io.out_s := multiplier.out_s
+}
+

@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TSQR-Chisel-HCL.iml" filepath="$PROJECT_DIR$/.idea/modules/TSQR-Chisel-HCL.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TSQR-Chisel-HCL-build.iml" filepath="$PROJECT_DIR$/.idea/modules/TSQR-Chisel-HCL-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TSQR-Chisel-HCL.TSQR-Chisel-HCL-build.iml" filepath="$PROJECT_DIR$/.idea/modules/TSQR-Chisel-HCL.TSQR-Chisel-HCL-build.iml" />
     </modules>
   </component>
 </project>

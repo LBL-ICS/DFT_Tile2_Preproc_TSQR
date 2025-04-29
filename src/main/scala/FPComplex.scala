@@ -327,7 +327,7 @@ object FPComplex { // these are the complex FP modules
     //val sqrt = Module(new sqrtbb_viv2(bw)).io
 
     //val sqrt = Module(new sqrtbb_viv2(bw)).io
-    val sqrt = Module(new FP_square_root_newfpu(bw,3,name)).io//stays the same for complex
+    val sqrt = Module(new FP_sqrt(bw,23)).io//stays the same for complex
     val multiplier1 = Module(new FPComplexMult_v2(bw,name)).io
     val multiplier2 = Module(new FPComplexMult_v2(bw,name)).io
     //val multiplier3 = Module(new FP_multiplier_10ccs(bw)).io
@@ -356,7 +356,7 @@ object FPComplex { // these are the complex FP modules
 
     
     sqrt.in_en := 1.B
-   // sqrt.in_valid := 1.B
+    sqrt.in_valid := 1.B
     sqrt.in_a := cd1
     cd2 := sqrt.out_s
 

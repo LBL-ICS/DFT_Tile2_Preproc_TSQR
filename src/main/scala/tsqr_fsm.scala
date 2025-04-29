@@ -74,9 +74,9 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
 
     withClockAndReset(clk,rst){
         val DDOT_CY = (3+2)+1*log2Ceil(streaming_width)//= (mult-layer)+(adder * log(sw)) + maybe plus 16
-        val HQR3_CY = 128
+        val HQR3_CY = 23 // old is 128
         //val HQR3_CY = 29   
-        val HQR5_CY = 151// 2 mult + 128 sqrt + 15 div + 2 mult + 1 add + 3 extra regs
+        val HQR5_CY = 46// old is 151 2 mult + 128 sqrt + 15 div + 2 mult + 1 add + 3 extra regs
         //val HQR5_CY = 36
         val HQR7_CY = 16 // 15 from div plus 1
         //val HQR7_CY = 29

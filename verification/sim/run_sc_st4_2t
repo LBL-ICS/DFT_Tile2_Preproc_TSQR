@@ -64,11 +64,11 @@ add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/fsms_0/*
 
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/FP_DDOT_dp_complex_19/*
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/FP_sqrt_32_23/*
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/FP_square_root_newfpu_19/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/FP_square_root_newfpu_19/*
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/hqr5_complex_19/*
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/hqr5_complex_19/FPComplexMult_v2_19_1/*
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/FPComplexMult_v2_19/*
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/hqr5_complex_19/FP_square_root_newfpu_19/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/hqr5_complex_19/FP_square_root_newfpu_19/*
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/yj_reg_vec_0 
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/u_hh_datapath/yj_reg_vec_1 
 
@@ -82,5 +82,5 @@ add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/s
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19_1/*
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_mc/hh_core/simple_dual_19/*
 
-run 30 us                                                                            
+run 35 us                                                                            
 

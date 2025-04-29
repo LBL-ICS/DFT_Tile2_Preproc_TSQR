@@ -16,7 +16,7 @@
 //--- test cases  
 //--------------------------------------------------------- 
 `ifdef ST16_RANDOM_TEST_4X2
-  `define TILE_NO 5
+  `define TILE_NO 6
   `define TILE_NO_2 
 `endif
 
@@ -202,6 +202,15 @@ initial begin
             @(posedge clk);
 
 
+// 12x2
+
+	    wait(mem0_fi_c_0);
+            ug_i = 128'h4040000040A000004080000040000000;
+            pg_i = 128'hC0000000C0800000BF800000C1000000;
+            @(posedge clk);
+	     ug_i =128'h4100000040C000003F8000003F800000;
+             pg_i =128'hC1100000C0A00000C0800000C0C00000;
+            @(posedge clk);
 
 
 

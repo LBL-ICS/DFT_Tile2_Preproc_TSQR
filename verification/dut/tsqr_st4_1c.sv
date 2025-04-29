@@ -1498,7 +1498,7 @@ module full_adder_1(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main
   output       io_out_c	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:79:16
 );
 
-  wire [8:0] result = {1'h0, io_in_b} + {1'h0, io_in_a};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:87:23
+  wire [8:0] result = {1'h0, io_in_a} + {1'h0, io_in_b};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:87:23
   assign io_out_s = result[7:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:78:9, :87:23, :88:23
   assign io_out_c = result[8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:78:9, :87:23, :89:23
 endmodule
@@ -1509,7 +1509,7 @@ module multiplier(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\
   output [47:0] io_out_s	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:107:16
 );
 
-  assign io_out_s = {24'h0, io_in_b} * {24'h0, io_in_a};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:106:9, :113:23
+  assign io_out_s = {24'h0, io_in_a} * {24'h0, io_in_b};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:106:9, :113:23
 endmodule
 
 module FP_mult_32_3_v2(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:150:9
@@ -4532,320 +4532,320 @@ module tile2(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala
   assign io_tile2_mem_addra = {63'h0, _controller_io_DMA_addra};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\Preprocessor.scala:18:7, :120:26, :125:16, :139:21
 endmodule
 
-module fsm(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-  input         clk,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:17
-                rst,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:30:17
-                tsqr_en,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:31:21
-  input  [15:0] tile_no,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:32:21
-  output [15:0] hh_cnt,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:33:20
-                mx_cnt,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:34:20
-  output        d1_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:35:20
-                d1_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:36:20
-                d2_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:38:20
-                vk1_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:40:21
-                d3_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:41:20
-                d3_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:42:20
-                tk_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:44:20
-                d4_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:45:20
-                d5_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:47:20
-                d5_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:48:20
-                yj_sft,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:51:20
-                d4_sft,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:52:20
-                hh_st,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:53:19
-                mem0_fi,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:54:21
-                mem1_fi,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:55:21
-                tsqr_fi,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:56:21
-                dmx0_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:57:26
-  output [15:0] dmx0_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:58:26
-  output        dmx0_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:59:28
-                dmx0_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:60:26
-                dmx0_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:61:28
-                dmx1_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:62:26
-  output [15:0] dmx1_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:63:26
-  output        dmx1_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:64:28
-                dmx1_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:65:26
-                dmx1_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:66:28
-                rtri_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:67:26
-  output [15:0] rtri_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:68:26
-  output        rtri_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:69:28
-                rtri_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:70:26
-                rtri_mem_addrb	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:71:28
+module fsm(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+  input         clk,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:31:17
+                rst,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:32:17
+                tsqr_en,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:33:21
+  input  [15:0] tile_no,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:34:21
+  output [15:0] hh_cnt,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:35:20
+                mx_cnt,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:36:20
+  output        d1_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:37:20
+                d1_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:38:20
+                d2_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:40:20
+                vk1_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:42:21
+                d3_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:43:20
+                d3_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:44:20
+                tk_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:46:20
+                d4_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:47:20
+                d5_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:49:20
+                d5_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:50:20
+                yj_sft,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:53:20
+                d4_sft,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:54:20
+                hh_st,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:55:19
+                mem0_fi,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:56:21
+                mem1_fi,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:57:21
+                tsqr_fi,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:58:21
+                dmx0_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:59:26
+  output [15:0] dmx0_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:60:26
+  output        dmx0_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:61:28
+                dmx0_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:62:26
+                dmx0_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:63:28
+                dmx1_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:64:26
+  output [15:0] dmx1_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:65:26
+  output        dmx1_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:66:28
+                dmx1_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:67:26
+                dmx1_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:68:28
+                rtri_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:69:26
+  output [15:0] rtri_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:70:26
+  output        rtri_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:71:28
+                rtri_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:72:26
+                rtri_mem_addrb	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:73:28
 );
 
-  reg         hh_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24
-  reg         nxt_hh_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:92:28
-  reg  [15:0] cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22
-  reg  [15:0] nxt_hh_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:29
-  reg  [15:0] nxt_mx_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:111:29
-  wire [15:0] _hh_cnt_output = rst ? 16'h0 : nxt_hh_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:29, :114:21, :137:18, :139:20, :143:20
-  wire [15:0] _mx_cnt_output = rst ? 16'h0 : nxt_mx_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:111:29, :114:21, :137:18, :140:20, :144:20
-  reg  [15:0] tr_cy_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:147:28
-  reg         tr_cnt_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:148:28
-  reg  [15:0] tr_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:149:25
-  wire        rd_mem_fst = ~rst & (tsqr_en & ~hh_en | ~nxt_hh_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :92:28, :150:30, :156:18, :157:24, :162:{24,37,40,48,51}
-  wire        wr_mem_st = ~rst & hh_en & tr_cnt == 16'h1B;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :149:25, :156:18, :157:24, :158:23, :162:24, :163:{23,42}
-  wire        rd_mem_st = ~rst & hh_en & cnt == 16'h11C;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :108:22, :156:18, :157:24, :160:23, :162:24, :165:{23,39}
-  wire [15:0] _tr_cy_T = 16'h2 - _hh_cnt_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :139:20, :143:20, :172:45
-  wire [15:0] tr_cy = rd_mem_st ? _tr_cy_T : tr_cy_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:147:28, :156:18, :160:23, :165:23, :171:24, :172:{19,45}, :174:19
-  reg         tr_cnt_en_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:204:30
-  reg         d1_rdy_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:221:26
-  reg         d1_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:222:26
-  reg         d2_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:224:26
-  reg         vk1_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:226:27
-  reg         d3_rdy_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:227:26
-  reg         d3_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:228:26
-  reg         tk_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:230:26
-  reg         yj_sft_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:247:25
-  reg         dmx0_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:255:35
-  reg         dmx1_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:256:35
-  reg         rtri_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:257:35
-  reg         dmx0_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:258:35
-  reg         dmx1_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:259:35
-  reg         rtri_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:260:35
-  wire        _rd_rtri_en_T = cnt > 16'h11D;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :276:54
+  reg         hh_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24
+  reg         nxt_hh_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:94:28
+  reg  [15:0] cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22
+  reg  [15:0] nxt_hh_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:112:29
+  reg  [15:0] nxt_mx_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:29
+  wire [15:0] _hh_cnt_output = rst ? 16'h0 : nxt_hh_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:112:29, :116:21, :139:18, :141:20, :145:20
+  wire [15:0] _mx_cnt_output = rst ? 16'h0 : nxt_mx_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:29, :116:21, :139:18, :142:20, :146:20
+  reg  [15:0] tr_cy_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:149:28
+  reg         tr_cnt_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:150:28
+  reg  [15:0] tr_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:151:25
+  wire        rd_mem_fst = ~rst & (tsqr_en & ~hh_en | ~nxt_hh_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :94:28, :152:30, :158:18, :159:24, :164:{24,37,40,48,51}
+  wire        wr_mem_st = ~rst & hh_en & tr_cnt == 16'h1B;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :151:25, :158:18, :159:24, :160:23, :164:24, :165:{23,42}
+  wire        rd_mem_st = ~rst & hh_en & cnt == 16'h4A;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :110:22, :158:18, :159:24, :162:23, :164:24, :167:{23,39}
+  wire [15:0] _tr_cy_T = 16'h2 - _hh_cnt_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :141:20, :145:20, :174:45
+  wire [15:0] tr_cy = rd_mem_st ? _tr_cy_T : tr_cy_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:149:28, :158:18, :162:23, :167:23, :173:24, :174:{19,45}, :176:19
+  reg         tr_cnt_en_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:206:30
+  reg         d1_rdy_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:223:26
+  reg         d1_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:224:26
+  reg         d2_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:226:26
+  reg         vk1_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:228:27
+  reg         d3_rdy_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:229:26
+  reg         d3_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:230:26
+  reg         tk_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:232:26
+  reg         yj_sft_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:249:25
+  reg         dmx0_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:257:35
+  reg         dmx1_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:258:35
+  reg         rtri_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:259:35
+  reg         dmx0_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:260:35
+  reg         dmx1_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:261:35
+  reg         rtri_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:262:35
+  wire        _rd_rtri_en_T = cnt > 16'h4B;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :278:54
   wire        rd_dmx0_en =
-    ~rst & ~(_mx_cnt_output[0]) & _rd_rtri_en_T & cnt < tr_cy + 16'h11F;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :137:18, :140:20, :144:20, :156:18, :157:24, :162:24, :171:24, :172:19, :174:19, :261:30, :268:18, :269:24, :276:{24,28,35,54,73,93}
+    ~rst & ~(_mx_cnt_output[0]) & _rd_rtri_en_T & cnt < tr_cy + 16'h4D;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :139:18, :142:20, :146:20, :158:18, :159:24, :164:24, :173:24, :174:19, :176:19, :263:30, :270:18, :271:24, :278:{24,28,35,54,73,93}
   wire        rd_dmx1_en =
-    ~rst & _mx_cnt_output[0] & _rd_rtri_en_T & cnt < tr_cy + 16'h11F;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :137:18, :140:20, :144:20, :156:18, :157:24, :162:24, :171:24, :172:19, :174:19, :263:30, :268:18, :270:24, :276:{35,54,93}, :277:{24,63,84}
-  wire        rd_rtri_en = ~rst & _rd_rtri_en_T & cnt < tr_cy + 16'h11F;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :156:18, :157:24, :162:24, :171:24, :172:19, :174:19, :265:30, :268:18, :271:24, :276:{54,93}, :278:{24,51,71}
-  reg         dmx0_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:284:37
-  reg         dmx1_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:285:37
-  reg         rtri_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:286:37
-  reg  [15:0] dmx0_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:324:35
-  reg  [15:0] dmx1_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:325:35
-  reg  [15:0] rtri_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:326:35
-  reg  [15:0] rtri_mem_wea_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:329:38
-  wire        _GEN = ~(_mx_cnt_output[0]) & wr_mem_st;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :156:18, :158:23, :163:23, :341:{15,22,34}
-  wire        _GEN_0 = _mx_cnt_output[0] & wr_mem_st;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :156:18, :158:23, :163:23, :341:22, :347:24
-  reg         dmx0_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:369:37
-  reg         dmx1_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:370:37
-  reg         rtri_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:371:37
-  wire        _mem1_fi_T_7 = tr_cy == 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:121:42, :171:24, :172:19, :174:19, :432:89
+    ~rst & _mx_cnt_output[0] & _rd_rtri_en_T & cnt < tr_cy + 16'h4D;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :139:18, :142:20, :146:20, :158:18, :159:24, :164:24, :173:24, :174:19, :176:19, :265:30, :270:18, :272:24, :278:{35,54,93}, :279:{24,63,84}
+  wire        rd_rtri_en = ~rst & _rd_rtri_en_T & cnt < tr_cy + 16'h4D;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :158:18, :159:24, :164:24, :173:24, :174:19, :176:19, :267:30, :270:18, :273:24, :278:{54,93}, :280:{24,51,71}
+  reg         dmx0_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:286:37
+  reg         dmx1_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:287:37
+  reg         rtri_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:288:37
+  reg  [15:0] dmx0_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:326:35
+  reg  [15:0] dmx1_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:327:35
+  reg  [15:0] rtri_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:328:35
+  reg  [15:0] rtri_mem_wea_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:38
+  wire        _GEN = ~(_mx_cnt_output[0]) & wr_mem_st;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :158:18, :160:23, :165:23, :343:{15,22,34}
+  wire        _GEN_0 = _mx_cnt_output[0] & wr_mem_st;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :158:18, :160:23, :165:23, :343:22, :349:24
+  reg         dmx0_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:371:37
+  reg         dmx1_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:372:37
+  reg         rtri_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:373:37
+  wire        _mem1_fi_T_7 = tr_cy == 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:123:42, :173:24, :174:19, :176:19, :434:89
   wire        _mem0_fi_output =
-    ~(_mx_cnt_output[0]) & tr_cnt == tr_cy + 16'h1B & _mem1_fi_T_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :149:25, :163:42, :171:24, :172:19, :174:19, :341:22, :432:{16,45,72,80,89}
+    ~(_mx_cnt_output[0]) & tr_cnt == tr_cy + 16'h1B & _mem1_fi_T_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :151:25, :165:42, :173:24, :174:19, :176:19, :343:22, :434:{16,45,72,80,89}
   wire        _mem1_fi_output =
-    _mx_cnt_output[0] & tr_cnt == tr_cy + 16'h1B & _mem1_fi_T_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :149:25, :163:42, :171:24, :172:19, :174:19, :341:22, :432:89, :433:{34,61,68}
-  always @(posedge clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:17
-    automatic logic _GEN_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:18
-    automatic logic _GEN_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:121:42
-    automatic logic hh_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:178:26
-    automatic logic _GEN_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:201:27
-    automatic logic _GEN_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:197:18, :198:23, :199:26, :200:23, :201:51
-    automatic logic _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:226:41
-    _GEN_1 = cnt == 16'h13F;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :113:18
-    _GEN_2 = _hh_cnt_output == 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:121:42, :137:18, :139:20, :143:20
-    hh_fi = tr_cnt == tr_cy + 16'h1D;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:149:25, :171:24, :172:19, :174:19, :178:{26,53}
-    _GEN_3 = hh_en & cnt == 16'h121;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :108:22, :201:{27,34}
-    _GEN_4 = rst | hh_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:178:26, :197:18, :198:23, :199:26, :200:23, :201:51
-    _d3_rdy_T = cnt == 16'h11E;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :226:41
-    if (rst) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:17
-      hh_en <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :95:23
-      cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :114:21
-      tr_cy_reg <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:21, :147:28
-      tr_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:21, :149:25
-      dmx0_mem_enb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :255:35
-      dmx1_mem_enb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :256:35
-      rtri_mem_enb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :257:35
-      dmx0_mem_ena_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :258:35
-      dmx1_mem_ena_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :259:35
-      rtri_mem_ena_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :260:35
-      dmx0_mem_addrb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :284:37
-      dmx1_mem_addrb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :285:37
-      rtri_mem_addrb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :286:37
-      dmx0_mem_wea_reg <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:21, :324:35
-      dmx1_mem_wea_reg <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:21, :325:35
-      rtri_mem_wea_reg <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:21, :326:35
-      rtri_mem_wea_update <= 16'hFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:329:38, :438:32
-      dmx0_mem_addra_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :369:37
-      dmx1_mem_addra_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :370:37
-      rtri_mem_addra_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:23, :371:37
+    _mx_cnt_output[0] & tr_cnt == tr_cy + 16'h1B & _mem1_fi_T_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :151:25, :165:42, :173:24, :174:19, :176:19, :343:22, :434:89, :435:{34,61,68}
+  always @(posedge clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:31:17
+    automatic logic _GEN_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:115:18
+    automatic logic _GEN_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:123:42
+    automatic logic hh_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:180:26
+    automatic logic _GEN_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:203:27
+    automatic logic _GEN_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:199:18, :200:23, :201:26, :202:23, :203:51
+    automatic logic _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:228:41
+    _GEN_1 = cnt == 16'h6D;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :115:18
+    _GEN_2 = _hh_cnt_output == 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:123:42, :139:18, :141:20, :145:20
+    hh_fi = tr_cnt == tr_cy + 16'h1D;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:151:25, :173:24, :174:19, :176:19, :180:{26,53}
+    _GEN_3 = hh_en & cnt == 16'h4F;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :110:22, :203:{27,34}
+    _GEN_4 = rst | hh_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:180:26, :199:18, :200:23, :201:26, :202:23, :203:51
+    _d3_rdy_T = cnt == 16'h4C;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :228:41
+    if (rst) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:31:17
+      hh_en <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :97:23
+      cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :116:21
+      tr_cy_reg <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:21, :149:28
+      tr_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:21, :151:25
+      dmx0_mem_enb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :257:35
+      dmx1_mem_enb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :258:35
+      rtri_mem_enb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :259:35
+      dmx0_mem_ena_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :260:35
+      dmx1_mem_ena_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :261:35
+      rtri_mem_ena_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :262:35
+      dmx0_mem_addrb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :286:37
+      dmx1_mem_addrb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :287:37
+      rtri_mem_addrb_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :288:37
+      dmx0_mem_wea_reg <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:21, :326:35
+      dmx1_mem_wea_reg <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:21, :327:35
+      rtri_mem_wea_reg <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:21, :328:35
+      rtri_mem_wea_update <= 16'hFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:38, :440:32
+      dmx0_mem_addra_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :371:37
+      dmx1_mem_addra_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :372:37
+      rtri_mem_addra_reg <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:97:23, :373:37
     end
-    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:17
-      automatic logic [15:0] _mem1_fi_T_1 = tr_cy + 16'h1C;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:171:24, :172:19, :174:19, :178:45, :336:64
-      automatic logic        _GEN_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:296:49
-      automatic logic        _rtri_mem_ena_wire_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:336:64
-      automatic logic        dmx0_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:18, :332:31, :336:31
-      automatic logic        dmx1_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:18, :333:31, :337:31
-      automatic logic        rtri_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:18, :334:31, :338:31
-      automatic logic        _GEN_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:373:43
-      _GEN_5 = hh_en & _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :226:41, :296:49
-      _rtri_mem_ena_wire_T = tr_cnt > 16'h1B;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:149:25, :163:42, :336:64
+    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:31:17
+      automatic logic [15:0] _mem1_fi_T_1 = tr_cy + 16'h1C;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:173:24, :174:19, :176:19, :180:45, :338:64
+      automatic logic        _GEN_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:298:49
+      automatic logic        _rtri_mem_ena_wire_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:338:64
+      automatic logic        dmx0_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:333:18, :334:31, :338:31
+      automatic logic        dmx1_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:333:18, :335:31, :339:31
+      automatic logic        rtri_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:333:18, :336:31, :340:31
+      automatic logic        _GEN_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:375:43
+      _GEN_5 = hh_en & _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :228:41, :298:49
+      _rtri_mem_ena_wire_T = tr_cnt > 16'h1B;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:151:25, :165:42, :338:64
       dmx0_mem_ena_wire =
-        ~rst & ~(_mx_cnt_output[0]) & _rtri_mem_ena_wire_T & tr_cnt < _mem1_fi_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :149:25, :156:18, :157:24, :162:24, :178:45, :331:18, :332:31, :336:{31,35,42,64,94}
+        ~rst & ~(_mx_cnt_output[0]) & _rtri_mem_ena_wire_T & tr_cnt < _mem1_fi_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :151:25, :158:18, :159:24, :164:24, :180:45, :333:18, :334:31, :338:{31,35,42,64,94}
       dmx1_mem_ena_wire =
-        ~rst & _mx_cnt_output[0] & _rtri_mem_ena_wire_T & tr_cnt < _mem1_fi_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :149:25, :156:18, :157:24, :162:24, :178:45, :331:18, :333:31, :336:{42,64}, :337:{31,84}
-      rtri_mem_ena_wire = ~rst & _rtri_mem_ena_wire_T & tr_cnt < _mem1_fi_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:149:25, :156:18, :157:24, :162:24, :178:45, :331:18, :334:31, :336:64, :338:{31,72}
-      _GEN_6 = hh_en & tr_cnt == 16'h1C;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :149:25, :336:64, :373:{43,53}
-      hh_en <= nxt_hh_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :92:28
-      if (_GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:18
-        cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :114:21
-      else if (hh_en)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24
-        cnt <= cnt + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :116:28, :121:42
-      if (rd_mem_st)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:156:18, :160:23, :165:23
-        tr_cy_reg <= _tr_cy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:147:28, :172:45
-      if (hh_fi)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:178:26
-        tr_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:21, :149:25
-      else if (tr_cnt_en)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:148:28
-        tr_cnt <= tr_cnt + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:121:42, :149:25, :184:34
-      dmx0_mem_enb_reg <= ~rst & (~(_mx_cnt_output[0]) & rd_mem_fst | rd_dmx0_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :150:30, :156:18, :157:24, :162:24, :255:35, :261:30, :268:18, :272:31, :276:35, :279:{31,36,55,72}
-      dmx1_mem_enb_reg <= ~rst & (_mx_cnt_output[0] & rd_mem_fst | rd_dmx1_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :150:30, :156:18, :157:24, :162:24, :256:35, :263:30, :268:18, :273:31, :276:35, :280:{31,45,61}
-      rtri_mem_enb_reg <= ~rst & (rd_mem_fst | rd_rtri_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:150:30, :156:18, :157:24, :162:24, :257:35, :265:30, :268:18, :274:31, :281:{31,45}
-      dmx0_mem_ena_reg <= dmx0_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:258:35, :331:18, :332:31, :336:31
-      dmx1_mem_ena_reg <= dmx1_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:259:35, :331:18, :333:31, :337:31
-      rtri_mem_ena_reg <= rtri_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:260:35, :331:18, :334:31, :338:31
+        ~rst & _mx_cnt_output[0] & _rtri_mem_ena_wire_T & tr_cnt < _mem1_fi_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :151:25, :158:18, :159:24, :164:24, :180:45, :333:18, :335:31, :338:{42,64}, :339:{31,84}
+      rtri_mem_ena_wire = ~rst & _rtri_mem_ena_wire_T & tr_cnt < _mem1_fi_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:151:25, :158:18, :159:24, :164:24, :180:45, :333:18, :336:31, :338:64, :340:{31,72}
+      _GEN_6 = hh_en & tr_cnt == 16'h1C;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :151:25, :338:64, :375:{43,53}
+      hh_en <= nxt_hh_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :94:28
+      if (_GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:115:18
+        cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :116:21
+      else if (hh_en)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24
+        cnt <= cnt + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :118:28, :123:42
+      if (rd_mem_st)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:158:18, :162:23, :167:23
+        tr_cy_reg <= _tr_cy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:149:28, :174:45
+      if (hh_fi)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:180:26
+        tr_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:21, :151:25
+      else if (tr_cnt_en)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:150:28
+        tr_cnt <= tr_cnt + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:123:42, :151:25, :186:34
+      dmx0_mem_enb_reg <= ~rst & (~(_mx_cnt_output[0]) & rd_mem_fst | rd_dmx0_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :152:30, :158:18, :159:24, :164:24, :257:35, :263:30, :270:18, :274:31, :278:35, :281:{31,36,55,72}
+      dmx1_mem_enb_reg <= ~rst & (_mx_cnt_output[0] & rd_mem_fst | rd_dmx1_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :152:30, :158:18, :159:24, :164:24, :258:35, :265:30, :270:18, :275:31, :278:35, :282:{31,45,61}
+      rtri_mem_enb_reg <= ~rst & (rd_mem_fst | rd_rtri_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:152:30, :158:18, :159:24, :164:24, :259:35, :267:30, :270:18, :276:31, :283:{31,45}
+      dmx0_mem_ena_reg <= dmx0_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:260:35, :333:18, :334:31, :338:31
+      dmx1_mem_ena_reg <= dmx1_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:261:35, :333:18, :335:31, :339:31
+      rtri_mem_ena_reg <= rtri_mem_ena_wire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:262:35, :333:18, :336:31, :340:31
       dmx0_mem_addrb_reg <=
         ~rd_mem_fst
         & (~(_mx_cnt_output[0]) & _GEN_5
              ? _hh_cnt_output[0]
-             : rd_dmx0_en ? dmx0_mem_addrb_reg - 1'h1 : dmx0_mem_addrb_reg);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :139:20, :140:20, :143:20, :144:20, :150:30, :261:30, :284:37, :294:25, :295:33, :296:{21,28,40,49,72}, :297:32, :298:31, :299:{33,55}, :301:33
+             : rd_dmx0_en ? dmx0_mem_addrb_reg - 1'h1 : dmx0_mem_addrb_reg);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :141:20, :142:20, :145:20, :146:20, :152:30, :263:30, :286:37, :296:25, :297:33, :298:{21,28,40,49,72}, :299:32, :300:31, :301:{33,55}, :303:33
       dmx1_mem_addrb_reg <=
         ~rd_mem_fst
         & (_mx_cnt_output[0] & _GEN_5
              ? _hh_cnt_output[0]
-             : rd_dmx1_en ? dmx1_mem_addrb_reg - 1'h1 : dmx1_mem_addrb_reg);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :139:20, :140:20, :143:20, :144:20, :150:30, :263:30, :285:37, :294:25, :295:33, :296:{28,49,72}, :297:32, :304:25, :305:33, :306:{30,62}, :307:33, :308:31, :309:{33,55}, :311:33
+             : rd_dmx1_en ? dmx1_mem_addrb_reg - 1'h1 : dmx1_mem_addrb_reg);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :141:20, :142:20, :145:20, :146:20, :152:30, :265:30, :287:37, :296:25, :297:33, :298:{28,49,72}, :299:32, :306:25, :307:33, :308:{30,62}, :309:33, :310:31, :311:{33,55}, :313:33
       rtri_mem_addrb_reg <=
         ~rd_mem_fst
         & (_GEN_5
              ? _hh_cnt_output[0]
-             : rd_rtri_en ? rtri_mem_addrb_reg - 1'h1 : rtri_mem_addrb_reg);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :139:20, :143:20, :150:30, :265:30, :286:37, :294:25, :295:33, :296:{49,72}, :297:32, :314:25, :315:33, :316:50, :317:33, :318:31, :319:{33,55}, :321:33
-      if (_GEN)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:341:34
-        dmx0_mem_wea_reg <= 16'hFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:324:35, :438:32
-      if (_GEN_0)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:347:24
-        dmx1_mem_wea_reg <= 16'hFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:325:35, :438:32
-      if (wr_mem_st)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:156:18, :158:23, :163:23
-        rtri_mem_wea_reg <= rtri_mem_wea_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:326:35, :329:38
-      if (hh_en & tr_cnt == 16'h1A) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :149:25, :441:{22,32}
-        automatic logic [19:0] _rtri_mem_wea_update_T_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:442:52
+             : rd_rtri_en ? rtri_mem_addrb_reg - 1'h1 : rtri_mem_addrb_reg);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :141:20, :145:20, :152:30, :267:30, :288:37, :296:25, :297:33, :298:{49,72}, :299:32, :316:25, :317:33, :318:50, :319:33, :320:31, :321:{33,55}, :323:33
+      if (_GEN)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:343:34
+        dmx0_mem_wea_reg <= 16'hFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:326:35, :440:32
+      if (_GEN_0)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:349:24
+        dmx1_mem_wea_reg <= 16'hFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:327:35, :440:32
+      if (wr_mem_st)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:158:18, :160:23, :165:23
+        rtri_mem_wea_reg <= rtri_mem_wea_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:328:35, :331:38
+      if (hh_en & tr_cnt == 16'h1A) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :151:25, :443:{22,32}
+        automatic logic [19:0] _rtri_mem_wea_update_T_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:444:52
         _rtri_mem_wea_update_T_3 =
-          {4'h0, rtri_mem_wea_update} >> {1'h0, _hh_cnt_output, 3'h0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :95:23, :137:18, :139:20, :143:20, :329:38, :442:{52,62}
-        rtri_mem_wea_update <= _rtri_mem_wea_update_T_3[15:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:329:38, :442:52
+          {4'h0, rtri_mem_wea_update} >> {1'h0, _hh_cnt_output, 3'h0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :97:23, :139:18, :141:20, :145:20, :331:38, :444:{52,62}
+        rtri_mem_wea_update <= _rtri_mem_wea_update_T_3[15:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:38, :444:52
       end
-      else	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:441:22
-        rtri_mem_wea_update <= 16'hFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:329:38, :438:32
-      if (~(_mx_cnt_output[0]) & _GEN_6)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :341:{15,22}, :373:{34,43}
-        dmx0_mem_addra_reg <= _hh_cnt_output[0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :139:20, :143:20, :297:32, :369:37
-      else if (dmx0_mem_ena_wire)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:18, :332:31, :336:31
-        dmx0_mem_addra_reg <= dmx0_mem_addra_reg - 1'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:369:37, :376:55
-      if (_mx_cnt_output[0] & _GEN_6)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :140:20, :144:20, :341:22, :373:43, :381:24
-        dmx1_mem_addra_reg <= _hh_cnt_output[0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :139:20, :143:20, :297:32, :370:37
-      else if (dmx1_mem_ena_wire)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:18, :333:31, :337:31
-        dmx1_mem_addra_reg <= dmx1_mem_addra_reg - 1'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:370:37, :384:55
-      if (_GEN_6)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:373:43
-        rtri_mem_addra_reg <= _hh_cnt_output[0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:137:18, :139:20, :143:20, :297:32, :371:37
-      else if (rtri_mem_ena_wire)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:18, :334:31, :338:31
-        rtri_mem_addra_reg <= rtri_mem_addra_reg - 1'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:371:37, :392:55
+      else	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:443:22
+        rtri_mem_wea_update <= 16'hFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:331:38, :440:32
+      if (~(_mx_cnt_output[0]) & _GEN_6)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :343:{15,22}, :375:{34,43}
+        dmx0_mem_addra_reg <= _hh_cnt_output[0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :141:20, :145:20, :299:32, :371:37
+      else if (dmx0_mem_ena_wire)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:333:18, :334:31, :338:31
+        dmx0_mem_addra_reg <= dmx0_mem_addra_reg - 1'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:371:37, :378:55
+      if (_mx_cnt_output[0] & _GEN_6)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :142:20, :146:20, :343:22, :375:43, :383:24
+        dmx1_mem_addra_reg <= _hh_cnt_output[0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :141:20, :145:20, :299:32, :372:37
+      else if (dmx1_mem_ena_wire)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:333:18, :335:31, :339:31
+        dmx1_mem_addra_reg <= dmx1_mem_addra_reg - 1'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:372:37, :386:55
+      if (_GEN_6)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:375:43
+        rtri_mem_addra_reg <= _hh_cnt_output[0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:139:18, :141:20, :145:20, :299:32, :373:37
+      else if (rtri_mem_ena_wire)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:333:18, :336:31, :340:31
+        rtri_mem_addra_reg <= rtri_mem_addra_reg - 1'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:373:37, :394:55
     end
-    nxt_hh_en <= ~(rst | _mem0_fi_output | _mem1_fi_output) & (tsqr_en | nxt_hh_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:92:28, :94:18, :95:23, :96:38, :97:23, :98:28, :99:23, :432:80, :433:68
-    if (_GEN_1 & _GEN_2)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:18, :121:{33,42}
-      nxt_hh_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:29, :114:21
-    else if (hh_en & _GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :113:18, :123:26
-      nxt_hh_cnt <= _hh_cnt_output + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:29, :121:42, :124:34, :137:18, :139:20, :143:20
-    else if (rst)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:30:17
-      nxt_hh_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:29, :114:21
-    if (_GEN_2 & _mx_cnt_output == tile_no & _GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:18, :121:42, :129:{59,74}, :137:18, :140:20, :144:20
-      nxt_mx_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:111:29, :114:21
-    else if (_GEN_2 & cnt == 16'h13E)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:108:22, :121:42, :131:{57,63}
-      nxt_mx_cnt <= _mx_cnt_output + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:111:29, :121:42, :132:34, :137:18, :140:20, :144:20
-    else if (rst)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:30:17
-      nxt_mx_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:111:29, :114:21
-    tr_cnt_en <= ~_GEN_4 & (_GEN_3 | ~_GEN_4 & (_GEN_3 | tr_cnt_en));	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:148:28, :197:18, :198:23, :199:26, :200:23, :201:{27,51}, :202:23, :206:18, :207:23, :208:26, :209:23, :210:51, :211:23
-    tr_cnt_en_2 <= ~_GEN_4 & (hh_en & cnt == 16'h120 | tr_cnt_en_2);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :108:22, :197:18, :198:23, :199:26, :200:23, :201:51, :204:30, :213:18, :214:25, :215:26, :216:25, :217:{27,34,51}, :218:25
-    d1_rdy_REG <= hh_en & cnt == 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :108:22, :121:42, :221:{26,33,38}
-    d1_vld_REG <= hh_en & cnt == 16'h7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :108:22, :222:{26,33,40}
-    d2_vld_REG <= hh_en & cnt == 16'h89;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :108:22, :224:{26,33,40}
-    vk1_vld_REG <= hh_en & _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :226:{27,34,41}
-    d3_rdy_REG <= hh_en & _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :226:41, :227:{26,33}
-    d3_vld_REG <= hh_en & cnt == 16'h125;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :108:22, :228:{26,33,40}
-    tk_vld_REG <= hh_en & cnt == 16'h136;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:91:24, :108:22, :230:{26,33,40}
-    yj_sft_REG <= tr_cnt_en_2 & tr_cnt < tr_cy + 16'h19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:149:25, :171:24, :172:19, :174:19, :204:30, :236:75, :247:{25,38,48,72}
+    nxt_hh_en <= ~(rst | _mem0_fi_output | _mem1_fi_output) & (tsqr_en | nxt_hh_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:94:28, :96:18, :97:23, :98:38, :99:23, :100:28, :101:23, :434:80, :435:68
+    if (_GEN_1 & _GEN_2)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:115:18, :123:{33,42}
+      nxt_hh_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:112:29, :116:21
+    else if (hh_en & _GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :115:18, :125:26
+      nxt_hh_cnt <= _hh_cnt_output + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:112:29, :123:42, :126:34, :139:18, :141:20, :145:20
+    else if (rst)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:32:17
+      nxt_hh_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:112:29, :116:21
+    if (_GEN_2 & _mx_cnt_output == tile_no & _GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:115:18, :123:42, :131:{59,74}, :139:18, :142:20, :146:20
+      nxt_mx_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:29, :116:21
+    else if (_GEN_2 & cnt == 16'h6C)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:110:22, :123:42, :133:{57,63}
+      nxt_mx_cnt <= _mx_cnt_output + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:29, :123:42, :134:34, :139:18, :142:20, :146:20
+    else if (rst)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:32:17
+      nxt_mx_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:29, :116:21
+    tr_cnt_en <= ~_GEN_4 & (_GEN_3 | ~_GEN_4 & (_GEN_3 | tr_cnt_en));	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:150:28, :199:18, :200:23, :201:26, :202:23, :203:{27,51}, :204:23, :208:18, :209:23, :210:26, :211:23, :212:51, :213:23
+    tr_cnt_en_2 <= ~_GEN_4 & (hh_en & cnt == 16'h4E | tr_cnt_en_2);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :110:22, :199:18, :200:23, :201:26, :202:23, :203:51, :206:30, :215:18, :216:25, :217:26, :218:25, :219:{27,34,51}, :220:25
+    d1_rdy_REG <= hh_en & cnt == 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :110:22, :123:42, :223:{26,33,38}
+    d1_vld_REG <= hh_en & cnt == 16'h7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :110:22, :224:{26,33,40}
+    d2_vld_REG <= hh_en & cnt == 16'h20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :110:22, :226:{26,33,40}
+    vk1_vld_REG <= hh_en & _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :228:{27,34,41}
+    d3_rdy_REG <= hh_en & _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :228:41, :229:{26,33}
+    d3_vld_REG <= hh_en & cnt == 16'h53;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :110:22, :230:{26,33,40}
+    tk_vld_REG <= hh_en & cnt == 16'h64;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:93:24, :110:22, :232:{26,33,40}
+    yj_sft_REG <= tr_cnt_en_2 & tr_cnt < tr_cy + 16'h19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:151:25, :173:24, :174:19, :176:19, :206:30, :238:75, :249:{25,38,48,72}
   end // always @(posedge)
-  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
+  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
     `endif // FIRRTL_BEFORE_INITIAL
-    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-      automatic logic [31:0] _RANDOM[0:6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
+    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+      automatic logic [31:0] _RANDOM[0:6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
       `endif // INIT_RANDOM_PROLOG_
-      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
+      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
         for (logic [2:0] i = 3'h0; i < 3'h7; i += 3'h1) begin
-          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-        hh_en = _RANDOM[3'h0][0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :91:24
-        nxt_hh_en = _RANDOM[3'h0][1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :91:24, :92:28
-        cnt = _RANDOM[3'h0][17:2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :91:24, :108:22
-        nxt_hh_cnt = {_RANDOM[3'h0][31:18], _RANDOM[3'h1][1:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :91:24, :110:29
-        nxt_mx_cnt = _RANDOM[3'h1][17:2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :110:29, :111:29
-        tr_cy_reg = {_RANDOM[3'h1][31:18], _RANDOM[3'h2][1:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :110:29, :147:28
-        tr_cnt_en = _RANDOM[3'h2][2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :148:28
-        tr_cnt = _RANDOM[3'h2][18:3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :149:25
-        tr_cnt_en_2 = _RANDOM[3'h2][19];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :204:30
-        d1_rdy_REG = _RANDOM[3'h2][20];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :221:26
-        d1_vld_REG = _RANDOM[3'h2][21];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :222:26
-        d2_vld_REG = _RANDOM[3'h2][23];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :224:26
-        vk1_vld_REG = _RANDOM[3'h2][25];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :226:27
-        d3_rdy_REG = _RANDOM[3'h2][26];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :227:26
-        d3_vld_REG = _RANDOM[3'h2][27];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :228:26
-        tk_vld_REG = _RANDOM[3'h2][29];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :230:26
-        yj_sft_REG = _RANDOM[3'h2][30];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :247:25
-        dmx0_mem_enb_reg = _RANDOM[3'h2][31];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :147:28, :255:35
-        dmx1_mem_enb_reg = _RANDOM[3'h3][0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35
-        rtri_mem_enb_reg = _RANDOM[3'h3][1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :257:35
-        dmx0_mem_ena_reg = _RANDOM[3'h3][2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :258:35
-        dmx1_mem_ena_reg = _RANDOM[3'h3][3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :259:35
-        rtri_mem_ena_reg = _RANDOM[3'h3][4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :260:35
-        dmx0_mem_addrb_reg = _RANDOM[3'h3][5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :284:37
-        dmx1_mem_addrb_reg = _RANDOM[3'h3][6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :285:37
-        rtri_mem_addrb_reg = _RANDOM[3'h3][7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :286:37
-        dmx0_mem_wea_reg = _RANDOM[3'h3][23:8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :324:35
-        dmx1_mem_wea_reg = {_RANDOM[3'h3][31:24], _RANDOM[3'h4][7:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35, :325:35
-        rtri_mem_wea_reg = _RANDOM[3'h4][23:8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :325:35, :326:35
-        rtri_mem_wea_update = {_RANDOM[3'h5][31:24], _RANDOM[3'h6][7:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :329:38
-        dmx0_mem_addra_reg = _RANDOM[3'h6][8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :329:38, :369:37
-        dmx1_mem_addra_reg = _RANDOM[3'h6][9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :329:38, :370:37
-        rtri_mem_addra_reg = _RANDOM[3'h6][10];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :329:38, :371:37
+          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+        hh_en = _RANDOM[3'h0][0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :93:24
+        nxt_hh_en = _RANDOM[3'h0][1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :93:24, :94:28
+        cnt = _RANDOM[3'h0][17:2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :93:24, :110:22
+        nxt_hh_cnt = {_RANDOM[3'h0][31:18], _RANDOM[3'h1][1:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :93:24, :112:29
+        nxt_mx_cnt = _RANDOM[3'h1][17:2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :112:29, :113:29
+        tr_cy_reg = {_RANDOM[3'h1][31:18], _RANDOM[3'h2][1:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :112:29, :149:28
+        tr_cnt_en = _RANDOM[3'h2][2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :150:28
+        tr_cnt = _RANDOM[3'h2][18:3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :151:25
+        tr_cnt_en_2 = _RANDOM[3'h2][19];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :206:30
+        d1_rdy_REG = _RANDOM[3'h2][20];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :223:26
+        d1_vld_REG = _RANDOM[3'h2][21];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :224:26
+        d2_vld_REG = _RANDOM[3'h2][23];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :226:26
+        vk1_vld_REG = _RANDOM[3'h2][25];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :228:27
+        d3_rdy_REG = _RANDOM[3'h2][26];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :229:26
+        d3_vld_REG = _RANDOM[3'h2][27];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :230:26
+        tk_vld_REG = _RANDOM[3'h2][29];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :232:26
+        yj_sft_REG = _RANDOM[3'h2][30];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :249:25
+        dmx0_mem_enb_reg = _RANDOM[3'h2][31];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :149:28, :257:35
+        dmx1_mem_enb_reg = _RANDOM[3'h3][0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35
+        rtri_mem_enb_reg = _RANDOM[3'h3][1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :259:35
+        dmx0_mem_ena_reg = _RANDOM[3'h3][2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :260:35
+        dmx1_mem_ena_reg = _RANDOM[3'h3][3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :261:35
+        rtri_mem_ena_reg = _RANDOM[3'h3][4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :262:35
+        dmx0_mem_addrb_reg = _RANDOM[3'h3][5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :286:37
+        dmx1_mem_addrb_reg = _RANDOM[3'h3][6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :287:37
+        rtri_mem_addrb_reg = _RANDOM[3'h3][7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :288:37
+        dmx0_mem_wea_reg = _RANDOM[3'h3][23:8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :326:35
+        dmx1_mem_wea_reg = {_RANDOM[3'h3][31:24], _RANDOM[3'h4][7:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35, :327:35
+        rtri_mem_wea_reg = _RANDOM[3'h4][23:8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :327:35, :328:35
+        rtri_mem_wea_update = {_RANDOM[3'h5][31:24], _RANDOM[3'h6][7:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :331:38
+        dmx0_mem_addra_reg = _RANDOM[3'h6][8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :331:38, :371:37
+        dmx1_mem_addra_reg = _RANDOM[3'h6][9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :331:38, :372:37
+        rtri_mem_addra_reg = _RANDOM[3'h6][10];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :331:38, :373:37
       `endif // RANDOMIZE_REG_INIT
     end // initial
-    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
-      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7
+    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
+      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  assign hh_cnt = _hh_cnt_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :137:18, :139:20, :143:20
-  assign mx_cnt = _mx_cnt_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :137:18, :140:20, :144:20
-  assign d1_rdy = d1_rdy_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :221:26
-  assign d1_vld = d1_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :222:26
-  assign d2_vld = d2_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :224:26
-  assign vk1_vld = vk1_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :226:27
-  assign d3_rdy = d3_rdy_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :227:26
-  assign d3_vld = d3_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :228:26
-  assign tk_vld = tk_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :230:26
-  assign d4_rdy = tr_cnt_en & tr_cnt < tr_cy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :148:28, :149:25, :171:24, :172:19, :174:19, :232:{29,39}
-  assign d5_rdy = tr_cnt_en & tr_cnt > 16'h14 & tr_cnt < tr_cy + 16'h16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :148:28, :149:25, :171:24, :172:19, :174:19, :238:{39,76,86,122}
+  assign hh_cnt = _hh_cnt_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :139:18, :141:20, :145:20
+  assign mx_cnt = _mx_cnt_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :139:18, :142:20, :146:20
+  assign d1_rdy = d1_rdy_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :223:26
+  assign d1_vld = d1_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :224:26
+  assign d2_vld = d2_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :226:26
+  assign vk1_vld = vk1_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :228:27
+  assign d3_rdy = d3_rdy_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :229:26
+  assign d3_vld = d3_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :230:26
+  assign tk_vld = tk_vld_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :232:26
+  assign d4_rdy = tr_cnt_en & tr_cnt < tr_cy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :150:28, :151:25, :173:24, :174:19, :176:19, :234:{29,39}
+  assign d5_rdy = tr_cnt_en & tr_cnt > 16'h14 & tr_cnt < tr_cy + 16'h16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :150:28, :151:25, :173:24, :174:19, :176:19, :240:{39,76,86,122}
   assign d5_vld =
-    tr_cnt_en & tr_cnt >= tr_cy + 16'h19 - tr_cy - 16'h1 & tr_cnt < tr_cy + 16'h18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :148:28, :149:25, :171:24, :172:19, :174:19, :236:{39,75,87,95,103,113,153}
-  assign yj_sft = yj_sft_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :247:25
-  assign d4_sft = tr_cnt_en & tr_cnt > 16'h5 & tr_cnt < tr_cy + 16'h16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :148:28, :149:25, :171:24, :172:19, :174:19, :238:122, :245:{39,57,67,94}
-  assign hh_st = ~rst & hh_en & tr_cnt == 16'h1F;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :91:24, :149:25, :156:18, :157:24, :159:19, :162:24, :164:{19,38}
-  assign mem0_fi = _mem0_fi_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :432:80
-  assign mem1_fi = _mem1_fi_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :433:68
+    tr_cnt_en & tr_cnt >= tr_cy + 16'h19 - tr_cy - 16'h1 & tr_cnt < tr_cy + 16'h18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :150:28, :151:25, :173:24, :174:19, :176:19, :238:{39,75,87,95,103,113,153}
+  assign yj_sft = yj_sft_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :249:25
+  assign d4_sft = tr_cnt_en & tr_cnt > 16'h5 & tr_cnt < tr_cy + 16'h16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :150:28, :151:25, :173:24, :174:19, :176:19, :240:122, :247:{39,57,67,94}
+  assign hh_st = ~rst & hh_en & tr_cnt == 16'h1F;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :93:24, :151:25, :158:18, :159:24, :161:19, :164:24, :166:{19,38}
+  assign mem0_fi = _mem0_fi_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :434:80
+  assign mem1_fi = _mem1_fi_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :435:68
   assign tsqr_fi =
-    (_mem0_fi_output | _mem1_fi_output) & _mx_cnt_output == tile_no - 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :137:18, :140:20, :144:20, :432:80, :433:68, :435:{25,36,46,58}
-  assign dmx0_mem_ena = dmx0_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :258:35
-  assign dmx0_mem_wea = _GEN ? 16'hFFFF : dmx0_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :324:35, :341:{34,46}, :342:26, :344:26, :438:32
-  assign dmx0_mem_addra = dmx0_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :369:37
-  assign dmx0_mem_enb = dmx0_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :255:35
-  assign dmx0_mem_addrb = dmx0_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :284:37
-  assign dmx1_mem_ena = dmx1_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :259:35
-  assign dmx1_mem_wea = _GEN_0 ? 16'hFFFF : dmx1_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :325:35, :347:{24,36}, :348:26, :350:26, :438:32
-  assign dmx1_mem_addra = dmx1_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :370:37
-  assign dmx1_mem_enb = dmx1_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :256:35
-  assign dmx1_mem_addrb = dmx1_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :285:37
-  assign rtri_mem_ena = rtri_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :260:35
-  assign rtri_mem_wea = wr_mem_st ? rtri_mem_wea_update : rtri_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :156:18, :158:23, :163:23, :326:35, :329:38, :353:24, :354:26, :356:26
-  assign rtri_mem_addra = rtri_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :371:37
-  assign rtri_mem_enb = rtri_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :257:35
-  assign rtri_mem_addrb = rtri_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:27:7, :286:37
+    (_mem0_fi_output | _mem1_fi_output) & _mx_cnt_output == tile_no - 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :139:18, :142:20, :146:20, :434:80, :435:68, :437:{25,36,46,58}
+  assign dmx0_mem_ena = dmx0_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :260:35
+  assign dmx0_mem_wea = _GEN ? 16'hFFFF : dmx0_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :326:35, :343:{34,46}, :344:26, :346:26, :440:32
+  assign dmx0_mem_addra = dmx0_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :371:37
+  assign dmx0_mem_enb = dmx0_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :257:35
+  assign dmx0_mem_addrb = dmx0_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :286:37
+  assign dmx1_mem_ena = dmx1_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :261:35
+  assign dmx1_mem_wea = _GEN_0 ? 16'hFFFF : dmx1_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :327:35, :349:{24,36}, :350:26, :352:26, :440:32
+  assign dmx1_mem_addra = dmx1_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :372:37
+  assign dmx1_mem_enb = dmx1_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :258:35
+  assign dmx1_mem_addrb = dmx1_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :287:37
+  assign rtri_mem_ena = rtri_mem_ena_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :262:35
+  assign rtri_mem_wea = wr_mem_st ? rtri_mem_wea_update : rtri_mem_wea_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :158:18, :160:23, :165:23, :328:35, :331:38, :355:24, :356:26, :358:26
+  assign rtri_mem_addra = rtri_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :373:37
+  assign rtri_mem_enb = rtri_mem_enb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :259:35
+  assign rtri_mem_addrb = rtri_mem_addrb_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :288:37
 endmodule
 
 // VCS coverage exclude_file
@@ -5180,1048 +5180,573 @@ module FP_DDOT_dp_complex_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\
   assign io_out_s_Im = io_out_s_REG_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:406:9, :486:26
 endmodule
 
-module FP_square_root_newfpu_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-  input         clock,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-                reset,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-  input  [31:0] io_in_a,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:189:16
-  output [31:0] io_out_s	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:189:16
+module frac_sqrt(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+  input         clock,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+                reset,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+  input  [24:0] io_in_a,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:186:16
+  output [22:0] io_out_s	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:186:16
 );
 
-  wire [31:0] _multiplier4_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:310:29
-  wire [31:0] _FP_add_32_1_2_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-  wire [31:0] _FP_add_32_1_1_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-  wire [31:0] _FP_add_32_1_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-  wire [31:0] _FP_mult_32_1_v2_8_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _FP_mult_32_1_v2_7_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _FP_mult_32_1_v2_6_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _FP_mult_32_1_v2_5_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _FP_mult_32_1_v2_4_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _FP_mult_32_1_v2_3_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _FP_mult_32_1_v2_2_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _FP_mult_32_1_v2_1_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _FP_mult_32_1_v2_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-  wire [31:0] _result_T =
-    32'h5F3759DF - (io_in_a[30:0] > 31'h7EF477D4 ? 32'h3F7A3BEA : {2'h0, io_in_a[30:1]});	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:220:{17,29,46}, :221:14, :223:{14,36}, :230:25
-  reg  [31:0] x_n_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] x_n_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] x_n_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] x_n_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] x_n_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] x_n_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] x_n_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] x_n_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] x_n_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22
-  reg  [31:0] a_2_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] a_2_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22
-  reg  [31:0] stage1_regs_0_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_0_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_1_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage1_regs_2_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-  reg  [31:0] stage2_regs_0_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_0_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_1_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage2_regs_2_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-  reg  [31:0] stage3_regs_0_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_0_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_0_1_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_0_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_1_1_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_0_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage3_regs_2_1_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-  reg  [31:0] stage4_regs_0_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_0_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_0_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_0_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_0_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_0_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_0_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_0_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_0_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_1_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  reg  [31:0] stage4_regs_2_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-  wire [31:0] _GEN = {1'h0, _result_T[30:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:230:25, :268:{48,57}
-  wire [31:0] _GEN_0 = {1'h0, _FP_mult_32_1_v2_2_io_out_s[30:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65, :268:48, :277:{48,76}
-  wire [31:0] _GEN_1 = {1'h0, _FP_mult_32_1_v2_5_io_out_s[30:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65, :268:48, :277:{48,76}
-  always @(posedge clock) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-    if (reset) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-      x_n_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      x_n_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      x_n_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      x_n_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      x_n_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      x_n_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      x_n_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      x_n_9 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      x_n_10 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:{22,46}
-      a_2_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_9 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_10 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      a_2_11 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :233:22
-      stage1_regs_0_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_0_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_1_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage1_regs_2_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :234:30
-      stage2_regs_0_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_0_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_1_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage2_regs_2_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :235:30
-      stage3_regs_0_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_9 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_10 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_0_11 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_9 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_10 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_0_1_11 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_9 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_10 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_0_11 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_9 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_10 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_1_1_11 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_9 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_10 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_0_11 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_9 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_10 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage3_regs_2_1_11 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :236:30
-      stage4_regs_0_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_0_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_0_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_0_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_0_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_0_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_0_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_0_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_0_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_1_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_0 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_1 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_2 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_3 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_4 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_5 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_6 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_7 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
-      stage4_regs_2_1_8 <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:46, :237:30
+  reg [46:0] P_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [46:0] P_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20
+  reg [47:0] X_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [47:0] X_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20
+  reg [22:0] results_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  reg [22:0] results_22;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26
+  always @(posedge clock) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+    if (reset) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+      P_0 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_1 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_2 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_3 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_4 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_5 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_6 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_7 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_8 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_9 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_10 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_11 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_12 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_13 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_14 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_15 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_16 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_17 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_18 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_19 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_20 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      P_21 <= 47'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:{20,38}
+      X_0 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_1 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_2 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_3 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_4 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_5 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_6 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_7 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_8 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_9 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_10 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_11 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_12 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_13 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_14 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_15 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_16 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_17 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_18 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_19 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_20 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      X_21 <= 48'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:{20,38}
+      results_0 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_1 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_2 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_3 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_4 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_5 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_6 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_7 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_8 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_9 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_10 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_11 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_12 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_13 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_14 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_15 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_16 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_17 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_18 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_19 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_20 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_21 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
+      results_22 <= 23'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:{26,42}
     end
-    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-      x_n_0 <= _result_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:230:25, :232:22
-      x_n_1 <= stage1_regs_0_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :234:30
-      x_n_2 <= stage2_regs_0_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :235:30
-      x_n_4 <= _FP_mult_32_1_v2_2_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :239:65
-      x_n_5 <= stage1_regs_1_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :234:30
-      x_n_6 <= stage2_regs_1_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :235:30
-      x_n_8 <= _FP_mult_32_1_v2_5_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :239:65
-      x_n_9 <= stage1_regs_2_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :234:30
-      x_n_10 <= stage2_regs_2_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :235:30
-      a_2_0 <= {io_in_a[31], io_in_a[30:23] - 8'h1, io_in_a[22:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :264:{36,56,75,82,92}
-      a_2_1 <= stage1_regs_0_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :234:30
-      a_2_2 <= stage2_regs_0_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :235:30
-      a_2_3 <= stage3_regs_0_1_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :236:30
-      a_2_4 <= stage4_regs_0_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :237:30
-      a_2_5 <= stage1_regs_1_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :234:30
-      a_2_6 <= stage2_regs_1_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :235:30
-      a_2_7 <= stage3_regs_1_1_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :236:30
-      a_2_8 <= stage4_regs_1_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :237:30
-      a_2_9 <= stage1_regs_2_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :234:30
-      a_2_10 <= stage2_regs_2_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :235:30
-      a_2_11 <= stage3_regs_2_1_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :236:30
-      stage1_regs_0_0_0 <= x_n_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :234:30
-      stage1_regs_0_0_1 <= stage1_regs_0_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_0_2 <= stage1_regs_0_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_0_3 <= stage1_regs_0_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_0_4 <= stage1_regs_0_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_0_5 <= stage1_regs_0_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_0_6 <= stage1_regs_0_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_0_7 <= stage1_regs_0_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_0_8 <= stage1_regs_0_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_1_0 <= a_2_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :234:30
-      stage1_regs_0_1_1 <= stage1_regs_0_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_1_2 <= stage1_regs_0_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_1_3 <= stage1_regs_0_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_1_4 <= stage1_regs_0_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_1_5 <= stage1_regs_0_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_1_6 <= stage1_regs_0_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_1_7 <= stage1_regs_0_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_0_1_8 <= stage1_regs_0_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_0_0 <= x_n_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :234:30
-      stage1_regs_1_0_1 <= stage1_regs_1_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_0_2 <= stage1_regs_1_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_0_3 <= stage1_regs_1_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_0_4 <= stage1_regs_1_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_0_5 <= stage1_regs_1_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_0_6 <= stage1_regs_1_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_0_7 <= stage1_regs_1_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_0_8 <= stage1_regs_1_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_1_0 <= a_2_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :234:30
-      stage1_regs_1_1_1 <= stage1_regs_1_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_1_2 <= stage1_regs_1_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_1_3 <= stage1_regs_1_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_1_4 <= stage1_regs_1_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_1_5 <= stage1_regs_1_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_1_6 <= stage1_regs_1_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_1_7 <= stage1_regs_1_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_1_1_8 <= stage1_regs_1_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_0_0 <= x_n_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :234:30
-      stage1_regs_2_0_1 <= stage1_regs_2_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_0_2 <= stage1_regs_2_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_0_3 <= stage1_regs_2_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_0_4 <= stage1_regs_2_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_0_5 <= stage1_regs_2_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_0_6 <= stage1_regs_2_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_0_7 <= stage1_regs_2_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_0_8 <= stage1_regs_2_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_1_0 <= a_2_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :234:30
-      stage1_regs_2_1_1 <= stage1_regs_2_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_1_2 <= stage1_regs_2_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_1_3 <= stage1_regs_2_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_1_4 <= stage1_regs_2_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_1_5 <= stage1_regs_2_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_1_6 <= stage1_regs_2_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_1_7 <= stage1_regs_2_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage1_regs_2_1_8 <= stage1_regs_2_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30
-      stage2_regs_0_0_0 <= x_n_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :235:30
-      stage2_regs_0_0_1 <= stage2_regs_0_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_0_2 <= stage2_regs_0_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_0_3 <= stage2_regs_0_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_0_4 <= stage2_regs_0_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_0_5 <= stage2_regs_0_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_0_6 <= stage2_regs_0_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_0_7 <= stage2_regs_0_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_0_8 <= stage2_regs_0_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_1_0 <= a_2_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :235:30
-      stage2_regs_0_1_1 <= stage2_regs_0_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_1_2 <= stage2_regs_0_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_1_3 <= stage2_regs_0_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_1_4 <= stage2_regs_0_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_1_5 <= stage2_regs_0_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_1_6 <= stage2_regs_0_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_1_7 <= stage2_regs_0_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_0_1_8 <= stage2_regs_0_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_0_0 <= x_n_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :235:30
-      stage2_regs_1_0_1 <= stage2_regs_1_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_0_2 <= stage2_regs_1_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_0_3 <= stage2_regs_1_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_0_4 <= stage2_regs_1_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_0_5 <= stage2_regs_1_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_0_6 <= stage2_regs_1_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_0_7 <= stage2_regs_1_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_0_8 <= stage2_regs_1_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_1_0 <= a_2_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :235:30
-      stage2_regs_1_1_1 <= stage2_regs_1_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_1_2 <= stage2_regs_1_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_1_3 <= stage2_regs_1_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_1_4 <= stage2_regs_1_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_1_5 <= stage2_regs_1_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_1_6 <= stage2_regs_1_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_1_7 <= stage2_regs_1_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_1_1_8 <= stage2_regs_1_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_0_0 <= x_n_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :235:30
-      stage2_regs_2_0_1 <= stage2_regs_2_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_0_2 <= stage2_regs_2_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_0_3 <= stage2_regs_2_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_0_4 <= stage2_regs_2_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_0_5 <= stage2_regs_2_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_0_6 <= stage2_regs_2_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_0_7 <= stage2_regs_2_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_0_8 <= stage2_regs_2_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_1_0 <= a_2_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :235:30
-      stage2_regs_2_1_1 <= stage2_regs_2_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_1_2 <= stage2_regs_2_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_1_3 <= stage2_regs_2_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_1_4 <= stage2_regs_2_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_1_5 <= stage2_regs_2_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_1_6 <= stage2_regs_2_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_1_7 <= stage2_regs_2_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage2_regs_2_1_8 <= stage2_regs_2_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:235:30
-      stage3_regs_0_0_0 <= x_n_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :236:30
-      stage3_regs_0_0_1 <= stage3_regs_0_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_2 <= stage3_regs_0_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_3 <= stage3_regs_0_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_4 <= stage3_regs_0_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_5 <= stage3_regs_0_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_6 <= stage3_regs_0_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_7 <= stage3_regs_0_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_8 <= stage3_regs_0_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_9 <= stage3_regs_0_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_10 <= stage3_regs_0_0_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_0_11 <= stage3_regs_0_0_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_0 <= a_2_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :236:30
-      stage3_regs_0_1_1 <= stage3_regs_0_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_2 <= stage3_regs_0_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_3 <= stage3_regs_0_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_4 <= stage3_regs_0_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_5 <= stage3_regs_0_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_6 <= stage3_regs_0_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_7 <= stage3_regs_0_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_8 <= stage3_regs_0_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_9 <= stage3_regs_0_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_10 <= stage3_regs_0_1_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_0_1_11 <= stage3_regs_0_1_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_0 <= x_n_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :236:30
-      stage3_regs_1_0_1 <= stage3_regs_1_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_2 <= stage3_regs_1_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_3 <= stage3_regs_1_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_4 <= stage3_regs_1_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_5 <= stage3_regs_1_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_6 <= stage3_regs_1_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_7 <= stage3_regs_1_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_8 <= stage3_regs_1_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_9 <= stage3_regs_1_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_10 <= stage3_regs_1_0_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_0_11 <= stage3_regs_1_0_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_0 <= a_2_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :236:30
-      stage3_regs_1_1_1 <= stage3_regs_1_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_2 <= stage3_regs_1_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_3 <= stage3_regs_1_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_4 <= stage3_regs_1_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_5 <= stage3_regs_1_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_6 <= stage3_regs_1_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_7 <= stage3_regs_1_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_8 <= stage3_regs_1_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_9 <= stage3_regs_1_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_10 <= stage3_regs_1_1_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_1_1_11 <= stage3_regs_1_1_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_0 <= x_n_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:232:22, :236:30
-      stage3_regs_2_0_1 <= stage3_regs_2_0_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_2 <= stage3_regs_2_0_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_3 <= stage3_regs_2_0_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_4 <= stage3_regs_2_0_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_5 <= stage3_regs_2_0_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_6 <= stage3_regs_2_0_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_7 <= stage3_regs_2_0_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_8 <= stage3_regs_2_0_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_9 <= stage3_regs_2_0_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_10 <= stage3_regs_2_0_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_0_11 <= stage3_regs_2_0_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_0 <= a_2_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :236:30
-      stage3_regs_2_1_1 <= stage3_regs_2_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_2 <= stage3_regs_2_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_3 <= stage3_regs_2_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_4 <= stage3_regs_2_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_5 <= stage3_regs_2_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_6 <= stage3_regs_2_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_7 <= stage3_regs_2_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_8 <= stage3_regs_2_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_9 <= stage3_regs_2_1_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_10 <= stage3_regs_2_1_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage3_regs_2_1_11 <= stage3_regs_2_1_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30
-      stage4_regs_0_1_0 <= a_2_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :237:30
-      stage4_regs_0_1_1 <= stage4_regs_0_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_0_1_2 <= stage4_regs_0_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_0_1_3 <= stage4_regs_0_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_0_1_4 <= stage4_regs_0_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_0_1_5 <= stage4_regs_0_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_0_1_6 <= stage4_regs_0_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_0_1_7 <= stage4_regs_0_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_0_1_8 <= stage4_regs_0_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_1_1_0 <= a_2_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :237:30
-      stage4_regs_1_1_1 <= stage4_regs_1_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_1_1_2 <= stage4_regs_1_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_1_1_3 <= stage4_regs_1_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_1_1_4 <= stage4_regs_1_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_1_1_5 <= stage4_regs_1_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_1_1_6 <= stage4_regs_1_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_1_1_7 <= stage4_regs_1_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_1_1_8 <= stage4_regs_1_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_2_1_0 <= a_2_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:233:22, :237:30
-      stage4_regs_2_1_1 <= stage4_regs_2_1_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_2_1_2 <= stage4_regs_2_1_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_2_1_3 <= stage4_regs_2_1_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_2_1_4 <= stage4_regs_2_1_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_2_1_5 <= stage4_regs_2_1_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_2_1_6 <= stage4_regs_2_1_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_2_1_7 <= stage4_regs_2_1_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
-      stage4_regs_2_1_8 <= stage4_regs_2_1_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30
+    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+      automatic logic [47:0] _GEN = {io_in_a, 23'h0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:42, :208:37
+      automatic logic [47:0] _in_T_1 = _GEN - 48'h400000000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:208:37
+      automatic logic        yleqx = _in_T_1 > 48'h4FFFFFFFFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:208:37, :215:25
+      automatic logic [47:0] y_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      automatic logic [47:0] y_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:224:29
+      automatic logic        yleqx_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:225:25
+      y_1 = {2'h0, P_0[46:1]} + 48'h40000000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_1 = y_1 <= X_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_2 = {3'h0, P_1[46:2]} + 48'h10000000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:57, :220:27, :224:29
+      yleqx_2 = y_2 <= X_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_3 = {4'h0, P_2[46:3]} + 48'h4000000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_3 = y_3 <= X_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_4 = {5'h0, P_3[46:4]} + 48'h1000000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_4 = y_4 <= X_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_5 = {6'h0, P_4[46:5]} + 48'h400000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:57, :220:27, :224:29
+      yleqx_5 = y_5 <= X_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_6 = {7'h0, P_5[46:6]} + 48'h100000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20, :203:57, :224:29
+      yleqx_6 = y_6 <= X_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_7 = {8'h0, P_6[46:7]} + 48'h40000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_7 = y_7 <= X_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_8 = {9'h0, P_7[46:8]} + 48'h10000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_8 = y_8 <= X_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_9 = {10'h0, P_8[46:9]} + 48'h4000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_9 = y_9 <= X_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_10 = {11'h0, P_9[46:10]} + 48'h1000000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:57, :220:27, :224:29
+      yleqx_10 = y_10 <= X_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_11 = {12'h0, P_10[46:11]} + 48'h400000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_11 = y_11 <= X_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_12 = {13'h0, P_11[46:12]} + 48'h100000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_12 = y_12 <= X_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_13 = {14'h0, P_12[46:13]} + 48'h40000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_13 = y_13 <= X_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_14 = {15'h0, P_13[46:14]} + 48'h10000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_14 = y_14 <= X_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_15 = {16'h0, P_14[46:15]} + 48'h4000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_15 = y_15 <= X_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_16 = {17'h0, P_15[46:16]} + 48'h1000;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_16 = y_16 <= X_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_17 = {18'h0, P_16[46:17]} + 48'h400;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_17 = y_17 <= X_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_18 = {19'h0, P_17[46:18]} + 48'h100;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_18 = y_18 <= X_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_19 = {20'h0, P_18[46:19]} + 48'h40;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_19 = y_19 <= X_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_20 = {21'h0, P_19[46:20]} + 48'h10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_20 = y_20 <= X_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      y_21 = {22'h0, P_20[46:21]} + 48'h4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :203:{45,57}, :224:29
+      yleqx_21 = y_21 <= X_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25
+      P_0 <= {1'h1, yleqx, 45'h0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :215:25, :216:22
+      P_1 <= yleqx_1 ? P_0 + 47'h100000000000 : P_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_2 <= yleqx_2 ? P_1 + 47'h80000000000 : P_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_3 <= yleqx_3 ? P_2 + 47'h40000000000 : P_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_4 <= yleqx_4 ? P_3 + 47'h20000000000 : P_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_5 <= yleqx_5 ? P_4 + 47'h10000000000 : P_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_6 <= yleqx_6 ? P_5 + 47'h8000000000 : P_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_7 <= yleqx_7 ? P_6 + 47'h4000000000 : P_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_8 <= yleqx_8 ? P_7 + 47'h2000000000 : P_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_9 <= yleqx_9 ? P_8 + 47'h1000000000 : P_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_10 <= yleqx_10 ? P_9 + 47'h800000000 : P_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_11 <= yleqx_11 ? P_10 + 47'h400000000 : P_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_12 <= yleqx_12 ? P_11 + 47'h200000000 : P_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_13 <= yleqx_13 ? P_12 + 47'h100000000 : P_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_14 <= yleqx_14 ? P_13 + 47'h80000000 : P_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_15 <= yleqx_15 ? P_14 + 47'h40000000 : P_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_16 <= yleqx_16 ? P_15 + 47'h20000000 : P_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_17 <= yleqx_17 ? P_16 + 47'h10000000 : P_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_18 <= yleqx_18 ? P_17 + 47'h8000000 : P_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_19 <= yleqx_19 ? P_18 + 47'h4000000 : P_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      P_20 <= yleqx_20 ? P_19 + 47'h2000000 : P_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :225:25, :227:{24,48}
+      P_21 <= yleqx_21 ? P_20 + 47'h1000000 : P_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :224:29, :225:25, :227:{24,48}
+      X_0 <= yleqx ? _GEN + 48'h700000000000 : _in_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :208:37, :215:25, :217:{22,33}
+      X_1 <= yleqx_1 ? X_0 - y_1 : X_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_2 <= yleqx_2 ? X_1 - y_2 : X_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_3 <= yleqx_3 ? X_2 - y_3 : X_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_4 <= yleqx_4 ? X_3 - y_4 : X_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_5 <= yleqx_5 ? X_4 - y_5 : X_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_6 <= yleqx_6 ? X_5 - y_6 : X_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_7 <= yleqx_7 ? X_6 - y_7 : X_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_8 <= yleqx_8 ? X_7 - y_8 : X_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_9 <= yleqx_9 ? X_8 - y_9 : X_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_10 <= yleqx_10 ? X_9 - y_10 : X_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_11 <= yleqx_11 ? X_10 - y_11 : X_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_12 <= yleqx_12 ? X_11 - y_12 : X_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_13 <= yleqx_13 ? X_12 - y_13 : X_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_14 <= yleqx_14 ? X_13 - y_14 : X_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_15 <= yleqx_15 ? X_14 - y_15 : X_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_16 <= yleqx_16 ? X_15 - y_16 : X_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_17 <= yleqx_17 ? X_16 - y_17 : X_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_18 <= yleqx_18 ? X_17 - y_18 : X_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_19 <= yleqx_19 ? X_18 - y_19 : X_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_20 <= yleqx_20 ? X_19 - y_20 : X_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      X_21 <= yleqx_21 ? X_20 - y_21 : X_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:194:20, :224:29, :225:25, :228:{24,39}
+      results_0 <= {yleqx, 22'h0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :203:45, :215:25, :220:27
+      results_1 <= {results_0[22], yleqx_1, results_0[20:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :230:39, :232:27
+      results_2 <= {results_1[22:21], yleqx_2, results_1[19:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_3 <= {results_2[22:20], yleqx_3, results_2[18:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_4 <= {results_3[22:19], yleqx_4, results_3[17:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_5 <= {results_4[22:18], yleqx_5, results_4[16:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_6 <= {results_5[22:17], yleqx_6, results_5[15:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_7 <= {results_6[22:16], yleqx_7, results_6[14:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_8 <= {results_7[22:15], yleqx_8, results_7[13:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_9 <= {results_8[22:14], yleqx_9, results_8[12:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_10 <= {results_9[22:13], yleqx_10, results_9[11:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_11 <= {results_10[22:12], yleqx_11, results_10[10:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_12 <= {results_11[22:11], yleqx_12, results_11[9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_13 <= {results_12[22:10], yleqx_13, results_12[8:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_14 <= {results_13[22:9], yleqx_14, results_13[7:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_15 <= {results_14[22:8], yleqx_15, results_14[6:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_16 <= {results_15[22:7], yleqx_16, results_15[5:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_17 <= {results_16[22:6], yleqx_17, results_16[4:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_18 <= {results_17[22:5], yleqx_18, results_17[3:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_19 <= {results_18[22:4], yleqx_19, results_18[2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_20 <= {results_19[22:3], yleqx_20, results_19[1:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :232:27
+      results_21 <= {results_20[22:2], yleqx_21, results_20[0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:197:26, :225:25, :230:39, :232:27
+      results_22 <= {results_21[22:1], {23'h0, P_21[46:22]} + 48'h1 <= X_21};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:193:20, :194:20, :197:{26,42}, :203:57, :224:29, :225:25, :232:27
     end
   end // always @(posedge)
-  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
+  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
     `endif // FIRRTL_BEFORE_INITIAL
-    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-      automatic logic [31:0] _RANDOM[0:257];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
+    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+      automatic logic [31:0] _RANDOM[0:81];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
       `endif // INIT_RANDOM_PROLOG_
-      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-        for (logic [8:0] i = 9'h0; i < 9'h102; i += 9'h1) begin
-          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-        x_n_0 = _RANDOM[9'h0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        x_n_1 = _RANDOM[9'h1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        x_n_2 = _RANDOM[9'h2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        x_n_4 = _RANDOM[9'h4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        x_n_5 = _RANDOM[9'h5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        x_n_6 = _RANDOM[9'h6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        x_n_8 = _RANDOM[9'h8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        x_n_9 = _RANDOM[9'h9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        x_n_10 = _RANDOM[9'hA];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :232:22
-        a_2_0 = _RANDOM[9'hC];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_1 = _RANDOM[9'hD];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_2 = _RANDOM[9'hE];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_3 = _RANDOM[9'hF];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_4 = _RANDOM[9'h10];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_5 = _RANDOM[9'h11];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_6 = _RANDOM[9'h12];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_7 = _RANDOM[9'h13];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_8 = _RANDOM[9'h14];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_9 = _RANDOM[9'h15];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_10 = _RANDOM[9'h16];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        a_2_11 = _RANDOM[9'h17];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :233:22
-        stage1_regs_0_0_0 = _RANDOM[9'h18];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_0_1 = _RANDOM[9'h19];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_0_2 = _RANDOM[9'h1A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_0_3 = _RANDOM[9'h1B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_0_4 = _RANDOM[9'h1C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_0_5 = _RANDOM[9'h1D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_0_6 = _RANDOM[9'h1E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_0_7 = _RANDOM[9'h1F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_0_8 = _RANDOM[9'h20];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_0 = _RANDOM[9'h21];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_1 = _RANDOM[9'h22];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_2 = _RANDOM[9'h23];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_3 = _RANDOM[9'h24];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_4 = _RANDOM[9'h25];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_5 = _RANDOM[9'h26];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_6 = _RANDOM[9'h27];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_7 = _RANDOM[9'h28];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_0_1_8 = _RANDOM[9'h29];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_0 = _RANDOM[9'h2A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_1 = _RANDOM[9'h2B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_2 = _RANDOM[9'h2C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_3 = _RANDOM[9'h2D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_4 = _RANDOM[9'h2E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_5 = _RANDOM[9'h2F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_6 = _RANDOM[9'h30];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_7 = _RANDOM[9'h31];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_0_8 = _RANDOM[9'h32];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_0 = _RANDOM[9'h33];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_1 = _RANDOM[9'h34];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_2 = _RANDOM[9'h35];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_3 = _RANDOM[9'h36];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_4 = _RANDOM[9'h37];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_5 = _RANDOM[9'h38];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_6 = _RANDOM[9'h39];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_7 = _RANDOM[9'h3A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_1_1_8 = _RANDOM[9'h3B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_0 = _RANDOM[9'h3C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_1 = _RANDOM[9'h3D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_2 = _RANDOM[9'h3E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_3 = _RANDOM[9'h3F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_4 = _RANDOM[9'h40];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_5 = _RANDOM[9'h41];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_6 = _RANDOM[9'h42];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_7 = _RANDOM[9'h43];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_0_8 = _RANDOM[9'h44];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_0 = _RANDOM[9'h45];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_1 = _RANDOM[9'h46];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_2 = _RANDOM[9'h47];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_3 = _RANDOM[9'h48];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_4 = _RANDOM[9'h49];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_5 = _RANDOM[9'h4A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_6 = _RANDOM[9'h4B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_7 = _RANDOM[9'h4C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage1_regs_2_1_8 = _RANDOM[9'h4D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :234:30
-        stage2_regs_0_0_0 = _RANDOM[9'h4E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_0_1 = _RANDOM[9'h4F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_0_2 = _RANDOM[9'h50];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_0_3 = _RANDOM[9'h51];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_0_4 = _RANDOM[9'h52];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_0_5 = _RANDOM[9'h53];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_0_6 = _RANDOM[9'h54];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_0_7 = _RANDOM[9'h55];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_0_8 = _RANDOM[9'h56];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_0 = _RANDOM[9'h57];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_1 = _RANDOM[9'h58];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_2 = _RANDOM[9'h59];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_3 = _RANDOM[9'h5A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_4 = _RANDOM[9'h5B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_5 = _RANDOM[9'h5C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_6 = _RANDOM[9'h5D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_7 = _RANDOM[9'h5E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_0_1_8 = _RANDOM[9'h5F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_0 = _RANDOM[9'h60];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_1 = _RANDOM[9'h61];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_2 = _RANDOM[9'h62];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_3 = _RANDOM[9'h63];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_4 = _RANDOM[9'h64];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_5 = _RANDOM[9'h65];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_6 = _RANDOM[9'h66];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_7 = _RANDOM[9'h67];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_0_8 = _RANDOM[9'h68];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_0 = _RANDOM[9'h69];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_1 = _RANDOM[9'h6A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_2 = _RANDOM[9'h6B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_3 = _RANDOM[9'h6C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_4 = _RANDOM[9'h6D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_5 = _RANDOM[9'h6E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_6 = _RANDOM[9'h6F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_7 = _RANDOM[9'h70];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_1_1_8 = _RANDOM[9'h71];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_0 = _RANDOM[9'h72];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_1 = _RANDOM[9'h73];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_2 = _RANDOM[9'h74];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_3 = _RANDOM[9'h75];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_4 = _RANDOM[9'h76];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_5 = _RANDOM[9'h77];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_6 = _RANDOM[9'h78];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_7 = _RANDOM[9'h79];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_0_8 = _RANDOM[9'h7A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_0 = _RANDOM[9'h7B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_1 = _RANDOM[9'h7C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_2 = _RANDOM[9'h7D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_3 = _RANDOM[9'h7E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_4 = _RANDOM[9'h7F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_5 = _RANDOM[9'h80];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_6 = _RANDOM[9'h81];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_7 = _RANDOM[9'h82];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage2_regs_2_1_8 = _RANDOM[9'h83];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :235:30
-        stage3_regs_0_0_0 = _RANDOM[9'h84];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_1 = _RANDOM[9'h85];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_2 = _RANDOM[9'h86];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_3 = _RANDOM[9'h87];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_4 = _RANDOM[9'h88];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_5 = _RANDOM[9'h89];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_6 = _RANDOM[9'h8A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_7 = _RANDOM[9'h8B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_8 = _RANDOM[9'h8C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_9 = _RANDOM[9'h8D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_10 = _RANDOM[9'h8E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_0_11 = _RANDOM[9'h8F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_0 = _RANDOM[9'h90];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_1 = _RANDOM[9'h91];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_2 = _RANDOM[9'h92];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_3 = _RANDOM[9'h93];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_4 = _RANDOM[9'h94];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_5 = _RANDOM[9'h95];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_6 = _RANDOM[9'h96];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_7 = _RANDOM[9'h97];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_8 = _RANDOM[9'h98];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_9 = _RANDOM[9'h99];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_10 = _RANDOM[9'h9A];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_0_1_11 = _RANDOM[9'h9B];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_0 = _RANDOM[9'h9C];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_1 = _RANDOM[9'h9D];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_2 = _RANDOM[9'h9E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_3 = _RANDOM[9'h9F];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_4 = _RANDOM[9'hA0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_5 = _RANDOM[9'hA1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_6 = _RANDOM[9'hA2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_7 = _RANDOM[9'hA3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_8 = _RANDOM[9'hA4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_9 = _RANDOM[9'hA5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_10 = _RANDOM[9'hA6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_0_11 = _RANDOM[9'hA7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_0 = _RANDOM[9'hA8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_1 = _RANDOM[9'hA9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_2 = _RANDOM[9'hAA];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_3 = _RANDOM[9'hAB];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_4 = _RANDOM[9'hAC];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_5 = _RANDOM[9'hAD];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_6 = _RANDOM[9'hAE];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_7 = _RANDOM[9'hAF];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_8 = _RANDOM[9'hB0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_9 = _RANDOM[9'hB1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_10 = _RANDOM[9'hB2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_1_1_11 = _RANDOM[9'hB3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_0 = _RANDOM[9'hB4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_1 = _RANDOM[9'hB5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_2 = _RANDOM[9'hB6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_3 = _RANDOM[9'hB7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_4 = _RANDOM[9'hB8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_5 = _RANDOM[9'hB9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_6 = _RANDOM[9'hBA];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_7 = _RANDOM[9'hBB];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_8 = _RANDOM[9'hBC];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_9 = _RANDOM[9'hBD];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_10 = _RANDOM[9'hBE];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_0_11 = _RANDOM[9'hBF];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_0 = _RANDOM[9'hC0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_1 = _RANDOM[9'hC1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_2 = _RANDOM[9'hC2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_3 = _RANDOM[9'hC3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_4 = _RANDOM[9'hC4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_5 = _RANDOM[9'hC5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_6 = _RANDOM[9'hC6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_7 = _RANDOM[9'hC7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_8 = _RANDOM[9'hC8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_9 = _RANDOM[9'hC9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_10 = _RANDOM[9'hCA];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage3_regs_2_1_11 = _RANDOM[9'hCB];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :236:30
-        stage4_regs_0_1_0 = _RANDOM[9'hD5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_0_1_1 = _RANDOM[9'hD6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_0_1_2 = _RANDOM[9'hD7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_0_1_3 = _RANDOM[9'hD8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_0_1_4 = _RANDOM[9'hD9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_0_1_5 = _RANDOM[9'hDA];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_0_1_6 = _RANDOM[9'hDB];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_0_1_7 = _RANDOM[9'hDC];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_0_1_8 = _RANDOM[9'hDD];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_0 = _RANDOM[9'hE7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_1 = _RANDOM[9'hE8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_2 = _RANDOM[9'hE9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_3 = _RANDOM[9'hEA];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_4 = _RANDOM[9'hEB];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_5 = _RANDOM[9'hEC];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_6 = _RANDOM[9'hED];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_7 = _RANDOM[9'hEE];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_1_1_8 = _RANDOM[9'hEF];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_0 = _RANDOM[9'hF9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_1 = _RANDOM[9'hFA];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_2 = _RANDOM[9'hFB];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_3 = _RANDOM[9'hFC];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_4 = _RANDOM[9'hFD];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_5 = _RANDOM[9'hFE];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_6 = _RANDOM[9'hFF];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_7 = _RANDOM[9'h100];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
-        stage4_regs_2_1_8 = _RANDOM[9'h101];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :237:30
+      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+        for (logic [6:0] i = 7'h0; i < 7'h52; i += 7'h1) begin
+          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+        P_0 = {_RANDOM[7'h0], _RANDOM[7'h1][14:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_1 = {_RANDOM[7'h1][31:15], _RANDOM[7'h2][29:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_2 = {_RANDOM[7'h2][31:30], _RANDOM[7'h3], _RANDOM[7'h4][12:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_3 = {_RANDOM[7'h4][31:13], _RANDOM[7'h5][27:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_4 = {_RANDOM[7'h5][31:28], _RANDOM[7'h6], _RANDOM[7'h7][10:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_5 = {_RANDOM[7'h7][31:11], _RANDOM[7'h8][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_6 = {_RANDOM[7'h8][31:26], _RANDOM[7'h9], _RANDOM[7'hA][8:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_7 = {_RANDOM[7'hA][31:9], _RANDOM[7'hB][23:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_8 = {_RANDOM[7'hB][31:24], _RANDOM[7'hC], _RANDOM[7'hD][6:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_9 = {_RANDOM[7'hD][31:7], _RANDOM[7'hE][21:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_10 = {_RANDOM[7'hE][31:22], _RANDOM[7'hF], _RANDOM[7'h10][4:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_11 = {_RANDOM[7'h10][31:5], _RANDOM[7'h11][19:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_12 = {_RANDOM[7'h11][31:20], _RANDOM[7'h12], _RANDOM[7'h13][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_13 = {_RANDOM[7'h13][31:3], _RANDOM[7'h14][17:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_14 = {_RANDOM[7'h14][31:18], _RANDOM[7'h15], _RANDOM[7'h16][0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_15 = {_RANDOM[7'h16][31:1], _RANDOM[7'h17][15:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_16 = {_RANDOM[7'h17][31:16], _RANDOM[7'h18][30:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_17 = {_RANDOM[7'h18][31], _RANDOM[7'h19], _RANDOM[7'h1A][13:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_18 = {_RANDOM[7'h1A][31:14], _RANDOM[7'h1B][28:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_19 = {_RANDOM[7'h1B][31:29], _RANDOM[7'h1C], _RANDOM[7'h1D][11:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_20 = {_RANDOM[7'h1D][31:12], _RANDOM[7'h1E][26:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        P_21 = {_RANDOM[7'h1E][31:27], _RANDOM[7'h1F], _RANDOM[7'h20][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20
+        X_0 = {_RANDOM[7'h20][31:10], _RANDOM[7'h21][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :193:20, :194:20
+        X_1 = {_RANDOM[7'h21][31:26], _RANDOM[7'h22], _RANDOM[7'h23][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_2 = {_RANDOM[7'h23][31:10], _RANDOM[7'h24][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_3 = {_RANDOM[7'h24][31:26], _RANDOM[7'h25], _RANDOM[7'h26][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_4 = {_RANDOM[7'h26][31:10], _RANDOM[7'h27][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_5 = {_RANDOM[7'h27][31:26], _RANDOM[7'h28], _RANDOM[7'h29][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_6 = {_RANDOM[7'h29][31:10], _RANDOM[7'h2A][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_7 = {_RANDOM[7'h2A][31:26], _RANDOM[7'h2B], _RANDOM[7'h2C][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_8 = {_RANDOM[7'h2C][31:10], _RANDOM[7'h2D][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_9 = {_RANDOM[7'h2D][31:26], _RANDOM[7'h2E], _RANDOM[7'h2F][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_10 = {_RANDOM[7'h2F][31:10], _RANDOM[7'h30][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_11 = {_RANDOM[7'h30][31:26], _RANDOM[7'h31], _RANDOM[7'h32][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_12 = {_RANDOM[7'h32][31:10], _RANDOM[7'h33][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_13 = {_RANDOM[7'h33][31:26], _RANDOM[7'h34], _RANDOM[7'h35][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_14 = {_RANDOM[7'h35][31:10], _RANDOM[7'h36][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_15 = {_RANDOM[7'h36][31:26], _RANDOM[7'h37], _RANDOM[7'h38][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_16 = {_RANDOM[7'h38][31:10], _RANDOM[7'h39][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_17 = {_RANDOM[7'h39][31:26], _RANDOM[7'h3A], _RANDOM[7'h3B][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_18 = {_RANDOM[7'h3B][31:10], _RANDOM[7'h3C][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_19 = {_RANDOM[7'h3C][31:26], _RANDOM[7'h3D], _RANDOM[7'h3E][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_20 = {_RANDOM[7'h3E][31:10], _RANDOM[7'h3F][25:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        X_21 = {_RANDOM[7'h3F][31:26], _RANDOM[7'h40], _RANDOM[7'h41][9:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20
+        results_0 = {_RANDOM[7'h41][31:10], _RANDOM[7'h42][0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :194:20, :197:26
+        results_1 = _RANDOM[7'h42][23:1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_2 = {_RANDOM[7'h42][31:24], _RANDOM[7'h43][14:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_3 = {_RANDOM[7'h43][31:15], _RANDOM[7'h44][5:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_4 = _RANDOM[7'h44][28:6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_5 = {_RANDOM[7'h44][31:29], _RANDOM[7'h45][19:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_6 = {_RANDOM[7'h45][31:20], _RANDOM[7'h46][10:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_7 = {_RANDOM[7'h46][31:11], _RANDOM[7'h47][1:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_8 = _RANDOM[7'h47][24:2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_9 = {_RANDOM[7'h47][31:25], _RANDOM[7'h48][15:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_10 = {_RANDOM[7'h48][31:16], _RANDOM[7'h49][6:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_11 = _RANDOM[7'h49][29:7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_12 = {_RANDOM[7'h49][31:30], _RANDOM[7'h4A][20:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_13 = {_RANDOM[7'h4A][31:21], _RANDOM[7'h4B][11:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_14 = {_RANDOM[7'h4B][31:12], _RANDOM[7'h4C][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_15 = _RANDOM[7'h4C][25:3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_16 = {_RANDOM[7'h4C][31:26], _RANDOM[7'h4D][16:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_17 = {_RANDOM[7'h4D][31:17], _RANDOM[7'h4E][7:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_18 = _RANDOM[7'h4E][30:8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_19 = {_RANDOM[7'h4E][31], _RANDOM[7'h4F][21:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_20 = {_RANDOM[7'h4F][31:22], _RANDOM[7'h50][12:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_21 = {_RANDOM[7'h50][31:13], _RANDOM[7'h51][3:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+        results_22 = _RANDOM[7'h51][26:4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
       `endif // RANDOMIZE_REG_INIT
     end // initial
-    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
-      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9
+    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
+      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  FP_mult_32_1_v2 FP_mult_32_1_v2 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
+  assign io_out_s = results_22;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\Binary_Modules\\BinaryDesigns.scala:185:9, :197:26
+endmodule
+
+module FP_sqrt_32_23(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+  input         clock,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+                reset,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+  input  [31:0] io_in_a,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:113:16
+  output [31:0] io_out_s	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:113:16
+);
+
+  wire [22:0] _frac_sqrt_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:136:23
+  wire [8:0]  exp = {1'h0, io_in_a[30:23]} - 9'h7F;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:124:{22,39}
+  wire [7:0]  ref_exp = exp[8] ? ~(exp[7:0]) + 8'h1 : exp[7:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:124:39, :131:{22,26,46,50,73}
+  reg         out_sign_r;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign_r_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg         out_sign;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+  reg  [6:0]  out_exp_r;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  reg  [6:0]  out_exp_r_22;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  always @(posedge clock) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+    automatic logic [7:0] _exp_new_T_1 = ref_exp - 8'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:131:22, :132:50
+    out_sign_r <= io_in_a[31];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:123:23, :141:33
+    out_sign_r_1 <= out_sign_r;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_2 <= out_sign_r_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_3 <= out_sign_r_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_4 <= out_sign_r_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_5 <= out_sign_r_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_6 <= out_sign_r_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_7 <= out_sign_r_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_8 <= out_sign_r_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_9 <= out_sign_r_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_10 <= out_sign_r_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_11 <= out_sign_r_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_12 <= out_sign_r_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_13 <= out_sign_r_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_14 <= out_sign_r_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_15 <= out_sign_r_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_16 <= out_sign_r_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_17 <= out_sign_r_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_18 <= out_sign_r_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_19 <= out_sign_r_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_20 <= out_sign_r_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign_r_21 <= out_sign_r_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_sign <= out_sign_r_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:141:33
+    out_exp_r <= ref_exp[0] ? _exp_new_T_1[7:1] : ref_exp[7:1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:131:22, :132:{22,30,50,57,71}, :142:32
+    out_exp_r_1 <= out_exp_r;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_2 <= out_exp_r_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_3 <= out_exp_r_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_4 <= out_exp_r_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_5 <= out_exp_r_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_6 <= out_exp_r_5;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_7 <= out_exp_r_6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_8 <= out_exp_r_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_9 <= out_exp_r_8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_10 <= out_exp_r_9;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_11 <= out_exp_r_10;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_12 <= out_exp_r_11;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_13 <= out_exp_r_12;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_14 <= out_exp_r_13;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_15 <= out_exp_r_14;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_16 <= out_exp_r_15;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_17 <= out_exp_r_16;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_18 <= out_exp_r_17;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_19 <= out_exp_r_18;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_20 <= out_exp_r_19;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_21 <= out_exp_r_20;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+    out_exp_r_22 <= out_exp_r_21;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:142:32
+  end // always @(posedge)
+  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+    `endif // FIRRTL_BEFORE_INITIAL
+    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+      automatic logic [31:0] _RANDOM[0:5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+      `endif // INIT_RANDOM_PROLOG_
+      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+        for (logic [2:0] i = 3'h0; i < 3'h6; i += 3'h1) begin
+          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+        out_sign_r = _RANDOM[3'h0][0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_1 = _RANDOM[3'h0][1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_2 = _RANDOM[3'h0][2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_3 = _RANDOM[3'h0][3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_4 = _RANDOM[3'h0][4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_5 = _RANDOM[3'h0][5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_6 = _RANDOM[3'h0][6];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_7 = _RANDOM[3'h0][7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_8 = _RANDOM[3'h0][8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_9 = _RANDOM[3'h0][9];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_10 = _RANDOM[3'h0][10];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_11 = _RANDOM[3'h0][11];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_12 = _RANDOM[3'h0][12];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_13 = _RANDOM[3'h0][13];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_14 = _RANDOM[3'h0][14];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_15 = _RANDOM[3'h0][15];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_16 = _RANDOM[3'h0][16];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_17 = _RANDOM[3'h0][17];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_18 = _RANDOM[3'h0][18];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_19 = _RANDOM[3'h0][19];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_20 = _RANDOM[3'h0][20];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign_r_21 = _RANDOM[3'h0][21];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_sign = _RANDOM[3'h0][22];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33
+        out_exp_r = _RANDOM[3'h0][29:23];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33, :142:32
+        out_exp_r_1 = {_RANDOM[3'h0][31:30], _RANDOM[3'h1][4:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :141:33, :142:32
+        out_exp_r_2 = _RANDOM[3'h1][11:5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_3 = _RANDOM[3'h1][18:12];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_4 = _RANDOM[3'h1][25:19];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_5 = {_RANDOM[3'h1][31:26], _RANDOM[3'h2][0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_6 = _RANDOM[3'h2][7:1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_7 = _RANDOM[3'h2][14:8];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_8 = _RANDOM[3'h2][21:15];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_9 = _RANDOM[3'h2][28:22];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_10 = {_RANDOM[3'h2][31:29], _RANDOM[3'h3][3:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_11 = _RANDOM[3'h3][10:4];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_12 = _RANDOM[3'h3][17:11];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_13 = _RANDOM[3'h3][24:18];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_14 = _RANDOM[3'h3][31:25];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_15 = _RANDOM[3'h4][6:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_16 = _RANDOM[3'h4][13:7];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_17 = _RANDOM[3'h4][20:14];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_18 = _RANDOM[3'h4][27:21];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_19 = {_RANDOM[3'h4][31:28], _RANDOM[3'h5][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_20 = _RANDOM[3'h5][9:3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_21 = _RANDOM[3'h5][16:10];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+        out_exp_r_22 = _RANDOM[3'h5][23:17];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :142:32
+      `endif // RANDOMIZE_REG_INIT
+    end // initial
+    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9
+    `endif // FIRRTL_AFTER_INITIAL
+  `endif // ENABLE_INITIAL_REG_
+  frac_sqrt frac_sqrt (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:136:23
     .clock    (clock),
-    .io_in_a  (_GEN),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:268:48
-    .io_in_b  (_GEN),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:268:48
-    .io_out_s (_FP_mult_32_1_v2_io_out_s)
+    .reset    (reset),
+    .io_in_a  (ref_exp[0] ? {1'h1, io_in_a[22:0], 1'h0} : {2'h1, io_in_a[22:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:124:39, :125:{25,35}, :131:22, :132:30, :134:{23,48}
+    .io_out_s (_frac_sqrt_io_out_s)
   );
-  FP_mult_32_1_v2 FP_mult_32_1_v2_1 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .clock    (clock),
-    .io_in_a  (_FP_mult_32_1_v2_io_out_s),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .io_in_b  ({1'h0, stage1_regs_0_1_8[30:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30, :268:48, :282:{46,69}
-    .io_out_s (_FP_mult_32_1_v2_1_io_out_s)
-  );
-  FP_mult_32_1_v2 FP_mult_32_1_v2_2 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .clock    (clock),
-    .io_in_a  ({1'h0, stage3_regs_0_0_11[30:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30, :268:48, :299:{46,70}
-    .io_in_b  (_FP_add_32_1_io_out_s),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-    .io_out_s (_FP_mult_32_1_v2_2_io_out_s)
-  );
-  FP_mult_32_1_v2 FP_mult_32_1_v2_3 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .clock    (clock),
-    .io_in_a  (_GEN_0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:277:48
-    .io_in_b  (_GEN_0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:277:48
-    .io_out_s (_FP_mult_32_1_v2_3_io_out_s)
-  );
-  FP_mult_32_1_v2 FP_mult_32_1_v2_4 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .clock    (clock),
-    .io_in_a  (_FP_mult_32_1_v2_3_io_out_s),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .io_in_b  ({1'h0, stage1_regs_1_1_8[30:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30, :268:48, :282:{46,69}
-    .io_out_s (_FP_mult_32_1_v2_4_io_out_s)
-  );
-  FP_mult_32_1_v2 FP_mult_32_1_v2_5 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .clock    (clock),
-    .io_in_a  ({1'h0, stage3_regs_1_0_11[30:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30, :268:48, :299:{46,70}
-    .io_in_b  (_FP_add_32_1_1_io_out_s),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-    .io_out_s (_FP_mult_32_1_v2_5_io_out_s)
-  );
-  FP_mult_32_1_v2 FP_mult_32_1_v2_6 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .clock    (clock),
-    .io_in_a  (_GEN_1),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:277:48
-    .io_in_b  (_GEN_1),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:277:48
-    .io_out_s (_FP_mult_32_1_v2_6_io_out_s)
-  );
-  FP_mult_32_1_v2 FP_mult_32_1_v2_7 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .clock    (clock),
-    .io_in_a  (_FP_mult_32_1_v2_6_io_out_s),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .io_in_b  ({1'h0, stage1_regs_2_1_8[30:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:234:30, :268:48, :282:{46,69}
-    .io_out_s (_FP_mult_32_1_v2_7_io_out_s)
-  );
-  FP_mult_32_1_v2 FP_mult_32_1_v2_8 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65
-    .clock    (clock),
-    .io_in_a  ({1'h0, stage3_regs_2_0_11[30:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:236:30, :268:48, :299:{46,70}
-    .io_in_b  (_FP_add_32_1_2_io_out_s),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-    .io_out_s (_FP_mult_32_1_v2_8_io_out_s)
-  );
-  FP_add_32_1 FP_add_32_1 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-    .clock    (clock),
-    .io_in_a  (32'h3FC00000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:290:31
-    .io_in_b  (_FP_mult_32_1_v2_1_io_out_s ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65, :291:{65,85}
-    .io_out_s (_FP_add_32_1_io_out_s)
-  );
-  FP_add_32_1 FP_add_32_1_1 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-    .clock    (clock),
-    .io_in_a  (32'h3FC00000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:290:31
-    .io_in_b  (_FP_mult_32_1_v2_4_io_out_s ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65, :291:{65,85}
-    .io_out_s (_FP_add_32_1_1_io_out_s)
-  );
-  FP_add_32_1 FP_add_32_1_2 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:240:50
-    .clock    (clock),
-    .io_in_a  (32'h3FC00000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:290:31
-    .io_in_b  (_FP_mult_32_1_v2_7_io_out_s ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65, :291:{65,85}
-    .io_out_s (_FP_add_32_1_2_io_out_s)
-  );
-  FP_mult_32_1_v2 multiplier4 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:310:29
-    .clock    (clock),
-    .io_in_a  ({1'h0, _FP_mult_32_1_v2_8_io_out_s[30:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:239:65, :268:48, :313:{37,71}
-    .io_in_b
-      ({stage4_regs_2_1_8[31], stage4_regs_2_1_8[30:23] + 8'h1, stage4_regs_2_1_8[22:0]}),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:237:30, :264:75, :309:{46,87,106,113,144}
-    .io_out_s (_multiplier4_io_out_s)
-  );
-  assign io_out_s = {1'h0, _multiplier4_io_out_s[30:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:186:9, :268:48, :310:29, :315:{14,37}
+  assign io_out_s = {out_sign, {1'h0, out_exp_r_22} + 8'h7F, _frac_sqrt_io_out_s};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:105:9, :124:39, :136:23, :141:33, :142:{32,55}, :146:54
 endmodule
 
 module hqr5_complex_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:318:9
@@ -6239,14 +5764,14 @@ module hqr5_complex_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\m
   wire [31:0] _FPComplexMult_v2_19_1_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:332:29
   wire [31:0] _FPComplexMult_v2_19_1_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:332:29
   wire [31:0] _FPComplexMult_v2_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:331:29
-  wire [31:0] _FP_square_root_newfpu_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:330:22
+  wire [31:0] _FP_sqrt_32_23_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:330:22
   reg  [31:0] cd1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:340:18
   reg  [31:0] cd2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:341:18
   reg  [31:0] s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:343:16
   reg  [31:0] s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:343:16
   always @(posedge clock) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:318:9
     cd1 <= _FPComplexMult_v2_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:331:29, :340:18
-    cd2 <= _FP_square_root_newfpu_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:330:22, :341:18
+    cd2 <= _FP_sqrt_32_23_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:330:22, :341:18
     s_Re <= _FP_divider_32_15_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:336:21, :343:16
     s_Im <= _FP_divider_32_15_1_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:337:21, :343:16
   end // always @(posedge)
@@ -6273,11 +5798,11 @@ module hqr5_complex_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\m
       `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:318:9
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  FP_square_root_newfpu_19 FP_square_root_newfpu_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:330:22
+  FP_sqrt_32_23 FP_sqrt_32_23 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:330:22
     .clock    (clock),
     .reset    (reset),
     .io_in_a  (cd1),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:340:18
-    .io_out_s (_FP_square_root_newfpu_19_io_out_s)
+    .io_out_s (_FP_sqrt_32_23_io_out_s)
   );
   FPComplexMult_v2_19 FPComplexMult_v2_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPComplex.scala:331:29
     .clock       (clock),
@@ -6588,7 +6113,7 @@ module hh_datapath_1(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\mai
   wire [31:0]      _hqr7_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:346:20
   wire [31:0]      _hqr5_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:337:20
   wire [31:0]      _hqr5_complex_19_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:337:20
-  wire [31:0]      _FP_square_root_newfpu_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:327:22
+  wire [31:0]      _FP_sqrt_32_23_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:327:22
   wire [31:0]      _FP_DDOT_dp_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:316:21
   wire [31:0]      _FP_DDOT_dp_complex_19_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:316:21
   reg  [3071:0]    yj_reg_vec_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25
@@ -6612,14 +6137,14 @@ module hh_datapath_1(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\mai
   wire [63:0]      d4 = io_d5_rdy ? d4_update : d4_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:147:24, :158:21, :263:20, :264:10, :266:10
   wire [3:0][63:0] _GEN =
     {{io_hh_din[63:0]}, {io_hh_din[127:64]}, {io_hh_din[191:128]}, {io_hh_din[255:192]}};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:277:28, :282:17
-  assign x1_update = io_rst | ~io_d1_rdy ? 64'h0 : _GEN[io_hh_cnt[1:0]];	// <stdin>:80481:29, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:169:14, :279:17, :280:17, :281:26, :282:17
+  assign x1_update = io_rst | ~io_d1_rdy ? 64'h0 : _GEN[io_hh_cnt[1:0]];	// <stdin>:75108:29, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:169:14, :279:17, :280:17, :281:26, :282:17
   wire [15:0]      _vk_update_T_1 = io_hh_cnt + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:290:55
   wire [319:0]     _vk_update_T_4 =
     {io_vk1_vld ? vk1_update : vk1_reg,
      _GEN[_vk_update_T_1[1:0]],
      _GEN[_vk_update_T_1[1:0] + 2'h1],
      _GEN[_vk_update_T_1[1:0] - 2'h2],
-     _GEN[_vk_update_T_1[1:0] - 2'h1]} >> {298'h0, _vk_update_T_1, 6'h0};	// <stdin>:80490:28, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:156:22, :251:21, :252:11, :254:11, :282:17, :290:{37,55,60}, :298:{24,39,57}, :342:21
+     _GEN[_vk_update_T_1[1:0] - 2'h1]} >> {298'h0, _vk_update_T_1, 6'h0};	// <stdin>:75117:28, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:156:22, :251:21, :252:11, :254:11, :282:17, :290:{37,55,60}, :298:{24,39,57}, :342:21
   assign vk_update = io_rst | ~io_vk1_vld ? 256'h0 : _vk_update_T_4[255:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:78:11, :295:17, :296:17, :297:27, :298:{17,39}
   assign vk1_update = {_hqr5_complex_19_io_out_s_Re, _hqr5_complex_19_io_out_s_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:337:20, :342:21
   reg  [63:0]      myAxpyVec_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:392:23
@@ -6684,7 +6209,7 @@ module hh_datapath_1(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\mai
            d4_update_reg[959:64]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:216:27, :223:{27,52}, :316:21
       end
       if (io_d2_vld)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        d2_reg <= _FP_square_root_newfpu_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:155:21, :327:22
+        d2_reg <= _FP_sqrt_32_23_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:155:21, :327:22
       if (io_tk_vld)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
         tk_reg <= _hqr7_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:157:21, :346:20
       if (io_d5_rdy)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
@@ -7015,18 +6540,18 @@ module hh_datapath_1(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\mai
     .io_out_s_Re  (_FP_DDOT_dp_complex_19_io_out_s_Re),
     .io_out_s_Im  (_FP_DDOT_dp_complex_19_io_out_s_Im)
   );
-  FP_square_root_newfpu_19 FP_square_root_newfpu_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:327:22
+  FP_sqrt_32_23 FP_sqrt_32_23 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:327:22
     .clock    (io_clk),
     .reset    (io_rst),
     .io_in_a  (io_d1_vld ? _FP_DDOT_dp_complex_19_io_out_s_Re : d1_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:141:21, :226:20, :227:10, :229:10, :316:21
-    .io_out_s (_FP_square_root_newfpu_19_io_out_s)
+    .io_out_s (_FP_sqrt_32_23_io_out_s)
   );
   hqr5_complex_19 hqr5_complex_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:337:20
     .clock       (io_clk),
     .reset       (io_rst),
     .io_in_a_Re  (x1[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:239:20, :240:10, :242:10, :338:22
     .io_in_a_Im  (x1[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:239:20, :240:10, :242:10, :339:22
-    .io_in_b_Re  (io_d2_vld ? _FP_square_root_newfpu_19_io_out_s : d2_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:155:21, :245:20, :246:10, :248:10, :327:22
+    .io_in_b_Re  (io_d2_vld ? _FP_sqrt_32_23_io_out_s : d2_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:155:21, :245:20, :246:10, :248:10, :327:22
     .io_out_s_Re (_hqr5_complex_19_io_out_s_Re),
     .io_out_s_Im (_hqr5_complex_19_io_out_s_Im)
   );
@@ -7134,9 +6659,9 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
       : hh1_din_rdy ? _simple_dual_19_1_io_doutb : 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:34, :105:34, :145:37, :148:30, :149:31, :150:36, :151:31, :153:31, :206:31, :218:31
   wire [63:0]      myTriMemVec_0 = _simple_dual_19_2_io_doutb[127:64];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :160:52, :229:31
   wire [63:0]      myTriMemVec_1 = _simple_dual_19_2_io_doutb[63:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :160:52, :229:31
-  wire [63:0]      myTriMemVec2_1 = io_hh_cnt[0] ? myTriMemVec_1 : myTriMemVec_0;	// <stdin>:80747:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :163:36, :166:54
+  wire [63:0]      myTriMemVec2_1 = io_hh_cnt[0] ? myTriMemVec_1 : myTriMemVec_0;	// <stdin>:75375:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :163:36, :166:54
   wire [1:0]       _myHhdoutVec2_2_T = io_hh_cnt[1:0] + 2'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:74
-  wire [63:0]      myTriMemVec2_0 = _myHhdoutVec2_2_T[0] ? myTriMemVec_1 : myTriMemVec_0;	// <stdin>:80751:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :163:36, :166:{54,74}
+  wire [63:0]      myTriMemVec2_0 = _myHhdoutVec2_2_T[0] ? myTriMemVec_1 : myTriMemVec_0;	// <stdin>:75379:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :163:36, :166:{54,74}
   wire [127:0]     myTriMemWire = {myTriMemVec2_1, myTriMemVec2_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:163:36, :169:36, :171:42
   wire [255:0]     _hh_din_update_T_2 =
     {myTriMemWire >> {106'h0, io_hh_cnt, 6'h0}, dmx_mem_doutb};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:145:37, :169:36, :174:{38,52,65}
@@ -7146,7 +6671,7 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
   wire [63:0]      myHhdoutVec_3 = io_hh_dout_0[63:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:35, :185:45, :265:25, :266:27, :268:24
   wire [3:0][63:0] _GEN =
     {{myHhdoutVec_3}, {myHhdoutVec_2}, {myHhdoutVec_1}, {myHhdoutVec_0}};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:35, :191:52
-  wire [63:0]      myHhdoutVec2_3 = _GEN[io_hh_cnt[1:0]];	// <stdin>:80781:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:188:36, :191:52
+  wire [63:0]      myHhdoutVec2_3 = _GEN[io_hh_cnt[1:0]];	// <stdin>:75409:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:188:36, :191:52
   wire [63:0]      myHhdoutVec2_2 = _GEN[_myHhdoutVec2_2_T];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:74, :188:36, :191:52
   wire [63:0]      myHhdoutVec2_1 = _GEN[io_hh_cnt[1:0] - 2'h2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:74, :188:36, :191:{52,72}
   wire [63:0]      myHhdoutVec2_0 = _GEN[io_hh_cnt[1:0] - 2'h1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:74, :188:36, :191:{52,72}

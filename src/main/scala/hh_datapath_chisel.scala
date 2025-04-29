@@ -324,9 +324,9 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
 
     ddot_dout := Cat(ddot.out_s.Re,ddot.out_s.Im)
 
-    val hqr3 = Module(new FP_square_root_newfpu(bw/2,3,name)).io//stays the same for complex
+    val hqr3 = Module(new FP_sqrt(bw/2,23)).io//stays the same for complex
     hqr3.in_en := true.B
-    //hqr3.in_valid := true.B
+    hqr3.in_valid := true.B
     hqr3.in_a := d1
     d2_update := hqr3.out_s
     

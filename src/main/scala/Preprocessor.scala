@@ -303,7 +303,7 @@ class pp_controller(bw: Int, streaming_width:Int, columns: Int) extends Module {
   // 1 means dmx1 buffer
   // var dma_ena_reg = RegInit(2.U(3.W))// init value of dma_ena
 
-  var dma_addra_reg = RegInit(0.U(log2Ceil(streaming_width)))
+  var dma_addra_reg = RegInit(0.U(log2Ceil(streaming_width).W))
   io.DMA_addra := dma_addra_reg
 
 

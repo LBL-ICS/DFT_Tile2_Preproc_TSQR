@@ -15,6 +15,8 @@ import chisel3.util.{ShiftRegister, log2Ceil}
 //   |
 //
 
+
+
 class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) extends Module {
 
   // bw is 64 and streaming width is 512
@@ -53,60 +55,141 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
   })
 
 
-  val VECTOR_LAT = 93+4
-  //   io.tile2_tr_mem_ena := 0.U
-  //   io.tile2_tr_mem_wea := 0.U
-  //   io.tile2_tr_mem_addra := 0.U
-  //   io.tile2_tr_mem_dina := 0.U
 
 
-  val pg_in_shifted = ShiftRegister(io.tile2_pg_i, VECTOR_LAT, io.tile2_en)
-  val ug_in_shifted = ShiftRegister(io.tile2_ug_i, VECTOR_LAT, io.tile2_en)
 
-  val e_upg = io.tile2_e_upg + (1 << 23).asUInt
-
+  val e_upg = RegNext(io.tile2_e_upg + (1 << 23).asUInt)
+  dontTouch(e_upg)
   val adder = Module(new FP_add(bw/2, 1))
   adder.io.in_en := io.tile2_en
-  adder.io.in_valid := (io.tile2_e_pg_ready && io.tile2_e_ug_ready)
+  adder.io.in_valid := true.B
   adder.io.in_a := io.tile2_e_ug
   adder.io.in_b := (io.tile2_e_pg.asSInt^(0x80000000.asSInt)).asUInt//double check this
   val divider = Module(new FP_div(bw/2,15))
   divider.io.in_en :=io.tile2_en
-  divider.io.in_valid:=(adder.io.out_valid&&io.tile2_e_upg_ready)
-
+  divider.io.in_valid:=true.B
   divider.io.in_a:= e_upg
-
-
   divider.io.in_b:=adder.io.out_s
   val atan = Module(new FP_atan(bw/2,30))
   val cos = Module(new FP_cos(bw/2,20))
   atan.io.in_en:=io.tile2_en
-  atan.io.in_valid:=divider.io.out_valid
+  atan.io.in_valid:=true.B
   atan.io.in_tan:=divider.io.out_s
   val theta = (atan.io.out_atan) - (1 << 23).asUInt
   cos.io.in_en:=io.tile2_en
-  cos.io.in_valid:=atan.io.out_valid
+  cos.io.in_valid:=true.B
   cos.io.in_angle:= theta
-  val sin_reg = RegInit(0x00000000.U)
-  val cos_reg = RegInit(0x00000000.U)
-  sin_reg := cos.io.out_sin
-  cos_reg := cos.io.out_cos
 
 
+  val sin_reg = RegInit(VecInit(Seq.fill(cols)(0.U(32.W))))
+  val cos_reg = RegInit(VecInit(Seq.fill(cols)(0.U(32.W))))
+  val sin_perm = Wire(UInt(32.W))
+  val cos_perm = Wire(UInt(32.W))
+  sin_perm := 0.U
+  cos_perm := 0.U
+  dontTouch(cos_perm)
+  dontTouch(sin_perm)
+  val writeIndex = RegInit(0.U(log2Ceil(cols).W))
+  val writeDone = RegInit(false.B)
+  val cos_out_valid =  ShiftRegister(io.tile2_e_upg_ready, 93, io.tile2_en)
+  when(cos_out_valid && !writeDone) {
+    sin_reg(writeIndex) := cos.io.out_sin
+    cos_reg(writeIndex) := cos.io.out_cos
+    writeIndex := writeIndex + 1.U
+    when(writeIndex === (cols - 1).U) {
+      writeDone := true.B
+    }
+  }
 
   val axpy = Module(new doublex_axpy(bw/2, streaming_width)).io
-  axpy.in_scalar_1:= sin_reg
-  axpy.in_scalar_2:= cos_reg
+  val shifted_input = RegInit(true.B)
+  val non_shifted_input = RegInit(false.B)
+  dontTouch(shifted_input)
+  dontTouch(non_shifted_input)
+  val shiftCycles = 3*cols
+  val shiftCount = RegInit(0.U(bw.W))
 
 
-  for(i <-0 until streaming_width) {
-    axpy.in_complex_1(i).Re := pg_in_shifted(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))(bw - 1, bw / 2)
-    axpy.in_complex_1(i).Im := pg_in_shifted(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))((bw / 2) - 1, 0)
-    axpy.in_complex_2(i).Re := ug_in_shifted(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))(bw - 1, bw / 2)
-    axpy.in_complex_2(i).Im := ug_in_shifted(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))((bw / 2) - 1, 0)
+  val index = RegInit(0.U(log2Ceil(cols).W))
+  dontTouch(index)
+  when(shifted_input){
 
+    val VECTOR_LAT = 93+4
+    val pg_in_shifted = ShiftRegister(io.tile2_pg_i, VECTOR_LAT, io.tile2_en)
+    val ug_in_shifted = ShiftRegister(io.tile2_ug_i, VECTOR_LAT, io.tile2_en)
+    val pg_in_ready_shifted = ShiftRegister(io.tile2_pg_ready, VECTOR_LAT, io.tile2_en)
+
+    when(pg_in_ready_shifted) {
+      index := Mux(index === (cols-1).U, 0.U, index + 1.U)
+      sin_perm := sin_reg(index)
+      cos_perm := cos_reg(index)
+
+    }
+    axpy.in_scalar_1 := sin_perm
+    axpy.in_scalar_2 := cos_perm
+    for(i <-0 until streaming_width) {
+      axpy.in_complex_1(i).Re := pg_in_shifted(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))(bw - 1, bw / 2)
+      axpy.in_complex_1(i).Im := pg_in_shifted(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))((bw / 2) - 1, 0)
+      axpy.in_complex_2(i).Re := ug_in_shifted(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))(bw - 1, bw / 2)
+      axpy.in_complex_2(i).Im := ug_in_shifted(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))((bw / 2) - 1, 0)
+
+
+    }
+
+    shiftCount := shiftCount + 1.U
+    when(shiftCount === (shiftCycles+100).U) {
+      shifted_input := false.B
+      non_shifted_input := true.B
+    }
+
+  }.elsewhen(non_shifted_input){
+
+    when(io.tile2_pg_ready) {
+      index := Mux(index === (cols-1).U, 0.U, index + 1.U)
+      sin_perm := sin_reg(index)
+      cos_perm := cos_reg(index)
+
+    }
+    axpy.in_scalar_1 := sin_perm
+    axpy.in_scalar_2 := cos_perm
+    for(i <-0 until streaming_width) {
+      axpy.in_complex_1(i).Re := io.tile2_pg_i(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))(bw - 1, bw / 2)
+      axpy.in_complex_1(i).Im := io.tile2_pg_i(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))((bw / 2) - 1, 0)
+      axpy.in_complex_2(i).Re := io.tile2_ug_i(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))(bw - 1, bw / 2)
+      axpy.in_complex_2(i).Im := io.tile2_ug_i(streaming_width * bw - (i * bw) - 1, (streaming_width * bw - (bw * (i + 1))))((bw / 2) - 1, 0)
+
+
+    }
+
+  }.otherwise{
+
+    when(io.tile2_pg_ready) {
+      index := Mux(index === (cols-1).U, 0.U, index + 1.U)
+      sin_perm := sin_reg(index)
+      cos_perm := cos_reg(index)
+
+    }
+    axpy.in_scalar_1 := 0.U
+    axpy.in_scalar_2 := 0.U
+    for(i <-0 until streaming_width) {
+      axpy.in_complex_1(i).Re := 0.U
+      axpy.in_complex_1(i).Im := 0.U
+      axpy.in_complex_2(i).Re := 0.U
+      axpy.in_complex_2(i).Im := 0.U
+
+
+    }
 
   }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -120,6 +203,9 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
   val controller = Module(new pp_controller(bw, streaming_width, cols) )
 
 
+
+
+
   val latency = 98
   val shift_reg = RegInit(VecInit.fill(latency)(0.U(bw.W)))
   shift_reg(0) := io.tile2_ug_ready
@@ -128,9 +214,17 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
   }
 
 
+  when(shifted_input){
+    controller.io.in_valid:= shift_reg((latency-1))
 
-  controller.io.in_valid:= shift_reg((latency-1))
- // controller.io.in_valid:= RegNext(io.tile2_ug_ready)
+  }.elsewhen(non_shifted_input){
+
+    controller.io.in_valid:= RegNext(RegNext(io.tile2_ug_ready))
+  }.otherwise{
+
+    controller.io.in_valid:= 0.U
+  }
+  // controller.io.in_valid:= RegNext(io.tile2_ug_ready)
   controller.io.ug_in := io.out_ug
   controller.io.mem0_fi := io.tile2_mem0_fi
   controller.io.mem1_fi := io.tile2_mem1_fi
@@ -295,8 +389,8 @@ class pp_controller(bw: Int, streaming_width:Int, columns: Int) extends Module {
   }
 
 
-  val mem0_delayed = ShiftRegister(mem0_flag,98 )
-  val mem1_delayed = ShiftRegister(mem1_flag,98 )
+  val mem0_delayed = ShiftRegister(mem0_flag,2 )
+  val mem1_delayed = ShiftRegister(mem1_flag,2 )
 
   // 2 means tri buffer
   // 4 means dmx0 buffer
@@ -382,3 +476,6 @@ class pp_controller(bw: Int, streaming_width:Int, columns: Int) extends Module {
 
   }
 }
+
+
+

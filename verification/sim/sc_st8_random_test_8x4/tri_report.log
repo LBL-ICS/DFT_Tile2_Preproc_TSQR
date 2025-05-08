@@ -1,0 +1,12 @@
+==========================================
+Single-core Simulation
+Test case: ST4_RANDOM_TEST_12X2
+==========================================
+===============================          0 Column Results    ======================================
+Item0 Re Comp Pass! error real percent: 0.019281%, golden real result: -24.523668, dut real result: -24.518940
+Item0 Im  Comp Pass! error imaginary percent: 0.018632%, golden imaginary result: -7.700565, dut imaginary result: -7.699130
+===============================          1 Column Results    ======================================
+Item0 Re Comp Pass! error real percent: 0.016617%, golden real result: -20.282557, dut real result: -20.279186
+Item0 Im  Comp Pass! error imaginary percent: 0.031667%, golden imaginary result: -9.694366, dut imaginary result: -9.691296
+Item1 Re Comp Pass! error real percent: 0.030505%, golden real result: -11.160978, dut real result: -11.157574
+Item1 Im  Comp Pass! error imaginary percent: 0.015249%, golden imaginary result: -5.888180, dut imaginary result: -5.887282

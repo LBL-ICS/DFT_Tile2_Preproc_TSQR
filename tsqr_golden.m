@@ -19,34 +19,12 @@ end
 %preset for testing purposes
 % to generate random pg, ug and energy values, replace col and rows
 % with desired size then uncomment the following:
-%pg = random_complex_matrix(4,2);
-%ug = random_complex_matrix(4,2);
-%e_pg = random_energy(2);
-%e_ug = random_energy(2);
-%e_upg = random_energy(2);
-pg = [-3-2i, -1-2i;
-    -7-2i, -9-6i;
-   -5-8i, -5-4i;
-   -4-1i, -3-2i;
-    -5-2i, -8-4i;
-   -2-7i, -1-9i;
-    -9-4i, -2-3i;
-   -2-8i, -1-6i;
-   ];
+pg = random_complex_matrix(16,4);
+ug = random_complex_matrix(16,4);
+e_pg = random_energy(4);
+e_ug = random_energy(4);
+e_upg = random_energy(4);
 
-ug = [9+2i, 4+9i;
-    1+2i, 2+4i;
-   8+1i, 3+1i;
-   4+5i, 7+8i;
-   2+8i, 3+6i;
-   5+7i, 1+2i;
-    1+3i, 9+8i;
-   2+6i, 4+3i;
-   ];
-
-e_upg = [2,1];
-e_ug = [3,4];
-e_pg = [4,5];
 %%
 
 
@@ -57,7 +35,7 @@ c(i) = cos(theta);
 s(i) = sin(theta);
 new_ug(:,i) = ((ug(:,i)) * cos(theta)) + ((pg(:,i)) * sin(theta));
 end
-
+%%
 
 function  write_hex_pp(ug,pg,new_ug, e_pg,e_upg,e_ug)
 
@@ -282,8 +260,8 @@ s = r;
 
 %%
 
- %write_hex_pp(ug,pg,new_ug,e_pg, e_upg, e_ug);
- R_matrix = TSQR_HW(new_ug, 4);
+% write_hex_pp(ug,pg,new_ug,e_pg, e_upg, e_ug);
+ R_matrix = TSQR_HW(new_ug, 8);
 
  write_hex(R_matrix);
  

@@ -199,6 +199,7 @@ object hh_core_chisel{
                 hh_dout_update := 0.U
             }.elsewhen(io.hh_st){
                 hh_dout_update := RegNext(myHhdoutWire)>> (io.hh_cnt*bw.U) // removed an extra regnext dania
+                //hh_dout_update := RegNext(myHhdoutWire)>> (io.hh_cnt*bw.U) // removed an extra regnext dania
             }.otherwise{
                 hh_dout_update := hh_din_reg
             }

@@ -16,7 +16,7 @@
 //--- test cases  
 //--------------------------------------------------------- 
 `ifdef ST16_RANDOM_TEST_12X2
-  `define TILE_NO 4
+  `define TILE_NO 6
 `endif
 
 
@@ -87,7 +87,7 @@ end
 //---------------------------------------------------------
 //--- Instantiation 
 //---------------------------------------------------------
-tsqr_st4_c1 u_tsqr_st4_c1 (.clk        (clk          ),
+tsqr_st4_1c u_tsqr_st4_1c (.clk        (clk          ),
                    .rst            (rst          ),
 	           .tile_no        (tile_no      ),
 		   .e_upg             (e_upg),
@@ -325,7 +325,7 @@ initial begin
     // ********************************
     for(col_index=0; col_index<`MATRIX_WIDTH;) begin
       gol_col=tri_ram[col_index];
-      dut_col=u_tsqr_st4_c1.hh_core.simple_dual_19_2.ram_ext.Memory[col_index];
+      dut_col=u_tsqr_st4_1c.hh_core.simple_dual_19_2.ram_ext.Memory[col_index];
       `include "error_percent_abs_cal_tri.sv"
       `include "comp_abs_tri.sv"
       `include "comp_tri_ieee754.sv"

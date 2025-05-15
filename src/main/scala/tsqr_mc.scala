@@ -27,9 +27,9 @@ object Main{
     
     val startTimeMillis = System.currentTimeMillis()
 
-    val sw2 = new PrintWriter("verification/dut/tsqr_st8_1c.sv")
+    val sw2 = new PrintWriter("verification/dut/tsqr_st4_1c.sv")
     //tsqr_mc(bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: Int)
-    sw2.println(getVerilogString(new tile4(19, 64, 8, 16, 1)))
+    sw2.println(getVerilogString(new tile4(19, 64, 4, 16, 1)))
     //sw2.println(getVerilogString(new hh_core(64, 16, 16)))
     sw2.close()
     val endTimeMillis = System.currentTimeMillis()

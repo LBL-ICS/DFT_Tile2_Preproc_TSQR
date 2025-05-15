@@ -19,11 +19,14 @@ end
 %preset for testing purposes
 % to generate random pg, ug and energy values, replace col and rows
 % with desired size then uncomment the following:
-pg = random_complex_matrix(16,4);
-ug = random_complex_matrix(16,4);
-e_pg = random_energy(4);
-e_ug = random_energy(4);
-e_upg = random_energy(4);
+pg = random_complex_matrix(512,256);
+ug = random_complex_matrix(512,256);
+e_pg = random_energy(256);
+e_ug = random_energy(256);
+e_upg = random_energy(256);
+
+
+%%
 
 %%
 
@@ -31,8 +34,8 @@ e_upg = random_energy(4);
 [rows, cols] = size(ug);
 for i = 1:cols
 theta = ( 0.5* atan((2 * e_upg(i)) / (e_ug(i) - e_pg(i))));
-c(i) = cos(theta);
-s(i) = sin(theta);
+c = cos(theta);
+s = sin(theta);
 new_ug(:,i) = ((ug(:,i)) * cos(theta)) + ((pg(:,i)) * sin(theta));
 end
 %%
@@ -260,10 +263,10 @@ s = r;
 
 %%
 
-% write_hex_pp(ug,pg,new_ug,e_pg, e_upg, e_ug);
- R_matrix = TSQR_HW(new_ug, 8);
+ write_hex_pp(ug,pg,new_ug,e_pg, e_upg, e_ug);
+ R_matrix = TSQR_HW(new_ug, 512);
 
- write_hex(R_matrix);
+ write_hex(R_matrix(1:256, :));
  
- disp(new_ug);
- disp(R_matrix);
+ %disp(new_ug);
+ %disp(R_matrix);

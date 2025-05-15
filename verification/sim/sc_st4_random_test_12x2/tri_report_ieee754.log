@@ -1,8 +1,8 @@
 ===============================          0 Column Results    ======================================
-Item0   error re percent: 0.019281%, golden re result: c1c43079, dut re result: c1c426ca
-Item0   error im percent: 0.018632%, golden im result: c0f66b07, dut im result: c0f65f46
+Item0   error re percent: 0.047977%, golden re result: bf52bc7a, dut re result: bf52a298
+Item0   error im percent: 0.007572%, golden im result: 409dff96, dut im result: 409dfc86
 ===============================          1 Column Results    ======================================
-Item0   error re percent: 0.016617%, golden re result: c1a242ad, dut re result: c1a23bc6
-Item0   error im percent: 0.031667%, golden im result: c11b1c1f, dut im result: c11b0f8c
-Item1   error re percent: 0.030505%, golden re result: c132935e, dut re result: c132856c
-Item1   error im percent: 0.015249%, golden im result: c0bc6bf9, dut im result: c0bc649e
+Item0   error re percent: 0.001102%, golden re result: 401f2a05, dut re result: 401f2992
+Item0   error im percent: 0.023882%, golden im result: 3fa6e2a6, dut im result: 3fa6d872
+Item1   error re percent: 0.026237%, golden re result: 40604fa9, dut re result: 40604098
+Item1   error im percent: 0.035601%, golden im result: 402153d6, dut im result: 40214522

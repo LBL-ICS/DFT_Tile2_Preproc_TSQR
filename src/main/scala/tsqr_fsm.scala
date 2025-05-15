@@ -73,22 +73,21 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
     val rtri_mem_addrb = IO(Output(UInt((log2Ceil(streaming_width)-1).W)))
 
     withClockAndReset(clk,rst){
-        val DDOT_CY = (3+2)+1*log2Ceil(streaming_width)//= (mult-layer)+(adder * log(sw)) + maybe plus 16
-        val HQR3_CY = 23 // old is 128
-        //val HQR3_CY = 29   
-        val HQR5_CY = 46// old is 151 2 mult + 128 sqrt + 15 div + 2 mult + 1 add + 3 extra regs
-        //val HQR5_CY = 36
-        val HQR7_CY = 16 // 15 from div plus 1
+        val DDOT_CY = (26)+13*log2Ceil(streaming_width)//= (mult + add + 3 regs)+(adder * log(sw)) / actual is 50 cc
+        val HQR3_CY = 23 // sqrt
+        //val HQR5_CY = 26+23+15+26+13+3// 26 comp mult + 23 sqrt + 15 div + 26 compl mult + 13 add + 3 extra regs
+        val HQR5_CY = 23+23+15+23+13+3+10 //100 + 10
+        val HQR7_CY = 16 -1 +10// 15 from div plus 10 from multiplier
         //val HQR7_CY = 29
-        val HQR10_CY = 2 // complex mult
-        val HQR11_CY = 3 // new axpy
+        val HQR10_CY = 23-1// complex mult
+        val HQR11_CY = 23+13-1// new axpy = compl mult + adder layer
         val YJ_SFT_NO = DDOT_CY + HQR7_CY + HQR10_CY +1 //-2
-        val D4_SFT_NO = HQR7_CY
+        val D4_SFT_NO = HQR7_CY-1
         val MEM_RD_CY = 0
         val VK_CY = DDOT_CY + HQR3_CY + HQR5_CY
-        val TK_CY = VK_CY + DDOT_CY + HQR7_CY + 1
+        val TK_CY = VK_CY + DDOT_CY + HQR7_CY
         val TR_CY_MACRO = DDOT_CY + HQR7_CY + HQR10_CY + HQR11_CY - MEM_RD_CY 
-        val HH_CY = TK_CY + HQR10_CY + HQR11_CY +3 +2-1 //removed a one issue in 6x2 ohase - dania
+        val HH_CY = TK_CY + HQR10_CY + HQR11_CY +3 +2//removed a one issue in 6x2 ohase - dania
 
         val hh_en = Reg(Bool())
         val nxt_hh_en = Reg(Bool())//added new
@@ -223,8 +222,8 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
         d1_rdy := RegNext(hh_en & cnt===1.U)//+2
         d1_vld := RegNext(hh_en & (cnt === (DDOT_CY).U))//+2
         d2_rdy := RegNext(hh_en & (cnt === (DDOT_CY).U))
-        d2_vld := RegNext(hh_en & (cnt === ((DDOT_CY) + HQR3_CY+2).U))
-        vk1_rdy := RegNext(hh_en & (cnt === ( (DDOT_CY)+ HQR3_CY+2).U))
+        d2_vld := RegNext(hh_en & (cnt === ((DDOT_CY) + HQR3_CY).U))
+        vk1_rdy := RegNext(hh_en & (cnt === ( (DDOT_CY)+ HQR3_CY).U))
         vk1_vld := RegNext(hh_en & (cnt === (VK_CY).U))
         d3_rdy := RegNext(hh_en & (cnt === (VK_CY).U))
         d3_vld := RegNext(hh_en & (cnt ===(VK_CY + (DDOT_CY)).U))
@@ -237,7 +236,7 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
         //d5_vld := tr_cnt_en & (tr_cnt >= ( DDOT_CY.U + D4_SFT_NO.U +HQR10_CY.U +1.U -1.U  )) & (tr_cnt < ( DDOT_CY.U+ tr_cy + D4_SFT_NO.U +HQR10_CY.U  ))
         d5_vld := tr_cnt_en & (tr_cnt >= ( DDOT_CY.U+ tr_cy + D4_SFT_NO.U +HQR10_CY.U - tr_cy -1.U )) & (tr_cnt < ( DDOT_CY.U - 1.U+tr_cy + D4_SFT_NO.U +HQR10_CY.U  ))
 
-        d5_rdy := tr_cnt_en & (tr_cnt >= ( DDOT_CY.U + D4_SFT_NO.U - 2.U)) & (tr_cnt < ( DDOT_CY.U + tr_cy + D4_SFT_NO.U -1.U)) //-2.U old
+        d5_rdy := tr_cnt_en & (tr_cnt >= ( DDOT_CY.U + D4_SFT_NO.U - 2.U)) & (tr_cnt < ( DDOT_CY.U + tr_cy + D4_SFT_NO.U -2.U)) //-2.U old
 
 
 

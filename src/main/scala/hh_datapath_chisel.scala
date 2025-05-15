@@ -71,7 +71,7 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
 
 
 
-    val yj_reg_vec = Reg(Vec(streaming_width/2,UInt(((log2Ceil(streaming_width)*1+3+16+2+1)*2*bw).W)))
+    val yj_reg_vec = Reg(Vec(streaming_width/2,UInt(((log2Ceil(streaming_width)*13+24+16+22+9)*2*bw).W)))
     val yj0 = Reg(UInt((streaming_width*bw).W)) 
 
     when(io.rst){
@@ -81,10 +81,10 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
    }.elsewhen(io.yj_sft){
       yj0 := yj_reg_vec(streaming_width/2-1)(streaming_width*bw-1,0)
       //yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*13+12+129+10-2)*2*bw -1),streaming_width*32))
-      yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*1+3+16+2+1)*2*bw -1),streaming_width*bw))
+      yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*13+24+16+22+9)*2*bw -1),streaming_width*bw))
       for(i <- 1 until streaming_width/2){
       //yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*32-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*13+12+129+10-2)*2*bw-1),streaming_width*32))
-      yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*bw-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*1+3+16+2+1)*2*bw-1),streaming_width*bw))
+      yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*bw-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*13+24+16+22+9)*2*bw-1),streaming_width*bw))
     }}
 
 /*
@@ -213,14 +213,14 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
     }
 
    /////VIVADO///// val d4_update_reg = Reg(UInt(((26)*bw).W))
-   val d4_update_reg = Reg(UInt(((15)*bw).W)) // old is 126, possibly latency of divider
+   val d4_update_reg = Reg(UInt(((22)*bw).W)) // old is 126, possibly latency of divider
     when(io.rst){
       d4_update := 0.U
       d4_update_reg := 0.U
     }.elsewhen(io.d4_sft){
       d4_update := d4_update_reg(bw-1, 0)
       //d4_update_reg := Cat(ddot_dout, d4_update_reg(26*bw-1,bw))//126
-      d4_update_reg := Cat(ddot_dout, d4_update_reg(15*bw-1,bw))
+      d4_update_reg := Cat(ddot_dout, d4_update_reg(22*bw-1,bw))
     }
 
     when(io.d1_vld){
@@ -466,8 +466,8 @@ class hqr5(bw: Int, name:Int) extends Module{
     val in_b = Input(UInt(bw.W))//d2
     val out_s = Output(UInt(bw.W))//vk1
   })
-  val adder = Module(new FP_add(bw,1)).io
-  val subtractor = Module(new FP_add(bw,1)).io
+  val adder = Module(new FP_add(bw,13)).io
+  val subtractor = Module(new FP_add(bw,13)).io
   adder.in_en := true.B
   adder.in_valid := true.B
   adder.in_a := io.in_a
@@ -494,7 +494,7 @@ class hqr7(bw: Int, name: Int) extends Module{
     val in_a = Input(UInt(bw.W))
     val out_s = Output(UInt(bw.W))
   })
-  val multiplier = Module(new FP_mult(bw, 1)).io
+  val multiplier = Module(new FP_mult(bw, 10)).io
   val reciprocal = Module(new FP_div(bw,15)).io
   multiplier.in_en := true.B
   reciprocal.in_en := true.B

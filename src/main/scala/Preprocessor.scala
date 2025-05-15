@@ -58,14 +58,15 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
 
 
 
-  val e_upg = RegNext(io.tile2_e_upg + (1 << 23).asUInt)
+  val e_upg = ShiftRegister((io.tile2_e_upg + (1 << 23).asUInt),13) // 13 is latency of adder
   dontTouch(e_upg)
-  val adder = Module(new FP_add(bw/2, 1))
+  val adder = Module(new FP_add(bw/2, 13))
   adder.io.in_en := io.tile2_en
   adder.io.in_valid := true.B
   adder.io.in_a := io.tile2_e_ug
   adder.io.in_b := (io.tile2_e_pg.asSInt^(0x80000000.asSInt)).asUInt//double check this
   val divider = Module(new FP_div(bw/2,15))
+
   divider.io.in_en :=io.tile2_en
   divider.io.in_valid:=true.B
   divider.io.in_a:= e_upg
@@ -91,7 +92,7 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
   dontTouch(sin_perm)
   val writeIndex = RegInit(0.U(log2Ceil(cols).W))
   val writeDone = RegInit(false.B)
-  val cos_out_valid =  ShiftRegister(io.tile2_e_upg_ready, 93, io.tile2_en)
+  val cos_out_valid =  ShiftRegister(io.tile2_e_upg_ready, 93+12, io.tile2_en)
   when(cos_out_valid && !writeDone) {
     sin_reg(writeIndex) := cos.io.out_sin
     cos_reg(writeIndex) := cos.io.out_cos
@@ -114,7 +115,7 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
   dontTouch(index)
   when(shifted_input){
 
-    val VECTOR_LAT = 93+4
+    val VECTOR_LAT = 93+4+12
     val pg_in_shifted = ShiftRegister(io.tile2_pg_i, VECTOR_LAT, io.tile2_en)
     val ug_in_shifted = ShiftRegister(io.tile2_ug_i, VECTOR_LAT, io.tile2_en)
     val pg_in_ready_shifted = ShiftRegister(io.tile2_pg_ready, VECTOR_LAT, io.tile2_en)
@@ -137,7 +138,7 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
     }
 
     shiftCount := shiftCount + 1.U
-    when(shiftCount === (shiftCycles+100).U) {
+    when(shiftCount === (shiftCycles+100+24+12).U) {
       shifted_input := false.B
       non_shifted_input := true.B
     }
@@ -185,14 +186,6 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
 
 
 
-
-
-
-
-
-
-
-
   val new_ug = Wire(Vec(streaming_width, UInt(bw.W)))
   for(i <- 0 until streaming_width){
     new_ug(i) := Cat(axpy.out_axpy(i).Re, axpy.out_axpy(i).Im)
@@ -206,20 +199,25 @@ class preprocessor( bw: Int, streaming_width:Int, ram_depth: Int, cols: Int) ext
 
 
 
-  val latency = 98
+  val latency = 98+24+12
   val shift_reg = RegInit(VecInit.fill(latency)(0.U(bw.W)))
   shift_reg(0) := io.tile2_ug_ready
   for(i <- 1 until latency){
     shift_reg(i) := shift_reg(i-1)
   }
 
+  val shift_reg_axpy = RegInit(VecInit.fill(26)(0.U(bw.W)))
+  shift_reg_axpy(0) := io.tile2_ug_ready
+  for(i <- 1 until 26){
+    shift_reg_axpy(i) := shift_reg_axpy(i-1)
+  }
 
   when(shifted_input){
     controller.io.in_valid:= shift_reg((latency-1))
 
   }.elsewhen(non_shifted_input){
 
-    controller.io.in_valid:= RegNext(RegNext(io.tile2_ug_ready))
+    controller.io.in_valid:= shift_reg_axpy((26-1))
   }.otherwise{
 
     controller.io.in_valid:= 0.U
@@ -257,26 +255,26 @@ class doublex_axpy(bw: Int, streaming_width:Int) extends Module{
   }
 
   val multiply_layer_1_Re = for(i <- 0 until streaming_width)yield{
-    val multiply_1_Re = Module(new FP_mult(bw,1)).io
+    val multiply_1_Re = Module(new FP_mult(bw,13)).io
     multiply_1_Re.in_en := true.B
     multiply_1_Re.in_valid := true.B
     multiply_1_Re
   }
   val multiply_layer_1_Im = for(i <- 0 until streaming_width)yield{
-    val multiply_1_Im = Module(new FP_mult(bw,1)).io
+    val multiply_1_Im = Module(new FP_mult(bw,13)).io
     multiply_1_Im.in_en := true.B
     multiply_1_Im.in_valid := true.B
     multiply_1_Im
   }
   val multiply_layer_2_Re = for(i <- 0 until streaming_width)yield{
-    val multiply_2_Re = Module(new FP_mult(bw,1)).io
+    val multiply_2_Re = Module(new FP_mult(bw,13)).io
     multiply_2_Re.in_en := true.B
     multiply_2_Re.in_valid := true.B
 
     multiply_2_Re
   }
   val multiply_layer_2_Im = for(i <- 0 until streaming_width)yield{
-    val multiply_2_Im = Module(new FP_mult(bw,1)).io
+    val multiply_2_Im = Module(new FP_mult(bw,13)).io
     multiply_2_Im.in_en := true.B
     multiply_2_Im.in_valid := true.B
 
@@ -284,14 +282,14 @@ class doublex_axpy(bw: Int, streaming_width:Int) extends Module{
   }
 
   val adder_layer_Re = for (i <- 0 until streaming_width) yield {
-    val adder_Re = Module(new FP_add(bw,1)).io
+    val adder_Re = Module(new FP_add(bw,13)).io
     adder_Re.in_en := true.B
     adder_Re.in_valid:= true.B
     adder_Re
   }
 
   val adder_layer_Im = for (i <- 0 until streaming_width) yield {
-    val adder_Im = Module(new FP_add(bw,1)).io
+    val adder_Im = Module(new FP_add(bw,13)).io
     adder_Im.in_en := true.B
     adder_Im.in_valid:= true.B
 
@@ -389,8 +387,8 @@ class pp_controller(bw: Int, streaming_width:Int, columns: Int) extends Module {
   }
 
 
-  val mem0_delayed = ShiftRegister(mem0_flag,2 )
-  val mem1_delayed = ShiftRegister(mem1_flag,2 )
+  val mem0_delayed = ShiftRegister(mem0_flag,26 )
+  val mem1_delayed = ShiftRegister(mem1_flag,26 )
 
   // 2 means tri buffer
   // 4 means dmx0 buffer

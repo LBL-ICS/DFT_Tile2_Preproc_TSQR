@@ -236,7 +236,7 @@ initial begin
 //       ug_ready    = 1'b0;
 //       pg_ready    = 1'b0;
     
-     wait(mem0_fi_c_0);
+     wait(mem1_fi_c_0);
      @(posedge clk);
      for(i=0; i<`MATRIX_WIDTH;i=i+1) begin
     //   e_ug_ready  = 1'b1;

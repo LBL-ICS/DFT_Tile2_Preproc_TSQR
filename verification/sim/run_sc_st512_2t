@@ -51,11 +51,11 @@ add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/p
 
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/*
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_st512_1c/hh_core/simple_dual_19/ram
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/simple_dual_19_2/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/simple_dual_19_2/*
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_st512_1c/hh_core/simple_dual_19_1/ram
 
 
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/fsms_0/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/fsms_0/*
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/_yj_reg_vec_0_T_1 
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/_yj_reg_vec_1_T_2 
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/yj_reg_vec_0 
@@ -71,18 +71,18 @@ add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/h
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/hqr5_complex_19/FPComplexMult_v2_19_1/*
 add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/FPComplexMult_v2_19/*
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/hqr5_complex_19/FP_square_root_newfpu_19/*
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/yj_reg_vec_0 
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/yj_reg_vec_1 
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/yj_reg_vec_0 
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/yj_reg_vec_1 
 
 
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/hqr7_19/*
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/axpy_dp_complex_19/*
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/FP_DDOT_dp_complex_19/FPComplexAdder_v2_19/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/hqr7_19/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/axpy_dp_complex_19/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/FP_DDOT_dp_complex_19/FPComplexAdder_v2_19/*
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/hqr5_complex_19/FP_divider_32_15_io_in_a
 #add wave -noupdate -format logic -hexadecimal tsqr_mc_st4_tb/u_tsqr_st512_1c/hh_core/u_hh_datapath/hqr5_complex_19/FP_divider_32_15_1_io_in_a
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/simple_dual_19_2/*
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/simple_dual_19_1/*
-add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/simple_dual_19/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/simple_dual_19_2/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/simple_dual_19_1/*
+#add wave -noupdate -format logic -hexadecimal tsqr_mc_st512_tb/u_tsqr_st512_1c/hh_core/simple_dual_19/*
 
 run 100 us                                                                            
 

@@ -6907,7 +6907,7 @@ module fsm(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\
 endmodule
 
 // VCS coverage exclude_file
-module ram_2x128(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
+module ram_2x128(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
   input          R0_addr,
                  R0_en,
                  R0_clk,
@@ -6922,100 +6922,100 @@ module ram_2x128(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\s
   input  [127:0] W0_data
 );
 
-  reg [127:0] Memory[0:1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-  always @(posedge W0_clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-    if (W0_en & 1'h1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-      Memory[W0_addr] <= W0_data;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
+  reg [127:0] Memory[0:1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+  always @(posedge W0_clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+    if (W0_en & 1'h1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+      Memory[W0_addr] <= W0_data;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
   end // always @(posedge)
-  `ifdef ENABLE_INITIAL_MEM_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-    reg [127:0] _RANDOM_MEM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-      `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-      `ifdef RANDOMIZE_MEM_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
+  `ifdef ENABLE_INITIAL_MEM_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+    reg [127:0] _RANDOM_MEM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+      `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+      `ifdef RANDOMIZE_MEM_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
         for (logic [1:0] i = 2'h0; i < 2'h2; i += 2'h1) begin
           for (logic [7:0] j = 8'h0; j < 8'h80; j += 8'h20) begin
-            _RANDOM_MEM[j +: 32] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-          end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-          Memory[i[0]] = _RANDOM_MEM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
+            _RANDOM_MEM[j +: 32] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+          end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+          Memory[i[0]] = _RANDOM_MEM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
       `endif // RANDOMIZE_MEM_INIT
     end // initial
   `endif // ENABLE_INITIAL_MEM_
-  assign R0_data = R0_en ? Memory[R0_addr] : 128'bx;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-  assign R1_data = R1_en ? Memory[R1_addr] : 128'bx;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
+  assign R0_data = R0_en ? Memory[R0_addr] : 128'bx;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+  assign R1_data = R1_en ? Memory[R1_addr] : 128'bx;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
 endmodule
 
-module simple_dual_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-  input          reset,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-                 io_clka,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-                 io_clkb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-                 io_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-                 io_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-  input  [15:0]  io_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-  input          io_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-                 io_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-  input  [127:0] io_dina,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-  output [127:0] io_doutb	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
+module simple_dual_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+  input          reset,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+                 io_clka,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+                 io_clkb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+                 io_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+                 io_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+  input  [15:0]  io_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+  input          io_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+                 io_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+  input  [127:0] io_dina,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+  output [127:0] io_doutb	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
 );
 
-  wire [63:0]  ramtemp_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:25, :324:48, :331:28
-  wire [63:0]  dintemp_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:25, :323:48, :330:28
-  wire [63:0]  ramtemp_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:25, :324:48, :331:28
-  wire [63:0]  dintemp_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:25, :323:48, :330:28
-  wire [127:0] _ram_ext_R0_data;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-  wire [127:0] _ram_ext_R1_data;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
-  reg  [127:0] doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:311:28
-  reg  [127:0] ramMirror_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:36
-  reg  [127:0] ramMirror_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:36
-  wire [127:0] _GEN = {ramtemp_1, ramtemp_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:25, :324:48, :326:52, :331:28
-  wire [127:0] _GEN_0 = {dintemp_1, dintemp_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:25, :323:48, :326:52, :330:28
-  assign dintemp_0 = io_ena ? io_dina[63:0] & {8{io_wea[7:0]}} : 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:25, :323:{48,59,123,128,136}, :330:28
-  assign ramtemp_0 = io_ena ? _ram_ext_R0_data[63:0] & ~{8{io_wea[7:0]}} : 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26, :319:25, :323:136, :324:{48,67,131,133,138}, :330:28, :331:28
-  assign dintemp_1 = io_ena ? io_dina[127:64] & {8{io_wea[15:8]}} : 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:25, :323:{48,59,123,128,136}, :330:28
-  assign ramtemp_1 = io_ena ? _ram_ext_R0_data[127:64] & ~{8{io_wea[15:8]}} : 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26, :319:25, :323:136, :324:{48,67,131,133,138}, :330:28, :331:28
-  reg  [127:0] doutb_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:337:37
-  always @(posedge io_clka) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-    if (io_enb)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-      doutb <= doutb_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:311:28, :337:37
-    if (reset) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-      ramMirror_0 <= 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:{36,44}
-      ramMirror_1 <= 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:{36,44}
+  wire [63:0]  ramtemp_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:19, :324:42, :331:22
+  wire [63:0]  dintemp_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:19, :323:42, :330:22
+  wire [63:0]  ramtemp_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:19, :324:42, :331:22
+  wire [63:0]  dintemp_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:19, :323:42, :330:22
+  wire [127:0] _ram_ext_R0_data;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+  wire [127:0] _ram_ext_R1_data;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
+  reg  [127:0] doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:311:22
+  reg  [127:0] ramMirror_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:30
+  reg  [127:0] ramMirror_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:30
+  wire [127:0] _GEN = {ramtemp_1, ramtemp_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:19, :324:42, :326:44, :331:22
+  wire [127:0] _GEN_0 = {dintemp_1, dintemp_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:19, :323:42, :326:44, :330:22
+  assign dintemp_0 = io_ena ? io_dina[63:0] & {8{io_wea[7:0]}} : 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:19, :323:{42,53,117,122,130}, :330:22
+  assign ramtemp_0 = io_ena ? _ram_ext_R0_data[63:0] & ~{8{io_wea[7:0]}} : 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20, :319:19, :323:130, :324:{42,61,125,127,132}, :330:22, :331:22
+  assign dintemp_1 = io_ena ? io_dina[127:64] & {8{io_wea[15:8]}} : 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:319:19, :323:{42,53,117,122,130}, :330:22
+  assign ramtemp_1 = io_ena ? _ram_ext_R0_data[127:64] & ~{8{io_wea[15:8]}} : 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20, :319:19, :323:130, :324:{42,61,125,127,132}, :330:22, :331:22
+  reg  [127:0] doutb_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:337:27
+  always @(posedge io_clka) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+    if (io_enb)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+      doutb <= doutb_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:311:22, :337:27
+    if (reset) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+      ramMirror_0 <= 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:{30,38}
+      ramMirror_1 <= 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:{30,38}
     end
-    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-      automatic logic [127:0] _ramMirror_T_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:327:55
-      _ramMirror_T_2 = _GEN + _GEN_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:326:52, :327:55
-      if (io_ena & ~io_addra)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:36, :319:25, :327:37
-        ramMirror_0 <= _ramMirror_T_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:36, :327:55
-      if (io_ena & io_addra)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:36, :319:25, :327:37
-        ramMirror_1 <= _ramMirror_T_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:36, :327:55
+    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+      automatic logic [127:0] _ramMirror_T_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:327:47
+      _ramMirror_T_2 = _GEN + _GEN_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:326:44, :327:47
+      if (io_ena & ~io_addra)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:30, :319:19, :327:29
+        ramMirror_0 <= _ramMirror_T_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:30, :327:47
+      if (io_ena & io_addra)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:30, :319:19, :327:29
+        ramMirror_1 <= _ramMirror_T_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:314:30, :327:47
     end
   end // always @(posedge)
-  always @(posedge io_clkb)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:21
-    doutb_REG <= _ram_ext_R1_data;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26, :337:37
-  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
+  always @(posedge io_clkb)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:294:17
+    doutb_REG <= _ram_ext_R1_data;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20, :337:27
+  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
     `endif // FIRRTL_BEFORE_INITIAL
-    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-      automatic logic [31:0] _RANDOM[0:15];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
+    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+      automatic logic [31:0] _RANDOM[0:15];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
       `endif // INIT_RANDOM_PROLOG_
-      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
+      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
         for (logic [4:0] i = 5'h0; i < 5'h10; i += 5'h1) begin
-          _RANDOM[i[3:0]] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-        doutb = {_RANDOM[4'h0], _RANDOM[4'h1], _RANDOM[4'h2], _RANDOM[4'h3]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11, :311:28
-        ramMirror_0 = {_RANDOM[4'h4], _RANDOM[4'h5], _RANDOM[4'h6], _RANDOM[4'h7]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11, :314:36
-        ramMirror_1 = {_RANDOM[4'h8], _RANDOM[4'h9], _RANDOM[4'hA], _RANDOM[4'hB]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11, :314:36
-        doutb_REG = {_RANDOM[4'hC], _RANDOM[4'hD], _RANDOM[4'hE], _RANDOM[4'hF]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11, :337:37
+          _RANDOM[i[3:0]] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+        doutb = {_RANDOM[4'h0], _RANDOM[4'h1], _RANDOM[4'h2], _RANDOM[4'h3]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9, :311:22
+        ramMirror_0 = {_RANDOM[4'h4], _RANDOM[4'h5], _RANDOM[4'h6], _RANDOM[4'h7]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9, :314:30
+        ramMirror_1 = {_RANDOM[4'h8], _RANDOM[4'h9], _RANDOM[4'hA], _RANDOM[4'hB]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9, :314:30
+        doutb_REG = {_RANDOM[4'hC], _RANDOM[4'hD], _RANDOM[4'hE], _RANDOM[4'hF]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9, :337:27
       `endif // RANDOMIZE_REG_INIT
     end // initial
-    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
-      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11
+    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
+      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  ram_2x128 ram_ext (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:26
+  ram_2x128 ram_ext (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:313:20
     .R0_addr (io_addra),
     .R0_en   (io_ena),
     .R0_clk  (io_clka),
@@ -7027,9 +7027,9 @@ module simple_dual_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\ma
     .W0_addr (io_addra),
     .W0_en   (io_ena),
     .W0_clk  (io_clka),
-    .W0_data (_GEN + _GEN_0)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:326:52
+    .W0_data (_GEN + _GEN_0)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:326:44
   );
-  assign io_doutb = doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:11, :311:28
+  assign io_doutb = doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:292:9, :311:22
 endmodule
 
 module FP_mult_32_10_v2(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\FPPackageMario\\FP_Modules\\FPUnits.scala:146:9
@@ -8093,24 +8093,24 @@ module hqr5_complex_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\m
   );
 endmodule
 
-module hqr7_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:490:7
-  input         clock,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:490:7
-                reset,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:490:7
-  input  [31:0] io_in_a,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:493:14
-  output [31:0] io_out_s	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:493:14
+module hqr7_19(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:510:7
+  input         clock,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:510:7
+                reset,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:510:7
+  input  [31:0] io_in_a,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:513:14
+  output [31:0] io_out_s	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:513:14
 );
 
-  wire [31:0] _FP_divider_32_15_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:498:26
-  FP_mult_32_10_v2 FP_mult_32_10_v2 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:497:26
+  wire [31:0] _FP_divider_32_15_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:518:26
+  FP_mult_32_10_v2 FP_mult_32_10_v2 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:517:26
     .clock    (clock),
-    .io_in_a  (32'hC0000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:506:19
-    .io_in_b  (_FP_divider_32_15_io_out_s),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:498:26
+    .io_in_a  (32'hC0000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:526:19
+    .io_in_b  (_FP_divider_32_15_io_out_s),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:518:26
     .io_out_s (io_out_s)
   );
-  FP_divider_32_15 FP_divider_32_15 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:498:26
+  FP_divider_32_15 FP_divider_32_15 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:518:26
     .clock    (clock),
     .reset    (reset),
-    .io_in_a  (32'h3F800000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:504:19
+    .io_in_a  (32'h3F800000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:524:19
     .io_in_b  (io_in_a),
     .io_out_s (_FP_divider_32_15_io_out_s)
   );
@@ -8511,133 +8511,133 @@ module hh_datapath_1(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\mai
   output [255:0] io_hh_dout	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
 );
 
-  wire [63:0]      vk1_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:342:21
-  wire [255:0]     vk_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:295:17, :296:17, :297:27
-  wire [63:0]      x1_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:279:17, :280:17, :281:26
-  wire [31:0]      _axpy_dp_complex_19_io_out_s_0_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
-  wire [31:0]      _axpy_dp_complex_19_io_out_s_0_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
-  wire [31:0]      _axpy_dp_complex_19_io_out_s_1_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
-  wire [31:0]      _axpy_dp_complex_19_io_out_s_1_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
-  wire [31:0]      _axpy_dp_complex_19_io_out_s_2_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
-  wire [31:0]      _axpy_dp_complex_19_io_out_s_2_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
-  wire [31:0]      _axpy_dp_complex_19_io_out_s_3_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
-  wire [31:0]      _axpy_dp_complex_19_io_out_s_3_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
-  wire [31:0]      _FPComplexMult_v2_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:354:21
-  wire [31:0]      _FPComplexMult_v2_19_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:354:21
-  wire [31:0]      _hqr7_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:346:20
-  wire [31:0]      _hqr5_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:337:20
-  wire [31:0]      _hqr5_complex_19_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:337:20
-  wire [31:0]      _FP_sqrt_32_23_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:327:22
-  wire [31:0]      _FP_DDOT_dp_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:316:21
-  wire [31:0]      _FP_DDOT_dp_complex_19_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:316:21
+  wire [63:0]      vk1_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:362:21
+  wire [255:0]     vk_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:315:17, :316:17, :317:27
+  wire [63:0]      x1_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:299:17, :300:17, :301:26
+  wire [31:0]      _axpy_dp_complex_19_io_out_s_0_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
+  wire [31:0]      _axpy_dp_complex_19_io_out_s_0_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
+  wire [31:0]      _axpy_dp_complex_19_io_out_s_1_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
+  wire [31:0]      _axpy_dp_complex_19_io_out_s_1_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
+  wire [31:0]      _axpy_dp_complex_19_io_out_s_2_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
+  wire [31:0]      _axpy_dp_complex_19_io_out_s_2_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
+  wire [31:0]      _axpy_dp_complex_19_io_out_s_3_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
+  wire [31:0]      _axpy_dp_complex_19_io_out_s_3_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
+  wire [31:0]      _FPComplexMult_v2_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:374:21
+  wire [31:0]      _FPComplexMult_v2_19_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:374:21
+  wire [31:0]      _hqr7_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:366:20
+  wire [31:0]      _hqr5_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:357:20
+  wire [31:0]      _hqr5_complex_19_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:357:20
+  wire [31:0]      _FP_sqrt_32_23_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:347:22
+  wire [31:0]      _FP_DDOT_dp_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:336:21
+  wire [31:0]      _FP_DDOT_dp_complex_19_io_out_s_Im;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:336:21
   reg  [12415:0]   yj_reg_vec_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25
   reg  [12415:0]   yj_reg_vec_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25
   reg  [255:0]     yj0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18
-  reg  [255:0]     ddot_din_a_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29
-  reg  [255:0]     ddot_din_b_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29
-  reg  [255:0]     vk_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:140:21
-  reg  [31:0]      d1_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:141:21
-  reg  [31:0]      d3_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:142:21
-  reg  [63:0]      d4_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:147:24
-  reg  [63:0]      x1_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:154:21
-  reg  [31:0]      d2_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:155:21
-  reg  [63:0]      vk1_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:156:22
-  reg  [31:0]      tk_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:157:21
-  reg  [63:0]      d4_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:21
-  reg  [63:0]      d5_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:21
-  wire [255:0]     vk = io_vk1_vld ? vk_update : vk_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:140:21, :209:21, :210:10, :212:10, :295:17, :296:17, :297:27
-  reg  [1407:0]    d4_update_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:216:27
-  wire [63:0]      x1 = io_d1_rdy ? x1_update : x1_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:154:21, :239:20, :240:10, :242:10, :279:17, :280:17, :281:26
-  wire [63:0]      d4 = io_d5_rdy ? d4_update : d4_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:147:24, :158:21, :263:20, :264:10, :266:10
+  reg  [255:0]     ddot_din_a_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29
+  reg  [255:0]     ddot_din_b_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29
+  reg  [255:0]     vk_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:160:21
+  reg  [31:0]      d1_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:161:21
+  reg  [31:0]      d3_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:162:21
+  reg  [63:0]      d4_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:167:24
+  reg  [63:0]      x1_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:174:21
+  reg  [31:0]      d2_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:175:21
+  reg  [63:0]      vk1_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:176:22
+  reg  [31:0]      tk_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:177:21
+  reg  [63:0]      d4_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:178:21
+  reg  [63:0]      d5_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:179:21
+  wire [255:0]     vk = io_vk1_vld ? vk_update : vk_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:160:21, :229:21, :230:10, :232:10, :315:17, :316:17, :317:27
+  reg  [1407:0]    d4_update_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:236:27
+  wire [63:0]      x1 = io_d1_rdy ? x1_update : x1_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:174:21, :259:20, :260:10, :262:10, :299:17, :300:17, :301:26
+  wire [63:0]      d4 = io_d5_rdy ? d4_update : d4_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:167:24, :178:21, :283:20, :284:10, :286:10
   wire [3:0][63:0] _GEN =
-    {{io_hh_din[63:0]}, {io_hh_din[127:64]}, {io_hh_din[191:128]}, {io_hh_din[255:192]}};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:277:28, :282:17
-  assign x1_update = io_rst | ~io_d1_rdy ? 64'h0 : _GEN[io_hh_cnt[1:0]];	// <stdin>:93149:29, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:169:14, :279:17, :280:17, :281:26, :282:17
-  wire [15:0]      _vk_update_T_1 = io_hh_cnt + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:290:55
+    {{io_hh_din[63:0]}, {io_hh_din[127:64]}, {io_hh_din[191:128]}, {io_hh_din[255:192]}};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:297:28, :302:17
+  assign x1_update = io_rst | ~io_d1_rdy ? 64'h0 : _GEN[io_hh_cnt[1:0]];	// <stdin>:93150:29, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:189:14, :299:17, :300:17, :301:26, :302:17
+  wire [15:0]      _vk_update_T_1 = io_hh_cnt + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:310:55
   wire [319:0]     _vk_update_T_4 =
     {io_vk1_vld ? vk1_update : vk1_reg,
      _GEN[_vk_update_T_1[1:0]],
      _GEN[_vk_update_T_1[1:0] + 2'h1],
      _GEN[_vk_update_T_1[1:0] - 2'h2],
-     _GEN[_vk_update_T_1[1:0] - 2'h1]} >> {298'h0, _vk_update_T_1, 6'h0};	// <stdin>:93158:28, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:156:22, :251:21, :252:11, :254:11, :282:17, :290:{37,55,60}, :298:{24,39,57}, :342:21
-  assign vk_update = io_rst | ~io_vk1_vld ? 256'h0 : _vk_update_T_4[255:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:78:11, :295:17, :296:17, :297:27, :298:{17,39}
-  assign vk1_update = {_hqr5_complex_19_io_out_s_Re, _hqr5_complex_19_io_out_s_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:337:20, :342:21
-  reg  [63:0]      myAxpyVec_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:392:23
-  reg  [63:0]      myAxpyVec_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:392:23
-  reg  [63:0]      myAxpyVec_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:392:23
-  reg  [63:0]      myAxpyVec_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:392:23
+     _GEN[_vk_update_T_1[1:0] - 2'h1]} >> {298'h0, _vk_update_T_1, 6'h0};	// <stdin>:93159:28, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:176:22, :271:21, :272:11, :274:11, :302:17, :310:{37,55,60}, :318:{24,39,57}, :362:21
+  assign vk_update = io_rst | ~io_vk1_vld ? 256'h0 : _vk_update_T_4[255:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:94:15, :315:17, :316:17, :317:27, :318:{17,39}
+  assign vk1_update = {_hqr5_complex_19_io_out_s_Re, _hqr5_complex_19_io_out_s_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:357:20, :362:21
+  reg  [63:0]      myAxpyVec_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:412:23
+  reg  [63:0]      myAxpyVec_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:412:23
+  reg  [63:0]      myAxpyVec_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:412:23
+  reg  [63:0]      myAxpyVec_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:412:23
   always @(posedge io_clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
     if (io_rst) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-      yj_reg_vec_0 <= 12416'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :80:22
-      yj_reg_vec_1 <= 12416'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :80:22
-      yj0 <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :78:11
-      ddot_din_a_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:78:11, :138:29
-      ddot_din_b_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:78:11, :139:29
-      vk_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:78:11, :140:21
-      d1_reg <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:141:21, :167:14
-      d3_reg <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:142:21, :167:14
-      d4_update <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:147:24, :169:14
-      x1_reg <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:154:21, :169:14
-      d2_reg <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:155:21, :167:14
-      vk1_reg <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:156:22, :169:14
-      tk_reg <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:157:21, :167:14
-      d4_reg <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:21, :169:14
-      d5_reg <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:21, :169:14
-      d4_update_reg <= 1408'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:216:27, :219:21
-      myAxpyVec_0 <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:169:14, :392:23
-      myAxpyVec_1 <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:169:14, :392:23
-      myAxpyVec_2 <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:169:14, :392:23
-      myAxpyVec_3 <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:169:14, :392:23
+      yj_reg_vec_0 <= 12416'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :96:27
+      yj_reg_vec_1 <= 12416'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :96:27
+      yj0 <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :94:15
+      ddot_din_a_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:94:15, :158:29
+      ddot_din_b_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:94:15, :159:29
+      vk_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:94:15, :160:21
+      d1_reg <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:161:21, :187:14
+      d3_reg <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:162:21, :187:14
+      d4_update <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:167:24, :189:14
+      x1_reg <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:174:21, :189:14
+      d2_reg <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:175:21, :187:14
+      vk1_reg <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:176:22, :189:14
+      tk_reg <= 32'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:177:21, :187:14
+      d4_reg <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:178:21, :189:14
+      d5_reg <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:179:21, :189:14
+      d4_update_reg <= 1408'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:236:27, :239:21
+      myAxpyVec_0 <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:189:14, :412:23
+      myAxpyVec_1 <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:189:14, :412:23
+      myAxpyVec_2 <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:189:14, :412:23
+      myAxpyVec_3 <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:189:14, :412:23
     end
     else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
       if (io_yj_sft) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        yj_reg_vec_0 <= {io_hh_din, yj_reg_vec_0[12415:256]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :84:{27,51}
-        yj_reg_vec_1 <= {yj_reg_vec_0[255:0], yj_reg_vec_1[12415:256]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :87:{26,42,80}
-        yj0 <= yj_reg_vec_1[255:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :75:18, :82:45
+        yj_reg_vec_0 <= {io_hh_din, yj_reg_vec_0[12415:256]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :101:{31,56}
+        yj_reg_vec_1 <= {yj_reg_vec_0[255:0], yj_reg_vec_1[12415:256]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :104:{33,51,95}
+        yj0 <= yj_reg_vec_1[255:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:74:25, :75:18, :99:53
       end
       if (io_d1_rdy) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        ddot_din_a_reg <= io_hh_din;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29
-        ddot_din_b_reg <= io_hh_din;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29
-        x1_reg <= x1_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:154:21, :279:17, :280:17, :281:26
+        ddot_din_a_reg <= io_hh_din;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29
+        ddot_din_b_reg <= io_hh_din;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29
+        x1_reg <= x1_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:174:21, :299:17, :300:17, :301:26
       end
       else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        if (io_d3_rdy | io_d4_rdy)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:191:26, :192:18, :193:26, :194:18, :196:18
-          ddot_din_a_reg <= vk;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :209:21, :210:10, :212:10
+        if (io_d3_rdy | io_d4_rdy)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:211:26, :212:18, :213:26, :214:18, :216:18
+          ddot_din_a_reg <= vk;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :229:21, :230:10, :232:10
         if (io_d3_rdy)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-          ddot_din_b_reg <= vk;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :209:21, :210:10, :212:10
+          ddot_din_b_reg <= vk;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :229:21, :230:10, :232:10
         else if (io_d4_rdy)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-          ddot_din_b_reg <= io_hh_din;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29
+          ddot_din_b_reg <= io_hh_din;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29
       end
       if (io_vk1_vld) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        vk_reg <= vk_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:140:21, :295:17, :296:17, :297:27
-        vk1_reg <= vk1_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:156:22, :342:21
+        vk_reg <= vk_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:160:21, :315:17, :316:17, :317:27
+        vk1_reg <= vk1_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:176:22, :362:21
       end
       if (io_d1_vld)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        d1_reg <= _FP_DDOT_dp_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:141:21, :316:21
+        d1_reg <= _FP_DDOT_dp_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:161:21, :336:21
       if (io_d3_vld)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        d3_reg <= _FP_DDOT_dp_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:142:21, :316:21
+        d3_reg <= _FP_DDOT_dp_complex_19_io_out_s_Re;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:162:21, :336:21
       if (io_d4_sft) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        d4_update <= d4_update_reg[63:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:147:24, :216:27, :221:33
+        d4_update <= d4_update_reg[63:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:167:24, :236:27, :241:33
         d4_update_reg <=
           {_FP_DDOT_dp_complex_19_io_out_s_Re,
            _FP_DDOT_dp_complex_19_io_out_s_Im,
-           d4_update_reg[1407:64]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:216:27, :223:{27,52}, :316:21
+           d4_update_reg[1407:64]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:236:27, :243:{27,52}, :336:21
       end
       if (io_d2_vld)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        d2_reg <= _FP_sqrt_32_23_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:155:21, :327:22
+        d2_reg <= _FP_sqrt_32_23_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:175:21, :347:22
       if (io_tk_vld)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        tk_reg <= _hqr7_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:157:21, :346:20
+        tk_reg <= _hqr7_19_io_out_s;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:177:21, :366:20
       if (io_d5_rdy)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        d4_reg <= d4_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:147:24, :158:21
+        d4_reg <= d4_update;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:167:24, :178:21
       if (io_d5_vld)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:40:17
-        d5_reg <= {_FPComplexMult_v2_19_io_out_s_Re, _FPComplexMult_v2_19_io_out_s_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:21, :354:21, :360:20
+        d5_reg <= {_FPComplexMult_v2_19_io_out_s_Re, _FPComplexMult_v2_19_io_out_s_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:179:21, :374:21, :380:20
       myAxpyVec_0 <=
-        {_axpy_dp_complex_19_io_out_s_3_Re, _axpy_dp_complex_19_io_out_s_3_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20, :392:23, :398:46
+        {_axpy_dp_complex_19_io_out_s_3_Re, _axpy_dp_complex_19_io_out_s_3_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20, :412:23, :418:46
       myAxpyVec_1 <=
-        {_axpy_dp_complex_19_io_out_s_2_Re, _axpy_dp_complex_19_io_out_s_2_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20, :392:23, :398:46
+        {_axpy_dp_complex_19_io_out_s_2_Re, _axpy_dp_complex_19_io_out_s_2_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20, :412:23, :418:46
       myAxpyVec_2 <=
-        {_axpy_dp_complex_19_io_out_s_1_Re, _axpy_dp_complex_19_io_out_s_1_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20, :392:23, :398:46
+        {_axpy_dp_complex_19_io_out_s_1_Re, _axpy_dp_complex_19_io_out_s_1_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20, :412:23, :418:46
       myAxpyVec_3 <=
-        {_axpy_dp_complex_19_io_out_s_0_Re, _axpy_dp_complex_19_io_out_s_0_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20, :392:23, :398:46
+        {_axpy_dp_complex_19_io_out_s_0_Re, _axpy_dp_complex_19_io_out_s_0_Im};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20, :412:23, :418:46
     end
   end // always @(posedge)
   `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
@@ -8645,964 +8645,964 @@ module hh_datapath_1(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\mai
       `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
     `endif // FIRRTL_BEFORE_INITIAL
     initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
-      automatic logic [31:0] _RANDOM[0:873];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
+      automatic logic [31:0] _RANDOM[0:2377];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
       `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
         `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
       `endif // INIT_RANDOM_PROLOG_
       `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
-        for (logic [9:0] i = 10'h0; i < 10'h36A; i += 10'h1) begin
+        for (logic [11:0] i = 12'h0; i < 12'h94A; i += 12'h1) begin
           _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
         end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
         yj_reg_vec_0 =
-          {_RANDOM[10'h0],
-           _RANDOM[10'h1],
-           _RANDOM[10'h2],
-           _RANDOM[10'h3],
-           _RANDOM[10'h4],
-           _RANDOM[10'h5],
-           _RANDOM[10'h6],
-           _RANDOM[10'h7],
-           _RANDOM[10'h8],
-           _RANDOM[10'h9],
-           _RANDOM[10'hA],
-           _RANDOM[10'hB],
-           _RANDOM[10'hC],
-           _RANDOM[10'hD],
-           _RANDOM[10'hE],
-           _RANDOM[10'hF],
-           _RANDOM[10'h10],
-           _RANDOM[10'h11],
-           _RANDOM[10'h12],
-           _RANDOM[10'h13],
-           _RANDOM[10'h14],
-           _RANDOM[10'h15],
-           _RANDOM[10'h16],
-           _RANDOM[10'h17],
-           _RANDOM[10'h18],
-           _RANDOM[10'h19],
-           _RANDOM[10'h1A],
-           _RANDOM[10'h1B],
-           _RANDOM[10'h1C],
-           _RANDOM[10'h1D],
-           _RANDOM[10'h1E],
-           _RANDOM[10'h1F],
-           _RANDOM[10'h20],
-           _RANDOM[10'h21],
-           _RANDOM[10'h22],
-           _RANDOM[10'h23],
-           _RANDOM[10'h24],
-           _RANDOM[10'h25],
-           _RANDOM[10'h26],
-           _RANDOM[10'h27],
-           _RANDOM[10'h28],
-           _RANDOM[10'h29],
-           _RANDOM[10'h2A],
-           _RANDOM[10'h2B],
-           _RANDOM[10'h2C],
-           _RANDOM[10'h2D],
-           _RANDOM[10'h2E],
-           _RANDOM[10'h2F],
-           _RANDOM[10'h30],
-           _RANDOM[10'h31],
-           _RANDOM[10'h32],
-           _RANDOM[10'h33],
-           _RANDOM[10'h34],
-           _RANDOM[10'h35],
-           _RANDOM[10'h36],
-           _RANDOM[10'h37],
-           _RANDOM[10'h38],
-           _RANDOM[10'h39],
-           _RANDOM[10'h3A],
-           _RANDOM[10'h3B],
-           _RANDOM[10'h3C],
-           _RANDOM[10'h3D],
-           _RANDOM[10'h3E],
-           _RANDOM[10'h3F],
-           _RANDOM[10'h40],
-           _RANDOM[10'h41],
-           _RANDOM[10'h42],
-           _RANDOM[10'h43],
-           _RANDOM[10'h44],
-           _RANDOM[10'h45],
-           _RANDOM[10'h46],
-           _RANDOM[10'h47],
-           _RANDOM[10'h48],
-           _RANDOM[10'h49],
-           _RANDOM[10'h4A],
-           _RANDOM[10'h4B],
-           _RANDOM[10'h4C],
-           _RANDOM[10'h4D],
-           _RANDOM[10'h4E],
-           _RANDOM[10'h4F],
-           _RANDOM[10'h50],
-           _RANDOM[10'h51],
-           _RANDOM[10'h52],
-           _RANDOM[10'h53],
-           _RANDOM[10'h54],
-           _RANDOM[10'h55],
-           _RANDOM[10'h56],
-           _RANDOM[10'h57],
-           _RANDOM[10'h58],
-           _RANDOM[10'h59],
-           _RANDOM[10'h5A],
-           _RANDOM[10'h5B],
-           _RANDOM[10'h5C],
-           _RANDOM[10'h5D],
-           _RANDOM[10'h5E],
-           _RANDOM[10'h5F],
-           _RANDOM[10'h60],
-           _RANDOM[10'h61],
-           _RANDOM[10'h62],
-           _RANDOM[10'h63],
-           _RANDOM[10'h64],
-           _RANDOM[10'h65],
-           _RANDOM[10'h66],
-           _RANDOM[10'h67],
-           _RANDOM[10'h68],
-           _RANDOM[10'h69],
-           _RANDOM[10'h6A],
-           _RANDOM[10'h6B],
-           _RANDOM[10'h6C],
-           _RANDOM[10'h6D],
-           _RANDOM[10'h6E],
-           _RANDOM[10'h6F],
-           _RANDOM[10'h70],
-           _RANDOM[10'h71],
-           _RANDOM[10'h72],
-           _RANDOM[10'h73],
-           _RANDOM[10'h74],
-           _RANDOM[10'h75],
-           _RANDOM[10'h76],
-           _RANDOM[10'h77],
-           _RANDOM[10'h78],
-           _RANDOM[10'h79],
-           _RANDOM[10'h7A],
-           _RANDOM[10'h7B],
-           _RANDOM[10'h7C],
-           _RANDOM[10'h7D],
-           _RANDOM[10'h7E],
-           _RANDOM[10'h7F],
-           _RANDOM[10'h80],
-           _RANDOM[10'h81],
-           _RANDOM[10'h82],
-           _RANDOM[10'h83],
-           _RANDOM[10'h84],
-           _RANDOM[10'h85],
-           _RANDOM[10'h86],
-           _RANDOM[10'h87],
-           _RANDOM[10'h88],
-           _RANDOM[10'h89],
-           _RANDOM[10'h8A],
-           _RANDOM[10'h8B],
-           _RANDOM[10'h8C],
-           _RANDOM[10'h8D],
-           _RANDOM[10'h8E],
-           _RANDOM[10'h8F],
-           _RANDOM[10'h90],
-           _RANDOM[10'h91],
-           _RANDOM[10'h92],
-           _RANDOM[10'h93],
-           _RANDOM[10'h94],
-           _RANDOM[10'h95],
-           _RANDOM[10'h96],
-           _RANDOM[10'h97],
-           _RANDOM[10'h98],
-           _RANDOM[10'h99],
-           _RANDOM[10'h9A],
-           _RANDOM[10'h9B],
-           _RANDOM[10'h9C],
-           _RANDOM[10'h9D],
-           _RANDOM[10'h9E],
-           _RANDOM[10'h9F],
-           _RANDOM[10'hA0],
-           _RANDOM[10'hA1],
-           _RANDOM[10'hA2],
-           _RANDOM[10'hA3],
-           _RANDOM[10'hA4],
-           _RANDOM[10'hA5],
-           _RANDOM[10'hA6],
-           _RANDOM[10'hA7],
-           _RANDOM[10'hA8],
-           _RANDOM[10'hA9],
-           _RANDOM[10'hAA],
-           _RANDOM[10'hAB],
-           _RANDOM[10'hAC],
-           _RANDOM[10'hAD],
-           _RANDOM[10'hAE],
-           _RANDOM[10'hAF],
-           _RANDOM[10'hB0],
-           _RANDOM[10'hB1],
-           _RANDOM[10'hB2],
-           _RANDOM[10'hB3],
-           _RANDOM[10'hB4],
-           _RANDOM[10'hB5],
-           _RANDOM[10'hB6],
-           _RANDOM[10'hB7],
-           _RANDOM[10'hB8],
-           _RANDOM[10'hB9],
-           _RANDOM[10'hBA],
-           _RANDOM[10'hBB],
-           _RANDOM[10'hBC],
-           _RANDOM[10'hBD],
-           _RANDOM[10'hBE],
-           _RANDOM[10'hBF],
-           _RANDOM[10'hC0],
-           _RANDOM[10'hC1],
-           _RANDOM[10'hC2],
-           _RANDOM[10'hC3],
-           _RANDOM[10'hC4],
-           _RANDOM[10'hC5],
-           _RANDOM[10'hC6],
-           _RANDOM[10'hC7],
-           _RANDOM[10'hC8],
-           _RANDOM[10'hC9],
-           _RANDOM[10'hCA],
-           _RANDOM[10'hCB],
-           _RANDOM[10'hCC],
-           _RANDOM[10'hCD],
-           _RANDOM[10'hCE],
-           _RANDOM[10'hCF],
-           _RANDOM[10'hD0],
-           _RANDOM[10'hD1],
-           _RANDOM[10'hD2],
-           _RANDOM[10'hD3],
-           _RANDOM[10'hD4],
-           _RANDOM[10'hD5],
-           _RANDOM[10'hD6],
-           _RANDOM[10'hD7],
-           _RANDOM[10'hD8],
-           _RANDOM[10'hD9],
-           _RANDOM[10'hDA],
-           _RANDOM[10'hDB],
-           _RANDOM[10'hDC],
-           _RANDOM[10'hDD],
-           _RANDOM[10'hDE],
-           _RANDOM[10'hDF],
-           _RANDOM[10'hE0],
-           _RANDOM[10'hE1],
-           _RANDOM[10'hE2],
-           _RANDOM[10'hE3],
-           _RANDOM[10'hE4],
-           _RANDOM[10'hE5],
-           _RANDOM[10'hE6],
-           _RANDOM[10'hE7],
-           _RANDOM[10'hE8],
-           _RANDOM[10'hE9],
-           _RANDOM[10'hEA],
-           _RANDOM[10'hEB],
-           _RANDOM[10'hEC],
-           _RANDOM[10'hED],
-           _RANDOM[10'hEE],
-           _RANDOM[10'hEF],
-           _RANDOM[10'hF0],
-           _RANDOM[10'hF1],
-           _RANDOM[10'hF2],
-           _RANDOM[10'hF3],
-           _RANDOM[10'hF4],
-           _RANDOM[10'hF5],
-           _RANDOM[10'hF6],
-           _RANDOM[10'hF7],
-           _RANDOM[10'hF8],
-           _RANDOM[10'hF9],
-           _RANDOM[10'hFA],
-           _RANDOM[10'hFB],
-           _RANDOM[10'hFC],
-           _RANDOM[10'hFD],
-           _RANDOM[10'hFE],
-           _RANDOM[10'hFF],
-           _RANDOM[10'h100],
-           _RANDOM[10'h101],
-           _RANDOM[10'h102],
-           _RANDOM[10'h103],
-           _RANDOM[10'h104],
-           _RANDOM[10'h105],
-           _RANDOM[10'h106],
-           _RANDOM[10'h107],
-           _RANDOM[10'h108],
-           _RANDOM[10'h109],
-           _RANDOM[10'h10A],
-           _RANDOM[10'h10B],
-           _RANDOM[10'h10C],
-           _RANDOM[10'h10D],
-           _RANDOM[10'h10E],
-           _RANDOM[10'h10F],
-           _RANDOM[10'h110],
-           _RANDOM[10'h111],
-           _RANDOM[10'h112],
-           _RANDOM[10'h113],
-           _RANDOM[10'h114],
-           _RANDOM[10'h115],
-           _RANDOM[10'h116],
-           _RANDOM[10'h117],
-           _RANDOM[10'h118],
-           _RANDOM[10'h119],
-           _RANDOM[10'h11A],
-           _RANDOM[10'h11B],
-           _RANDOM[10'h11C],
-           _RANDOM[10'h11D],
-           _RANDOM[10'h11E],
-           _RANDOM[10'h11F],
-           _RANDOM[10'h120],
-           _RANDOM[10'h121],
-           _RANDOM[10'h122],
-           _RANDOM[10'h123],
-           _RANDOM[10'h124],
-           _RANDOM[10'h125],
-           _RANDOM[10'h126],
-           _RANDOM[10'h127],
-           _RANDOM[10'h128],
-           _RANDOM[10'h129],
-           _RANDOM[10'h12A],
-           _RANDOM[10'h12B],
-           _RANDOM[10'h12C],
-           _RANDOM[10'h12D],
-           _RANDOM[10'h12E],
-           _RANDOM[10'h12F],
-           _RANDOM[10'h130],
-           _RANDOM[10'h131],
-           _RANDOM[10'h132],
-           _RANDOM[10'h133],
-           _RANDOM[10'h134],
-           _RANDOM[10'h135],
-           _RANDOM[10'h136],
-           _RANDOM[10'h137],
-           _RANDOM[10'h138],
-           _RANDOM[10'h139],
-           _RANDOM[10'h13A],
-           _RANDOM[10'h13B],
-           _RANDOM[10'h13C],
-           _RANDOM[10'h13D],
-           _RANDOM[10'h13E],
-           _RANDOM[10'h13F],
-           _RANDOM[10'h140],
-           _RANDOM[10'h141],
-           _RANDOM[10'h142],
-           _RANDOM[10'h143],
-           _RANDOM[10'h144],
-           _RANDOM[10'h145],
-           _RANDOM[10'h146],
-           _RANDOM[10'h147],
-           _RANDOM[10'h148],
-           _RANDOM[10'h149],
-           _RANDOM[10'h14A],
-           _RANDOM[10'h14B],
-           _RANDOM[10'h14C],
-           _RANDOM[10'h14D],
-           _RANDOM[10'h14E],
-           _RANDOM[10'h14F],
-           _RANDOM[10'h150],
-           _RANDOM[10'h151],
-           _RANDOM[10'h152],
-           _RANDOM[10'h153],
-           _RANDOM[10'h154],
-           _RANDOM[10'h155],
-           _RANDOM[10'h156],
-           _RANDOM[10'h157],
-           _RANDOM[10'h158],
-           _RANDOM[10'h159],
-           _RANDOM[10'h15A],
-           _RANDOM[10'h15B],
-           _RANDOM[10'h15C],
-           _RANDOM[10'h15D],
-           _RANDOM[10'h15E],
-           _RANDOM[10'h15F],
-           _RANDOM[10'h160],
-           _RANDOM[10'h161],
-           _RANDOM[10'h162],
-           _RANDOM[10'h163],
-           _RANDOM[10'h164],
-           _RANDOM[10'h165],
-           _RANDOM[10'h166],
-           _RANDOM[10'h167],
-           _RANDOM[10'h168],
-           _RANDOM[10'h169],
-           _RANDOM[10'h16A],
-           _RANDOM[10'h16B],
-           _RANDOM[10'h16C],
-           _RANDOM[10'h16D],
-           _RANDOM[10'h16E],
-           _RANDOM[10'h16F],
-           _RANDOM[10'h170],
-           _RANDOM[10'h171],
-           _RANDOM[10'h172],
-           _RANDOM[10'h173],
-           _RANDOM[10'h174],
-           _RANDOM[10'h175],
-           _RANDOM[10'h176],
-           _RANDOM[10'h177],
-           _RANDOM[10'h178],
-           _RANDOM[10'h179],
-           _RANDOM[10'h17A],
-           _RANDOM[10'h17B],
-           _RANDOM[10'h17C],
-           _RANDOM[10'h17D],
-           _RANDOM[10'h17E],
-           _RANDOM[10'h17F],
-           _RANDOM[10'h180],
-           _RANDOM[10'h181],
-           _RANDOM[10'h182],
-           _RANDOM[10'h183]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :74:25
+          {_RANDOM[12'h5E0],
+           _RANDOM[12'h5E1],
+           _RANDOM[12'h5E2],
+           _RANDOM[12'h5E3],
+           _RANDOM[12'h5E4],
+           _RANDOM[12'h5E5],
+           _RANDOM[12'h5E6],
+           _RANDOM[12'h5E7],
+           _RANDOM[12'h5E8],
+           _RANDOM[12'h5E9],
+           _RANDOM[12'h5EA],
+           _RANDOM[12'h5EB],
+           _RANDOM[12'h5EC],
+           _RANDOM[12'h5ED],
+           _RANDOM[12'h5EE],
+           _RANDOM[12'h5EF],
+           _RANDOM[12'h5F0],
+           _RANDOM[12'h5F1],
+           _RANDOM[12'h5F2],
+           _RANDOM[12'h5F3],
+           _RANDOM[12'h5F4],
+           _RANDOM[12'h5F5],
+           _RANDOM[12'h5F6],
+           _RANDOM[12'h5F7],
+           _RANDOM[12'h5F8],
+           _RANDOM[12'h5F9],
+           _RANDOM[12'h5FA],
+           _RANDOM[12'h5FB],
+           _RANDOM[12'h5FC],
+           _RANDOM[12'h5FD],
+           _RANDOM[12'h5FE],
+           _RANDOM[12'h5FF],
+           _RANDOM[12'h600],
+           _RANDOM[12'h601],
+           _RANDOM[12'h602],
+           _RANDOM[12'h603],
+           _RANDOM[12'h604],
+           _RANDOM[12'h605],
+           _RANDOM[12'h606],
+           _RANDOM[12'h607],
+           _RANDOM[12'h608],
+           _RANDOM[12'h609],
+           _RANDOM[12'h60A],
+           _RANDOM[12'h60B],
+           _RANDOM[12'h60C],
+           _RANDOM[12'h60D],
+           _RANDOM[12'h60E],
+           _RANDOM[12'h60F],
+           _RANDOM[12'h610],
+           _RANDOM[12'h611],
+           _RANDOM[12'h612],
+           _RANDOM[12'h613],
+           _RANDOM[12'h614],
+           _RANDOM[12'h615],
+           _RANDOM[12'h616],
+           _RANDOM[12'h617],
+           _RANDOM[12'h618],
+           _RANDOM[12'h619],
+           _RANDOM[12'h61A],
+           _RANDOM[12'h61B],
+           _RANDOM[12'h61C],
+           _RANDOM[12'h61D],
+           _RANDOM[12'h61E],
+           _RANDOM[12'h61F],
+           _RANDOM[12'h620],
+           _RANDOM[12'h621],
+           _RANDOM[12'h622],
+           _RANDOM[12'h623],
+           _RANDOM[12'h624],
+           _RANDOM[12'h625],
+           _RANDOM[12'h626],
+           _RANDOM[12'h627],
+           _RANDOM[12'h628],
+           _RANDOM[12'h629],
+           _RANDOM[12'h62A],
+           _RANDOM[12'h62B],
+           _RANDOM[12'h62C],
+           _RANDOM[12'h62D],
+           _RANDOM[12'h62E],
+           _RANDOM[12'h62F],
+           _RANDOM[12'h630],
+           _RANDOM[12'h631],
+           _RANDOM[12'h632],
+           _RANDOM[12'h633],
+           _RANDOM[12'h634],
+           _RANDOM[12'h635],
+           _RANDOM[12'h636],
+           _RANDOM[12'h637],
+           _RANDOM[12'h638],
+           _RANDOM[12'h639],
+           _RANDOM[12'h63A],
+           _RANDOM[12'h63B],
+           _RANDOM[12'h63C],
+           _RANDOM[12'h63D],
+           _RANDOM[12'h63E],
+           _RANDOM[12'h63F],
+           _RANDOM[12'h640],
+           _RANDOM[12'h641],
+           _RANDOM[12'h642],
+           _RANDOM[12'h643],
+           _RANDOM[12'h644],
+           _RANDOM[12'h645],
+           _RANDOM[12'h646],
+           _RANDOM[12'h647],
+           _RANDOM[12'h648],
+           _RANDOM[12'h649],
+           _RANDOM[12'h64A],
+           _RANDOM[12'h64B],
+           _RANDOM[12'h64C],
+           _RANDOM[12'h64D],
+           _RANDOM[12'h64E],
+           _RANDOM[12'h64F],
+           _RANDOM[12'h650],
+           _RANDOM[12'h651],
+           _RANDOM[12'h652],
+           _RANDOM[12'h653],
+           _RANDOM[12'h654],
+           _RANDOM[12'h655],
+           _RANDOM[12'h656],
+           _RANDOM[12'h657],
+           _RANDOM[12'h658],
+           _RANDOM[12'h659],
+           _RANDOM[12'h65A],
+           _RANDOM[12'h65B],
+           _RANDOM[12'h65C],
+           _RANDOM[12'h65D],
+           _RANDOM[12'h65E],
+           _RANDOM[12'h65F],
+           _RANDOM[12'h660],
+           _RANDOM[12'h661],
+           _RANDOM[12'h662],
+           _RANDOM[12'h663],
+           _RANDOM[12'h664],
+           _RANDOM[12'h665],
+           _RANDOM[12'h666],
+           _RANDOM[12'h667],
+           _RANDOM[12'h668],
+           _RANDOM[12'h669],
+           _RANDOM[12'h66A],
+           _RANDOM[12'h66B],
+           _RANDOM[12'h66C],
+           _RANDOM[12'h66D],
+           _RANDOM[12'h66E],
+           _RANDOM[12'h66F],
+           _RANDOM[12'h670],
+           _RANDOM[12'h671],
+           _RANDOM[12'h672],
+           _RANDOM[12'h673],
+           _RANDOM[12'h674],
+           _RANDOM[12'h675],
+           _RANDOM[12'h676],
+           _RANDOM[12'h677],
+           _RANDOM[12'h678],
+           _RANDOM[12'h679],
+           _RANDOM[12'h67A],
+           _RANDOM[12'h67B],
+           _RANDOM[12'h67C],
+           _RANDOM[12'h67D],
+           _RANDOM[12'h67E],
+           _RANDOM[12'h67F],
+           _RANDOM[12'h680],
+           _RANDOM[12'h681],
+           _RANDOM[12'h682],
+           _RANDOM[12'h683],
+           _RANDOM[12'h684],
+           _RANDOM[12'h685],
+           _RANDOM[12'h686],
+           _RANDOM[12'h687],
+           _RANDOM[12'h688],
+           _RANDOM[12'h689],
+           _RANDOM[12'h68A],
+           _RANDOM[12'h68B],
+           _RANDOM[12'h68C],
+           _RANDOM[12'h68D],
+           _RANDOM[12'h68E],
+           _RANDOM[12'h68F],
+           _RANDOM[12'h690],
+           _RANDOM[12'h691],
+           _RANDOM[12'h692],
+           _RANDOM[12'h693],
+           _RANDOM[12'h694],
+           _RANDOM[12'h695],
+           _RANDOM[12'h696],
+           _RANDOM[12'h697],
+           _RANDOM[12'h698],
+           _RANDOM[12'h699],
+           _RANDOM[12'h69A],
+           _RANDOM[12'h69B],
+           _RANDOM[12'h69C],
+           _RANDOM[12'h69D],
+           _RANDOM[12'h69E],
+           _RANDOM[12'h69F],
+           _RANDOM[12'h6A0],
+           _RANDOM[12'h6A1],
+           _RANDOM[12'h6A2],
+           _RANDOM[12'h6A3],
+           _RANDOM[12'h6A4],
+           _RANDOM[12'h6A5],
+           _RANDOM[12'h6A6],
+           _RANDOM[12'h6A7],
+           _RANDOM[12'h6A8],
+           _RANDOM[12'h6A9],
+           _RANDOM[12'h6AA],
+           _RANDOM[12'h6AB],
+           _RANDOM[12'h6AC],
+           _RANDOM[12'h6AD],
+           _RANDOM[12'h6AE],
+           _RANDOM[12'h6AF],
+           _RANDOM[12'h6B0],
+           _RANDOM[12'h6B1],
+           _RANDOM[12'h6B2],
+           _RANDOM[12'h6B3],
+           _RANDOM[12'h6B4],
+           _RANDOM[12'h6B5],
+           _RANDOM[12'h6B6],
+           _RANDOM[12'h6B7],
+           _RANDOM[12'h6B8],
+           _RANDOM[12'h6B9],
+           _RANDOM[12'h6BA],
+           _RANDOM[12'h6BB],
+           _RANDOM[12'h6BC],
+           _RANDOM[12'h6BD],
+           _RANDOM[12'h6BE],
+           _RANDOM[12'h6BF],
+           _RANDOM[12'h6C0],
+           _RANDOM[12'h6C1],
+           _RANDOM[12'h6C2],
+           _RANDOM[12'h6C3],
+           _RANDOM[12'h6C4],
+           _RANDOM[12'h6C5],
+           _RANDOM[12'h6C6],
+           _RANDOM[12'h6C7],
+           _RANDOM[12'h6C8],
+           _RANDOM[12'h6C9],
+           _RANDOM[12'h6CA],
+           _RANDOM[12'h6CB],
+           _RANDOM[12'h6CC],
+           _RANDOM[12'h6CD],
+           _RANDOM[12'h6CE],
+           _RANDOM[12'h6CF],
+           _RANDOM[12'h6D0],
+           _RANDOM[12'h6D1],
+           _RANDOM[12'h6D2],
+           _RANDOM[12'h6D3],
+           _RANDOM[12'h6D4],
+           _RANDOM[12'h6D5],
+           _RANDOM[12'h6D6],
+           _RANDOM[12'h6D7],
+           _RANDOM[12'h6D8],
+           _RANDOM[12'h6D9],
+           _RANDOM[12'h6DA],
+           _RANDOM[12'h6DB],
+           _RANDOM[12'h6DC],
+           _RANDOM[12'h6DD],
+           _RANDOM[12'h6DE],
+           _RANDOM[12'h6DF],
+           _RANDOM[12'h6E0],
+           _RANDOM[12'h6E1],
+           _RANDOM[12'h6E2],
+           _RANDOM[12'h6E3],
+           _RANDOM[12'h6E4],
+           _RANDOM[12'h6E5],
+           _RANDOM[12'h6E6],
+           _RANDOM[12'h6E7],
+           _RANDOM[12'h6E8],
+           _RANDOM[12'h6E9],
+           _RANDOM[12'h6EA],
+           _RANDOM[12'h6EB],
+           _RANDOM[12'h6EC],
+           _RANDOM[12'h6ED],
+           _RANDOM[12'h6EE],
+           _RANDOM[12'h6EF],
+           _RANDOM[12'h6F0],
+           _RANDOM[12'h6F1],
+           _RANDOM[12'h6F2],
+           _RANDOM[12'h6F3],
+           _RANDOM[12'h6F4],
+           _RANDOM[12'h6F5],
+           _RANDOM[12'h6F6],
+           _RANDOM[12'h6F7],
+           _RANDOM[12'h6F8],
+           _RANDOM[12'h6F9],
+           _RANDOM[12'h6FA],
+           _RANDOM[12'h6FB],
+           _RANDOM[12'h6FC],
+           _RANDOM[12'h6FD],
+           _RANDOM[12'h6FE],
+           _RANDOM[12'h6FF],
+           _RANDOM[12'h700],
+           _RANDOM[12'h701],
+           _RANDOM[12'h702],
+           _RANDOM[12'h703],
+           _RANDOM[12'h704],
+           _RANDOM[12'h705],
+           _RANDOM[12'h706],
+           _RANDOM[12'h707],
+           _RANDOM[12'h708],
+           _RANDOM[12'h709],
+           _RANDOM[12'h70A],
+           _RANDOM[12'h70B],
+           _RANDOM[12'h70C],
+           _RANDOM[12'h70D],
+           _RANDOM[12'h70E],
+           _RANDOM[12'h70F],
+           _RANDOM[12'h710],
+           _RANDOM[12'h711],
+           _RANDOM[12'h712],
+           _RANDOM[12'h713],
+           _RANDOM[12'h714],
+           _RANDOM[12'h715],
+           _RANDOM[12'h716],
+           _RANDOM[12'h717],
+           _RANDOM[12'h718],
+           _RANDOM[12'h719],
+           _RANDOM[12'h71A],
+           _RANDOM[12'h71B],
+           _RANDOM[12'h71C],
+           _RANDOM[12'h71D],
+           _RANDOM[12'h71E],
+           _RANDOM[12'h71F],
+           _RANDOM[12'h720],
+           _RANDOM[12'h721],
+           _RANDOM[12'h722],
+           _RANDOM[12'h723],
+           _RANDOM[12'h724],
+           _RANDOM[12'h725],
+           _RANDOM[12'h726],
+           _RANDOM[12'h727],
+           _RANDOM[12'h728],
+           _RANDOM[12'h729],
+           _RANDOM[12'h72A],
+           _RANDOM[12'h72B],
+           _RANDOM[12'h72C],
+           _RANDOM[12'h72D],
+           _RANDOM[12'h72E],
+           _RANDOM[12'h72F],
+           _RANDOM[12'h730],
+           _RANDOM[12'h731],
+           _RANDOM[12'h732],
+           _RANDOM[12'h733],
+           _RANDOM[12'h734],
+           _RANDOM[12'h735],
+           _RANDOM[12'h736],
+           _RANDOM[12'h737],
+           _RANDOM[12'h738],
+           _RANDOM[12'h739],
+           _RANDOM[12'h73A],
+           _RANDOM[12'h73B],
+           _RANDOM[12'h73C],
+           _RANDOM[12'h73D],
+           _RANDOM[12'h73E],
+           _RANDOM[12'h73F],
+           _RANDOM[12'h740],
+           _RANDOM[12'h741],
+           _RANDOM[12'h742],
+           _RANDOM[12'h743],
+           _RANDOM[12'h744],
+           _RANDOM[12'h745],
+           _RANDOM[12'h746],
+           _RANDOM[12'h747],
+           _RANDOM[12'h748],
+           _RANDOM[12'h749],
+           _RANDOM[12'h74A],
+           _RANDOM[12'h74B],
+           _RANDOM[12'h74C],
+           _RANDOM[12'h74D],
+           _RANDOM[12'h74E],
+           _RANDOM[12'h74F],
+           _RANDOM[12'h750],
+           _RANDOM[12'h751],
+           _RANDOM[12'h752],
+           _RANDOM[12'h753],
+           _RANDOM[12'h754],
+           _RANDOM[12'h755],
+           _RANDOM[12'h756],
+           _RANDOM[12'h757],
+           _RANDOM[12'h758],
+           _RANDOM[12'h759],
+           _RANDOM[12'h75A],
+           _RANDOM[12'h75B],
+           _RANDOM[12'h75C],
+           _RANDOM[12'h75D],
+           _RANDOM[12'h75E],
+           _RANDOM[12'h75F],
+           _RANDOM[12'h760],
+           _RANDOM[12'h761],
+           _RANDOM[12'h762],
+           _RANDOM[12'h763]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :74:25
         yj_reg_vec_1 =
-          {_RANDOM[10'h184],
-           _RANDOM[10'h185],
-           _RANDOM[10'h186],
-           _RANDOM[10'h187],
-           _RANDOM[10'h188],
-           _RANDOM[10'h189],
-           _RANDOM[10'h18A],
-           _RANDOM[10'h18B],
-           _RANDOM[10'h18C],
-           _RANDOM[10'h18D],
-           _RANDOM[10'h18E],
-           _RANDOM[10'h18F],
-           _RANDOM[10'h190],
-           _RANDOM[10'h191],
-           _RANDOM[10'h192],
-           _RANDOM[10'h193],
-           _RANDOM[10'h194],
-           _RANDOM[10'h195],
-           _RANDOM[10'h196],
-           _RANDOM[10'h197],
-           _RANDOM[10'h198],
-           _RANDOM[10'h199],
-           _RANDOM[10'h19A],
-           _RANDOM[10'h19B],
-           _RANDOM[10'h19C],
-           _RANDOM[10'h19D],
-           _RANDOM[10'h19E],
-           _RANDOM[10'h19F],
-           _RANDOM[10'h1A0],
-           _RANDOM[10'h1A1],
-           _RANDOM[10'h1A2],
-           _RANDOM[10'h1A3],
-           _RANDOM[10'h1A4],
-           _RANDOM[10'h1A5],
-           _RANDOM[10'h1A6],
-           _RANDOM[10'h1A7],
-           _RANDOM[10'h1A8],
-           _RANDOM[10'h1A9],
-           _RANDOM[10'h1AA],
-           _RANDOM[10'h1AB],
-           _RANDOM[10'h1AC],
-           _RANDOM[10'h1AD],
-           _RANDOM[10'h1AE],
-           _RANDOM[10'h1AF],
-           _RANDOM[10'h1B0],
-           _RANDOM[10'h1B1],
-           _RANDOM[10'h1B2],
-           _RANDOM[10'h1B3],
-           _RANDOM[10'h1B4],
-           _RANDOM[10'h1B5],
-           _RANDOM[10'h1B6],
-           _RANDOM[10'h1B7],
-           _RANDOM[10'h1B8],
-           _RANDOM[10'h1B9],
-           _RANDOM[10'h1BA],
-           _RANDOM[10'h1BB],
-           _RANDOM[10'h1BC],
-           _RANDOM[10'h1BD],
-           _RANDOM[10'h1BE],
-           _RANDOM[10'h1BF],
-           _RANDOM[10'h1C0],
-           _RANDOM[10'h1C1],
-           _RANDOM[10'h1C2],
-           _RANDOM[10'h1C3],
-           _RANDOM[10'h1C4],
-           _RANDOM[10'h1C5],
-           _RANDOM[10'h1C6],
-           _RANDOM[10'h1C7],
-           _RANDOM[10'h1C8],
-           _RANDOM[10'h1C9],
-           _RANDOM[10'h1CA],
-           _RANDOM[10'h1CB],
-           _RANDOM[10'h1CC],
-           _RANDOM[10'h1CD],
-           _RANDOM[10'h1CE],
-           _RANDOM[10'h1CF],
-           _RANDOM[10'h1D0],
-           _RANDOM[10'h1D1],
-           _RANDOM[10'h1D2],
-           _RANDOM[10'h1D3],
-           _RANDOM[10'h1D4],
-           _RANDOM[10'h1D5],
-           _RANDOM[10'h1D6],
-           _RANDOM[10'h1D7],
-           _RANDOM[10'h1D8],
-           _RANDOM[10'h1D9],
-           _RANDOM[10'h1DA],
-           _RANDOM[10'h1DB],
-           _RANDOM[10'h1DC],
-           _RANDOM[10'h1DD],
-           _RANDOM[10'h1DE],
-           _RANDOM[10'h1DF],
-           _RANDOM[10'h1E0],
-           _RANDOM[10'h1E1],
-           _RANDOM[10'h1E2],
-           _RANDOM[10'h1E3],
-           _RANDOM[10'h1E4],
-           _RANDOM[10'h1E5],
-           _RANDOM[10'h1E6],
-           _RANDOM[10'h1E7],
-           _RANDOM[10'h1E8],
-           _RANDOM[10'h1E9],
-           _RANDOM[10'h1EA],
-           _RANDOM[10'h1EB],
-           _RANDOM[10'h1EC],
-           _RANDOM[10'h1ED],
-           _RANDOM[10'h1EE],
-           _RANDOM[10'h1EF],
-           _RANDOM[10'h1F0],
-           _RANDOM[10'h1F1],
-           _RANDOM[10'h1F2],
-           _RANDOM[10'h1F3],
-           _RANDOM[10'h1F4],
-           _RANDOM[10'h1F5],
-           _RANDOM[10'h1F6],
-           _RANDOM[10'h1F7],
-           _RANDOM[10'h1F8],
-           _RANDOM[10'h1F9],
-           _RANDOM[10'h1FA],
-           _RANDOM[10'h1FB],
-           _RANDOM[10'h1FC],
-           _RANDOM[10'h1FD],
-           _RANDOM[10'h1FE],
-           _RANDOM[10'h1FF],
-           _RANDOM[10'h200],
-           _RANDOM[10'h201],
-           _RANDOM[10'h202],
-           _RANDOM[10'h203],
-           _RANDOM[10'h204],
-           _RANDOM[10'h205],
-           _RANDOM[10'h206],
-           _RANDOM[10'h207],
-           _RANDOM[10'h208],
-           _RANDOM[10'h209],
-           _RANDOM[10'h20A],
-           _RANDOM[10'h20B],
-           _RANDOM[10'h20C],
-           _RANDOM[10'h20D],
-           _RANDOM[10'h20E],
-           _RANDOM[10'h20F],
-           _RANDOM[10'h210],
-           _RANDOM[10'h211],
-           _RANDOM[10'h212],
-           _RANDOM[10'h213],
-           _RANDOM[10'h214],
-           _RANDOM[10'h215],
-           _RANDOM[10'h216],
-           _RANDOM[10'h217],
-           _RANDOM[10'h218],
-           _RANDOM[10'h219],
-           _RANDOM[10'h21A],
-           _RANDOM[10'h21B],
-           _RANDOM[10'h21C],
-           _RANDOM[10'h21D],
-           _RANDOM[10'h21E],
-           _RANDOM[10'h21F],
-           _RANDOM[10'h220],
-           _RANDOM[10'h221],
-           _RANDOM[10'h222],
-           _RANDOM[10'h223],
-           _RANDOM[10'h224],
-           _RANDOM[10'h225],
-           _RANDOM[10'h226],
-           _RANDOM[10'h227],
-           _RANDOM[10'h228],
-           _RANDOM[10'h229],
-           _RANDOM[10'h22A],
-           _RANDOM[10'h22B],
-           _RANDOM[10'h22C],
-           _RANDOM[10'h22D],
-           _RANDOM[10'h22E],
-           _RANDOM[10'h22F],
-           _RANDOM[10'h230],
-           _RANDOM[10'h231],
-           _RANDOM[10'h232],
-           _RANDOM[10'h233],
-           _RANDOM[10'h234],
-           _RANDOM[10'h235],
-           _RANDOM[10'h236],
-           _RANDOM[10'h237],
-           _RANDOM[10'h238],
-           _RANDOM[10'h239],
-           _RANDOM[10'h23A],
-           _RANDOM[10'h23B],
-           _RANDOM[10'h23C],
-           _RANDOM[10'h23D],
-           _RANDOM[10'h23E],
-           _RANDOM[10'h23F],
-           _RANDOM[10'h240],
-           _RANDOM[10'h241],
-           _RANDOM[10'h242],
-           _RANDOM[10'h243],
-           _RANDOM[10'h244],
-           _RANDOM[10'h245],
-           _RANDOM[10'h246],
-           _RANDOM[10'h247],
-           _RANDOM[10'h248],
-           _RANDOM[10'h249],
-           _RANDOM[10'h24A],
-           _RANDOM[10'h24B],
-           _RANDOM[10'h24C],
-           _RANDOM[10'h24D],
-           _RANDOM[10'h24E],
-           _RANDOM[10'h24F],
-           _RANDOM[10'h250],
-           _RANDOM[10'h251],
-           _RANDOM[10'h252],
-           _RANDOM[10'h253],
-           _RANDOM[10'h254],
-           _RANDOM[10'h255],
-           _RANDOM[10'h256],
-           _RANDOM[10'h257],
-           _RANDOM[10'h258],
-           _RANDOM[10'h259],
-           _RANDOM[10'h25A],
-           _RANDOM[10'h25B],
-           _RANDOM[10'h25C],
-           _RANDOM[10'h25D],
-           _RANDOM[10'h25E],
-           _RANDOM[10'h25F],
-           _RANDOM[10'h260],
-           _RANDOM[10'h261],
-           _RANDOM[10'h262],
-           _RANDOM[10'h263],
-           _RANDOM[10'h264],
-           _RANDOM[10'h265],
-           _RANDOM[10'h266],
-           _RANDOM[10'h267],
-           _RANDOM[10'h268],
-           _RANDOM[10'h269],
-           _RANDOM[10'h26A],
-           _RANDOM[10'h26B],
-           _RANDOM[10'h26C],
-           _RANDOM[10'h26D],
-           _RANDOM[10'h26E],
-           _RANDOM[10'h26F],
-           _RANDOM[10'h270],
-           _RANDOM[10'h271],
-           _RANDOM[10'h272],
-           _RANDOM[10'h273],
-           _RANDOM[10'h274],
-           _RANDOM[10'h275],
-           _RANDOM[10'h276],
-           _RANDOM[10'h277],
-           _RANDOM[10'h278],
-           _RANDOM[10'h279],
-           _RANDOM[10'h27A],
-           _RANDOM[10'h27B],
-           _RANDOM[10'h27C],
-           _RANDOM[10'h27D],
-           _RANDOM[10'h27E],
-           _RANDOM[10'h27F],
-           _RANDOM[10'h280],
-           _RANDOM[10'h281],
-           _RANDOM[10'h282],
-           _RANDOM[10'h283],
-           _RANDOM[10'h284],
-           _RANDOM[10'h285],
-           _RANDOM[10'h286],
-           _RANDOM[10'h287],
-           _RANDOM[10'h288],
-           _RANDOM[10'h289],
-           _RANDOM[10'h28A],
-           _RANDOM[10'h28B],
-           _RANDOM[10'h28C],
-           _RANDOM[10'h28D],
-           _RANDOM[10'h28E],
-           _RANDOM[10'h28F],
-           _RANDOM[10'h290],
-           _RANDOM[10'h291],
-           _RANDOM[10'h292],
-           _RANDOM[10'h293],
-           _RANDOM[10'h294],
-           _RANDOM[10'h295],
-           _RANDOM[10'h296],
-           _RANDOM[10'h297],
-           _RANDOM[10'h298],
-           _RANDOM[10'h299],
-           _RANDOM[10'h29A],
-           _RANDOM[10'h29B],
-           _RANDOM[10'h29C],
-           _RANDOM[10'h29D],
-           _RANDOM[10'h29E],
-           _RANDOM[10'h29F],
-           _RANDOM[10'h2A0],
-           _RANDOM[10'h2A1],
-           _RANDOM[10'h2A2],
-           _RANDOM[10'h2A3],
-           _RANDOM[10'h2A4],
-           _RANDOM[10'h2A5],
-           _RANDOM[10'h2A6],
-           _RANDOM[10'h2A7],
-           _RANDOM[10'h2A8],
-           _RANDOM[10'h2A9],
-           _RANDOM[10'h2AA],
-           _RANDOM[10'h2AB],
-           _RANDOM[10'h2AC],
-           _RANDOM[10'h2AD],
-           _RANDOM[10'h2AE],
-           _RANDOM[10'h2AF],
-           _RANDOM[10'h2B0],
-           _RANDOM[10'h2B1],
-           _RANDOM[10'h2B2],
-           _RANDOM[10'h2B3],
-           _RANDOM[10'h2B4],
-           _RANDOM[10'h2B5],
-           _RANDOM[10'h2B6],
-           _RANDOM[10'h2B7],
-           _RANDOM[10'h2B8],
-           _RANDOM[10'h2B9],
-           _RANDOM[10'h2BA],
-           _RANDOM[10'h2BB],
-           _RANDOM[10'h2BC],
-           _RANDOM[10'h2BD],
-           _RANDOM[10'h2BE],
-           _RANDOM[10'h2BF],
-           _RANDOM[10'h2C0],
-           _RANDOM[10'h2C1],
-           _RANDOM[10'h2C2],
-           _RANDOM[10'h2C3],
-           _RANDOM[10'h2C4],
-           _RANDOM[10'h2C5],
-           _RANDOM[10'h2C6],
-           _RANDOM[10'h2C7],
-           _RANDOM[10'h2C8],
-           _RANDOM[10'h2C9],
-           _RANDOM[10'h2CA],
-           _RANDOM[10'h2CB],
-           _RANDOM[10'h2CC],
-           _RANDOM[10'h2CD],
-           _RANDOM[10'h2CE],
-           _RANDOM[10'h2CF],
-           _RANDOM[10'h2D0],
-           _RANDOM[10'h2D1],
-           _RANDOM[10'h2D2],
-           _RANDOM[10'h2D3],
-           _RANDOM[10'h2D4],
-           _RANDOM[10'h2D5],
-           _RANDOM[10'h2D6],
-           _RANDOM[10'h2D7],
-           _RANDOM[10'h2D8],
-           _RANDOM[10'h2D9],
-           _RANDOM[10'h2DA],
-           _RANDOM[10'h2DB],
-           _RANDOM[10'h2DC],
-           _RANDOM[10'h2DD],
-           _RANDOM[10'h2DE],
-           _RANDOM[10'h2DF],
-           _RANDOM[10'h2E0],
-           _RANDOM[10'h2E1],
-           _RANDOM[10'h2E2],
-           _RANDOM[10'h2E3],
-           _RANDOM[10'h2E4],
-           _RANDOM[10'h2E5],
-           _RANDOM[10'h2E6],
-           _RANDOM[10'h2E7],
-           _RANDOM[10'h2E8],
-           _RANDOM[10'h2E9],
-           _RANDOM[10'h2EA],
-           _RANDOM[10'h2EB],
-           _RANDOM[10'h2EC],
-           _RANDOM[10'h2ED],
-           _RANDOM[10'h2EE],
-           _RANDOM[10'h2EF],
-           _RANDOM[10'h2F0],
-           _RANDOM[10'h2F1],
-           _RANDOM[10'h2F2],
-           _RANDOM[10'h2F3],
-           _RANDOM[10'h2F4],
-           _RANDOM[10'h2F5],
-           _RANDOM[10'h2F6],
-           _RANDOM[10'h2F7],
-           _RANDOM[10'h2F8],
-           _RANDOM[10'h2F9],
-           _RANDOM[10'h2FA],
-           _RANDOM[10'h2FB],
-           _RANDOM[10'h2FC],
-           _RANDOM[10'h2FD],
-           _RANDOM[10'h2FE],
-           _RANDOM[10'h2FF],
-           _RANDOM[10'h300],
-           _RANDOM[10'h301],
-           _RANDOM[10'h302],
-           _RANDOM[10'h303],
-           _RANDOM[10'h304],
-           _RANDOM[10'h305],
-           _RANDOM[10'h306],
-           _RANDOM[10'h307]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :74:25
+          {_RANDOM[12'h764],
+           _RANDOM[12'h765],
+           _RANDOM[12'h766],
+           _RANDOM[12'h767],
+           _RANDOM[12'h768],
+           _RANDOM[12'h769],
+           _RANDOM[12'h76A],
+           _RANDOM[12'h76B],
+           _RANDOM[12'h76C],
+           _RANDOM[12'h76D],
+           _RANDOM[12'h76E],
+           _RANDOM[12'h76F],
+           _RANDOM[12'h770],
+           _RANDOM[12'h771],
+           _RANDOM[12'h772],
+           _RANDOM[12'h773],
+           _RANDOM[12'h774],
+           _RANDOM[12'h775],
+           _RANDOM[12'h776],
+           _RANDOM[12'h777],
+           _RANDOM[12'h778],
+           _RANDOM[12'h779],
+           _RANDOM[12'h77A],
+           _RANDOM[12'h77B],
+           _RANDOM[12'h77C],
+           _RANDOM[12'h77D],
+           _RANDOM[12'h77E],
+           _RANDOM[12'h77F],
+           _RANDOM[12'h780],
+           _RANDOM[12'h781],
+           _RANDOM[12'h782],
+           _RANDOM[12'h783],
+           _RANDOM[12'h784],
+           _RANDOM[12'h785],
+           _RANDOM[12'h786],
+           _RANDOM[12'h787],
+           _RANDOM[12'h788],
+           _RANDOM[12'h789],
+           _RANDOM[12'h78A],
+           _RANDOM[12'h78B],
+           _RANDOM[12'h78C],
+           _RANDOM[12'h78D],
+           _RANDOM[12'h78E],
+           _RANDOM[12'h78F],
+           _RANDOM[12'h790],
+           _RANDOM[12'h791],
+           _RANDOM[12'h792],
+           _RANDOM[12'h793],
+           _RANDOM[12'h794],
+           _RANDOM[12'h795],
+           _RANDOM[12'h796],
+           _RANDOM[12'h797],
+           _RANDOM[12'h798],
+           _RANDOM[12'h799],
+           _RANDOM[12'h79A],
+           _RANDOM[12'h79B],
+           _RANDOM[12'h79C],
+           _RANDOM[12'h79D],
+           _RANDOM[12'h79E],
+           _RANDOM[12'h79F],
+           _RANDOM[12'h7A0],
+           _RANDOM[12'h7A1],
+           _RANDOM[12'h7A2],
+           _RANDOM[12'h7A3],
+           _RANDOM[12'h7A4],
+           _RANDOM[12'h7A5],
+           _RANDOM[12'h7A6],
+           _RANDOM[12'h7A7],
+           _RANDOM[12'h7A8],
+           _RANDOM[12'h7A9],
+           _RANDOM[12'h7AA],
+           _RANDOM[12'h7AB],
+           _RANDOM[12'h7AC],
+           _RANDOM[12'h7AD],
+           _RANDOM[12'h7AE],
+           _RANDOM[12'h7AF],
+           _RANDOM[12'h7B0],
+           _RANDOM[12'h7B1],
+           _RANDOM[12'h7B2],
+           _RANDOM[12'h7B3],
+           _RANDOM[12'h7B4],
+           _RANDOM[12'h7B5],
+           _RANDOM[12'h7B6],
+           _RANDOM[12'h7B7],
+           _RANDOM[12'h7B8],
+           _RANDOM[12'h7B9],
+           _RANDOM[12'h7BA],
+           _RANDOM[12'h7BB],
+           _RANDOM[12'h7BC],
+           _RANDOM[12'h7BD],
+           _RANDOM[12'h7BE],
+           _RANDOM[12'h7BF],
+           _RANDOM[12'h7C0],
+           _RANDOM[12'h7C1],
+           _RANDOM[12'h7C2],
+           _RANDOM[12'h7C3],
+           _RANDOM[12'h7C4],
+           _RANDOM[12'h7C5],
+           _RANDOM[12'h7C6],
+           _RANDOM[12'h7C7],
+           _RANDOM[12'h7C8],
+           _RANDOM[12'h7C9],
+           _RANDOM[12'h7CA],
+           _RANDOM[12'h7CB],
+           _RANDOM[12'h7CC],
+           _RANDOM[12'h7CD],
+           _RANDOM[12'h7CE],
+           _RANDOM[12'h7CF],
+           _RANDOM[12'h7D0],
+           _RANDOM[12'h7D1],
+           _RANDOM[12'h7D2],
+           _RANDOM[12'h7D3],
+           _RANDOM[12'h7D4],
+           _RANDOM[12'h7D5],
+           _RANDOM[12'h7D6],
+           _RANDOM[12'h7D7],
+           _RANDOM[12'h7D8],
+           _RANDOM[12'h7D9],
+           _RANDOM[12'h7DA],
+           _RANDOM[12'h7DB],
+           _RANDOM[12'h7DC],
+           _RANDOM[12'h7DD],
+           _RANDOM[12'h7DE],
+           _RANDOM[12'h7DF],
+           _RANDOM[12'h7E0],
+           _RANDOM[12'h7E1],
+           _RANDOM[12'h7E2],
+           _RANDOM[12'h7E3],
+           _RANDOM[12'h7E4],
+           _RANDOM[12'h7E5],
+           _RANDOM[12'h7E6],
+           _RANDOM[12'h7E7],
+           _RANDOM[12'h7E8],
+           _RANDOM[12'h7E9],
+           _RANDOM[12'h7EA],
+           _RANDOM[12'h7EB],
+           _RANDOM[12'h7EC],
+           _RANDOM[12'h7ED],
+           _RANDOM[12'h7EE],
+           _RANDOM[12'h7EF],
+           _RANDOM[12'h7F0],
+           _RANDOM[12'h7F1],
+           _RANDOM[12'h7F2],
+           _RANDOM[12'h7F3],
+           _RANDOM[12'h7F4],
+           _RANDOM[12'h7F5],
+           _RANDOM[12'h7F6],
+           _RANDOM[12'h7F7],
+           _RANDOM[12'h7F8],
+           _RANDOM[12'h7F9],
+           _RANDOM[12'h7FA],
+           _RANDOM[12'h7FB],
+           _RANDOM[12'h7FC],
+           _RANDOM[12'h7FD],
+           _RANDOM[12'h7FE],
+           _RANDOM[12'h7FF],
+           _RANDOM[12'h800],
+           _RANDOM[12'h801],
+           _RANDOM[12'h802],
+           _RANDOM[12'h803],
+           _RANDOM[12'h804],
+           _RANDOM[12'h805],
+           _RANDOM[12'h806],
+           _RANDOM[12'h807],
+           _RANDOM[12'h808],
+           _RANDOM[12'h809],
+           _RANDOM[12'h80A],
+           _RANDOM[12'h80B],
+           _RANDOM[12'h80C],
+           _RANDOM[12'h80D],
+           _RANDOM[12'h80E],
+           _RANDOM[12'h80F],
+           _RANDOM[12'h810],
+           _RANDOM[12'h811],
+           _RANDOM[12'h812],
+           _RANDOM[12'h813],
+           _RANDOM[12'h814],
+           _RANDOM[12'h815],
+           _RANDOM[12'h816],
+           _RANDOM[12'h817],
+           _RANDOM[12'h818],
+           _RANDOM[12'h819],
+           _RANDOM[12'h81A],
+           _RANDOM[12'h81B],
+           _RANDOM[12'h81C],
+           _RANDOM[12'h81D],
+           _RANDOM[12'h81E],
+           _RANDOM[12'h81F],
+           _RANDOM[12'h820],
+           _RANDOM[12'h821],
+           _RANDOM[12'h822],
+           _RANDOM[12'h823],
+           _RANDOM[12'h824],
+           _RANDOM[12'h825],
+           _RANDOM[12'h826],
+           _RANDOM[12'h827],
+           _RANDOM[12'h828],
+           _RANDOM[12'h829],
+           _RANDOM[12'h82A],
+           _RANDOM[12'h82B],
+           _RANDOM[12'h82C],
+           _RANDOM[12'h82D],
+           _RANDOM[12'h82E],
+           _RANDOM[12'h82F],
+           _RANDOM[12'h830],
+           _RANDOM[12'h831],
+           _RANDOM[12'h832],
+           _RANDOM[12'h833],
+           _RANDOM[12'h834],
+           _RANDOM[12'h835],
+           _RANDOM[12'h836],
+           _RANDOM[12'h837],
+           _RANDOM[12'h838],
+           _RANDOM[12'h839],
+           _RANDOM[12'h83A],
+           _RANDOM[12'h83B],
+           _RANDOM[12'h83C],
+           _RANDOM[12'h83D],
+           _RANDOM[12'h83E],
+           _RANDOM[12'h83F],
+           _RANDOM[12'h840],
+           _RANDOM[12'h841],
+           _RANDOM[12'h842],
+           _RANDOM[12'h843],
+           _RANDOM[12'h844],
+           _RANDOM[12'h845],
+           _RANDOM[12'h846],
+           _RANDOM[12'h847],
+           _RANDOM[12'h848],
+           _RANDOM[12'h849],
+           _RANDOM[12'h84A],
+           _RANDOM[12'h84B],
+           _RANDOM[12'h84C],
+           _RANDOM[12'h84D],
+           _RANDOM[12'h84E],
+           _RANDOM[12'h84F],
+           _RANDOM[12'h850],
+           _RANDOM[12'h851],
+           _RANDOM[12'h852],
+           _RANDOM[12'h853],
+           _RANDOM[12'h854],
+           _RANDOM[12'h855],
+           _RANDOM[12'h856],
+           _RANDOM[12'h857],
+           _RANDOM[12'h858],
+           _RANDOM[12'h859],
+           _RANDOM[12'h85A],
+           _RANDOM[12'h85B],
+           _RANDOM[12'h85C],
+           _RANDOM[12'h85D],
+           _RANDOM[12'h85E],
+           _RANDOM[12'h85F],
+           _RANDOM[12'h860],
+           _RANDOM[12'h861],
+           _RANDOM[12'h862],
+           _RANDOM[12'h863],
+           _RANDOM[12'h864],
+           _RANDOM[12'h865],
+           _RANDOM[12'h866],
+           _RANDOM[12'h867],
+           _RANDOM[12'h868],
+           _RANDOM[12'h869],
+           _RANDOM[12'h86A],
+           _RANDOM[12'h86B],
+           _RANDOM[12'h86C],
+           _RANDOM[12'h86D],
+           _RANDOM[12'h86E],
+           _RANDOM[12'h86F],
+           _RANDOM[12'h870],
+           _RANDOM[12'h871],
+           _RANDOM[12'h872],
+           _RANDOM[12'h873],
+           _RANDOM[12'h874],
+           _RANDOM[12'h875],
+           _RANDOM[12'h876],
+           _RANDOM[12'h877],
+           _RANDOM[12'h878],
+           _RANDOM[12'h879],
+           _RANDOM[12'h87A],
+           _RANDOM[12'h87B],
+           _RANDOM[12'h87C],
+           _RANDOM[12'h87D],
+           _RANDOM[12'h87E],
+           _RANDOM[12'h87F],
+           _RANDOM[12'h880],
+           _RANDOM[12'h881],
+           _RANDOM[12'h882],
+           _RANDOM[12'h883],
+           _RANDOM[12'h884],
+           _RANDOM[12'h885],
+           _RANDOM[12'h886],
+           _RANDOM[12'h887],
+           _RANDOM[12'h888],
+           _RANDOM[12'h889],
+           _RANDOM[12'h88A],
+           _RANDOM[12'h88B],
+           _RANDOM[12'h88C],
+           _RANDOM[12'h88D],
+           _RANDOM[12'h88E],
+           _RANDOM[12'h88F],
+           _RANDOM[12'h890],
+           _RANDOM[12'h891],
+           _RANDOM[12'h892],
+           _RANDOM[12'h893],
+           _RANDOM[12'h894],
+           _RANDOM[12'h895],
+           _RANDOM[12'h896],
+           _RANDOM[12'h897],
+           _RANDOM[12'h898],
+           _RANDOM[12'h899],
+           _RANDOM[12'h89A],
+           _RANDOM[12'h89B],
+           _RANDOM[12'h89C],
+           _RANDOM[12'h89D],
+           _RANDOM[12'h89E],
+           _RANDOM[12'h89F],
+           _RANDOM[12'h8A0],
+           _RANDOM[12'h8A1],
+           _RANDOM[12'h8A2],
+           _RANDOM[12'h8A3],
+           _RANDOM[12'h8A4],
+           _RANDOM[12'h8A5],
+           _RANDOM[12'h8A6],
+           _RANDOM[12'h8A7],
+           _RANDOM[12'h8A8],
+           _RANDOM[12'h8A9],
+           _RANDOM[12'h8AA],
+           _RANDOM[12'h8AB],
+           _RANDOM[12'h8AC],
+           _RANDOM[12'h8AD],
+           _RANDOM[12'h8AE],
+           _RANDOM[12'h8AF],
+           _RANDOM[12'h8B0],
+           _RANDOM[12'h8B1],
+           _RANDOM[12'h8B2],
+           _RANDOM[12'h8B3],
+           _RANDOM[12'h8B4],
+           _RANDOM[12'h8B5],
+           _RANDOM[12'h8B6],
+           _RANDOM[12'h8B7],
+           _RANDOM[12'h8B8],
+           _RANDOM[12'h8B9],
+           _RANDOM[12'h8BA],
+           _RANDOM[12'h8BB],
+           _RANDOM[12'h8BC],
+           _RANDOM[12'h8BD],
+           _RANDOM[12'h8BE],
+           _RANDOM[12'h8BF],
+           _RANDOM[12'h8C0],
+           _RANDOM[12'h8C1],
+           _RANDOM[12'h8C2],
+           _RANDOM[12'h8C3],
+           _RANDOM[12'h8C4],
+           _RANDOM[12'h8C5],
+           _RANDOM[12'h8C6],
+           _RANDOM[12'h8C7],
+           _RANDOM[12'h8C8],
+           _RANDOM[12'h8C9],
+           _RANDOM[12'h8CA],
+           _RANDOM[12'h8CB],
+           _RANDOM[12'h8CC],
+           _RANDOM[12'h8CD],
+           _RANDOM[12'h8CE],
+           _RANDOM[12'h8CF],
+           _RANDOM[12'h8D0],
+           _RANDOM[12'h8D1],
+           _RANDOM[12'h8D2],
+           _RANDOM[12'h8D3],
+           _RANDOM[12'h8D4],
+           _RANDOM[12'h8D5],
+           _RANDOM[12'h8D6],
+           _RANDOM[12'h8D7],
+           _RANDOM[12'h8D8],
+           _RANDOM[12'h8D9],
+           _RANDOM[12'h8DA],
+           _RANDOM[12'h8DB],
+           _RANDOM[12'h8DC],
+           _RANDOM[12'h8DD],
+           _RANDOM[12'h8DE],
+           _RANDOM[12'h8DF],
+           _RANDOM[12'h8E0],
+           _RANDOM[12'h8E1],
+           _RANDOM[12'h8E2],
+           _RANDOM[12'h8E3],
+           _RANDOM[12'h8E4],
+           _RANDOM[12'h8E5],
+           _RANDOM[12'h8E6],
+           _RANDOM[12'h8E7]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :74:25
         yj0 =
-          {_RANDOM[10'h308],
-           _RANDOM[10'h309],
-           _RANDOM[10'h30A],
-           _RANDOM[10'h30B],
-           _RANDOM[10'h30C],
-           _RANDOM[10'h30D],
-           _RANDOM[10'h30E],
-           _RANDOM[10'h30F]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :75:18
+          {_RANDOM[12'h8E8],
+           _RANDOM[12'h8E9],
+           _RANDOM[12'h8EA],
+           _RANDOM[12'h8EB],
+           _RANDOM[12'h8EC],
+           _RANDOM[12'h8ED],
+           _RANDOM[12'h8EE],
+           _RANDOM[12'h8EF]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :75:18
         ddot_din_a_reg =
-          {_RANDOM[10'h310],
-           _RANDOM[10'h311],
-           _RANDOM[10'h312],
-           _RANDOM[10'h313],
-           _RANDOM[10'h314],
-           _RANDOM[10'h315],
-           _RANDOM[10'h316],
-           _RANDOM[10'h317]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :138:29
+          {_RANDOM[12'h8F0],
+           _RANDOM[12'h8F1],
+           _RANDOM[12'h8F2],
+           _RANDOM[12'h8F3],
+           _RANDOM[12'h8F4],
+           _RANDOM[12'h8F5],
+           _RANDOM[12'h8F6],
+           _RANDOM[12'h8F7]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :158:29
         ddot_din_b_reg =
-          {_RANDOM[10'h318],
-           _RANDOM[10'h319],
-           _RANDOM[10'h31A],
-           _RANDOM[10'h31B],
-           _RANDOM[10'h31C],
-           _RANDOM[10'h31D],
-           _RANDOM[10'h31E],
-           _RANDOM[10'h31F]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :139:29
+          {_RANDOM[12'h8F8],
+           _RANDOM[12'h8F9],
+           _RANDOM[12'h8FA],
+           _RANDOM[12'h8FB],
+           _RANDOM[12'h8FC],
+           _RANDOM[12'h8FD],
+           _RANDOM[12'h8FE],
+           _RANDOM[12'h8FF]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :159:29
         vk_reg =
-          {_RANDOM[10'h320],
-           _RANDOM[10'h321],
-           _RANDOM[10'h322],
-           _RANDOM[10'h323],
-           _RANDOM[10'h324],
-           _RANDOM[10'h325],
-           _RANDOM[10'h326],
-           _RANDOM[10'h327]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :140:21
-        d1_reg = _RANDOM[10'h328];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :141:21
-        d3_reg = _RANDOM[10'h329];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :142:21
-        d4_update = {_RANDOM[10'h32A], _RANDOM[10'h32B]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :147:24
-        x1_reg = {_RANDOM[10'h32C], _RANDOM[10'h32D]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :154:21
-        d2_reg = _RANDOM[10'h32E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :155:21
-        vk1_reg = {_RANDOM[10'h32F], _RANDOM[10'h330]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :156:22
-        tk_reg = _RANDOM[10'h331];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :157:21
-        d4_reg = {_RANDOM[10'h332], _RANDOM[10'h333]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :158:21
-        d5_reg = {_RANDOM[10'h334], _RANDOM[10'h335]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :159:21
+          {_RANDOM[12'h900],
+           _RANDOM[12'h901],
+           _RANDOM[12'h902],
+           _RANDOM[12'h903],
+           _RANDOM[12'h904],
+           _RANDOM[12'h905],
+           _RANDOM[12'h906],
+           _RANDOM[12'h907]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :160:21
+        d1_reg = _RANDOM[12'h908];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :161:21
+        d3_reg = _RANDOM[12'h909];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :162:21
+        d4_update = {_RANDOM[12'h90A], _RANDOM[12'h90B]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :167:24
+        x1_reg = {_RANDOM[12'h90C], _RANDOM[12'h90D]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :174:21
+        d2_reg = _RANDOM[12'h90E];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :175:21
+        vk1_reg = {_RANDOM[12'h90F], _RANDOM[12'h910]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :176:22
+        tk_reg = _RANDOM[12'h911];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :177:21
+        d4_reg = {_RANDOM[12'h912], _RANDOM[12'h913]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :178:21
+        d5_reg = {_RANDOM[12'h914], _RANDOM[12'h915]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :179:21
         d4_update_reg =
-          {_RANDOM[10'h336],
-           _RANDOM[10'h337],
-           _RANDOM[10'h338],
-           _RANDOM[10'h339],
-           _RANDOM[10'h33A],
-           _RANDOM[10'h33B],
-           _RANDOM[10'h33C],
-           _RANDOM[10'h33D],
-           _RANDOM[10'h33E],
-           _RANDOM[10'h33F],
-           _RANDOM[10'h340],
-           _RANDOM[10'h341],
-           _RANDOM[10'h342],
-           _RANDOM[10'h343],
-           _RANDOM[10'h344],
-           _RANDOM[10'h345],
-           _RANDOM[10'h346],
-           _RANDOM[10'h347],
-           _RANDOM[10'h348],
-           _RANDOM[10'h349],
-           _RANDOM[10'h34A],
-           _RANDOM[10'h34B],
-           _RANDOM[10'h34C],
-           _RANDOM[10'h34D],
-           _RANDOM[10'h34E],
-           _RANDOM[10'h34F],
-           _RANDOM[10'h350],
-           _RANDOM[10'h351],
-           _RANDOM[10'h352],
-           _RANDOM[10'h353],
-           _RANDOM[10'h354],
-           _RANDOM[10'h355],
-           _RANDOM[10'h356],
-           _RANDOM[10'h357],
-           _RANDOM[10'h358],
-           _RANDOM[10'h359],
-           _RANDOM[10'h35A],
-           _RANDOM[10'h35B],
-           _RANDOM[10'h35C],
-           _RANDOM[10'h35D],
-           _RANDOM[10'h35E],
-           _RANDOM[10'h35F],
-           _RANDOM[10'h360],
-           _RANDOM[10'h361]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :216:27
-        myAxpyVec_0 = {_RANDOM[10'h362], _RANDOM[10'h363]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :392:23
-        myAxpyVec_1 = {_RANDOM[10'h364], _RANDOM[10'h365]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :392:23
-        myAxpyVec_2 = {_RANDOM[10'h366], _RANDOM[10'h367]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :392:23
-        myAxpyVec_3 = {_RANDOM[10'h368], _RANDOM[10'h369]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :392:23
+          {_RANDOM[12'h916],
+           _RANDOM[12'h917],
+           _RANDOM[12'h918],
+           _RANDOM[12'h919],
+           _RANDOM[12'h91A],
+           _RANDOM[12'h91B],
+           _RANDOM[12'h91C],
+           _RANDOM[12'h91D],
+           _RANDOM[12'h91E],
+           _RANDOM[12'h91F],
+           _RANDOM[12'h920],
+           _RANDOM[12'h921],
+           _RANDOM[12'h922],
+           _RANDOM[12'h923],
+           _RANDOM[12'h924],
+           _RANDOM[12'h925],
+           _RANDOM[12'h926],
+           _RANDOM[12'h927],
+           _RANDOM[12'h928],
+           _RANDOM[12'h929],
+           _RANDOM[12'h92A],
+           _RANDOM[12'h92B],
+           _RANDOM[12'h92C],
+           _RANDOM[12'h92D],
+           _RANDOM[12'h92E],
+           _RANDOM[12'h92F],
+           _RANDOM[12'h930],
+           _RANDOM[12'h931],
+           _RANDOM[12'h932],
+           _RANDOM[12'h933],
+           _RANDOM[12'h934],
+           _RANDOM[12'h935],
+           _RANDOM[12'h936],
+           _RANDOM[12'h937],
+           _RANDOM[12'h938],
+           _RANDOM[12'h939],
+           _RANDOM[12'h93A],
+           _RANDOM[12'h93B],
+           _RANDOM[12'h93C],
+           _RANDOM[12'h93D],
+           _RANDOM[12'h93E],
+           _RANDOM[12'h93F],
+           _RANDOM[12'h940],
+           _RANDOM[12'h941]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :236:27
+        myAxpyVec_0 = {_RANDOM[12'h942], _RANDOM[12'h943]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :412:23
+        myAxpyVec_1 = {_RANDOM[12'h944], _RANDOM[12'h945]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :412:23
+        myAxpyVec_2 = {_RANDOM[12'h946], _RANDOM[12'h947]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :412:23
+        myAxpyVec_3 = {_RANDOM[12'h948], _RANDOM[12'h949]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :412:23
       `endif // RANDOMIZE_REG_INIT
     end // initial
     `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
       `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  FP_DDOT_dp_complex_19 FP_DDOT_dp_complex_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:316:21
+  FP_DDOT_dp_complex_19 FP_DDOT_dp_complex_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:336:21
     .clock        (io_clk),
-    .io_in_a_0_Re (ddot_din_a_reg[255:224]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :319:{41,103}
-    .io_in_a_0_Im (ddot_din_a_reg[223:192] ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :319:41, :321:{104,117}
-    .io_in_a_1_Re (ddot_din_a_reg[191:160]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :319:{41,103}
-    .io_in_a_1_Im (ddot_din_a_reg[159:128] ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :319:41, :321:{104,117}
-    .io_in_a_2_Re (ddot_din_a_reg[127:96]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :319:{41,103}
-    .io_in_a_2_Im (ddot_din_a_reg[95:64] ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :319:41, :321:{104,117}
-    .io_in_a_3_Re (ddot_din_a_reg[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :319:{41,103}
-    .io_in_a_3_Im (ddot_din_a_reg[31:0] ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:138:29, :319:41, :321:{104,117}
-    .io_in_b_0_Re (ddot_din_b_reg[255:224]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :320:{41,103}
-    .io_in_b_0_Im (ddot_din_b_reg[223:192]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :320:41, :322:103
-    .io_in_b_1_Re (ddot_din_b_reg[191:160]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :320:{41,103}
-    .io_in_b_1_Im (ddot_din_b_reg[159:128]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :320:41, :322:103
-    .io_in_b_2_Re (ddot_din_b_reg[127:96]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :320:{41,103}
-    .io_in_b_2_Im (ddot_din_b_reg[95:64]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :320:41, :322:103
-    .io_in_b_3_Re (ddot_din_b_reg[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :320:{41,103}
-    .io_in_b_3_Im (ddot_din_b_reg[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:139:29, :320:41, :322:103
+    .io_in_a_0_Re (ddot_din_a_reg[255:224]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :339:{41,103}
+    .io_in_a_0_Im (ddot_din_a_reg[223:192] ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :339:41, :341:{104,117}
+    .io_in_a_1_Re (ddot_din_a_reg[191:160]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :339:{41,103}
+    .io_in_a_1_Im (ddot_din_a_reg[159:128] ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :339:41, :341:{104,117}
+    .io_in_a_2_Re (ddot_din_a_reg[127:96]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :339:{41,103}
+    .io_in_a_2_Im (ddot_din_a_reg[95:64] ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :339:41, :341:{104,117}
+    .io_in_a_3_Re (ddot_din_a_reg[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :339:{41,103}
+    .io_in_a_3_Im (ddot_din_a_reg[31:0] ^ 32'h80000000),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:158:29, :339:41, :341:{104,117}
+    .io_in_b_0_Re (ddot_din_b_reg[255:224]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :340:{41,103}
+    .io_in_b_0_Im (ddot_din_b_reg[223:192]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :340:41, :342:103
+    .io_in_b_1_Re (ddot_din_b_reg[191:160]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :340:{41,103}
+    .io_in_b_1_Im (ddot_din_b_reg[159:128]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :340:41, :342:103
+    .io_in_b_2_Re (ddot_din_b_reg[127:96]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :340:{41,103}
+    .io_in_b_2_Im (ddot_din_b_reg[95:64]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :340:41, :342:103
+    .io_in_b_3_Re (ddot_din_b_reg[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :340:{41,103}
+    .io_in_b_3_Im (ddot_din_b_reg[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:29, :340:41, :342:103
     .io_out_s_Re  (_FP_DDOT_dp_complex_19_io_out_s_Re),
     .io_out_s_Im  (_FP_DDOT_dp_complex_19_io_out_s_Im)
   );
-  FP_sqrt_32_23 FP_sqrt_32_23 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:327:22
+  FP_sqrt_32_23 FP_sqrt_32_23 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:347:22
     .clock    (io_clk),
     .reset    (io_rst),
-    .io_in_a  (io_d1_vld ? _FP_DDOT_dp_complex_19_io_out_s_Re : d1_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:141:21, :226:20, :227:10, :229:10, :316:21
+    .io_in_a  (io_d1_vld ? _FP_DDOT_dp_complex_19_io_out_s_Re : d1_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:161:21, :246:20, :247:10, :249:10, :336:21
     .io_out_s (_FP_sqrt_32_23_io_out_s)
   );
-  hqr5_complex_19 hqr5_complex_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:337:20
+  hqr5_complex_19 hqr5_complex_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:357:20
     .clock       (io_clk),
     .reset       (io_rst),
-    .io_in_a_Re  (x1[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:239:20, :240:10, :242:10, :338:22
-    .io_in_a_Im  (x1[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:239:20, :240:10, :242:10, :339:22
-    .io_in_b_Re  (io_d2_vld ? _FP_sqrt_32_23_io_out_s : d2_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:155:21, :245:20, :246:10, :248:10, :327:22
+    .io_in_a_Re  (x1[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:259:20, :260:10, :262:10, :358:22
+    .io_in_a_Im  (x1[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:259:20, :260:10, :262:10, :359:22
+    .io_in_b_Re  (io_d2_vld ? _FP_sqrt_32_23_io_out_s : d2_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:175:21, :265:20, :266:10, :268:10, :347:22
     .io_out_s_Re (_hqr5_complex_19_io_out_s_Re),
     .io_out_s_Im (_hqr5_complex_19_io_out_s_Im)
   );
-  hqr7_19 hqr7_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:346:20
+  hqr7_19 hqr7_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:366:20
     .clock    (io_clk),
     .reset    (io_rst),
-    .io_in_a  (io_d3_vld ? _FP_DDOT_dp_complex_19_io_out_s_Re : d3_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:142:21, :232:20, :233:10, :236:10, :316:21
+    .io_in_a  (io_d3_vld ? _FP_DDOT_dp_complex_19_io_out_s_Re : d3_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:162:21, :252:20, :253:10, :256:10, :336:21
     .io_out_s (_hqr7_19_io_out_s)
   );
-  FPComplexMult_v2_19 FPComplexMult_v2_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:354:21
+  FPComplexMult_v2_19 FPComplexMult_v2_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:374:21
     .clock       (io_clk),
-    .io_in_a_Re  (d4[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:263:20, :264:10, :266:10, :356:23
-    .io_in_a_Im  (d4[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:263:20, :264:10, :266:10, :357:23
-    .io_in_b_Re  (io_tk_vld ? _hqr7_19_io_out_s : tk_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:157:21, :257:20, :258:10, :260:10, :346:20
-    .io_in_b_Im  (32'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:167:14
+    .io_in_a_Re  (d4[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:283:20, :284:10, :286:10, :376:23
+    .io_in_a_Im  (d4[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:283:20, :284:10, :286:10, :377:23
+    .io_in_b_Re  (io_tk_vld ? _hqr7_19_io_out_s : tk_reg),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:177:21, :277:20, :278:10, :280:10, :366:20
+    .io_in_b_Im  (32'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:187:14
     .io_out_s_Re (_FPComplexMult_v2_19_io_out_s_Re),
     .io_out_s_Im (_FPComplexMult_v2_19_io_out_s_Im)
   );
-  axpy_dp_complex_19 axpy_dp_complex_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:381:20
+  axpy_dp_complex_19 axpy_dp_complex_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:401:20
     .clock         (io_clk),
     .reset         (io_rst),
-    .io_in_a_Re    (d5_reg[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:21, :382:26
-    .io_in_a_Im    (d5_reg[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:159:21, :383:26
-    .io_in_b_0_Re  (vk[255:224]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:209:21, :210:10, :212:10, :385:{28,89}
-    .io_in_b_0_Im  (vk[223:192]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:209:21, :210:10, :212:10, :385:28, :386:89
-    .io_in_b_1_Re  (vk[191:160]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:209:21, :210:10, :212:10, :385:{28,89}
-    .io_in_b_1_Im  (vk[159:128]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:209:21, :210:10, :212:10, :385:28, :386:89
-    .io_in_b_2_Re  (vk[127:96]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:209:21, :210:10, :212:10, :385:{28,89}
-    .io_in_b_2_Im  (vk[95:64]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:209:21, :210:10, :212:10, :385:28, :386:89
-    .io_in_b_3_Re  (vk[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:209:21, :210:10, :212:10, :385:{28,89}
-    .io_in_b_3_Im  (vk[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:209:21, :210:10, :212:10, :385:28, :386:89
-    .io_in_c_0_Re  (yj0[255:224]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :388:{29,90}
-    .io_in_c_0_Im  (yj0[223:192]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :388:29, :389:90
-    .io_in_c_1_Re  (yj0[191:160]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :388:{29,90}
-    .io_in_c_1_Im  (yj0[159:128]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :388:29, :389:90
-    .io_in_c_2_Re  (yj0[127:96]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :388:{29,90}
-    .io_in_c_2_Im  (yj0[95:64]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :388:29, :389:90
-    .io_in_c_3_Re  (yj0[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :388:{29,90}
-    .io_in_c_3_Im  (yj0[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :388:29, :389:90
+    .io_in_a_Re    (d5_reg[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:179:21, :402:26
+    .io_in_a_Im    (d5_reg[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:179:21, :403:26
+    .io_in_b_0_Re  (vk[255:224]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:229:21, :230:10, :232:10, :405:{28,89}
+    .io_in_b_0_Im  (vk[223:192]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:229:21, :230:10, :232:10, :405:28, :406:89
+    .io_in_b_1_Re  (vk[191:160]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:229:21, :230:10, :232:10, :405:{28,89}
+    .io_in_b_1_Im  (vk[159:128]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:229:21, :230:10, :232:10, :405:28, :406:89
+    .io_in_b_2_Re  (vk[127:96]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:229:21, :230:10, :232:10, :405:{28,89}
+    .io_in_b_2_Im  (vk[95:64]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:229:21, :230:10, :232:10, :405:28, :406:89
+    .io_in_b_3_Re  (vk[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:229:21, :230:10, :232:10, :405:{28,89}
+    .io_in_b_3_Im  (vk[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:229:21, :230:10, :232:10, :405:28, :406:89
+    .io_in_c_0_Re  (yj0[255:224]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :408:{29,90}
+    .io_in_c_0_Im  (yj0[223:192]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :408:29, :409:90
+    .io_in_c_1_Re  (yj0[191:160]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :408:{29,90}
+    .io_in_c_1_Im  (yj0[159:128]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :408:29, :409:90
+    .io_in_c_2_Re  (yj0[127:96]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :408:{29,90}
+    .io_in_c_2_Im  (yj0[95:64]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :408:29, :409:90
+    .io_in_c_3_Re  (yj0[63:32]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :408:{29,90}
+    .io_in_c_3_Im  (yj0[31:0]),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:75:18, :408:29, :409:90
     .io_out_s_0_Re (_axpy_dp_complex_19_io_out_s_0_Re),
     .io_out_s_0_Im (_axpy_dp_complex_19_io_out_s_0_Im),
     .io_out_s_1_Re (_axpy_dp_complex_19_io_out_s_1_Re),
@@ -9612,130 +9612,130 @@ module hh_datapath_1(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\mai
     .io_out_s_3_Re (_axpy_dp_complex_19_io_out_s_3_Re),
     .io_out_s_3_Im (_axpy_dp_complex_19_io_out_s_3_Im)
   );
-  assign io_hh_dout = {myAxpyVec_3, myAxpyVec_2, myAxpyVec_1, myAxpyVec_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :392:23, :401:29
+  assign io_hh_dout = {myAxpyVec_3, myAxpyVec_2, myAxpyVec_1, myAxpyVec_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_datapath_chisel.scala:39:7, :412:23, :421:29
 endmodule
 
-module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-  input          io_clk,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_rst,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input  [15:0]  io_hh_cnt,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_d1_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_d1_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_d2_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_vk1_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_d3_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_d3_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_tk_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_d4_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_d5_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_d5_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_yj_sft,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_d4_sft,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_hh_st,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_dmx0_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input  [15:0]  io_dmx0_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_dmx0_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input  [127:0] io_dmx0_mem_dina,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_dmx0_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_dmx0_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  output [127:0] io_dmx0_mem_doutb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_dmx1_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input  [15:0]  io_dmx1_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_dmx1_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input  [127:0] io_dmx1_mem_dina,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_dmx1_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_dmx1_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  output [127:0] io_dmx1_mem_doutb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_rtri_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input  [15:0]  io_rtri_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_rtri_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input  [127:0] io_rtri_mem_dina,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  input          io_rtri_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-                 io_rtri_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  output [127:0] io_rtri_mem_doutb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-  output [255:0] io_hh_dout	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
+module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+  input          io_clk,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_rst,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input  [15:0]  io_hh_cnt,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_d1_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_d1_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_d2_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_vk1_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_d3_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_d3_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_tk_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_d4_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_d5_rdy,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_d5_vld,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_yj_sft,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_d4_sft,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_hh_st,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_dmx0_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input  [15:0]  io_dmx0_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_dmx0_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input  [127:0] io_dmx0_mem_dina,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_dmx0_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_dmx0_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  output [127:0] io_dmx0_mem_doutb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_dmx1_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input  [15:0]  io_dmx1_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_dmx1_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input  [127:0] io_dmx1_mem_dina,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_dmx1_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_dmx1_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  output [127:0] io_dmx1_mem_doutb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_rtri_mem_ena,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input  [15:0]  io_rtri_mem_wea,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_rtri_mem_addra,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input  [127:0] io_rtri_mem_dina,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  input          io_rtri_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+                 io_rtri_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  output [127:0] io_rtri_mem_doutb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+  output [255:0] io_hh_dout	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
 );
 
-  wire [255:0]     io_hh_dout_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:266:25, :267:27, :269:24
-  wire [255:0]     _u_hh_datapath_io_hh_dout;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:241:38
-  wire [127:0]     _simple_dual_19_2_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:230:31
-  wire [127:0]     _simple_dual_19_1_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:219:31
-  wire [127:0]     _simple_dual_19_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:207:31
-  reg              hh0_din_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:34
-  reg              hh1_din_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:105:34
-  reg  [255:0]     hh_din_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:33
-  reg  [255:0]     hh_din;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:111:29
+  wire [255:0]     io_hh_dout_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:266:19, :267:19, :269:20
+  wire [255:0]     _u_hh_datapath_io_hh_dout;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:241:32
+  wire [127:0]     _simple_dual_19_2_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:230:25
+  wire [127:0]     _simple_dual_19_1_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:219:25
+  wire [127:0]     _simple_dual_19_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:207:25
+  reg              hh0_din_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:28
+  reg              hh1_din_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:105:28
+  reg  [255:0]     hh_din_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:27
+  reg  [255:0]     hh_din;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:111:23
   wire [127:0]     dmx_mem_doutb =
     hh0_din_rdy
       ? _simple_dual_19_io_doutb
-      : hh1_din_rdy ? _simple_dual_19_1_io_doutb : 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:34, :105:34, :145:37, :148:30, :149:31, :150:36, :151:31, :153:31, :207:31, :219:31
-  wire [63:0]      myTriMemVec_0 = _simple_dual_19_2_io_doutb[127:64];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :160:52, :230:31
-  wire [63:0]      myTriMemVec_1 = _simple_dual_19_2_io_doutb[63:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :160:52, :230:31
-  wire [63:0]      myTriMemVec2_1 = io_hh_cnt[0] ? myTriMemVec_1 : myTriMemVec_0;	// <stdin>:93416:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :163:36, :166:54
-  wire [1:0]       _myHhdoutVec2_2_T = io_hh_cnt[1:0] + 2'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:74
-  wire [63:0]      myTriMemVec2_0 = _myHhdoutVec2_2_T[0] ? myTriMemVec_1 : myTriMemVec_0;	// <stdin>:93420:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:35, :163:36, :166:{54,74}
-  wire [127:0]     myTriMemWire = {myTriMemVec2_1, myTriMemVec2_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:163:36, :169:36, :171:42
+      : hh1_din_rdy ? _simple_dual_19_1_io_doutb : 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:28, :105:28, :145:31, :148:24, :149:23, :150:30, :151:23, :153:23, :207:25, :219:25
+  wire [63:0]      myTriMemVec_0 = _simple_dual_19_2_io_doutb[127:64];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:29, :160:44, :230:25
+  wire [63:0]      myTriMemVec_1 = _simple_dual_19_2_io_doutb[63:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:29, :160:44, :230:25
+  wire [63:0]      myTriMemVec2_1 = io_hh_cnt[0] ? myTriMemVec_1 : myTriMemVec_0;	// <stdin>:93417:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:29, :163:30, :166:46
+  wire [1:0]       _myHhdoutVec2_2_T = io_hh_cnt[1:0] + 2'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:66
+  wire [63:0]      myTriMemVec2_0 = _myHhdoutVec2_2_T[0] ? myTriMemVec_1 : myTriMemVec_0;	// <stdin>:93421:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:156:29, :163:30, :166:{46,66}
+  wire [127:0]     myTriMemWire = {myTriMemVec2_1, myTriMemVec2_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:163:30, :169:30, :171:36
   wire [255:0]     _hh_din_update_T_2 =
-    {myTriMemWire >> {106'h0, io_hh_cnt, 6'h0}, dmx_mem_doutb};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:145:37, :169:36, :174:{38,52,65}
-  wire [63:0]      myHhdoutVec_0 = io_hh_dout_0[255:192];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:35, :185:45, :266:25, :267:27, :269:24
-  wire [63:0]      myHhdoutVec_1 = io_hh_dout_0[191:128];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:35, :185:45, :266:25, :267:27, :269:24
-  wire [63:0]      myHhdoutVec_2 = io_hh_dout_0[127:64];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:35, :185:45, :266:25, :267:27, :269:24
-  wire [63:0]      myHhdoutVec_3 = io_hh_dout_0[63:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:35, :185:45, :266:25, :267:27, :269:24
+    {myTriMemWire >> {106'h0, io_hh_cnt, 6'h0}, dmx_mem_doutb};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:145:31, :169:30, :174:{30,44,57}
+  wire [63:0]      myHhdoutVec_0 = io_hh_dout_0[255:192];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:29, :185:37, :266:19, :267:19, :269:20
+  wire [63:0]      myHhdoutVec_1 = io_hh_dout_0[191:128];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:29, :185:37, :266:19, :267:19, :269:20
+  wire [63:0]      myHhdoutVec_2 = io_hh_dout_0[127:64];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:29, :185:37, :266:19, :267:19, :269:20
+  wire [63:0]      myHhdoutVec_3 = io_hh_dout_0[63:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:29, :185:37, :266:19, :267:19, :269:20
   wire [3:0][63:0] _GEN =
-    {{myHhdoutVec_3}, {myHhdoutVec_2}, {myHhdoutVec_1}, {myHhdoutVec_0}};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:35, :191:52
-  wire [63:0]      myHhdoutVec2_3 = _GEN[io_hh_cnt[1:0]];	// <stdin>:93450:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:188:36, :191:52
-  wire [63:0]      myHhdoutVec2_2 = _GEN[_myHhdoutVec2_2_T];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:74, :188:36, :191:52
-  wire [63:0]      myHhdoutVec2_1 = _GEN[io_hh_cnt[1:0] - 2'h2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:74, :188:36, :191:{52,72}
-  wire [63:0]      myHhdoutVec2_0 = _GEN[io_hh_cnt[1:0] - 2'h1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:74, :188:36, :191:{52,72}
+    {{myHhdoutVec_3}, {myHhdoutVec_2}, {myHhdoutVec_1}, {myHhdoutVec_0}};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:181:29, :191:44
+  wire [63:0]      myHhdoutVec2_3 = _GEN[io_hh_cnt[1:0]];	// <stdin>:93451:32, C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:188:30, :191:44
+  wire [63:0]      myHhdoutVec2_2 = _GEN[_myHhdoutVec2_2_T];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:66, :188:30, :191:44
+  wire [63:0]      myHhdoutVec2_1 = _GEN[io_hh_cnt[1:0] - 2'h2];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:66, :188:30, :191:{44,64}
+  wire [63:0]      myHhdoutVec2_0 = _GEN[io_hh_cnt[1:0] - 2'h1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:166:66, :188:30, :191:{44,64}
   wire [255:0]     myHhdoutWire =
-    {myHhdoutVec2_3, myHhdoutVec2_2, myHhdoutVec2_1, myHhdoutVec2_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:188:36, :194:36, :195:42
-  reg  [255:0]     hh_dout_update_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:201:42
-  wire [255:0]     _hh_dout_update_T_1 = hh_dout_update_REG >> {234'h0, io_hh_cnt, 6'h0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:174:65, :201:{42,56}
-  assign io_hh_dout_0 = io_rst ? 256'h0 : _u_hh_datapath_io_hh_dout;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:125:28, :241:38, :266:25, :267:27, :269:24
-  always @(posedge io_clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-    if (io_rst) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-      hh0_din_rdy <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:34, :106:40
-      hh1_din_rdy <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:105:34, :106:40
-      hh_din_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:33, :125:28
-      hh_din <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:111:29, :125:28
+    {myHhdoutVec2_3, myHhdoutVec2_2, myHhdoutVec2_1, myHhdoutVec2_0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:188:30, :194:30, :195:36
+  reg  [255:0]     hh_dout_update_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:201:34
+  wire [255:0]     _hh_dout_update_T_1 = hh_dout_update_REG >> {234'h0, io_hh_cnt, 6'h0};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:174:57, :201:{34,48}
+  assign io_hh_dout_0 = io_rst ? 256'h0 : _u_hh_datapath_io_hh_dout;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:125:20, :241:32, :266:19, :267:19, :269:20
+  always @(posedge io_clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+    if (io_rst) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+      hh0_din_rdy <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:28, :106:34
+      hh1_din_rdy <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:105:28, :106:34
+      hh_din_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:27, :125:20
+      hh_din <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:111:23, :125:20
     end
-    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-      automatic logic _GEN_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:136:30
-      _GEN_0 = hh0_din_rdy | hh1_din_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:34, :105:34, :136:30
-      hh0_din_rdy <= io_dmx0_mem_enb & io_rtri_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:34, :128:49
-      hh1_din_rdy <= io_dmx1_mem_enb & io_rtri_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:105:34, :129:49
-      if (_GEN_0)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:136:30
-        hh_din_reg <= _hh_din_update_T_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:33, :174:38
-      else if (io_hh_st) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-        if (io_rst)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-          hh_din_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:33, :125:28
-        else if (io_hh_st)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:21
-          hh_din_reg <= _hh_dout_update_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:33, :201:56
+    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+      automatic logic _GEN_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:136:24
+      _GEN_0 = hh0_din_rdy | hh1_din_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:28, :105:28, :136:24
+      hh0_din_rdy <= io_dmx0_mem_enb & io_rtri_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:104:28, :128:41
+      hh1_din_rdy <= io_dmx1_mem_enb & io_rtri_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:105:28, :129:41
+      if (_GEN_0)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:136:24
+        hh_din_reg <= _hh_din_update_T_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:27, :174:30
+      else if (io_hh_st) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+        if (io_rst)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+          hh_din_reg <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:27, :125:20
+        else if (io_hh_st)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:50:17
+          hh_din_reg <= _hh_dout_update_T_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:27, :201:48
       end
       hh_din <=
         _GEN_0
           ? _hh_din_update_T_2
           : io_hh_st
               ? (io_rst ? 256'h0 : io_hh_st ? _hh_dout_update_T_1 : hh_din_reg)
-              : hh_din_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:33, :111:29, :125:28, :136:{30,44}, :137:29, :138:33, :139:29, :142:29, :174:38, :198:25, :199:32, :200:33, :201:{32,56}, :204:32
+              : hh_din_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:108:27, :111:23, :125:20, :136:{24,38}, :137:21, :138:27, :139:21, :142:21, :174:30, :198:19, :199:24, :200:27, :201:{24,48}, :204:24
     end
-    hh_dout_update_REG <= myHhdoutWire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:194:36, :201:42
+    hh_dout_update_REG <= myHhdoutWire;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:194:30, :201:34
   end // always @(posedge)
-  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
+  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
     `endif // FIRRTL_BEFORE_INITIAL
-    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-      automatic logic [31:0] _RANDOM[0:24];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
+    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+      automatic logic [31:0] _RANDOM[0:24];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
       `endif // INIT_RANDOM_PROLOG_
-      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
+      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
         for (logic [4:0] i = 5'h0; i < 5'h19; i += 5'h1) begin
-          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-        hh0_din_rdy = _RANDOM[5'h0][0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :104:34
-        hh1_din_rdy = _RANDOM[5'h0][1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :104:34, :105:34
+          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+        hh0_din_rdy = _RANDOM[5'h0][0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :104:28
+        hh1_din_rdy = _RANDOM[5'h0][1];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :104:28, :105:28
         hh_din_reg =
           {_RANDOM[5'h0][31:3],
            _RANDOM[5'h1],
@@ -9745,7 +9745,7 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
            _RANDOM[5'h5],
            _RANDOM[5'h6],
            _RANDOM[5'h7],
-           _RANDOM[5'h8][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :104:34, :108:33
+           _RANDOM[5'h8][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :104:28, :108:27
         hh_din =
           {_RANDOM[5'h8][31:3],
            _RANDOM[5'h9],
@@ -9755,7 +9755,7 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
            _RANDOM[5'hD],
            _RANDOM[5'hE],
            _RANDOM[5'hF],
-           _RANDOM[5'h10][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :108:33, :111:29
+           _RANDOM[5'h10][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :108:27, :111:23
         hh_dout_update_REG =
           {_RANDOM[5'h10][31:3],
            _RANDOM[5'h11],
@@ -9765,14 +9765,14 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
            _RANDOM[5'h15],
            _RANDOM[5'h16],
            _RANDOM[5'h17],
-           _RANDOM[5'h18][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :111:29, :201:42
+           _RANDOM[5'h18][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :111:23, :201:34
       `endif // RANDOMIZE_REG_INIT
     end // initial
-    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
-      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11
+    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
+      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  simple_dual_19 simple_dual_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:207:31
+  simple_dual_19 simple_dual_19 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:207:25
     .reset    (io_rst),
     .io_clka  (io_clk),
     .io_clkb  (io_clk),
@@ -9784,7 +9784,7 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
     .io_dina  (io_dmx0_mem_dina),
     .io_doutb (_simple_dual_19_io_doutb)
   );
-  simple_dual_19 simple_dual_19_1 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:219:31
+  simple_dual_19 simple_dual_19_1 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:219:25
     .reset    (io_rst),
     .io_clka  (io_clk),
     .io_clkb  (io_clk),
@@ -9796,7 +9796,7 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
     .io_dina  (io_dmx1_mem_dina),
     .io_doutb (_simple_dual_19_1_io_doutb)
   );
-  simple_dual_19 simple_dual_19_2 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:230:31
+  simple_dual_19 simple_dual_19_2 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:230:25
     .reset    (io_rst),
     .io_clka  (io_clk),
     .io_clkb  (io_clk),
@@ -9808,7 +9808,7 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
     .io_dina  (io_rtri_mem_dina),
     .io_doutb (_simple_dual_19_2_io_doutb)
   );
-  hh_datapath_1 u_hh_datapath (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:241:38
+  hh_datapath_1 u_hh_datapath (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:241:32
     .io_clk     (io_clk),
     .io_rst     (io_rst),
     .io_hh_cnt  (io_hh_cnt),
@@ -9824,118 +9824,118 @@ module hh_core(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\sca
     .io_d5_vld  (io_d5_vld),
     .io_yj_sft  (io_yj_sft),
     .io_d4_sft  (io_d4_sft),
-    .io_hh_din  (hh_din),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:111:29
+    .io_hh_din  (hh_din),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:111:23
     .io_hh_dout (_u_hh_datapath_io_hh_dout)
   );
-  assign io_dmx0_mem_doutb = _simple_dual_19_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :207:31
-  assign io_dmx1_mem_doutb = _simple_dual_19_1_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :219:31
-  assign io_rtri_mem_doutb = _simple_dual_19_2_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :230:31
-  assign io_hh_dout = io_hh_dout_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:11, :266:25, :267:27, :269:24
+  assign io_dmx0_mem_doutb = _simple_dual_19_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :207:25
+  assign io_dmx1_mem_doutb = _simple_dual_19_1_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :219:25
+  assign io_rtri_mem_doutb = _simple_dual_19_2_io_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :230:25
+  assign io_hh_dout = io_hh_dout_0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\hh_core.scala:49:9, :266:19, :267:19, :269:20
 endmodule
 
-module tsqr_st4_1c(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-  input          clk,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:49:17
-                 rst,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:50:17
-  input  [15:0]  tile_no,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:52:21
-  input  [31:0]  e_upg,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:53:19
-                 e_ug,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:54:18
-                 e_pg,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:55:18
-  input          pg_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:56:22
-                 ug_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:57:22
-                 e_pg_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:58:24
-                 e_upg_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:59:25
-                 e_ug_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:60:24
-  input  [127:0] pg_i,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:61:18
-                 ug_i,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:62:18
-  input  [2:0]   dma_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:63:25
-  input          dma_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:64:27
-  output [127:0] dma_mem_doutb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:65:27
-  output         mem0_fi_c_0,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:66:23
-                 mem1_fi_c_0,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:67:23
-                 tsqr_fi,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:68:21
-  output [15:0]  mx_cnt	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:69:18
+module tsqr_st4_1c(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+  input          clk,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:156:17
+                 rst,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:157:17
+  input  [15:0]  tile_no,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:159:21
+  input  [31:0]  e_upg,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:160:19
+                 e_ug,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:161:18
+                 e_pg,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:162:18
+  input          pg_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:163:22
+                 ug_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:164:22
+                 e_pg_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:165:24
+                 e_upg_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:166:25
+                 e_ug_ready,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:167:24
+  input  [127:0] pg_i,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:168:18
+                 ug_i,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:169:18
+  input  [2:0]   dma_mem_enb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:170:25
+  input          dma_mem_addrb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:171:27
+  output [127:0] dma_mem_doutb,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:172:27
+  output         mem0_fi_c_0,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:173:23
+                 mem1_fi_c_0,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:174:23
+                 tsqr_fi,	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:175:21
+  output [15:0]  mx_cnt	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:176:18
 );
 
-  wire [127:0] _hh_core_io_dmx0_mem_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1797:47
-  wire [127:0] _hh_core_io_dmx1_mem_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1797:47
-  wire [127:0] _hh_core_io_rtri_mem_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1797:47
-  wire [255:0] _hh_core_io_hh_dout;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1797:47
-  wire [15:0]  _fsms_0_hh_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d1_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d1_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d2_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_vk1_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d3_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d3_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_tk_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d4_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d5_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d5_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_yj_sft;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_d4_sft;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_hh_st;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_mem0_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_mem1_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_tsqr_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_dmx0_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire [15:0]  _fsms_0_dmx0_mem_wea;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_dmx0_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_dmx0_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_dmx0_mem_addrb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_dmx1_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire [15:0]  _fsms_0_dmx1_mem_wea;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_dmx1_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_dmx1_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_dmx1_mem_addrb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_rtri_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire [15:0]  _fsms_0_rtri_mem_wea;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_rtri_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_rtri_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _fsms_0_rtri_mem_addrb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-  wire         _pp_io_tile2_tsqr_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22
-  wire [2:0]   _pp_io_tile2_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22
-  wire [63:0]  _pp_io_tile2_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22
-  wire [127:0] _pp_io_tile2_mem_dina;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22
-  reg  [2:0]   dma_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32
-  reg  [63:0]  dma_mem_wea;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:103:32
-  reg  [63:0]  dma_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:104:34
-  reg  [255:0] dma_mem_dina;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:105:33
-  reg          tsqr_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:106:28
-  reg          tsqr_fi_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:204:27
-  wire         _tsqr_fi_output = tsqr_en & tsqr_fi_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:106:28, :203:23, :204:{17,27}, :206:17
-  always @(posedge clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:49:17
-    if (rst) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:49:17
-      dma_mem_ena <= 3'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32
-      dma_mem_wea <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:103:32
-      dma_mem_addra <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:103:32, :104:34
-      dma_mem_dina <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:105:33
-      tsqr_en <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:106:28
+  wire [127:0] _hh_core_io_dmx0_mem_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1904:47
+  wire [127:0] _hh_core_io_dmx1_mem_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1904:47
+  wire [127:0] _hh_core_io_rtri_mem_doutb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1904:47
+  wire [255:0] _hh_core_io_hh_dout;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1904:47
+  wire [15:0]  _fsms_0_hh_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d1_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d1_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d2_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_vk1_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d3_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d3_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_tk_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d4_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d5_rdy;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d5_vld;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_yj_sft;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_d4_sft;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_hh_st;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_mem0_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_mem1_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_tsqr_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_dmx0_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire [15:0]  _fsms_0_dmx0_mem_wea;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_dmx0_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_dmx0_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_dmx0_mem_addrb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_dmx1_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire [15:0]  _fsms_0_dmx1_mem_wea;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_dmx1_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_dmx1_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_dmx1_mem_addrb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_rtri_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire [15:0]  _fsms_0_rtri_mem_wea;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_rtri_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_rtri_mem_enb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _fsms_0_rtri_mem_addrb;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+  wire         _pp_io_tile2_tsqr_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22
+  wire [2:0]   _pp_io_tile2_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22
+  wire [63:0]  _pp_io_tile2_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22
+  wire [127:0] _pp_io_tile2_mem_dina;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22
+  reg  [2:0]   dma_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32
+  reg  [63:0]  dma_mem_wea;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:210:32
+  reg  [63:0]  dma_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:211:34
+  reg  [255:0] dma_mem_dina;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:212:33
+  reg          tsqr_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:213:28
+  reg          tsqr_fi_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:311:27
+  wire         _tsqr_fi_output = tsqr_en & tsqr_fi_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:213:28, :310:23, :311:{17,27}, :313:17
+  always @(posedge clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:156:17
+    if (rst) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:156:17
+      dma_mem_ena <= 3'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32
+      dma_mem_wea <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:210:32
+      dma_mem_addra <= 64'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:210:32, :211:34
+      dma_mem_dina <= 256'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:212:33
+      tsqr_en <= 1'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:213:28
     end
-    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:49:17
-      dma_mem_ena <= _pp_io_tile2_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22, :102:32
-      dma_mem_wea <= 64'hFFFFFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:103:32, :111:20
-      dma_mem_addra <= _pp_io_tile2_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22, :104:34
-      dma_mem_dina <= {128'h0, _pp_io_tile2_mem_dina};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22, :105:33, :112:21, :1220:32
-      tsqr_en <= _pp_io_tile2_tsqr_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22, :106:28
+    else begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:156:17
+      dma_mem_ena <= _pp_io_tile2_mem_ena;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22, :209:32
+      dma_mem_wea <= 64'hFFFFFFFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:210:32, :218:20
+      dma_mem_addra <= _pp_io_tile2_mem_addra;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22, :211:34
+      dma_mem_dina <= {128'h0, _pp_io_tile2_mem_dina};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22, :212:33, :219:21, :1327:32
+      tsqr_en <= _pp_io_tile2_tsqr_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22, :213:28
     end
-    tsqr_fi_REG <= _fsms_0_tsqr_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:204:27, :1796:46
+    tsqr_fi_REG <= _fsms_0_tsqr_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:311:27, :1903:46
   end // always @(posedge)
-  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
+  `ifdef ENABLE_INITIAL_REG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+      `FIRRTL_BEFORE_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
     `endif // FIRRTL_BEFORE_INITIAL
-    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-      automatic logic [31:0] _RANDOM[0:12];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
+    initial begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+      automatic logic [31:0] _RANDOM[0:12];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+      `ifdef INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+        `INIT_RANDOM_PROLOG_	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
       `endif // INIT_RANDOM_PROLOG_
-      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
+      `ifdef RANDOMIZE_REG_INIT	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
         for (logic [3:0] i = 4'h0; i < 4'hD; i += 4'h1) begin
-          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-        dma_mem_ena = _RANDOM[4'h0][2:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :102:32
-        dma_mem_wea = {_RANDOM[4'h0][31:3], _RANDOM[4'h1], _RANDOM[4'h2][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :102:32, :103:32
-        dma_mem_addra = {_RANDOM[4'h2][31:3], _RANDOM[4'h3], _RANDOM[4'h4][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :103:32, :104:34
+          _RANDOM[i] = `RANDOM;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+        end	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+        dma_mem_ena = _RANDOM[4'h0][2:0];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :209:32
+        dma_mem_wea = {_RANDOM[4'h0][31:3], _RANDOM[4'h1], _RANDOM[4'h2][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :209:32, :210:32
+        dma_mem_addra = {_RANDOM[4'h2][31:3], _RANDOM[4'h3], _RANDOM[4'h4][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :210:32, :211:34
         dma_mem_dina =
           {_RANDOM[4'h4][31:3],
            _RANDOM[4'h5],
@@ -9945,20 +9945,20 @@ module tsqr_st4_1c(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\
            _RANDOM[4'h9],
            _RANDOM[4'hA],
            _RANDOM[4'hB],
-           _RANDOM[4'hC][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :104:34, :105:33
-        tsqr_en = _RANDOM[4'hC][3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :105:33, :106:28
-        tsqr_fi_REG = _RANDOM[4'hC][5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :105:33, :204:27
+           _RANDOM[4'hC][2:0]};	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :211:34, :212:33
+        tsqr_en = _RANDOM[4'hC][3];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :212:33, :213:28
+        tsqr_fi_REG = _RANDOM[4'hC][5];	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :212:33, :311:27
       `endif // RANDOMIZE_REG_INIT
     end // initial
-    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
-      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7
+    `ifdef FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
+      `FIRRTL_AFTER_INITIAL	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  tile2 pp (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:85:22
+  tile2 pp (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:192:22
     .clock                (clk),
     .reset                (rst),
-    .io_tile2_mem0_fi     (_fsms_0_mem0_fi),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_tile2_mem1_fi     (_fsms_0_mem1_fi),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
+    .io_tile2_mem0_fi     (_fsms_0_mem0_fi),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_tile2_mem1_fi     (_fsms_0_mem1_fi),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
     .io_tile2_tsqr_en     (_pp_io_tile2_tsqr_en),
     .io_tile2_e_upg       (e_upg),
     .io_tile2_e_ug        (e_ug),
@@ -9971,13 +9971,13 @@ module tsqr_st4_1c(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\
     .io_tile2_mem_ena     (_pp_io_tile2_mem_ena),
     .io_tile2_mem_addra   (_pp_io_tile2_mem_addra),
     .io_tile2_mem_dina    (_pp_io_tile2_mem_dina),
-    .io_tsqr_fi           (_tsqr_fi_output)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:203:23, :204:17, :206:17
+    .io_tsqr_fi           (_tsqr_fi_output)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:310:23, :311:17, :313:17
   );
-  fsm fsms_0 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
+  fsm fsms_0 (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
     .clk            (clk),
     .rst            (rst),
-    .tsqr_en        (tsqr_en),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:106:28
-    .tile_no        (tsqr_en ? tile_no - 16'h1 : 16'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:106:28, :178:29, :183:{36,62}, :199:28
+    .tsqr_en        (tsqr_en),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:213:28
+    .tile_no        (tsqr_en ? tile_no - 16'h1 : 16'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:213:28, :285:29, :290:{36,62}, :306:28
     .hh_cnt         (_fsms_0_hh_cnt),
     .mx_cnt         (mx_cnt),
     .d1_rdy         (_fsms_0_d1_rdy),
@@ -10012,52 +10012,52 @@ module tsqr_st4_1c(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\
     .rtri_mem_enb   (_fsms_0_rtri_mem_enb),
     .rtri_mem_addrb (_fsms_0_rtri_mem_addrb)
   );
-  hh_core hh_core (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1797:47
+  hh_core hh_core (	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1904:47
     .io_clk            (clk),
     .io_rst            (rst),
-    .io_hh_cnt         (_fsms_0_hh_cnt),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d1_rdy         (_fsms_0_d1_rdy),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d1_vld         (_fsms_0_d1_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d2_vld         (_fsms_0_d2_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_vk1_vld        (_fsms_0_vk1_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d3_rdy         (_fsms_0_d3_rdy),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d3_vld         (_fsms_0_d3_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_tk_vld         (_fsms_0_tk_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d4_rdy         (_fsms_0_d4_rdy),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d5_rdy         (_fsms_0_d5_rdy),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d5_vld         (_fsms_0_d5_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_yj_sft         (_fsms_0_yj_sft),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_d4_sft         (_fsms_0_d4_sft),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_hh_st          (_fsms_0_hh_st),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1796:46
-    .io_dmx0_mem_ena   (dma_mem_ena[1] | _fsms_0_dmx0_mem_ena),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :222:{57,88}, :1796:46
-    .io_dmx0_mem_wea   (dma_mem_ena[1] ? dma_mem_wea[15:0] : _fsms_0_dmx0_mem_wea),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :103:32, :222:57, :302:31, :318:61, :319:45, :321:45, :1796:46
-    .io_dmx0_mem_addra (dma_mem_ena[1] ? dma_mem_addra[0] : _fsms_0_dmx0_mem_addra),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :104:34, :222:57, :758:33, :776:61, :777:47, :779:47, :1796:46
+    .io_hh_cnt         (_fsms_0_hh_cnt),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d1_rdy         (_fsms_0_d1_rdy),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d1_vld         (_fsms_0_d1_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d2_vld         (_fsms_0_d2_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_vk1_vld        (_fsms_0_vk1_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d3_rdy         (_fsms_0_d3_rdy),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d3_vld         (_fsms_0_d3_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_tk_vld         (_fsms_0_tk_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d4_rdy         (_fsms_0_d4_rdy),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d5_rdy         (_fsms_0_d5_rdy),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d5_vld         (_fsms_0_d5_vld),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_yj_sft         (_fsms_0_yj_sft),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_d4_sft         (_fsms_0_d4_sft),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_hh_st          (_fsms_0_hh_st),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1903:46
+    .io_dmx0_mem_ena   (dma_mem_ena[1] | _fsms_0_dmx0_mem_ena),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :329:{57,88}, :1903:46
+    .io_dmx0_mem_wea   (dma_mem_ena[1] ? dma_mem_wea[15:0] : _fsms_0_dmx0_mem_wea),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :210:32, :329:57, :409:31, :425:61, :426:45, :428:45, :1903:46
+    .io_dmx0_mem_addra (dma_mem_ena[1] ? dma_mem_addra[0] : _fsms_0_dmx0_mem_addra),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :211:34, :329:57, :865:33, :883:61, :884:47, :886:47, :1903:46
     .io_dmx0_mem_dina
       (dma_mem_ena[1]
          ? dma_mem_dina[127:0]
-         : _fsms_0_dmx0_mem_ena ? _hh_core_io_hh_dout[127:0] : 128'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :105:33, :222:57, :1216:32, :1220:32, :1238:61, :1239:46, :1240:56, :1241:{58,75}, :1243:46, :1796:46, :1797:47
-    .io_dmx0_mem_enb   (dma_mem_enb[1] | _fsms_0_dmx0_mem_enb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1684:{43,68}, :1796:46
-    .io_dmx0_mem_addrb (dma_mem_enb[1] ? dma_mem_addrb : _fsms_0_dmx0_mem_addrb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1684:43, :1703:50, :1704:33, :1706:33, :1796:46
+         : _fsms_0_dmx0_mem_ena ? _hh_core_io_hh_dout[127:0] : 128'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :212:33, :329:57, :1323:32, :1327:32, :1345:61, :1346:46, :1347:56, :1348:{58,75}, :1350:46, :1903:46, :1904:47
+    .io_dmx0_mem_enb   (dma_mem_enb[1] | _fsms_0_dmx0_mem_enb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1791:{43,68}, :1903:46
+    .io_dmx0_mem_addrb (dma_mem_enb[1] ? dma_mem_addrb : _fsms_0_dmx0_mem_addrb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1791:43, :1810:50, :1811:33, :1813:33, :1903:46
     .io_dmx0_mem_doutb (_hh_core_io_dmx0_mem_doutb),
-    .io_dmx1_mem_ena   (dma_mem_ena[0] | _fsms_0_dmx1_mem_ena),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :263:{57,80}, :1796:46
-    .io_dmx1_mem_wea   (dma_mem_ena[0] ? dma_mem_wea[15:0] : _fsms_0_dmx1_mem_wea),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :103:32, :263:57, :302:31, :540:59, :541:45, :543:45, :1796:46
-    .io_dmx1_mem_addra (dma_mem_ena[0] ? dma_mem_addra[0] : _fsms_0_dmx1_mem_addra),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :104:34, :263:57, :758:33, :998:59, :999:47, :1001:47, :1796:46
+    .io_dmx1_mem_ena   (dma_mem_ena[0] | _fsms_0_dmx1_mem_ena),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :370:{57,80}, :1903:46
+    .io_dmx1_mem_wea   (dma_mem_ena[0] ? dma_mem_wea[15:0] : _fsms_0_dmx1_mem_wea),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :210:32, :370:57, :409:31, :647:59, :648:45, :650:45, :1903:46
+    .io_dmx1_mem_addra (dma_mem_ena[0] ? dma_mem_addra[0] : _fsms_0_dmx1_mem_addra),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :211:34, :370:57, :865:33, :1105:59, :1106:47, :1108:47, :1903:46
     .io_dmx1_mem_dina
       (dma_mem_ena[0]
          ? dma_mem_dina[127:0]
-         : _fsms_0_dmx1_mem_ena ? _hh_core_io_hh_dout[127:0] : 128'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :105:33, :263:57, :1216:32, :1220:32, :1464:59, :1465:46, :1466:56, :1467:{58,75}, :1469:46, :1796:46, :1797:47
-    .io_dmx1_mem_enb   (dma_mem_enb[0] | _fsms_0_dmx1_mem_enb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1685:{43,70}, :1796:46
-    .io_dmx1_mem_addrb (dma_mem_enb[0] ? dma_mem_addrb : _fsms_0_dmx1_mem_addrb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1685:43, :1711:52, :1712:33, :1714:33, :1796:46
+         : _fsms_0_dmx1_mem_ena ? _hh_core_io_hh_dout[127:0] : 128'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :212:33, :370:57, :1323:32, :1327:32, :1571:59, :1572:46, :1573:56, :1574:{58,75}, :1576:46, :1903:46, :1904:47
+    .io_dmx1_mem_enb   (dma_mem_enb[0] | _fsms_0_dmx1_mem_enb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1792:{43,70}, :1903:46
+    .io_dmx1_mem_addrb (dma_mem_enb[0] ? dma_mem_addrb : _fsms_0_dmx1_mem_addrb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1792:43, :1818:52, :1819:33, :1821:33, :1903:46
     .io_dmx1_mem_doutb (_hh_core_io_dmx1_mem_doutb),
-    .io_rtri_mem_ena   (dma_mem_ena[2] | _fsms_0_rtri_mem_ena),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :211:{43,68}, :1796:46
-    .io_rtri_mem_wea   (dma_mem_ena[2] ? dma_mem_wea[15:0] : _fsms_0_rtri_mem_wea),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :103:32, :211:43, :301:50, :302:31, :304:31, :1796:46
-    .io_rtri_mem_addra (dma_mem_ena[2] ? dma_mem_addra[0] : _fsms_0_rtri_mem_addra),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :104:34, :211:43, :757:50, :758:33, :760:33, :1796:46
+    .io_rtri_mem_ena   (dma_mem_ena[2] | _fsms_0_rtri_mem_ena),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :318:{43,68}, :1903:46
+    .io_rtri_mem_wea   (dma_mem_ena[2] ? dma_mem_wea[15:0] : _fsms_0_rtri_mem_wea),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :210:32, :318:43, :408:50, :409:31, :411:31, :1903:46
+    .io_rtri_mem_addra (dma_mem_ena[2] ? dma_mem_addra[0] : _fsms_0_rtri_mem_addra),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :211:34, :318:43, :864:50, :865:33, :867:33, :1903:46
     .io_rtri_mem_dina
       (dma_mem_ena[2]
          ? dma_mem_dina[127:0]
-         : _fsms_0_rtri_mem_ena ? _hh_core_io_hh_dout[255:128] : 128'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:102:32, :105:33, :211:43, :1215:50, :1216:32, :1217:42, :1218:{32,47}, :1220:32, :1796:46, :1797:47
-    .io_rtri_mem_enb   (dma_mem_enb[2] | _fsms_0_rtri_mem_enb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1683:{43,68}, :1796:46
-    .io_rtri_mem_addrb (dma_mem_enb[2] ? dma_mem_addrb : _fsms_0_rtri_mem_addrb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1683:43, :1695:50, :1696:33, :1698:33, :1796:46
+         : _fsms_0_rtri_mem_ena ? _hh_core_io_hh_dout[255:128] : 128'h0),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:209:32, :212:33, :318:43, :1322:50, :1323:32, :1324:42, :1325:{32,47}, :1327:32, :1903:46, :1904:47
+    .io_rtri_mem_enb   (dma_mem_enb[2] | _fsms_0_rtri_mem_enb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1790:{43,68}, :1903:46
+    .io_rtri_mem_addrb (dma_mem_enb[2] ? dma_mem_addrb : _fsms_0_rtri_mem_addrb),	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:1790:43, :1802:50, :1803:33, :1805:33, :1903:46
     .io_rtri_mem_doutb (_hh_core_io_rtri_mem_doutb),
     .io_hh_dout        (_hh_core_io_hh_dout)
   );
@@ -10068,10 +10068,10 @@ module tsqr_st4_1c(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\
           ? _hh_core_io_rtri_mem_doutb
           : dma_mem_enb[1]
               ? _hh_core_io_dmx0_mem_doutb
-              : dma_mem_enb[0] ? _hh_core_io_dmx1_mem_doutb : 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :1220:32, :1683:43, :1684:43, :1685:43, :1723:14, :1724:23, :1725:43, :1726:27, :1727:40, :1728:27, :1729:43, :1730:27, :1732:27, :1797:47
-  assign mem0_fi_c_0 = _fsms_0_mem0_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :1796:46
-  assign mem1_fi_c_0 = _fsms_0_mem1_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :1796:46
-  assign tsqr_fi = _tsqr_fi_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:48:7, :203:23, :204:17, :206:17
+              : dma_mem_enb[0] ? _hh_core_io_dmx1_mem_doutb : 128'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :1327:32, :1790:43, :1791:43, :1792:43, :1830:14, :1831:23, :1832:43, :1833:27, :1834:40, :1835:27, :1836:43, :1837:27, :1839:27, :1904:47
+  assign mem0_fi_c_0 = _fsms_0_mem0_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :1903:46
+  assign mem1_fi_c_0 = _fsms_0_mem1_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :1903:46
+  assign tsqr_fi = _tsqr_fi_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_mc.scala:155:7, :310:23, :311:17, :313:17
 endmodule
 
 

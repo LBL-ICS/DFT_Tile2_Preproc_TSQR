@@ -1,8 +1,24 @@
 ===============================          0 Column Results    ======================================
-Item0   error re percent: 0.019281%, golden re result: c1c43079, dut re result: c1c426ca
-Item0   error im percent: 0.018632%, golden im result: c0f66b07, dut im result: c0f65f46
+Item0   error re percent: 0.055270%, golden re result: bed8e2b2, dut re result: bed8c402
+Item0   error im percent: 0.014012%, golden im result: c0b614ae, dut im result: c0b60e26
 ===============================          1 Column Results    ======================================
-Item0   error re percent: 0.016617%, golden re result: c1a242ad, dut re result: c1a23bc6
-Item0   error im percent: 0.031667%, golden im result: c11b1c1f, dut im result: c11b0f8c
-Item1   error re percent: 0.030505%, golden re result: c132935e, dut re result: c132856c
-Item1   error im percent: 0.015249%, golden im result: c0bc6bf9, dut im result: c0bc649e
+Item0   error re percent: 0.038224%, golden re result: 3ed9a43e, dut re result: 3ed98ef2
+Item0   error im percent: 0.019652%, golden im result: 3f92ab09, dut im result: 3f92a3a8
+Item1   error re percent: 0.019656%, golden re result: bf9c1d4d, dut re result: bf9c1572
+Item1   error im percent: 0.023578%, golden im result: c0c10ce5, dut im result: c0c1013e
+===============================          2 Column Results    ======================================
+Item0   error re percent: 0.013270%, golden re result: bfe1d5d6, dut re result: bfe1ce2a
+Item0   error im percent: 0.008808%, golden im result: 3fa280d9, dut im result: 3fa27d2f
+Item1   error re percent: 0.002832%, golden re result: bfb477a5, dut re result: bfb47656
+Item1   error im percent: 0.011544%, golden im result: bf8580e7, dut im result: bf8584d9
+Item2   error re percent: 0.023764%, golden re result: c0889339, dut re result: c0888aea
+Item2   error im percent: 0.019967%, golden im result: 4050dbd7, dut im result: 4050d12a
+===============================          3 Column Results    ======================================
+Item0   error re percent: 0.071385%, golden re result: bf09ef65, dut re result: bf09d630
+Item0   error im percent: 0.052638%, golden im result: bf19fc04, dut im result: bf19e744
+Item1   error re percent: 0.085565%, golden re result: bf4bb970, dut re result: bf4be610
+Item1   error im percent: 0.105059%, golden im result: 3ee65d61, dut im result: 3ee61f6c
+Item2   error re percent: 0.097084%, golden re result: bf124b8c, dut re result: bf122730
+Item2   error im percent: 0.010229%, golden im result: 3f068d0f, dut im result: 3f069095
+Item3   error re percent: 0.042639%, golden re result: bfbf8fbb, dut re result: bfbf7ad2
+Item3   error im percent: 0.030421%, golden im result: c0ba4a4c, dut im result: c0ba3bca

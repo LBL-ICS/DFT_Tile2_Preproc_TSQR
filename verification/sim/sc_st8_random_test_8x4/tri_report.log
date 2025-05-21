@@ -1,12 +1,28 @@
 ==========================================
 Single-core Simulation
-Test case: ST4_RANDOM_TEST_12X2
+Test case: ST8_RANDOM_TEST_8X4
 ==========================================
 ===============================          0 Column Results    ======================================
-Item0 Re Comp Pass! error real percent: 0.019281%, golden real result: -24.523668, dut real result: -24.518940
-Item0 Im  Comp Pass! error imaginary percent: 0.018632%, golden imaginary result: -7.700565, dut imaginary result: -7.699130
+Item0 Re Comp Pass! error real percent: 0.055270%, golden real result: -0.423605, dut real result: -0.423370
+Item0 Im  Comp Pass! error imaginary percent: 0.014012%, golden imaginary result: -5.690024, dut imaginary result: -5.689227
 ===============================          1 Column Results    ======================================
-Item0 Re Comp Pass! error real percent: 0.016617%, golden real result: -20.282557, dut real result: -20.279186
-Item0 Im  Comp Pass! error imaginary percent: 0.031667%, golden imaginary result: -9.694366, dut imaginary result: -9.691296
-Item1 Re Comp Pass! error real percent: 0.030505%, golden real result: -11.160978, dut real result: -11.157574
-Item1 Im  Comp Pass! error imaginary percent: 0.015249%, golden imaginary result: -5.888180, dut imaginary result: -5.887282
+Item0 Re Comp Pass! error real percent: 0.038224%, golden real result: 0.425081, dut real result: 0.424919
+Item0 Im  Comp Pass! error imaginary percent: 0.019652%, golden imaginary result: 1.145845, dut imaginary result: 1.145619
+Item1 Re Comp Pass! error real percent: 0.019656%, golden real result: -1.219644, dut real result: -1.219404
+Item1 Im  Comp Pass! error imaginary percent: 0.023578%, golden imaginary result: -6.032824, dut imaginary result: -6.031402
+===============================          2 Column Results    ======================================
+Item0 Re Comp Pass! error real percent: 0.013270%, golden real result: -1.764338, dut real result: -1.764104
+Item0 Im  Comp Pass! error imaginary percent: 0.008808%, golden imaginary result: 1.269557, dut imaginary result: 1.269445
+Item1 Re Comp Pass! error real percent: 0.002832%, golden real result: -1.409901, dut real result: -1.409861
+Item1 Im  Comp Pass! error imaginary percent: 0.011544%, golden imaginary result: -1.042996, dut imaginary result: -1.043117
+Item2 Re Comp Pass! error real percent: 0.023764%, golden real result: -4.267972, dut real result: -4.266957
+Item2 Im  Comp Pass! error imaginary percent: 0.019967%, golden imaginary result: 3.263418, dut imaginary result: 3.262766
+===============================          3 Column Results    ======================================
+Item0 Re Comp Pass! error real percent: 0.071385%, golden real result: -0.538809, dut real result: -0.538424
+Item0 Im  Comp Pass! error imaginary percent: 0.052638%, golden imaginary result: -0.601502, dut imaginary result: -0.601185
+Item1 Re Comp Pass! error real percent: 0.085565%, golden real result: -0.795798, dut real result: -0.796479
+Item1 Im  Comp Pass! error imaginary percent: 0.105059%, golden imaginary result: 0.449931, dut imaginary result: 0.449458
+Item2 Re Comp Pass! error real percent: 0.097084%, golden real result: -0.571465, dut real result: -0.570910
+Item2 Im  Comp Pass! error imaginary percent: 0.010229%, golden imaginary result: 0.525590, dut imaginary result: 0.525644
+Item3 Re Comp Pass! error real percent: 0.042639%, golden real result: -1.496574, dut real result: -1.495936
+Item3 Im  Comp Pass! error imaginary percent: 0.030421%, golden imaginary result: -5.821569, dut imaginary result: -5.819798

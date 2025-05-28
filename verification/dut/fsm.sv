@@ -107,7 +107,7 @@ module fsm(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\
   reg           tr_cnt_en;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:151:28
   reg  [15:0]   tr_cnt;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:152:25
   wire          rd_mem_fst = ~rst & (tsqr_en & ~hh_en | ~nxt_hh_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:94:24, :95:28, :153:30, :159:18, :160:24, :165:{24,37,40,48,51}
-  wire          wr_mem_st = ~rst & hh_en & tr_cnt == 16'hFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:94:24, :124:42, :152:25, :159:18, :160:24, :161:23, :165:24, :166:{23,42}
+  wire          wr_mem_st = ~rst & hh_en & tr_cnt == 16'hFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:94:24, :124:46, :152:25, :159:18, :160:24, :161:23, :165:24, :166:{23,42}
   wire          rd_mem_st = ~rst & hh_en & cnt == 16'hC8;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:94:24, :111:22, :159:18, :160:24, :163:23, :165:24, :168:{23,39}
   wire [15:0]   _tr_cy_T = 16'h100 - _hh_cnt_output;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:140:18, :142:20, :146:20, :175:45, :339:64
   wire [15:0]   tr_cy = rd_mem_st ? _tr_cy_T : tr_cy_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:150:28, :159:18, :163:23, :168:23, :174:24, :175:{19,45}, :177:19
@@ -149,12 +149,12 @@ module fsm(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\
   reg  [7:0]    rtri_mem_addra_reg;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:374:37
   wire          _mem1_fi_T_7 = tr_cy == 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:174:24, :175:19, :177:19, :224:38, :435:89
   wire          _mem0_fi_output =
-    ~(_mx_cnt_output[0]) & tr_cnt == tr_cy + 16'hFF & _mem1_fi_T_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:124:42, :140:18, :143:20, :147:20, :152:25, :174:24, :175:19, :177:19, :344:22, :435:{16,45,72,80,89}
+    ~(_mx_cnt_output[0]) & tr_cnt == tr_cy + 16'hFF & _mem1_fi_T_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:124:46, :140:18, :143:20, :147:20, :152:25, :174:24, :175:19, :177:19, :344:22, :435:{16,45,72,80,89}
   wire          _mem1_fi_output =
-    _mx_cnt_output[0] & tr_cnt == tr_cy + 16'hFF & _mem1_fi_T_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:124:42, :140:18, :143:20, :147:20, :152:25, :174:24, :175:19, :177:19, :344:22, :435:89, :436:{34,61,68}
+    _mx_cnt_output[0] & tr_cnt == tr_cy + 16'hFF & _mem1_fi_T_7;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:124:46, :140:18, :143:20, :147:20, :152:25, :174:24, :175:19, :177:19, :344:22, :435:89, :436:{34,61,68}
   always @(posedge clk) begin	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:31:17
     automatic logic _GEN_1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:18
-    automatic logic _GEN_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:124:42
+    automatic logic _GEN_2;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:124:46
     automatic logic hh_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:181:26
     automatic logic _GEN_3;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:204:27
     automatic logic _GEN_4;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:200:18, :201:23, :202:26, :203:23, :204:51
@@ -162,8 +162,8 @@ module fsm(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\
     automatic logic _vk1_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:227:40
     automatic logic _d3_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:229:41
     automatic logic _tk_rdy_T;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:231:40
-    _GEN_1 = cnt == 16'h1CF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:111:22, :116:18
-    _GEN_2 = _hh_cnt_output == 16'hFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:124:42, :140:18, :142:20, :146:20
+    _GEN_1 = cnt == tr_cy + 16'h1CF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:96:35, :111:22, :116:18, :174:24, :175:19, :177:19
+    _GEN_2 = _hh_cnt_output == 16'hFF;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:124:46, :140:18, :142:20, :146:20
     hh_fi = tr_cnt == tr_cy + 16'h101;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:152:25, :174:24, :175:19, :177:19, :181:{26,53}
     _GEN_3 = hh_en & cnt == 16'hCD;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:94:24, :111:22, :204:{27,34}
     _GEN_4 = rst | hh_fi;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:181:26, :200:18, :201:23, :202:26, :203:23, :204:51
@@ -271,15 +271,15 @@ module fsm(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\
         rtri_mem_addra_reg <= rtri_mem_addra_reg + 8'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:302:55, :374:37, :395:55
     end
     nxt_hh_en <= ~(rst | _mem0_fi_output | _mem1_fi_output) & (tsqr_en | nxt_hh_en);	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:95:28, :97:18, :98:23, :99:38, :100:23, :101:28, :102:23, :435:80, :436:68
-    if (_GEN_1 & _GEN_2)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:18, :124:{33,42}
+    if (_GEN_1 & _GEN_2)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:18, :124:{37,46}
       nxt_hh_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:29, :117:21
     else if (hh_en & _GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:94:24, :116:18, :126:26
       nxt_hh_cnt <= _hh_cnt_output + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:29, :127:34, :140:18, :142:20, :146:20, :224:38
     else if (rst)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:32:17
       nxt_hh_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:113:29, :117:21
-    if (_GEN_2 & _mx_cnt_output == tile_no & _GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:18, :124:42, :132:{59,74}, :140:18, :143:20, :147:20
+    if (_GEN_2 & _mx_cnt_output == tile_no & _GEN_1)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:116:18, :124:46, :132:{59,74}, :140:18, :143:20, :147:20
       nxt_mx_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:29, :117:21
-    else if (_GEN_2 & cnt == 16'h1CE)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:111:22, :124:42, :134:{57,63}
+    else if (_GEN_2 & cnt == tr_cy + 16'h1CE)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:111:22, :124:46, :134:{57,63,80}, :174:24, :175:19, :177:19
       nxt_mx_cnt <= _mx_cnt_output + 16'h1;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:29, :135:34, :140:18, :143:20, :147:20, :224:38
     else if (rst)	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:32:17
       nxt_mx_cnt <= 16'h0;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:114:29, :117:21
@@ -630,7 +630,7 @@ module fsm(	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\
   assign d5_vld =
     tr_cnt_en & tr_cnt >= tr_cy + 16'hDC - tr_cy - 16'h1 & tr_cnt < tr_cy + 16'hDB;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :151:28, :152:25, :174:24, :175:19, :177:19, :239:{39,75,87,95,103,113,153}, :245:40
   assign yjp_rdy = tr_cnt_en & tr_cnt > 16'hDB & tr_cnt < tr_cy + 16'hDC;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :151:28, :152:25, :174:24, :175:19, :177:19, :239:153, :245:{40,83,93,128}
-  assign yjp_vld = tr_cnt_en & tr_cnt < tr_cy + 16'hFF & tr_cnt > 16'hFE;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :124:42, :151:28, :152:25, :174:24, :175:19, :177:19, :246:{40,88,102,112}, :444:32
+  assign yjp_vld = tr_cnt_en & tr_cnt < tr_cy + 16'hFF & tr_cnt > 16'hFE;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :124:46, :151:28, :152:25, :174:24, :175:19, :177:19, :246:{40,88,102,112}, :444:32
   assign yj_sft = yj_sft_REG;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :250:25
   assign d4_sft = tr_cnt_en & tr_cnt > 16'h8D & tr_cnt < tr_cy + 16'hA6;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :151:28, :152:25, :174:24, :175:19, :177:19, :227:40, :248:{39,57,67,94}
   assign hh_st = ~rst & hh_en & tr_cnt == 16'h103;	// C:\\TSQR-Factorization-Design-with-Chisel-HCL\\src\\main\\scala\\tsqr_fsm.scala:29:7, :94:24, :152:25, :159:18, :160:24, :162:19, :165:24, :167:{19,38}

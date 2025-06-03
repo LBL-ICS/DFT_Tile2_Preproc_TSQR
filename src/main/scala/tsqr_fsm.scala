@@ -21,7 +21,7 @@ object Main{
   def main(args: Array[String]) : Unit = {
     val sw2 = new PrintWriter("fsm.sv")
 
-    sw2.println(getVerilogString(new chisel_fsm.fsm(32, 16, 16)))
+    sw2.println(getVerilogString(new chisel_fsm.fsm(64, 512, 16)))
     sw2.close()
   }
 }
@@ -73,25 +73,38 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
     val rtri_mem_addrb = IO(Output(UInt((log2Ceil(streaming_width)-1).W)))
 
     withClockAndReset(clk,rst){
-        val DDOT_CY = (26)+13*log2Ceil(streaming_width)//= (mult + add + 3 regs)+(adder * log(sw)) / actual is 50 cc
+        val DDOT_CY = (26)+13*log2Ceil(streaming_width)//= (mult + add + 3 regs)+(adder * log(sw))
         val HQR3_CY = 23 // sqrt
         //val HQR5_CY = 26+23+15+26+13+3// 26 comp mult + 23 sqrt + 15 div + 26 compl mult + 13 add + 3 extra regs
-        val HQR5_CY = 23+23+15+23+13+3+10 //100 + 10
+        val HQR5_CY = 23+23+15+23+13+3+10 //100+10
         val HQR7_CY = 16 -1 +10// 15 from div plus 10 from multiplier
         //val HQR7_CY = 29
-        val HQR10_CY = 23-1// complex mult
-        val HQR11_CY = 23+13-1// new axpy = compl mult + adder layer
+        val HQR10_CY = 23-1// complex mult+ 28 for 512 hh_st and hh0_din_rdy overlap
+
+      val HQR11_CY = if (streaming_width == 512) {
+        23 + 13 - 1 + 40
+      } else {
+        23 + 13 - 1
+      }
         val YJ_SFT_NO = DDOT_CY + HQR7_CY + HQR10_CY +1 //-2
         val D4_SFT_NO = HQR7_CY-1
         val MEM_RD_CY = 0
-        val VK_CY = DDOT_CY + HQR3_CY + HQR5_CY
+
+        val VK_CY = if (streaming_width ==512) {
+          DDOT_CY + HQR3_CY + HQR5_CY - 74 + 75 //+50 due to tr_cnt exceeding limit in the second round
+        }else{
+
+          DDOT_CY + HQR3_CY + HQR5_CY - 74
+        }
+
         val TK_CY = VK_CY + DDOT_CY + HQR7_CY
         val TR_CY_MACRO = DDOT_CY + HQR7_CY + HQR10_CY + HQR11_CY - MEM_RD_CY 
-        val HH_CY = TK_CY + HQR10_CY + HQR11_CY +3 +2//removed a one issue in 6x2 ohase - dania
+        val HH_CY = TK_CY + HQR10_CY + HQR11_CY +3 +2
 
+        val tr_cy = Wire(UInt(CNT_WIDTH.W))
         val hh_en = Reg(Bool())
         val nxt_hh_en = Reg(Bool())//added new
-/////
+        val hh_cy_count = HH_CY.U //+ tr_cy
         when(rst){
             nxt_hh_en := 0.U
         }.elsewhen(mem0_fi | mem1_fi){
@@ -111,7 +124,7 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
         val nxt_hh_cnt = Reg(UInt(CNT_WIDTH.W))
         val nxt_mx_cnt = Reg(UInt(CNT_WIDTH.W))
 
-        when(cnt === ((HH_CY).U)){
+        when(cnt === ((hh_cy_count))){
             nxt_cnt := 0.U
         }.elsewhen(hh_en){
             nxt_cnt := cnt + 1.U
@@ -119,17 +132,17 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
             nxt_cnt := cnt
         }
 
-        when((cnt === (HH_CY).U)&(hh_cnt === (streaming_width.U/2.U-1.U))){
+        when((cnt === (hh_cy_count))&(hh_cnt === (streaming_width.U/2.U-1.U))){
             nxt_hh_cnt := 0.U
-        }.elsewhen(hh_en & (cnt === (HH_CY).U)){
+        }.elsewhen(hh_en & (cnt === (hh_cy_count))){
             nxt_hh_cnt := hh_cnt + 1.U
         }.otherwise{
             nxt_hh_cnt := hh_cnt
         }
 
-        when((hh_cnt === (streaming_width/2-1).U)&(mx_cnt === (tile_no ))&(cnt ===  (HH_CY).U)){//tile_no -1
+        when((hh_cnt === (streaming_width/2-1).U)&(mx_cnt === (tile_no ))&(cnt ===  (hh_cy_count))){//tile_no -1
             nxt_mx_cnt := 0.U
-        }.elsewhen( (hh_cnt === (streaming_width/2-1).U)&(cnt === (HH_CY).U -1.U)){//hh_en &//change 3/20/24
+        }.elsewhen( (hh_cnt === (streaming_width/2-1).U)&(cnt === (hh_cy_count)-1.U )){//hh_en &//change 3/20/24
             nxt_mx_cnt := mx_cnt + 1.U
         }.otherwise{
             nxt_mx_cnt := mx_cnt
@@ -162,12 +175,12 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
         }.otherwise{
             rd_mem_fst := ((tsqr_en & (!hh_en) | (!nxt_hh_en))) // added regnext due to dmx1 1 cycle delay (6x2 phase)-dania
             wr_mem_st := hh_en & (tr_cnt === (TR_CY_MACRO-1).U)
-            hh_st := hh_en & (tr_cnt === (TR_CY_MACRO+3).U)
+            hh_st := hh_en & (tr_cnt === ((TR_CY_MACRO).U+3.U))
             rd_mem_st := hh_en & (cnt === (VK_CY-2).U)
         }
 
 
-        val tr_cy = Wire(UInt(CNT_WIDTH.W))
+
 
         when(rd_mem_st){
             tr_cy := ((streaming_width/2).U - hh_cnt)

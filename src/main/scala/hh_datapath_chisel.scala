@@ -70,22 +70,42 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
 
 
 
-
+    val yj_reg_vec_st512 = Reg(Vec(streaming_width/4,UInt(((48128).W))))
     val yj_reg_vec = Reg(Vec(streaming_width/2,UInt(((log2Ceil(streaming_width)*13+24+16+22+9)*2*bw).W)))
-    val yj0 = Reg(UInt((streaming_width*bw).W)) 
+    val yj0 = Reg(UInt((streaming_width*bw).W))
 
-    when(io.rst){
-      yj0 := 0.U
-      for(i <- 0 until streaming_width/2){
-        yj_reg_vec(i):= 0.U}
-   }.elsewhen(io.yj_sft){
-      yj0 := yj_reg_vec(streaming_width/2-1)(streaming_width*bw-1,0)
-      //yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*13+12+129+10-2)*2*bw -1),streaming_width*32))
-      yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*13+24+16+22+9)*2*bw -1),streaming_width*bw))
-      for(i <- 1 until streaming_width/2){
-      //yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*32-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*13+12+129+10-2)*2*bw-1),streaming_width*32))
-      yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*bw-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*13+24+16+22+9)*2*bw-1),streaming_width*bw))
-    }}
+
+      if (streaming_width == (512)) {
+        when(io.rst) {
+          yj0 := 0.U
+          for (i <- 0 until streaming_width / 4) {
+            yj_reg_vec_st512(i) := 0.U
+          }
+        }.elsewhen(io.yj_sft) {
+          yj0 := yj_reg_vec_st512(streaming_width / 4 - 1)(streaming_width * bw - 1, 0)
+          yj_reg_vec_st512(0) := Cat(io.hh_din, yj_reg_vec_st512(0)((48127), streaming_width * bw))
+          for (i <- 1 until streaming_width / 4) {
+            yj_reg_vec_st512(i) := Cat(yj_reg_vec_st512(i - 1)(streaming_width * bw - 1, 0), yj_reg_vec_st512(i)((48127), streaming_width * bw))
+          }
+        }
+      }
+      else{
+        when(io.rst) {
+          yj0 := 0.U
+          for (i <- 0 until streaming_width / 2) {
+            yj_reg_vec(i) := 0.U
+          }
+        }.elsewhen(io.yj_sft) {
+          yj0 := yj_reg_vec(streaming_width / 2 - 1)(streaming_width * bw - 1, 0)
+          //yj_reg_vec(0) := Cat(io.hh_din,yj_reg_vec(0)(((log2Ceil(streaming_width)*13+12+129+10-2)*2*bw -1),streaming_width*32))
+          yj_reg_vec(0) := Cat(io.hh_din, yj_reg_vec(0)(((log2Ceil(streaming_width) * 13 + 24 + 16 + 22 + 9) * 2 * bw - 1), streaming_width * bw))
+          for (i <- 1 until streaming_width / 2) {
+            //yj_reg_vec(i):= Cat(yj_reg_vec(i-1)(streaming_width*32-1,0),yj_reg_vec(i)(((log2Ceil(streaming_width)*13+12+129+10-2)*2*bw-1),streaming_width*32))
+            yj_reg_vec(i) := Cat(yj_reg_vec(i - 1)(streaming_width * bw - 1, 0), yj_reg_vec(i)(((log2Ceil(streaming_width) * 13 + 24 + 16 + 22 + 9) * 2 * bw - 1), streaming_width * bw))
+          }
+        }
+
+      }
 
 /*
 
@@ -157,7 +177,7 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
     val tk_reg = Reg(UInt((bw/2).W))
     val d4_reg = Reg(UInt(bw.W))
     val d5_reg = Reg(UInt(bw.W))
-
+    val d5_st512 = Reg(UInt(bw.W))
 
 
     when (io.rst){
@@ -357,6 +377,7 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
    hqr10.in_a.Im := d4((bw/2)-1,0)
    hqr10.in_b.Re := tk
    hqr10.in_b.Im := 0.U
+
    d5_update := Cat(hqr10.out_s.Re,hqr10.out_s.Im)
 
 
@@ -398,7 +419,13 @@ class hh_datapath_1(name:Int, bw:Int, streaming_width:Int, CNT_WIDTH: Int)extend
         myAxpyVec(streaming_width-i-1) := Cat(axpy.out_s(i).Re,axpy.out_s(i).Im)
       }
     }
-    io.hh_dout := myAxpyVec.asUInt
+      val hh_dout_val = if (streaming_width == 512) {
+        ShiftRegister(myAxpyVec.asUInt, 40)
+      } else {
+        myAxpyVec.asUInt
+      }
+
+      io.hh_dout := hh_dout_val
     }
 
 

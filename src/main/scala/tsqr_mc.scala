@@ -13,7 +13,7 @@ import chisel3._
 import chisel3.util._
 import chisel3.util.{log2Ceil, log2Floor}
 import chiseltest.RawTester.test
-
+import chisel3.experimental._
 import chisel3.{RawModule, withClockAndReset}
 import java.io.PrintWriter
 import scala.collection.mutable
@@ -27,9 +27,9 @@ object Main{
     
     val startTimeMillis = System.currentTimeMillis()
 
-    val sw2 = new PrintWriter("verification/dut/tsqr_st4_1c.sv")
+    val sw2 = new PrintWriter("verification/dut/tsqr_st512_1c.sv")
     //tsqr_mc(bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: Int)
-    sw2.println(getVerilogString(new tile4(19, 64, 4, 16, 1)))
+    sw2.println(getVerilogString(new tile4(19, 64, 512, 16, 1)))
     //sw2.println(getVerilogString(new hh_core(64, 16, 16)))
     sw2.close()
     val endTimeMillis = System.currentTimeMillis()
@@ -40,10 +40,120 @@ object Main{
 }
 
 /****************************************************************************
- * Black Boxes for the hh_core and fsm module. 
+ * Black Boxes for the hh_core and fsm module.
+ *
+ *
+ *
+ *
  * **************************************************************************/
 
- 
+/*class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends BlackBox with HasBlackBoxPath {
+  val io = IO(new Bundle {
+    val clk = (Input(Clock()))
+    val rst = (Input(Bool()))
+    val tsqr_en = (Input(Bool()))
+    val tile_no = (Input(UInt((CNT_WIDTH).W)))
+    val hh_cnt = (Output((UInt((CNT_WIDTH).W))))
+    val mx_cnt = (Output((UInt((CNT_WIDTH).W))))
+    val d1_rdy = (Output(Bool()))
+    val d1_vld = (Output(Bool()))
+    val d2_rdy = (Output(Bool()))
+    val d2_vld = (Output(Bool()))
+    val vk1_rdy = (Output(Bool()))
+    val vk1_vld = (Output(Bool()))
+    val d3_rdy = (Output(Bool()))
+    val d3_vld = (Output(Bool()))
+    val tk_rdy = (Output(Bool()))
+    val tk_vld = (Output(Bool()))
+    val d4_rdy = (Output(Bool()))
+    val d4_vld = (Output(Bool()))
+    val d5_rdy = (Output(Bool()))
+    val d5_vld = (Output(Bool()))
+    val yjp_rdy = (Output(Bool()))
+    val yjp_vld = (Output(Bool()))
+    val yj_sft = (Output(Bool()))
+    val d4_sft = (Output(Bool()))
+    val hh_st = (Output(Bool()))
+    val mem0_fi = (Output(Bool()))
+    val mem1_fi = (Output(Bool()))
+    val tsqr_fi = (Output(Bool()))
+    val dmx0_mem_ena = (Output(Bool()))
+    val dmx0_mem_wea = (Output(UInt((streaming_width*4).W)))
+    val dmx0_mem_addra = (Output(UInt((log2Ceil(streaming_width)-1).W)))
+    val dmx0_mem_enb = (Output(Bool()))
+    val dmx0_mem_addrb = (Output(UInt((log2Ceil(streaming_width)-1).W)))
+    val dmx1_mem_ena = (Output(Bool()))
+    val dmx1_mem_wea = (Output(UInt((streaming_width*4).W)))
+    val dmx1_mem_addra = (Output(UInt((log2Ceil(streaming_width)-1).W)))
+    val dmx1_mem_enb = (Output(Bool()))
+    val dmx1_mem_addrb = (Output(UInt((log2Ceil(streaming_width)-1).W)))
+    val rtri_mem_ena = (Output(Bool()))
+    val rtri_mem_wea = (Output(UInt((streaming_width*4).W)))
+    val rtri_mem_addra = (Output(UInt((log2Ceil(streaming_width)-1).W)))
+    val rtri_mem_enb = (Output(Bool()))
+    val rtri_mem_addrb = (Output(UInt((log2Ceil(streaming_width)-1).W)))
+  })
+  addPath("fsm.sv")
+}
+
+
+class hh_core(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int)extends BlackBox with HasBlackBoxPath {
+  val io = IO(new Bundle {
+      val clk = Input(Clock())
+      val rst = Input(Bool())
+      val hh_cnt = Input(UInt((CNT_WIDTH).W))
+      val d1_rdy = Input(Bool())
+      val d1_vld = Input(Bool())
+      val d2_rdy = Input(Bool())
+      val d2_vld = Input(Bool())
+      val vk1_rdy = Input(Bool())
+      val vk1_vld = Input(Bool())
+      val d3_rdy = Input(Bool())
+      val d3_vld = Input(Bool())
+      val tk_rdy = Input(Bool())
+      val tk_vld = Input(Bool())
+      val d4_rdy = Input(Bool())
+      val d4_vld = Input(Bool())
+      val d5_rdy = Input(Bool())
+      val d5_vld = Input(Bool())
+      val yjp_rdy = Input(Bool())
+      val yjp_vld = Input(Bool())
+      val yj_sft = Input(Bool())
+      val d4_sft = Input(Bool())
+      val hh_st = Input(Bool())
+      val mem0_fi = Input(Bool())
+      val mem1_fi = Input(Bool())
+      val dmx0_mem_ena = Input(Bool())
+      val dmx0_mem_wea = Input(UInt((streaming_width*4).W))
+      val dmx0_mem_addra = Input(UInt((log2Ceil(streaming_width)-1).W))
+      val dmx0_mem_dina = Input(UInt((streaming_width*(bw/2)).W))
+      val dmx0_mem_enb = Input(Bool())
+      val dmx0_mem_addrb = Input(UInt((log2Ceil(streaming_width)-1).W))
+      val dmx0_mem_doutb = Output(UInt((streaming_width*(bw/2)).W))
+      val dmx1_mem_ena = Input(Bool())
+      val dmx1_mem_wea = Input(UInt((streaming_width*4).W))
+      val dmx1_mem_addra = Input(UInt((log2Ceil(streaming_width)-1).W))
+      val dmx1_mem_dina = Input(UInt((streaming_width*(bw/2)).W))
+      val dmx1_mem_enb = Input(Bool())
+      val dmx1_mem_addrb = Input(UInt((log2Ceil(streaming_width)-1).W))
+      val dmx1_mem_doutb = Output(UInt((streaming_width*(bw/2)).W))
+      val rtri_mem_ena = Input(Bool())
+      val rtri_mem_wea = Input(UInt((streaming_width*4).W))
+      val rtri_mem_addra = Input(UInt((log2Ceil(streaming_width)-1).W))
+      val rtri_mem_dina = Input(UInt((streaming_width*(bw/2)).W))
+      val rtri_mem_enb = Input(Bool())
+      val rtri_mem_addrb = Input(UInt((log2Ceil(streaming_width)-1).W))
+      val rtri_mem_doutb = Output(UInt((streaming_width*(bw/2)).W))
+      val hh_dout = Output(UInt((streaming_width*bw).W))
+
+  })
+
+
+
+  addPath("hh_core.sv")}
+
+
+*/
 
 class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: Int)extends RawModule{
     val clk = IO(Input(Clock()))
@@ -1792,10 +1902,23 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
             wr_dmx0_mem_ena(i) := (rtri_mem_ena_c(i+1))&(RegNext(mx_cnt_c(i+1))===(tile_no/core_count.U-1.U))&(~(tile_no(log2Ceil(core_count))))
         }
     }
+
+
+      /****************************************************************************
+       * Black Boxes for the hh_core and fsm module.
+       *
+       *uncomment line 1915 and 1916 if using fsm and hh_core as a blackbox
+       * and comment out line 1918 and 1919
+       *
+       * **************************************************************************/
+
     //val fsms = Vector.fill(core_count)(Module(new fsm(bw, streaming_width, CNT_WIDTH)).io)
-    val fsms = Vector.fill(core_count)(Module(new fsm(bw, streaming_width, CNT_WIDTH)))
-    val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)).io)
-    
+    //val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)).io)
+
+      val fsms = Vector.fill(core_count)(Module(new fsm(bw, streaming_width, CNT_WIDTH)))
+      val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)))
+
+
     for(i <- 0 until core_count){
         fsms(i).clk := clk
         fsms(i).rst := rst
@@ -1891,3 +2014,4 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
     }
  }
 }
+

@@ -16,7 +16,7 @@
 //--- test cases  
 //--------------------------------------------------------- 
 `ifdef ST512_RANDOM_TEST_512X256
-  `define TILE_NO 2
+  `define TILE_NO 4
 `endif
 
 
@@ -168,14 +168,14 @@ initial begin
      end
 
 
-  //   for(i=0; i<`MATRIX_WIDTH;i=i+1) begin
-  //     ug_i = ug_ram[i][`MATRIX_WIDTH*(`TILE_NO-0-2)*64-1:`MATRIX_WIDTH*(`TILE_NO-0-3)*64];
-  //     pg_i = pg_ram[i][`MATRIX_WIDTH*(`TILE_NO-0-2)*64-1:`MATRIX_WIDTH*(`TILE_NO-0-3)*64];
-     //  e_ug  = e_ug_ram[i][31:0];
-     //  e_pg  =  e_pg_ram[i][31:0];
-     //  e_upg = e_upg_ram[i][31:0]; 
-    //   @(posedge clk);
-  //   end
+     for(i=0; i<`MATRIX_WIDTH;i=i+1) begin
+       ug_i = ug_ram[i][`MATRIX_WIDTH*(`TILE_NO-0-2)*64-1:`MATRIX_WIDTH*(`TILE_NO-0-3)*64];
+       pg_i = pg_ram[i][`MATRIX_WIDTH*(`TILE_NO-0-2)*64-1:`MATRIX_WIDTH*(`TILE_NO-0-3)*64];
+       e_ug  = e_ug_ram[i][31:0];
+       e_pg  =  e_pg_ram[i][31:0];
+       e_upg = e_upg_ram[i][31:0]; 
+       @(posedge clk);
+     end
 
        ug_ready    = 1'b0;
        pg_ready    = 1'b0;
@@ -234,7 +234,7 @@ initial begin
 //       ug_ready    = 1'b0;
 //       pg_ready    = 1'b0;
     
-     wait(mem0_fi_c_0);
+     wait(mem1_fi_c_0);
      @(posedge clk);
      for(i=0; i<`MATRIX_WIDTH;i=i+1) begin
     //   e_ug_ready  = 1'b1;

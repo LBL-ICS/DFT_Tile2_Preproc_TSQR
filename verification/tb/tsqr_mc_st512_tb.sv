@@ -45,7 +45,7 @@ reg                         e_pg_ready;
 reg                         e_ug_ready;
 reg                         pg_ready;
 reg                         ug_ready;
-reg  [15:0]                 mx_cnt;
+//reg  [15:0]                 mx_cnt;
 
 reg  [`MEM_NO-1:0]          dma_mem_enb  ;
 reg  [`RAM_ADDR_WIDTH-1:0]  dma_mem_addrb;
@@ -107,8 +107,8 @@ tsqr_st512_1c u_tsqr_st512_1c (.clk        (clk          ),
 	           .mem0_fi_c_0   (mem0_fi_c_0   ),
                    .mem1_fi_c_0   (mem1_fi_c_0   ),
 `endif //SINGLE_CORE_INT
-                   .tsqr_fi      (tsqr_fi      ),
-	            .mx_cnt      (mx_cnt       ));
+                   .tsqr_fi      (tsqr_fi      ));
+//	            .mx_cnt      (mx_cnt       ));
 
 //---------------------------------------------------------------------
 //------- BFM

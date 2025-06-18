@@ -18,8 +18,8 @@ import chisel3.{RawModule, withClockAndReset}
 import java.io.PrintWriter
 import scala.collection.mutable
 import Preprocessor.preprocessor
-
-
+import ComplexModules.FPComplex._
+//import tsqr_hh_core.hh_core_chisel._
 
 object Main{
 
@@ -27,9 +27,9 @@ object Main{
     
     val startTimeMillis = System.currentTimeMillis()
 
-    val sw2 = new PrintWriter("verification/dut/tsqr_st512_1c.sv")
+    val sw2 = new PrintWriter("verification/dut/tsqr_st16_1c.sv")
     //tsqr_mc(bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: Int)
-    sw2.println(getVerilogString(new tile4(19, 64, 512, 16, 1)))
+    sw2.println(getVerilogString(new tile4(19, 64, 16, 16, 1)))
     //sw2.println(getVerilogString(new hh_core(64, 16, 16)))
     sw2.close()
     val endTimeMillis = System.currentTimeMillis()
@@ -47,7 +47,8 @@ object Main{
  *
  * **************************************************************************/
 
-/*class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends BlackBox with HasBlackBoxPath {
+/*
+class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends BlackBox with HasBlackBoxPath {
   val io = IO(new Bundle {
     val clk = (Input(Clock()))
     val rst = (Input(Bool()))
@@ -176,7 +177,7 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
     val mem0_fi_c = IO(Output((Vec(core_count, Bool()))))
     val mem1_fi_c = IO(Output((Vec(core_count, Bool()))))
     val tsqr_fi = IO(Output(Bool()))
-  val mx_cnt = IO(Output((UInt((CNT_WIDTH).W))))
+    //val mx_cnt = IO(Output((UInt((CNT_WIDTH).W))))
 
 
 
@@ -192,20 +193,20 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
 
 
 
-      val pp = Module(new preprocessor(bw, streaming_width/2, 32, streaming_width/2))
-      pp.io.tile2_en := true.B
-      pp.io.tile2_e_pg_ready := e_pg_ready
-      pp.io.tile2_e_ug_ready := e_ug_ready
-      pp.io.tile2_e_upg_ready := e_upg_ready
-      pp.io.tile2_pg_i := pg_i
-      pp.io.tile2_pg_ready := pg_ready
-      pp.io.tile2_ug_i := ug_i
-      pp.io.tile2_ug_ready := ug_ready
-      pp.io.tile2_e_pg := e_pg
-      pp.io.tile2_e_ug := e_ug
-      pp.io.tile2_e_upg := e_upg
-      pp.io.tile2_mem0_fi := mem0_fi_c(0)
-      pp.io.tile2_mem1_fi := mem1_fi_c(0)
+      val pp = Module(new preprocessor(77,bw, streaming_width/2, 32, streaming_width/2))
+      pp.io.pp_en := true.B
+      pp.io.pp_e_pg_ready := e_pg_ready
+      pp.io.pp_e_ug_ready := e_ug_ready
+      pp.io.pp_e_upg_ready := e_upg_ready
+      pp.io.pp_pg_i := pg_i
+      pp.io.pp_pg_ready := pg_ready
+      pp.io.pp_ug_i := ug_i
+      pp.io.pp_ug_ready := ug_ready
+      pp.io.pp_e_pg := e_pg
+      pp.io.pp_e_ug := e_ug
+      pp.io.pp_e_upg := e_upg
+      pp.io.pp_mem0_fi := mem0_fi_c(0)
+      pp.io.pp_mem1_fi := mem1_fi_c(0)
       pp.io.tsqr_fi := tsqr_fi
 
 
@@ -215,14 +216,11 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
       val dma_mem_dina = RegInit(0.U((bw * streaming_width).W))
       val tsqr_en = RegInit(false.B)
 
-       tsqr_en := pp.io.tile2_tsqr_en
-       dma_mem_ena := pp.io.tile2_mem_ena
-       dma_mem_addra := pp.io.tile2_mem_addra
-       dma_mem_wea := pp.io.tile2_mem_wea
-       dma_mem_dina := pp.io.tile2_mem_dina
-
-
-
+       tsqr_en := pp.io.pp_tsqr_en
+       dma_mem_ena := pp.io.pp_mem_ena
+       dma_mem_addra := pp.io.pp_mem_addra
+       dma_mem_wea := pp.io.pp_mem_wea
+       dma_mem_dina := pp.io.pp_mem_dina
 
 
     val  mx_cnt_c = Wire(Vec(core_count, UInt((CNT_WIDTH).W)))
@@ -1916,7 +1914,7 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
     //val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)).io)
 
       val fsms = Vector.fill(core_count)(Module(new fsm(bw, streaming_width, CNT_WIDTH)))
-      val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)))
+      val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)).io)
 
 
     for(i <- 0 until core_count){
@@ -1926,7 +1924,7 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
         fsms(i).tile_no := tile_no_c(i)
         hh_cnt_c(i) := fsms(i).hh_cnt
         mx_cnt_c(i) := fsms(i).mx_cnt
-        mx_cnt := fsms(i).mx_cnt
+       // mx_cnt := fsms(i).mx_cnt
         d1_rdy_c(i) := fsms(i).d1_rdy
         d1_vld_c(i) := fsms(i).d1_vld
         d2_rdy_c(i) := fsms(i).d2_rdy

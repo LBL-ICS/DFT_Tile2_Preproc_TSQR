@@ -73,25 +73,32 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
     val rtri_mem_addrb = IO(Output(UInt((log2Ceil(streaming_width)-1).W)))
 
     withClockAndReset(clk,rst){
+
+
+        val FP_ADDER = 13
+        val FP_MULT = 10
+        val FP_DIV = 15
+        val SQRT = 23
+        val C_MULT = 23
+        val C_ADDER = 13
+
         val DDOT_CY = (26)+13*log2Ceil(streaming_width)//= (mult + add + 3 regs)+(adder * log(sw))
         val HQR3_CY = 23 // sqrt
-        //val HQR5_CY = 26+23+15+26+13+3// 26 comp mult + 23 sqrt + 15 div + 26 compl mult + 13 add + 3 extra regs
-        val HQR5_CY = 23+23+15+23+13+3+10 //100+10
-        val HQR7_CY = 16 -1 +10// 15 from div plus 10 from multiplier
-        //val HQR7_CY = 29
-        val HQR10_CY = 23-1// complex mult+ 28 for 512 hh_st and hh0_din_rdy overlap
+        val HQR5_CY = 23+23+15+23+13+3+10 //100+10 = C_MULT+SQRT+FP_DIV+C_MULT+FP_ADD+13 regs
+        val HQR7_CY = 15 +10// FP_DIV + FP_MULT
+        val HQR10_CY = 23-1// C_MULT - 1
 
       val HQR11_CY = if (streaming_width == 512) {
-        23 + 13 - 1 + 40
+        23 + 13 - 1 + 40 // C_MULT+C_ADD-1+40 extra ccs
       } else {
-        23 + 13 - 1
+        23 + 13 - 1 // C_MULT+C_ADD-1
       }
-        val YJ_SFT_NO = DDOT_CY + HQR7_CY + HQR10_CY +1 //-2
+        val YJ_SFT_NO = DDOT_CY + HQR7_CY + HQR10_CY +1
         val D4_SFT_NO = HQR7_CY-1
         val MEM_RD_CY = 0
 
         val VK_CY = if (streaming_width ==512) {
-          DDOT_CY + HQR3_CY + HQR5_CY - 74 + 75 //+50 due to tr_cnt exceeding limit in the second round
+          DDOT_CY + HQR3_CY + HQR5_CY - 74 + 75 //+75 due to tr_cnt exceeding limit in the second round
         }else{
 
           DDOT_CY + HQR3_CY + HQR5_CY - 74

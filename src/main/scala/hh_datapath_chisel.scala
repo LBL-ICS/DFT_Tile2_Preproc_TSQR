@@ -17,7 +17,7 @@ import Binary_Modules.BinaryDesigns._
 import chisel3._
 import chisel3.util._
 import chisel3.util.{log2Ceil, log2Floor}
-import FPPackageMario.FP_Modules.FPUnits.{FP_add, FP_div, FP_mult, FP_sqrt}
+import FPPackageMario.FP_Modules.FPUnits.{FP_add_name, FP_div_name, FP_mult_name, FP_sqrt}
 import ComplexModules.FPComplex
 
 import chiseltest.RawTester.test
@@ -493,8 +493,8 @@ class hqr5(bw: Int, name:Int) extends Module{
     val in_b = Input(UInt(bw.W))//d2
     val out_s = Output(UInt(bw.W))//vk1
   })
-  val adder = Module(new FP_add(bw,13)).io
-  val subtractor = Module(new FP_add(bw,13)).io
+  val adder = Module(new FP_add_name(bw,13,name)).io
+  val subtractor = Module(new FP_add_name(bw,13,name)).io
   adder.in_en := true.B
   adder.in_valid := true.B
   adder.in_a := io.in_a
@@ -521,8 +521,8 @@ class hqr7(bw: Int, name: Int) extends Module{
     val in_a = Input(UInt(bw.W))
     val out_s = Output(UInt(bw.W))
   })
-  val multiplier = Module(new FP_mult(bw, 10)).io
-  val reciprocal = Module(new FP_div(bw,15)).io
+  val multiplier = Module(new FP_mult_name(bw, 10,name)).io
+  val reciprocal = Module(new FP_div_name(bw,15,name)).io
   multiplier.in_en := true.B
   reciprocal.in_en := true.B
   multiplier.in_valid := true.B

@@ -1,13 +1,15 @@
 package ComplexModules
 
+import chisel3.{util, _}
 import ComplexModules.FPComplex.FP_DDOT_dp_complex
-import FPPackageMario.FP_Modules.FPUnits.{FP_add, FP_div, FP_mult, FP_sqrt}
+import FPPackageMario.FP_Modules.FPUnits.{FP_add_name, FP_div_name, FP_mult_name, FP_sqrt}
 import chisel3._
-
+//import FPPackageMario.FP_Modules.FPUnits._
 import scala.collection.mutable
 import circt.stage.ChiselStage
 import chisel3.stage.ChiselGeneratorAnnotation
-
+import chisel3.util._
+import chisel3.util.{ShiftRegister, log2Ceil}
 import java.io.PrintWriter
 
 //import FP_Modules.FloatingPointDesigns._
@@ -33,7 +35,7 @@ object FPComplex { // these are the complex FP modules
       val out_s = Output(new ComplexNum(bw,name))
     })
     val FP_adders = (for (i <- 0 until 2) yield {
-      val fpadd = Module(new FP_add(bw,13)).io
+      val fpadd = Module(new FP_add_name(bw,13,name)).io
       fpadd
     }).toVector
     FP_adders(0).in_en := io.in_en
@@ -83,7 +85,7 @@ object FPComplex { // these are the complex FP modules
       }
     } else { // none of the input a or input b magnitudes are zero
       val FP_adders = (for (i <- 0 until 2) yield {
-        val fpadd = Module(new FP_add(bw,13)).io
+        val fpadd = Module(new FP_add_name(bw,13,name)).io
         fpadd
       }).toVector
       FP_adders(0).in_en := io.in_en
@@ -106,7 +108,7 @@ object FPComplex { // these are the complex FP modules
       val out_s = Output(new ComplexNum(bw,name))
     })
     val FP_subbers = (for (i <- 0 until 2) yield {
-      val fpsub = Module(new FP_add(bw,13)).io/// switched from old subber to new adder
+      val fpsub = Module(new FP_add_name(bw,13,name)).io/// switched from old subber to new adder
       fpsub
     }).toVector
     FP_subbers(0).in_en := io.in_en
@@ -134,10 +136,10 @@ object FPComplex { // these are the complex FP modules
 
 
     
-    val FP_sub = Module(new FP_add(bw,13)).io
-    val FP_add = Module(new FP_add(bw,13)).io
+    val FP_sub = Module(new FP_add_name(bw,13,name)).io
+    val FP_add = Module(new FP_add_name(bw,13,name)).io
     val FP_multipliers = (for (i <- 0 until 4) yield {
-      val fpmult = Module(new FP_mult(bw,10)).io
+      val fpmult = Module(new FP_mult_name(bw,10,name)).io
       fpmult
     }).toVector
     for(i <- 0 until 4){
@@ -236,8 +238,8 @@ object FPComplex { // these are the complex FP modules
     val stage3_regs = RegInit(VecInit.fill(NR_iter)(VecInit.fill(2)(VecInit.fill(12)(0.U(bw.W)))))
     val stage4_regs = RegInit(VecInit.fill(NR_iter)(VecInit.fill(2)(VecInit.fill(9)(0.U(bw.W)))))
 
-    val multipliers = Vector.fill(NR_iter)(Vector.fill(3)(Module(new FP_mult(bw,10)).io))
-    val subtractors = Vector.fill(NR_iter)(Module(new FP_add(bw,13)).io)
+    val multipliers = Vector.fill(NR_iter)(Vector.fill(3)(Module(new FP_mult_name(bw,10,name)).io))
+    val subtractors = Vector.fill(NR_iter)(Module(new FP_add_name(bw,13,name)).io)
     multipliers.map(x=>x.map(x=>x.in_en := io.in_en))
     subtractors.map(x=>x.in_en := io.in_en)
     multipliers.map(x=>x.map(x=>x.in_valid := true.B))
@@ -307,7 +309,7 @@ object FPComplex { // these are the complex FP modules
     }
     val restore_a = Wire(UInt(bw.W))
     restore_a := stage4_regs(NR_iter-1)(1)(8)(bw - 1) ## (stage4_regs(NR_iter-1)(1)(8)(bw - 2, mantissa) + 1.U) ## stage4_regs(NR_iter-1)(1)(8)(mantissa - 1, 0)
-    val multiplier4 = Module(new FP_mult(bw, 10))
+    val multiplier4 = Module(new FP_mult_name(bw, 10,name))
     multiplier4.io.in_en := io.in_en
     multiplier4.io.in_valid := true.B
     multiplier4.io.in_a := 0.U(1.W) ## multipliers(NR_iter-1)(2).out_s(bw - 2, 0)
@@ -333,8 +335,8 @@ object FPComplex { // these are the complex FP modules
     //val multiplier3 = Module(new FP_multiplier_10ccs(bw)).io
     //val multiplier4 = Module(new FP_multiplier_10ccs(bw)).io
     //val recip1 = Module(new FP_reciprocal_newfpu(bw,1)).io
-    val div = Module(new FP_div(bw,15)).io
-    val div2= Module(new FP_div(bw,15)).io
+    val div = Module(new FP_div_name(bw,15,name)).io
+    val div2= Module(new FP_div_name(bw,15,name)).io
 
     val adder = Module(new FPComplexAdder_v2(bw,name)).io
     val cd1 = Reg(UInt(bw.W))
@@ -536,7 +538,11 @@ object FPComplex { // these are the complex FP modules
     sw2.close()
   }
 
+
+
+
 }
+
 
 
 object fp_ddot extends App {

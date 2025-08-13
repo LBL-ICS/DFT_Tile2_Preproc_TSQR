@@ -54,551 +54,551 @@
 
 // external module FP_adder
 
-module FP_DDOT_dp(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-  input          clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-                 io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:332:16
-  input  [255:0] io_in_a,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:332:16
-                 io_in_b,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:332:16
-  output [31:0]  io_out_s	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:332:16
+module FP_DDOT_dp(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+  input          clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+                 io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:334:18
+  input  [255:0] io_in_a,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:334:18
+                 io_in_b,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:334:18
+  output [31:0]  io_out_s	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:334:18
 );
 
-  wire [31:0] _FP_adder_6_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-  wire [31:0] _FP_adder_5_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-  wire [31:0] _FP_adder_4_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-  wire [31:0] _FP_adder_3_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-  wire [31:0] _FP_adder_2_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-  wire [31:0] _FP_adder_1_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-  wire [31:0] _FP_adder_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-  wire [31:0] _FP_mult_7_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-  wire [31:0] _FP_mult_6_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-  wire [31:0] _FP_mult_5_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-  wire [31:0] _FP_mult_4_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-  wire [31:0] _FP_mult_3_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-  wire [31:0] _FP_mult_2_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-  wire [31:0] _FP_mult_1_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-  wire [31:0] _FP_mult_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-  reg  [31:0] io_out_s_REG;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:423:26
-  always @(posedge clock)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    io_out_s_REG <= _FP_adder_6_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17, :423:26
-  `ifdef ENABLE_INITIAL_REG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-      `FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
+  wire [31:0] _FP_adder_6_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+  wire [31:0] _FP_adder_5_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+  wire [31:0] _FP_adder_4_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+  wire [31:0] _FP_adder_3_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+  wire [31:0] _FP_adder_2_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+  wire [31:0] _FP_adder_1_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+  wire [31:0] _FP_adder_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+  wire [31:0] _FP_mult_7_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+  wire [31:0] _FP_mult_6_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+  wire [31:0] _FP_mult_5_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+  wire [31:0] _FP_mult_4_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+  wire [31:0] _FP_mult_3_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+  wire [31:0] _FP_mult_2_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+  wire [31:0] _FP_mult_1_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+  wire [31:0] _FP_mult_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+  reg  [31:0] io_out_s_REG;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:425:28
+  always @(posedge clock)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    io_out_s_REG <= _FP_adder_6_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19, :425:28
+  `ifdef ENABLE_INITIAL_REG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+      `FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
     `endif // FIRRTL_BEFORE_INITIAL
-    initial begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-      automatic logic [31:0] _RANDOM[0:0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-      `ifdef INIT_RANDOM_PROLOG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-        `INIT_RANDOM_PROLOG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
+    initial begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+      automatic logic [31:0] _RANDOM[0:0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+      `ifdef INIT_RANDOM_PROLOG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+        `INIT_RANDOM_PROLOG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
       `endif // INIT_RANDOM_PROLOG_
-      `ifdef RANDOMIZE_REG_INIT	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-        _RANDOM[/*Zero width*/ 1'b0] = `RANDOM;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-        io_out_s_REG = _RANDOM[/*Zero width*/ 1'b0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9, :423:26
+      `ifdef RANDOMIZE_REG_INIT	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+        _RANDOM[/*Zero width*/ 1'b0] = `RANDOM;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+        io_out_s_REG = _RANDOM[/*Zero width*/ 1'b0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11, :425:28
       `endif // RANDOMIZE_REG_INIT
     end // initial
-    `ifdef FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-      `FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
+    `ifdef FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+      `FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  FP_mult FP_mult (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+  FP_mult FP_mult (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (io_in_a[255:224]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:343:26
-    .s_axis_b_tdata       (io_in_b[255:224]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:344:26
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (io_in_a[255:224]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:345:28
+    .s_axis_b_tdata       (io_in_b[255:224]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:346:28
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_m_axis_result_tdata)
   );
-  FP_mult FP_mult_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+  FP_mult FP_mult_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (io_in_a[223:192]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:343:26
-    .s_axis_b_tdata       (io_in_b[223:192]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:344:26
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (io_in_a[223:192]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:345:28
+    .s_axis_b_tdata       (io_in_b[223:192]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:346:28
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_1_m_axis_result_tdata)
   );
-  FP_mult FP_mult_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+  FP_mult FP_mult_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (io_in_a[191:160]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:343:26
-    .s_axis_b_tdata       (io_in_b[191:160]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:344:26
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (io_in_a[191:160]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:345:28
+    .s_axis_b_tdata       (io_in_b[191:160]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:346:28
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_2_m_axis_result_tdata)
   );
-  FP_mult FP_mult_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+  FP_mult FP_mult_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (io_in_a[159:128]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:343:26
-    .s_axis_b_tdata       (io_in_b[159:128]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:344:26
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (io_in_a[159:128]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:345:28
+    .s_axis_b_tdata       (io_in_b[159:128]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:346:28
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_3_m_axis_result_tdata)
   );
-  FP_mult FP_mult_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+  FP_mult FP_mult_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (io_in_a[127:96]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:343:26
-    .s_axis_b_tdata       (io_in_b[127:96]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:344:26
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (io_in_a[127:96]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:345:28
+    .s_axis_b_tdata       (io_in_b[127:96]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:346:28
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_4_m_axis_result_tdata)
   );
-  FP_mult FP_mult_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+  FP_mult FP_mult_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (io_in_a[95:64]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:343:26
-    .s_axis_b_tdata       (io_in_b[95:64]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:344:26
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (io_in_a[95:64]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:345:28
+    .s_axis_b_tdata       (io_in_b[95:64]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:346:28
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_5_m_axis_result_tdata)
   );
-  FP_mult FP_mult_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+  FP_mult FP_mult_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (io_in_a[63:32]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:343:26
-    .s_axis_b_tdata       (io_in_b[63:32]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:344:26
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (io_in_a[63:32]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:345:28
+    .s_axis_b_tdata       (io_in_b[63:32]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:346:28
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_6_m_axis_result_tdata)
   );
-  FP_mult FP_mult_7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+  FP_mult FP_mult_7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (io_in_a[31:0]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:343:26
-    .s_axis_b_tdata       (io_in_b[31:0]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:344:26
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (io_in_a[31:0]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:345:28
+    .s_axis_b_tdata       (io_in_b[31:0]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:346:28
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_7_m_axis_result_tdata)
   );
-  FP_adder FP_adder (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+  FP_adder FP_adder (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (_FP_mult_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-    .s_axis_b_tdata       (_FP_mult_1_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (_FP_mult_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+    .s_axis_b_tdata       (_FP_mult_1_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_adder_m_axis_result_tdata)
   );
-  FP_adder FP_adder_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+  FP_adder FP_adder_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (_FP_mult_2_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-    .s_axis_b_tdata       (_FP_mult_3_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (_FP_mult_2_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+    .s_axis_b_tdata       (_FP_mult_3_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_adder_1_m_axis_result_tdata)
   );
-  FP_adder FP_adder_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+  FP_adder FP_adder_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (_FP_mult_4_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-    .s_axis_b_tdata       (_FP_mult_5_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (_FP_mult_4_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+    .s_axis_b_tdata       (_FP_mult_5_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_adder_2_m_axis_result_tdata)
   );
-  FP_adder FP_adder_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+  FP_adder FP_adder_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (_FP_mult_6_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
-    .s_axis_b_tdata       (_FP_mult_7_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:363:44
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (_FP_mult_6_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
+    .s_axis_b_tdata       (_FP_mult_7_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:365:46
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_adder_3_m_axis_result_tdata)
   );
-  FP_adder FP_adder_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+  FP_adder FP_adder_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (_FP_adder_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-    .s_axis_b_tdata       (_FP_adder_1_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (_FP_adder_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+    .s_axis_b_tdata       (_FP_adder_1_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_adder_4_m_axis_result_tdata)
   );
-  FP_adder FP_adder_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+  FP_adder FP_adder_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (_FP_adder_2_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-    .s_axis_b_tdata       (_FP_adder_3_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (_FP_adder_2_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+    .s_axis_b_tdata       (_FP_adder_3_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_adder_5_m_axis_result_tdata)
   );
-  FP_adder FP_adder_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+  FP_adder FP_adder_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9
-    .s_axis_a_tdata       (_FP_adder_4_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
-    .s_axis_b_tdata       (_FP_adder_5_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:375:17
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11
+    .s_axis_a_tdata       (_FP_adder_4_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
+    .s_axis_b_tdata       (_FP_adder_5_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:377:19
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_adder_6_m_axis_result_tdata)
   );
-  assign io_out_s = io_out_s_REG;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:331:9, :423:26
+  assign io_out_s = io_out_s_REG;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:333:11, :425:28
 endmodule
 
 // external module FP_sqrt
 
 // external module FP_sub
 
-module hqr5(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:300:9
-  input         io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:302:16
-  input  [31:0] io_in_a,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:302:16
-                io_in_b,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:302:16
-  output [31:0] io_out_s	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:302:16
+module hqr5(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:302:11
+  input         io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:304:18
+  input  [31:0] io_in_a,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:304:18
+                io_in_b,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:304:18
+  output [31:0] io_out_s	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:304:18
 );
 
-  wire [31:0] _FP_sub_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:309:28
-  wire [31:0] _FP_adder_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:308:23
-  FP_adder FP_adder (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:308:23
+  wire [31:0] _FP_sub_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:311:30
+  wire [31:0] _FP_adder_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:310:25
+  FP_adder FP_adder (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:310:25
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:311:27
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:311:27
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:313:29
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:313:29
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_adder_m_axis_result_tdata)
   );
-  FP_sub FP_sub (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:309:28
+  FP_sub FP_sub (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:311:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:311:27
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:311:27
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:313:29
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:313:29
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_sub_m_axis_result_tdata)
   );
   assign io_out_s =
-    io_in_a[31] ? _FP_sub_m_axis_result_tdata : _FP_adder_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:300:9, :308:23, :309:28, :324:{17,24}, :325:16, :327:16
+    io_in_a[31] ? _FP_sub_m_axis_result_tdata : _FP_adder_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:302:11, :310:25, :311:30, :326:{19,29}, :327:18, :329:18
 endmodule
 
 // external module FP_reciprocal
 
-module hqr7(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:278:9
-  input         io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:280:16
-  input  [31:0] io_in_a,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:280:16
-  output [31:0] io_out_s	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:280:16
+module hqr7(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:280:11
+  input         io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:282:18
+  input  [31:0] io_in_a,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:282:18
+  output [31:0] io_out_s	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:282:18
 );
 
-  wire [31:0] _FP_reciprocal_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:286:28
-  FP_mult FP_mult (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:285:28
+  wire [31:0] _FP_reciprocal_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:288:30
+  FP_mult FP_mult (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:287:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:288:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:288:32
-    .s_axis_a_tdata       (32'hC0000000),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:294:31
-    .s_axis_b_tdata       (_FP_reciprocal_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:286:28
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:290:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:290:34
+    .s_axis_a_tdata       (32'hC0000000),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:296:33
+    .s_axis_b_tdata       (_FP_reciprocal_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:288:30
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (io_out_s)
   );
-  FP_reciprocal FP_reciprocal (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:286:28
+  FP_reciprocal FP_reciprocal (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:288:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:288:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:290:34
     .s_axis_a_tdata       (io_in_a),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_reciprocal_m_axis_result_tdata)
   );
 endmodule
 
-module FPReg(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-  input         clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-                reset,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-  input  [31:0] io_in,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:431:16
-  output [31:0] io_out	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:431:16
+module FPReg(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+  input         clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+                reset,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+  input  [31:0] io_in,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:433:16
+  output [31:0] io_out	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:433:16
 );
 
-  reg [31:0] reg_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_6;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_7;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_8;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  reg [31:0] reg_9;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-  always @(posedge clock) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-    if (reset) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-      reg_0 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_1 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_2 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_3 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_4 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_5 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_6 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_7 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_8 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
-      reg_9 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:{22,42}
+  reg [31:0] reg_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_6;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_7;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_8;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  reg [31:0] reg_9;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+  always @(posedge clock) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+    if (reset) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+      reg_0 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_1 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_2 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_3 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_4 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_5 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_6 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_7 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_8 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
+      reg_9 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:{22,42}
     end
-    else begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-      reg_0 <= io_in;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_1 <= reg_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_2 <= reg_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_3 <= reg_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_4 <= reg_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_5 <= reg_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_6 <= reg_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_7 <= reg_6;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_8 <= reg_7;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
-      reg_9 <= reg_8;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:435:22
+    else begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+      reg_0 <= io_in;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_1 <= reg_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_2 <= reg_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_3 <= reg_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_4 <= reg_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_5 <= reg_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_6 <= reg_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_7 <= reg_6;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_8 <= reg_7;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
+      reg_9 <= reg_8;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:437:22
     end
   end // always @(posedge)
-  `ifdef ENABLE_INITIAL_REG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-      `FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
+  `ifdef ENABLE_INITIAL_REG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+    `ifdef FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+      `FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
     `endif // FIRRTL_BEFORE_INITIAL
-    initial begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-      automatic logic [31:0] _RANDOM[0:9];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-      `ifdef INIT_RANDOM_PROLOG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-        `INIT_RANDOM_PROLOG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
+    initial begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+      automatic logic [31:0] _RANDOM[0:9];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+      `ifdef INIT_RANDOM_PROLOG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+        `INIT_RANDOM_PROLOG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
       `endif // INIT_RANDOM_PROLOG_
-      `ifdef RANDOMIZE_REG_INIT	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
+      `ifdef RANDOMIZE_REG_INIT	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
         for (logic [3:0] i = 4'h0; i < 4'hA; i += 4'h1) begin
-          _RANDOM[i] = `RANDOM;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-        end	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-        reg_0 = _RANDOM[4'h0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_1 = _RANDOM[4'h1];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_2 = _RANDOM[4'h2];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_3 = _RANDOM[4'h3];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_4 = _RANDOM[4'h4];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_5 = _RANDOM[4'h5];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_6 = _RANDOM[4'h6];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_7 = _RANDOM[4'h7];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_8 = _RANDOM[4'h8];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
-        reg_9 = _RANDOM[4'h9];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
+          _RANDOM[i] = `RANDOM;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+        end	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+        reg_0 = _RANDOM[4'h0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_1 = _RANDOM[4'h1];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_2 = _RANDOM[4'h2];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_3 = _RANDOM[4'h3];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_4 = _RANDOM[4'h4];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_5 = _RANDOM[4'h5];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_6 = _RANDOM[4'h6];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_7 = _RANDOM[4'h7];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_8 = _RANDOM[4'h8];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
+        reg_9 = _RANDOM[4'h9];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
       `endif // RANDOMIZE_REG_INIT
     end // initial
-    `ifdef FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
-      `FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9
+    `ifdef FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
+      `FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  assign io_out = reg_9;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:430:9, :435:22
+  assign io_out = reg_9;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:432:9, :437:22
 endmodule
 
-module axpy_dp(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:239:9
-  input        clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:239:9
-               reset,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:239:9
-               io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-  input [31:0] io_in_a,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_b_0,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_b_1,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_b_2,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_b_3,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_b_4,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_b_5,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_b_6,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_b_7,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_c_0,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_c_1,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_c_2,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_c_3,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_c_4,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_c_5,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_c_6,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
-               io_in_c_7	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:240:17
+module axpy_dp(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:241:11
+  input        clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:241:11
+               reset,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:241:11
+               io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+  input [31:0] io_in_a,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_b_0,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_b_1,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_b_2,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_b_3,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_b_4,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_b_5,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_b_6,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_b_7,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_c_0,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_c_1,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_c_2,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_c_3,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_c_4,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_c_5,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_c_6,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
+               io_in_c_7	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:242:19
 );
 
-  wire [31:0] _FPReg_7_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
-  wire [31:0] _FPReg_6_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
-  wire [31:0] _FPReg_5_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
-  wire [31:0] _FPReg_4_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
-  wire [31:0] _FPReg_3_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
-  wire [31:0] _FPReg_2_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
-  wire [31:0] _FPReg_1_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
-  wire [31:0] _FPReg_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
-  wire [31:0] _FP_mult_7_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-  wire [31:0] _FP_mult_6_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-  wire [31:0] _FP_mult_5_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-  wire [31:0] _FP_mult_4_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-  wire [31:0] _FP_mult_3_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-  wire [31:0] _FP_mult_2_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-  wire [31:0] _FP_mult_1_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-  wire [31:0] _FP_mult_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-  FP_mult FP_mult (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
+  wire [31:0] _FPReg_7_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
+  wire [31:0] _FPReg_6_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
+  wire [31:0] _FPReg_5_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
+  wire [31:0] _FPReg_4_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
+  wire [31:0] _FPReg_3_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
+  wire [31:0] _FPReg_2_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
+  wire [31:0] _FPReg_1_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
+  wire [31:0] _FPReg_io_out;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
+  wire [31:0] _FP_mult_7_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+  wire [31:0] _FP_mult_6_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+  wire [31:0] _FP_mult_5_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+  wire [31:0] _FP_mult_4_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+  wire [31:0] _FP_mult_3_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+  wire [31:0] _FP_mult_2_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+  wire [31:0] _FP_mult_1_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+  wire [31:0] _FP_mult_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+  FP_mult FP_mult (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b_0),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_m_axis_result_tdata)
   );
-  FP_mult FP_mult_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
+  FP_mult FP_mult_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b_1),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_1_m_axis_result_tdata)
   );
-  FP_mult FP_mult_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
+  FP_mult FP_mult_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b_2),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_2_m_axis_result_tdata)
   );
-  FP_mult FP_mult_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
+  FP_mult FP_mult_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b_3),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_3_m_axis_result_tdata)
   );
-  FP_mult FP_mult_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
+  FP_mult FP_mult_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b_4),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_4_m_axis_result_tdata)
   );
-  FP_mult FP_mult_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
+  FP_mult FP_mult_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b_5),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_5_m_axis_result_tdata)
   );
-  FP_mult FP_mult_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
+  FP_mult FP_mult_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b_6),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_6_m_axis_result_tdata)
   );
-  FP_mult FP_mult_7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
+  FP_mult FP_mult_7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
     .s_axis_a_tdata       (io_in_a),
     .s_axis_b_tdata       (io_in_b_7),
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_7_m_axis_result_tdata)
   );
-  FP_adder FP_adder (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:259:25
+  FP_adder FP_adder (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:261:27
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_a_tdata       (_FP_mult_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-    .s_axis_b_tdata       (_FPReg_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_a_tdata       (_FP_mult_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+    .s_axis_b_tdata       (_FPReg_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (/* unused */)
   );
-  FP_adder FP_adder_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:259:25
+  FP_adder FP_adder_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:261:27
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_a_tdata       (_FP_mult_1_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-    .s_axis_b_tdata       (_FPReg_1_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_a_tdata       (_FP_mult_1_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+    .s_axis_b_tdata       (_FPReg_1_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (/* unused */)
   );
-  FP_adder FP_adder_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:259:25
+  FP_adder FP_adder_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:261:27
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_a_tdata       (_FP_mult_2_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-    .s_axis_b_tdata       (_FPReg_2_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_a_tdata       (_FP_mult_2_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+    .s_axis_b_tdata       (_FPReg_2_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (/* unused */)
   );
-  FP_adder FP_adder_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:259:25
+  FP_adder FP_adder_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:261:27
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_a_tdata       (_FP_mult_3_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-    .s_axis_b_tdata       (_FPReg_3_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_a_tdata       (_FP_mult_3_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+    .s_axis_b_tdata       (_FPReg_3_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (/* unused */)
   );
-  FP_adder FP_adder_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:259:25
+  FP_adder FP_adder_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:261:27
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_a_tdata       (_FP_mult_4_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-    .s_axis_b_tdata       (_FPReg_4_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_a_tdata       (_FP_mult_4_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+    .s_axis_b_tdata       (_FPReg_4_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (/* unused */)
   );
-  FP_adder FP_adder_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:259:25
+  FP_adder FP_adder_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:261:27
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_a_tdata       (_FP_mult_5_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-    .s_axis_b_tdata       (_FPReg_5_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_a_tdata       (_FP_mult_5_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+    .s_axis_b_tdata       (_FPReg_5_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (/* unused */)
   );
-  FP_adder FP_adder_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:259:25
+  FP_adder FP_adder_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:261:27
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_a_tdata       (_FP_mult_6_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-    .s_axis_b_tdata       (_FPReg_6_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_a_tdata       (_FP_mult_6_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+    .s_axis_b_tdata       (_FPReg_6_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (/* unused */)
   );
-  FP_adder FP_adder_7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:259:25
+  FP_adder FP_adder_7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:261:27
     .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:32
-    .s_axis_a_tdata       (_FP_mult_7_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:251:28
-    .s_axis_b_tdata       (_FPReg_7_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:255:34
+    .s_axis_a_tdata       (_FP_mult_7_m_axis_result_tdata),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:253:30
+    .s_axis_b_tdata       (_FPReg_7_io_out),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (/* unused */)
   );
-  FPReg FPReg (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+  FPReg FPReg (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .clock  (clock),
     .reset  (reset),
     .io_in  (io_in_c_0),
     .io_out (_FPReg_io_out)
   );
-  FPReg FPReg_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+  FPReg FPReg_1 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .clock  (clock),
     .reset  (reset),
     .io_in  (io_in_c_1),
     .io_out (_FPReg_1_io_out)
   );
-  FPReg FPReg_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+  FPReg FPReg_2 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .clock  (clock),
     .reset  (reset),
     .io_in  (io_in_c_2),
     .io_out (_FPReg_2_io_out)
   );
-  FPReg FPReg_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+  FPReg FPReg_3 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .clock  (clock),
     .reset  (reset),
     .io_in  (io_in_c_3),
     .io_out (_FPReg_3_io_out)
   );
-  FPReg FPReg_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+  FPReg FPReg_4 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .clock  (clock),
     .reset  (reset),
     .io_in  (io_in_c_4),
     .io_out (_FPReg_4_io_out)
   );
-  FPReg FPReg_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+  FPReg FPReg_5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .clock  (clock),
     .reset  (reset),
     .io_in  (io_in_c_5),
     .io_out (_FPReg_5_io_out)
   );
-  FPReg FPReg_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+  FPReg FPReg_6 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .clock  (clock),
     .reset  (reset),
     .io_in  (io_in_c_6),
     .io_out (_FPReg_6_io_out)
   );
-  FPReg FPReg_7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:266:48
+  FPReg FPReg_7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:268:50
     .clock  (clock),
     .reset  (reset),
     .io_in  (io_in_c_7),
@@ -609,257 +609,255 @@ endmodule
 module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
   input  clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
          reset,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
-         io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:29:17
-         io_rst,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:29:17
          io_tsqr_en,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:29:17
   output io_tsqr_fi	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:29:17
 );
 
-  wire [31:0]  _FP_mult_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:208:24
-  wire [31:0]  _hqr7_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:160:23
-  wire [31:0]  _hqr5_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:147:23
-  wire [31:0]  _FP_sqrt_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:141:23
-  wire [31:0]  _FP_DDOT_dp_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:111:22
-  reg  [31:0]  cnt;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22
-  reg  [31:0]  col_cnt;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:64:26
-  reg  [31:0]  trl_col_cnt;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:65:30
-  reg  [31:0]  total_cols;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:66:29
-  reg  [255:0] ddot_din_b;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:81:29
-  reg  [255:0] ddot_din_a;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:84:29
-  reg  [31:0]  d2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:86:21
-  reg  [31:0]  d3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:87:22
-  reg  [255:0] vk;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21
-  reg  [31:0]  tk;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:89:22
-  reg          d4_hold;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:26
-  reg  [31:0]  d4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:94:21
-  reg  [31:0]  d5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:95:20
-  reg  [255:0] yj_hold;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:96:26
-  reg  [255:0] yj_hold_raw;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:97:30
-  reg  [255:0] yj_pipe_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_6;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_7;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_8;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_9;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_10;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_11;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_12;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_13;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_14;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_15;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_16;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_17;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_18;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_19;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_20;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_21;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_22;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_23;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_24;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_25;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_26;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_27;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_28;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_29;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_30;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_31;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_32;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_33;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_34;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_35;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_36;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_37;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_38;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_39;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_40;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_41;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_42;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_43;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_44;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_45;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_46;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_47;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_48;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_49;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_pipe_50;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-  reg  [255:0] yj_axpy;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26
-  reg          inner_loop;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:107:25
+  wire [31:0]  _FP_mult_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:208:25
+  wire [31:0]  _hqr7_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:160:24
+  wire [31:0]  _hqr5_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:147:24
+  wire [31:0]  _FP_sqrt_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:141:24
+  wire [31:0]  _FP_DDOT_dp_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:111:23
+  reg  [31:0]  cnt;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24
+  reg  [31:0]  col_cnt;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:64:28
+  reg  [31:0]  trl_col_cnt;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:65:32
+  reg  [31:0]  total_cols;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:66:31
+  reg  [255:0] ddot_din_b;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:81:31
+  reg  [255:0] ddot_din_a;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:84:31
+  reg  [31:0]  d2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:86:23
+  reg  [31:0]  d3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:87:23
+  reg  [255:0] vk;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23
+  reg  [31:0]  tk;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:89:23
+  reg          d4_hold;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:28
+  reg  [31:0]  d4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:94:23
+  reg  [31:0]  d5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:95:23
+  reg  [255:0] yj_hold;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:96:28
+  reg  [255:0] yj_hold_raw;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:97:32
+  reg  [255:0] yj_pipe_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_6;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_7;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_8;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_9;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_10;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_11;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_12;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_13;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_14;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_15;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_16;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_17;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_18;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_19;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_20;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_21;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_22;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_23;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_24;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_25;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_26;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_27;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_28;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_29;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_30;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_31;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_32;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_33;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_34;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_35;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_36;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_37;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_38;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_39;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_40;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_41;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_42;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_43;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_44;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_45;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_46;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_47;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_48;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_49;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_pipe_50;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+  reg  [255:0] yj_axpy;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28
+  reg          inner_loop;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:107:27
   always @(posedge clock) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
-    automatic logic _GEN;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:163:15
-    automatic logic _GEN_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:195:24
-    automatic logic _GEN_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:172:30, :177:21, :195:39, :196:20
-    _GEN = cnt == 32'h9A;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :163:15
-    _GEN_0 = trl_col_cnt == total_cols;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:65:30, :66:29, :195:24
-    _GEN_1 = inner_loop & _GEN_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:107:25, :172:30, :177:21, :195:{24,39}, :196:20
+    automatic logic _GEN;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:163:16
+    automatic logic _GEN_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:195:26
+    automatic logic _GEN_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:172:32, :177:24, :195:42, :196:22
+    _GEN = cnt == 32'h9A;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :163:16
+    _GEN_0 = trl_col_cnt == total_cols;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:65:32, :66:31, :195:26
+    _GEN_1 = inner_loop & _GEN_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:107:27, :172:32, :177:24, :195:{26,42}, :196:22
     if (reset) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
-      cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22
-      col_cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :64:26
-      trl_col_cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :65:30
-      total_cols <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :66:29
-      ddot_din_b <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:81:29, :122:35, :123:18, :125:18
-      ddot_din_a <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:84:29, :122:35, :123:18, :125:18
-      d2 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :86:21
-      d3 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :87:22
-      vk <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :122:35, :123:18, :125:18
-      tk <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :89:22
-      d4_hold <= 1'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:73:11, :91:26
-      d4 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :94:21
-      d5 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :95:20
-      yj_hold <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:96:26, :122:35, :123:18, :125:18
-      yj_hold_raw <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:97:30, :122:35, :123:18, :125:18
-      yj_pipe_0 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_1 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_2 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_3 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_4 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_5 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_6 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_7 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_8 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_9 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_10 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_11 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_12 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_13 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_14 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_15 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_16 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_17 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_18 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_19 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_20 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_21 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_22 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_23 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_24 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_25 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_26 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_27 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_28 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_29 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_30 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_31 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_32 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_33 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_34 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_35 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_36 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_37 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_38 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_39 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_40 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_41 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_42 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_43 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_44 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_45 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_46 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_47 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_48 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_49 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_pipe_50 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :122:35, :123:18, :125:18
-      yj_axpy <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :122:35, :123:18, :125:18
+      cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24
+      col_cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :64:28
+      trl_col_cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :65:32
+      total_cols <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :66:31
+      ddot_din_b <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:81:31, :122:38, :123:20, :125:20
+      ddot_din_a <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:84:31, :122:38, :123:20, :125:20
+      d2 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :86:23
+      d3 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :87:23
+      vk <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :122:38, :123:20, :125:20
+      tk <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :89:23
+      d4_hold <= 1'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:73:13, :91:28
+      d4 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :94:23
+      d5 <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :95:23
+      yj_hold <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:96:28, :122:38, :123:20, :125:20
+      yj_hold_raw <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:97:32, :122:38, :123:20, :125:20
+      yj_pipe_0 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_1 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_2 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_3 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_4 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_5 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_6 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_7 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_8 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_9 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_10 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_11 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_12 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_13 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_14 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_15 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_16 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_17 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_18 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_19 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_20 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_21 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_22 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_23 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_24 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_25 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_26 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_27 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_28 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_29 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_30 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_31 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_32 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_33 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_34 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_35 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_36 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_37 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_38 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_39 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_40 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_41 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_42 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_43 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_44 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_45 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_46 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_47 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_48 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_49 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_pipe_50 <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :122:38, :123:20, :125:20
+      yj_axpy <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :122:38, :123:20, :125:20
     end
     else begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
-      automatic logic _GEN_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:117:14
-      automatic logic _GEN_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:120:20
-      automatic logic _GEN_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:180:24
-      automatic logic _GEN_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:26, :177:21, :180:38, :181:15
-      _GEN_2 = cnt == 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :117:14
-      _GEN_3 = cnt == 32'h52;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :120:20
-      _GEN_4 = trl_col_cnt <= total_cols;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:65:30, :66:29, :180:24
-      _GEN_5 = inner_loop & _GEN_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:26, :107:25, :177:21, :180:{24,38}, :181:15
-      if (cnt == 32'hE0) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :71:15
-        cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22
-        col_cnt <= col_cnt + 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:64:26, :72:26, :117:14
+      automatic logic _GEN_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:117:16
+      automatic logic _GEN_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:120:22
+      automatic logic _GEN_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:180:26
+      automatic logic _GEN_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:28, :177:24, :180:41, :181:19
+      _GEN_2 = cnt == 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :117:16
+      _GEN_3 = cnt == 32'h52;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :120:22
+      _GEN_4 = trl_col_cnt <= total_cols;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:65:32, :66:31, :180:26
+      _GEN_5 = inner_loop & _GEN_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:28, :107:27, :177:24, :180:{26,41}, :181:19
+      if (cnt == 32'hE0) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :71:16
+        cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24
+        col_cnt <= col_cnt + 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:64:28, :72:28, :117:16
       end
-      else	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:71:15
-        cnt <= cnt + 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :70:16, :117:14
-      if (inner_loop) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:107:25
-        if (_GEN_0)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:195:24
-          trl_col_cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :65:30
-        else if (_GEN_4)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:180:24
-          trl_col_cnt <= trl_col_cnt + 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:65:30, :117:14, :184:36
+      else	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:71:16
+        cnt <= cnt + 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :70:18, :117:16
+      if (inner_loop) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:107:27
+        if (_GEN_0)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:195:26
+          trl_col_cnt <= 32'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :65:32
+        else if (_GEN_4)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:180:26
+          trl_col_cnt <= trl_col_cnt + 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:65:32, :117:16, :184:38
       end
-      if (_GEN_1)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:172:30, :177:21, :195:39, :196:20
-        total_cols <= total_cols - 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:66:29, :198:34
-      else	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:172:30, :177:21, :195:39, :196:20
-        total_cols <= 32'h4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:66:29, :69:16
-      ddot_din_b <= _GEN_2 | ~(_GEN_3 | d4_hold) ? 256'h0 : vk;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:81:29, :88:21, :91:26, :117:14, :120:20, :122:35, :123:18, :125:18, :128:26, :129:18, :130:35, :131:18, :132:35, :133:18, :135:18
-      ddot_din_a <= _GEN_2 | ~_GEN_3 ? 256'h0 : vk;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:84:29, :88:21, :117:{14,26}, :119:18, :120:{20,35}, :122:35, :123:18, :125:18
-      d2 <= _FP_sqrt_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:86:21, :141:23
-      if (cnt == 32'h7D)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :155:15
-        d3 <= _FP_DDOT_dp_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:87:22, :111:22
-      vk <= {_hqr5_io_out_s, vk[223:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :147:23, :152:{14,29}
-      if (_GEN)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:163:15
-        tk <= _hqr7_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:89:22, :160:23
-      d4_hold <= _GEN_5 | d4_hold;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:26, :177:21, :180:38, :181:15
-      if (cnt == 32'hC5)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :203:15
-        d4 <= _FP_DDOT_dp_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:94:21, :111:22
-      if (cnt == 32'hCD)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22, :214:15
-        d5 <= _FP_mult_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:95:20, :208:24
-      if (_GEN_5) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:26, :177:21, :180:38, :181:15
-        yj_hold <= yj_hold_raw >> {219'h0, 32'h4 - total_cols, 5'h0};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:66:29, :69:16, :96:26, :97:30, :183:{33,58,70}
-        yj_hold_raw <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:97:30, :122:35, :123:18, :125:18
-        yj_pipe_0 <= yj_hold;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:96:26, :101:26
-        yj_pipe_1 <= yj_pipe_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_2 <= yj_pipe_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_3 <= yj_pipe_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_4 <= yj_pipe_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_5 <= yj_pipe_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_6 <= yj_pipe_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_7 <= yj_pipe_6;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_8 <= yj_pipe_7;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_9 <= yj_pipe_8;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_10 <= yj_pipe_9;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_11 <= yj_pipe_10;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_12 <= yj_pipe_11;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_13 <= yj_pipe_12;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_14 <= yj_pipe_13;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_15 <= yj_pipe_14;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_16 <= yj_pipe_15;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_17 <= yj_pipe_16;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_18 <= yj_pipe_17;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_19 <= yj_pipe_18;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_20 <= yj_pipe_19;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_21 <= yj_pipe_20;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_22 <= yj_pipe_21;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_23 <= yj_pipe_22;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_24 <= yj_pipe_23;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_25 <= yj_pipe_24;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_26 <= yj_pipe_25;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_27 <= yj_pipe_26;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_28 <= yj_pipe_27;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_29 <= yj_pipe_28;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_30 <= yj_pipe_29;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_31 <= yj_pipe_30;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_32 <= yj_pipe_31;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_33 <= yj_pipe_32;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_34 <= yj_pipe_33;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_35 <= yj_pipe_34;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_36 <= yj_pipe_35;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_37 <= yj_pipe_36;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_38 <= yj_pipe_37;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_39 <= yj_pipe_38;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_40 <= yj_pipe_39;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_41 <= yj_pipe_40;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_42 <= yj_pipe_41;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_43 <= yj_pipe_42;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_44 <= yj_pipe_43;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_45 <= yj_pipe_44;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_46 <= yj_pipe_45;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_47 <= yj_pipe_46;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_48 <= yj_pipe_47;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_49 <= yj_pipe_48;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
-        yj_pipe_50 <= yj_pipe_49;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26
+      if (_GEN_1)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:172:32, :177:24, :195:42, :196:22
+        total_cols <= total_cols - 32'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:66:31, :198:36
+      else	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:172:32, :177:24, :195:42, :196:22
+        total_cols <= 32'h4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:66:31, :69:18
+      ddot_din_b <= _GEN_2 | ~(_GEN_3 | d4_hold) ? 256'h0 : vk;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:81:31, :88:23, :91:28, :117:16, :120:22, :122:38, :123:20, :125:20, :128:29, :129:20, :130:38, :131:20, :132:38, :133:20, :135:20
+      ddot_din_a <= _GEN_2 | ~_GEN_3 ? 256'h0 : vk;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:84:31, :88:23, :117:{16,29}, :119:20, :120:{22,38}, :122:38, :123:20, :125:20
+      d2 <= _FP_sqrt_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:86:23, :141:24
+      if (cnt == 32'h7D)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :155:16
+        d3 <= _FP_DDOT_dp_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:87:23, :111:23
+      vk <= {_hqr5_io_out_s, vk[223:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :147:24, :152:{16,31}
+      if (_GEN)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:163:16
+        tk <= _hqr7_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:89:23, :160:24
+      d4_hold <= _GEN_5 | d4_hold;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:28, :177:24, :180:41, :181:19
+      if (cnt == 32'hC5)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :203:16
+        d4 <= _FP_DDOT_dp_io_out_s;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:94:23, :111:23
+      if (cnt == 32'hCD)	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24, :214:16
+        d5 <= _FP_mult_m_axis_result_tdata;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:95:23, :208:25
+      if (_GEN_5) begin	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:91:28, :177:24, :180:41, :181:19
+        yj_hold <= yj_hold_raw >> {219'h0, 32'h4 - total_cols, 5'h0};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:66:31, :69:18, :96:28, :97:32, :183:{35,63,77}
+        yj_hold_raw <= 256'h0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:97:32, :122:38, :123:20, :125:20
+        yj_pipe_0 <= yj_hold;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:96:28, :101:28
+        yj_pipe_1 <= yj_pipe_0;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_2 <= yj_pipe_1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_3 <= yj_pipe_2;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_4 <= yj_pipe_3;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_5 <= yj_pipe_4;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_6 <= yj_pipe_5;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_7 <= yj_pipe_6;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_8 <= yj_pipe_7;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_9 <= yj_pipe_8;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_10 <= yj_pipe_9;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_11 <= yj_pipe_10;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_12 <= yj_pipe_11;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_13 <= yj_pipe_12;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_14 <= yj_pipe_13;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_15 <= yj_pipe_14;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_16 <= yj_pipe_15;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_17 <= yj_pipe_16;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_18 <= yj_pipe_17;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_19 <= yj_pipe_18;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_20 <= yj_pipe_19;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_21 <= yj_pipe_20;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_22 <= yj_pipe_21;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_23 <= yj_pipe_22;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_24 <= yj_pipe_23;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_25 <= yj_pipe_24;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_26 <= yj_pipe_25;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_27 <= yj_pipe_26;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_28 <= yj_pipe_27;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_29 <= yj_pipe_28;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_30 <= yj_pipe_29;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_31 <= yj_pipe_30;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_32 <= yj_pipe_31;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_33 <= yj_pipe_32;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_34 <= yj_pipe_33;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_35 <= yj_pipe_34;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_36 <= yj_pipe_35;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_37 <= yj_pipe_36;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_38 <= yj_pipe_37;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_39 <= yj_pipe_38;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_40 <= yj_pipe_39;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_41 <= yj_pipe_40;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_42 <= yj_pipe_41;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_43 <= yj_pipe_42;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_44 <= yj_pipe_43;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_45 <= yj_pipe_44;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_46 <= yj_pipe_45;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_47 <= yj_pipe_46;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_48 <= yj_pipe_47;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_49 <= yj_pipe_48;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
+        yj_pipe_50 <= yj_pipe_49;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28
       end
-      yj_axpy <= yj_pipe_50;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:26, :102:26
+      yj_axpy <= yj_pipe_50;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:101:28, :102:28
     end
-    inner_loop <= ~_GEN_1 & _GEN;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:107:25, :163:15, :172:30, :177:21, :195:39, :196:20
+    inner_loop <= ~_GEN_1 & _GEN;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:107:27, :163:16, :172:32, :177:24, :195:42, :196:22
   end // always @(posedge)
   `ifdef ENABLE_INITIAL_REG_	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
     `ifdef FIRRTL_BEFORE_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
@@ -874,10 +872,10 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
         for (logic [9:0] i = 10'h0; i < 10'h206; i += 10'h1) begin
           _RANDOM[i] = `RANDOM;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
         end	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
-        cnt = _RANDOM[10'h0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :63:22
-        col_cnt = _RANDOM[10'h1];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :64:26
-        trl_col_cnt = _RANDOM[10'h2];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :65:30
-        total_cols = _RANDOM[10'h3];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :66:29
+        cnt = _RANDOM[10'h0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :63:24
+        col_cnt = _RANDOM[10'h1];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :64:28
+        trl_col_cnt = _RANDOM[10'h2];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :65:32
+        total_cols = _RANDOM[10'h3];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :66:31
         ddot_din_b =
           {_RANDOM[10'h24],
            _RANDOM[10'h25],
@@ -886,7 +884,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h28],
            _RANDOM[10'h29],
            _RANDOM[10'h2A],
-           _RANDOM[10'h2B]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :81:29
+           _RANDOM[10'h2B]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :81:31
         ddot_din_a =
           {_RANDOM[10'h2C],
            _RANDOM[10'h2D],
@@ -895,9 +893,9 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h30],
            _RANDOM[10'h31],
            _RANDOM[10'h32],
-           _RANDOM[10'h33]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :84:29
-        d2 = _RANDOM[10'h35];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :86:21
-        d3 = _RANDOM[10'h36];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :87:22
+           _RANDOM[10'h33]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :84:31
+        d2 = _RANDOM[10'h35];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :86:23
+        d3 = _RANDOM[10'h36];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :87:23
         vk =
           {_RANDOM[10'h37],
            _RANDOM[10'h38],
@@ -906,11 +904,11 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h3B],
            _RANDOM[10'h3C],
            _RANDOM[10'h3D],
-           _RANDOM[10'h3E]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :88:21
-        tk = _RANDOM[10'h3F];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :89:22
-        d4_hold = _RANDOM[10'h48][0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :91:26
-        d4 = {_RANDOM[10'h48][31:2], _RANDOM[10'h49][1:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :91:26, :94:21
-        d5 = {_RANDOM[10'h49][31:2], _RANDOM[10'h4A][1:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :94:21, :95:20
+           _RANDOM[10'h3E]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :88:23
+        tk = _RANDOM[10'h3F];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :89:23
+        d4_hold = _RANDOM[10'h48][0];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :91:28
+        d4 = {_RANDOM[10'h48][31:2], _RANDOM[10'h49][1:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :91:28, :94:23
+        d5 = {_RANDOM[10'h49][31:2], _RANDOM[10'h4A][1:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :94:23, :95:23
         yj_hold =
           {_RANDOM[10'h4A][31:2],
            _RANDOM[10'h4B],
@@ -920,7 +918,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h4F],
            _RANDOM[10'h50],
            _RANDOM[10'h51],
-           _RANDOM[10'h52][1:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :95:20, :96:26
+           _RANDOM[10'h52][1:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :95:23, :96:28
         yj_hold_raw =
           {_RANDOM[10'h52][31:2],
            _RANDOM[10'h53],
@@ -930,7 +928,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h57],
            _RANDOM[10'h58],
            _RANDOM[10'h59],
-           _RANDOM[10'h5A][1:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :96:26, :97:30
+           _RANDOM[10'h5A][1:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :96:28, :97:32
         yj_pipe_0 =
           {_RANDOM[10'h5D][31:8],
            _RANDOM[10'h5E],
@@ -940,7 +938,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h62],
            _RANDOM[10'h63],
            _RANDOM[10'h64],
-           _RANDOM[10'h65][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h65][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_1 =
           {_RANDOM[10'h65][31:8],
            _RANDOM[10'h66],
@@ -950,7 +948,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h6A],
            _RANDOM[10'h6B],
            _RANDOM[10'h6C],
-           _RANDOM[10'h6D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h6D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_2 =
           {_RANDOM[10'h6D][31:8],
            _RANDOM[10'h6E],
@@ -960,7 +958,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h72],
            _RANDOM[10'h73],
            _RANDOM[10'h74],
-           _RANDOM[10'h75][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h75][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_3 =
           {_RANDOM[10'h75][31:8],
            _RANDOM[10'h76],
@@ -970,7 +968,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h7A],
            _RANDOM[10'h7B],
            _RANDOM[10'h7C],
-           _RANDOM[10'h7D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h7D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_4 =
           {_RANDOM[10'h7D][31:8],
            _RANDOM[10'h7E],
@@ -980,7 +978,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h82],
            _RANDOM[10'h83],
            _RANDOM[10'h84],
-           _RANDOM[10'h85][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h85][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_5 =
           {_RANDOM[10'h85][31:8],
            _RANDOM[10'h86],
@@ -990,7 +988,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h8A],
            _RANDOM[10'h8B],
            _RANDOM[10'h8C],
-           _RANDOM[10'h8D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h8D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_6 =
           {_RANDOM[10'h8D][31:8],
            _RANDOM[10'h8E],
@@ -1000,7 +998,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h92],
            _RANDOM[10'h93],
            _RANDOM[10'h94],
-           _RANDOM[10'h95][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h95][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_7 =
           {_RANDOM[10'h95][31:8],
            _RANDOM[10'h96],
@@ -1010,7 +1008,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h9A],
            _RANDOM[10'h9B],
            _RANDOM[10'h9C],
-           _RANDOM[10'h9D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h9D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_8 =
           {_RANDOM[10'h9D][31:8],
            _RANDOM[10'h9E],
@@ -1020,7 +1018,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hA2],
            _RANDOM[10'hA3],
            _RANDOM[10'hA4],
-           _RANDOM[10'hA5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hA5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_9 =
           {_RANDOM[10'hA5][31:8],
            _RANDOM[10'hA6],
@@ -1030,7 +1028,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hAA],
            _RANDOM[10'hAB],
            _RANDOM[10'hAC],
-           _RANDOM[10'hAD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hAD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_10 =
           {_RANDOM[10'hAD][31:8],
            _RANDOM[10'hAE],
@@ -1040,7 +1038,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hB2],
            _RANDOM[10'hB3],
            _RANDOM[10'hB4],
-           _RANDOM[10'hB5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hB5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_11 =
           {_RANDOM[10'hB5][31:8],
            _RANDOM[10'hB6],
@@ -1050,7 +1048,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hBA],
            _RANDOM[10'hBB],
            _RANDOM[10'hBC],
-           _RANDOM[10'hBD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hBD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_12 =
           {_RANDOM[10'hBD][31:8],
            _RANDOM[10'hBE],
@@ -1060,7 +1058,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hC2],
            _RANDOM[10'hC3],
            _RANDOM[10'hC4],
-           _RANDOM[10'hC5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hC5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_13 =
           {_RANDOM[10'hC5][31:8],
            _RANDOM[10'hC6],
@@ -1070,7 +1068,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hCA],
            _RANDOM[10'hCB],
            _RANDOM[10'hCC],
-           _RANDOM[10'hCD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hCD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_14 =
           {_RANDOM[10'hCD][31:8],
            _RANDOM[10'hCE],
@@ -1080,7 +1078,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hD2],
            _RANDOM[10'hD3],
            _RANDOM[10'hD4],
-           _RANDOM[10'hD5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hD5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_15 =
           {_RANDOM[10'hD5][31:8],
            _RANDOM[10'hD6],
@@ -1090,7 +1088,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hDA],
            _RANDOM[10'hDB],
            _RANDOM[10'hDC],
-           _RANDOM[10'hDD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hDD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_16 =
           {_RANDOM[10'hDD][31:8],
            _RANDOM[10'hDE],
@@ -1100,7 +1098,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hE2],
            _RANDOM[10'hE3],
            _RANDOM[10'hE4],
-           _RANDOM[10'hE5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hE5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_17 =
           {_RANDOM[10'hE5][31:8],
            _RANDOM[10'hE6],
@@ -1110,7 +1108,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hEA],
            _RANDOM[10'hEB],
            _RANDOM[10'hEC],
-           _RANDOM[10'hED][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hED][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_18 =
           {_RANDOM[10'hED][31:8],
            _RANDOM[10'hEE],
@@ -1120,7 +1118,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hF2],
            _RANDOM[10'hF3],
            _RANDOM[10'hF4],
-           _RANDOM[10'hF5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hF5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_19 =
           {_RANDOM[10'hF5][31:8],
            _RANDOM[10'hF6],
@@ -1130,7 +1128,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'hFA],
            _RANDOM[10'hFB],
            _RANDOM[10'hFC],
-           _RANDOM[10'hFD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'hFD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_20 =
           {_RANDOM[10'hFD][31:8],
            _RANDOM[10'hFE],
@@ -1140,7 +1138,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h102],
            _RANDOM[10'h103],
            _RANDOM[10'h104],
-           _RANDOM[10'h105][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h105][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_21 =
           {_RANDOM[10'h105][31:8],
            _RANDOM[10'h106],
@@ -1150,7 +1148,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h10A],
            _RANDOM[10'h10B],
            _RANDOM[10'h10C],
-           _RANDOM[10'h10D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h10D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_22 =
           {_RANDOM[10'h10D][31:8],
            _RANDOM[10'h10E],
@@ -1160,7 +1158,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h112],
            _RANDOM[10'h113],
            _RANDOM[10'h114],
-           _RANDOM[10'h115][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h115][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_23 =
           {_RANDOM[10'h115][31:8],
            _RANDOM[10'h116],
@@ -1170,7 +1168,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h11A],
            _RANDOM[10'h11B],
            _RANDOM[10'h11C],
-           _RANDOM[10'h11D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h11D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_24 =
           {_RANDOM[10'h11D][31:8],
            _RANDOM[10'h11E],
@@ -1180,7 +1178,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h122],
            _RANDOM[10'h123],
            _RANDOM[10'h124],
-           _RANDOM[10'h125][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h125][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_25 =
           {_RANDOM[10'h125][31:8],
            _RANDOM[10'h126],
@@ -1190,7 +1188,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h12A],
            _RANDOM[10'h12B],
            _RANDOM[10'h12C],
-           _RANDOM[10'h12D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h12D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_26 =
           {_RANDOM[10'h12D][31:8],
            _RANDOM[10'h12E],
@@ -1200,7 +1198,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h132],
            _RANDOM[10'h133],
            _RANDOM[10'h134],
-           _RANDOM[10'h135][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h135][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_27 =
           {_RANDOM[10'h135][31:8],
            _RANDOM[10'h136],
@@ -1210,7 +1208,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h13A],
            _RANDOM[10'h13B],
            _RANDOM[10'h13C],
-           _RANDOM[10'h13D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h13D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_28 =
           {_RANDOM[10'h13D][31:8],
            _RANDOM[10'h13E],
@@ -1220,7 +1218,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h142],
            _RANDOM[10'h143],
            _RANDOM[10'h144],
-           _RANDOM[10'h145][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h145][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_29 =
           {_RANDOM[10'h145][31:8],
            _RANDOM[10'h146],
@@ -1230,7 +1228,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h14A],
            _RANDOM[10'h14B],
            _RANDOM[10'h14C],
-           _RANDOM[10'h14D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h14D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_30 =
           {_RANDOM[10'h14D][31:8],
            _RANDOM[10'h14E],
@@ -1240,7 +1238,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h152],
            _RANDOM[10'h153],
            _RANDOM[10'h154],
-           _RANDOM[10'h155][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h155][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_31 =
           {_RANDOM[10'h155][31:8],
            _RANDOM[10'h156],
@@ -1250,7 +1248,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h15A],
            _RANDOM[10'h15B],
            _RANDOM[10'h15C],
-           _RANDOM[10'h15D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h15D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_32 =
           {_RANDOM[10'h15D][31:8],
            _RANDOM[10'h15E],
@@ -1260,7 +1258,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h162],
            _RANDOM[10'h163],
            _RANDOM[10'h164],
-           _RANDOM[10'h165][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h165][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_33 =
           {_RANDOM[10'h165][31:8],
            _RANDOM[10'h166],
@@ -1270,7 +1268,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h16A],
            _RANDOM[10'h16B],
            _RANDOM[10'h16C],
-           _RANDOM[10'h16D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h16D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_34 =
           {_RANDOM[10'h16D][31:8],
            _RANDOM[10'h16E],
@@ -1280,7 +1278,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h172],
            _RANDOM[10'h173],
            _RANDOM[10'h174],
-           _RANDOM[10'h175][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h175][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_35 =
           {_RANDOM[10'h175][31:8],
            _RANDOM[10'h176],
@@ -1290,7 +1288,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h17A],
            _RANDOM[10'h17B],
            _RANDOM[10'h17C],
-           _RANDOM[10'h17D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h17D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_36 =
           {_RANDOM[10'h17D][31:8],
            _RANDOM[10'h17E],
@@ -1300,7 +1298,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h182],
            _RANDOM[10'h183],
            _RANDOM[10'h184],
-           _RANDOM[10'h185][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h185][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_37 =
           {_RANDOM[10'h185][31:8],
            _RANDOM[10'h186],
@@ -1310,7 +1308,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h18A],
            _RANDOM[10'h18B],
            _RANDOM[10'h18C],
-           _RANDOM[10'h18D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h18D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_38 =
           {_RANDOM[10'h18D][31:8],
            _RANDOM[10'h18E],
@@ -1320,7 +1318,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h192],
            _RANDOM[10'h193],
            _RANDOM[10'h194],
-           _RANDOM[10'h195][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h195][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_39 =
           {_RANDOM[10'h195][31:8],
            _RANDOM[10'h196],
@@ -1330,7 +1328,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h19A],
            _RANDOM[10'h19B],
            _RANDOM[10'h19C],
-           _RANDOM[10'h19D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h19D][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_40 =
           {_RANDOM[10'h19D][31:8],
            _RANDOM[10'h19E],
@@ -1340,7 +1338,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1A2],
            _RANDOM[10'h1A3],
            _RANDOM[10'h1A4],
-           _RANDOM[10'h1A5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1A5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_41 =
           {_RANDOM[10'h1A5][31:8],
            _RANDOM[10'h1A6],
@@ -1350,7 +1348,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1AA],
            _RANDOM[10'h1AB],
            _RANDOM[10'h1AC],
-           _RANDOM[10'h1AD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1AD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_42 =
           {_RANDOM[10'h1AD][31:8],
            _RANDOM[10'h1AE],
@@ -1360,7 +1358,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1B2],
            _RANDOM[10'h1B3],
            _RANDOM[10'h1B4],
-           _RANDOM[10'h1B5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1B5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_43 =
           {_RANDOM[10'h1B5][31:8],
            _RANDOM[10'h1B6],
@@ -1370,7 +1368,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1BA],
            _RANDOM[10'h1BB],
            _RANDOM[10'h1BC],
-           _RANDOM[10'h1BD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1BD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_44 =
           {_RANDOM[10'h1BD][31:8],
            _RANDOM[10'h1BE],
@@ -1380,7 +1378,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1C2],
            _RANDOM[10'h1C3],
            _RANDOM[10'h1C4],
-           _RANDOM[10'h1C5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1C5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_45 =
           {_RANDOM[10'h1C5][31:8],
            _RANDOM[10'h1C6],
@@ -1390,7 +1388,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1CA],
            _RANDOM[10'h1CB],
            _RANDOM[10'h1CC],
-           _RANDOM[10'h1CD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1CD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_46 =
           {_RANDOM[10'h1CD][31:8],
            _RANDOM[10'h1CE],
@@ -1400,7 +1398,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1D2],
            _RANDOM[10'h1D3],
            _RANDOM[10'h1D4],
-           _RANDOM[10'h1D5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1D5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_47 =
           {_RANDOM[10'h1D5][31:8],
            _RANDOM[10'h1D6],
@@ -1410,7 +1408,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1DA],
            _RANDOM[10'h1DB],
            _RANDOM[10'h1DC],
-           _RANDOM[10'h1DD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1DD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_48 =
           {_RANDOM[10'h1DD][31:8],
            _RANDOM[10'h1DE],
@@ -1420,7 +1418,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1E2],
            _RANDOM[10'h1E3],
            _RANDOM[10'h1E4],
-           _RANDOM[10'h1E5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1E5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_49 =
           {_RANDOM[10'h1E5][31:8],
            _RANDOM[10'h1E6],
@@ -1430,7 +1428,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1EA],
            _RANDOM[10'h1EB],
            _RANDOM[10'h1EC],
-           _RANDOM[10'h1ED][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1ED][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_pipe_50 =
           {_RANDOM[10'h1ED][31:8],
            _RANDOM[10'h1EE],
@@ -1440,7 +1438,7 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1F2],
            _RANDOM[10'h1F3],
            _RANDOM[10'h1F4],
-           _RANDOM[10'h1F5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26
+           _RANDOM[10'h1F5][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28
         yj_axpy =
           {_RANDOM[10'h1F5][31:8],
            _RANDOM[10'h1F6],
@@ -1450,71 +1448,71 @@ module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\mai
            _RANDOM[10'h1FA],
            _RANDOM[10'h1FB],
            _RANDOM[10'h1FC],
-           _RANDOM[10'h1FD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:26, :102:26
-        inner_loop = _RANDOM[10'h205][8];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :107:25
+           _RANDOM[10'h1FD][7:0]};	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :101:28, :102:28
+        inner_loop = _RANDOM[10'h205][8];	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :107:27
       `endif // RANDOMIZE_REG_INIT
     end // initial
     `ifdef FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
       `FIRRTL_AFTER_INITIAL	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9
     `endif // FIRRTL_AFTER_INITIAL
   `endif // ENABLE_INITIAL_REG_
-  FP_DDOT_dp FP_DDOT_dp (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:111:22
+  FP_DDOT_dp FP_DDOT_dp (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:111:23
     .clock    (clock),
-    .io_clk   (io_clk),
-    .io_in_a  (ddot_din_a),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:84:29
-    .io_in_b  (ddot_din_b),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:81:29
+    .io_clk   (clock),
+    .io_in_a  (ddot_din_a),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:84:31
+    .io_in_b  (ddot_din_b),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:81:31
     .io_out_s (_FP_DDOT_dp_io_out_s)
   );
-  FP_sqrt FP_sqrt (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:141:23
-    .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:70:16
-    .s_axis_a_tdata       (_FP_DDOT_dp_io_out_s),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:111:22
+  FP_sqrt FP_sqrt (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:141:24
+    .aclk                 (clock),
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:70:18
+    .s_axis_a_tdata       (_FP_DDOT_dp_io_out_s),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:111:23
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_sqrt_m_axis_result_tdata)
   );
-  hqr5 hqr5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:147:23
-    .io_clk   (io_clk),
-    .io_in_a  (32'h0),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:22
-    .io_in_b  (d2),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:86:21
+  hqr5 hqr5 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:147:24
+    .io_clk   (clock),
+    .io_in_a  (32'h0),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:63:24
+    .io_in_b  (d2),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:86:23
     .io_out_s (_hqr5_io_out_s)
   );
-  hqr7 hqr7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:160:23
-    .io_clk   (io_clk),
-    .io_in_a  (d3),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:87:22
+  hqr7 hqr7 (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:160:24
+    .io_clk   (clock),
+    .io_in_a  (d3),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:87:23
     .io_out_s (_hqr7_io_out_s)
   );
-  FP_mult FP_mult (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:208:24
-    .aclk                 (io_clk),
-    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:70:16
-    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:70:16
-    .s_axis_a_tdata       (tk),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:89:22
-    .s_axis_b_tdata       (d4),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:94:21
+  FP_mult FP_mult (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:208:25
+    .aclk                 (clock),
+    .s_axis_a_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:70:18
+    .s_axis_b_tvalid      (1'h1),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:70:18
+    .s_axis_a_tdata       (tk),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:89:23
+    .s_axis_b_tdata       (d4),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:94:23
     .m_axis_result_tvalid (/* unused */),
     .m_axis_result_tdata  (_FP_mult_m_axis_result_tdata)
   );
-  axpy_dp axpy_dp (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:219:23
+  axpy_dp axpy_dp (	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:219:24
     .clock     (clock),
     .reset     (reset),
-    .io_clk    (io_clk),
-    .io_in_a   (d5),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:95:20
-    .io_in_b_0 (vk[255:224]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :223:25
-    .io_in_b_1 (vk[223:192]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :223:25
-    .io_in_b_2 (vk[191:160]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :223:25
-    .io_in_b_3 (vk[159:128]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :223:25
-    .io_in_b_4 (vk[127:96]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :223:25
-    .io_in_b_5 (vk[95:64]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :223:25
-    .io_in_b_6 (vk[63:32]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :223:25
-    .io_in_b_7 (vk[31:0]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:21, :223:25
-    .io_in_c_0 (yj_axpy[255:224]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :224:30
-    .io_in_c_1 (yj_axpy[223:192]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :224:30
-    .io_in_c_2 (yj_axpy[191:160]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :224:30
-    .io_in_c_3 (yj_axpy[159:128]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :224:30
-    .io_in_c_4 (yj_axpy[127:96]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :224:30
-    .io_in_c_5 (yj_axpy[95:64]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :224:30
-    .io_in_c_6 (yj_axpy[63:32]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :224:30
-    .io_in_c_7 (yj_axpy[31:0])	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:26, :224:30
+    .io_clk    (clock),
+    .io_in_a   (d5),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:95:23
+    .io_in_b_0 (vk[255:224]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :223:27
+    .io_in_b_1 (vk[223:192]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :223:27
+    .io_in_b_2 (vk[191:160]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :223:27
+    .io_in_b_3 (vk[159:128]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :223:27
+    .io_in_b_4 (vk[127:96]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :223:27
+    .io_in_b_5 (vk[95:64]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :223:27
+    .io_in_b_6 (vk[63:32]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :223:27
+    .io_in_b_7 (vk[31:0]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:88:23, :223:27
+    .io_in_c_0 (yj_axpy[255:224]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :224:32
+    .io_in_c_1 (yj_axpy[223:192]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :224:32
+    .io_in_c_2 (yj_axpy[191:160]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :224:32
+    .io_in_c_3 (yj_axpy[159:128]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :224:32
+    .io_in_c_4 (yj_axpy[127:96]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :224:32
+    .io_in_c_5 (yj_axpy[95:64]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :224:32
+    .io_in_c_6 (yj_axpy[63:32]),	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :224:32
+    .io_in_c_7 (yj_axpy[31:0])	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:102:28, :224:32
   );
-  assign io_tsqr_fi = 1'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :70:16
+  assign io_tsqr_fi = 1'h1;	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:28:9, :70:18
 endmodule
 
 

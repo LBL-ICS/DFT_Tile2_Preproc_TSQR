@@ -831,7 +831,7 @@ endmodule
 module qr(	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:25:9
   input         clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:25:9
                 reset,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:25:9
-                io_clk,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:26:17
+                clock,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:26:17
                 io_rst,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:26:17
                 io_tsqr_en,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:26:17
   output        io_tsqr_fi,	// C:\\Users\\MUSTAFA\\IdeaProjects\\DFT_Tile2_Preproc_TSQR\\src\\main\\scala\\hh_datapath_chisel.scala:26:17

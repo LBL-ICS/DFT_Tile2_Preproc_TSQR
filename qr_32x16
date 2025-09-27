@@ -11,7 +11,7 @@
   `define RANDOM $random
 `endif // not def RANDOM
 
-// Users can define INIT_RANDOM as general code that gets injected into the
+// Users can define INIT_RANDOM as general code that gets injected into the 
 // initializer block for modules with registers.
 `ifndef INIT_RANDOM
   `define INIT_RANDOM

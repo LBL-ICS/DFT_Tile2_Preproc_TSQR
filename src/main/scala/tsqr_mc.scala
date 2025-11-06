@@ -27,9 +27,9 @@ object Main{
     
     val startTimeMillis = System.currentTimeMillis()
 
-    val sw2 = new PrintWriter("verification/dut/tsqr_st16_1c.sv")
+    val sw2 = new PrintWriter("verification/dut/tsqr_st512_1c.sv")
     //tsqr_mc(bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: Int)
-    sw2.println(getVerilogString(new tile4(19, 64, 16, 16, 1)))
+    sw2.println(getVerilogString(new tile4(19, 64, 512, 16, 1)))
     //sw2.println(getVerilogString(new hh_core(64, 16, 16)))
     sw2.close()
     val endTimeMillis = System.currentTimeMillis()
@@ -47,12 +47,13 @@ object Main{
  *
  * **************************************************************************/
 
-/*
+
 class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends BlackBox with HasBlackBoxPath {
   val io = IO(new Bundle {
     val clk = (Input(Clock()))
     val rst = (Input(Bool()))
     val tsqr_en = (Input(Bool()))
+    val cols = (Input(UInt(CNT_WIDTH.W)))
     val tile_no = (Input(UInt((CNT_WIDTH).W)))
     val hh_cnt = (Output((UInt((CNT_WIDTH).W))))
     val mx_cnt = (Output((UInt((CNT_WIDTH).W))))
@@ -154,12 +155,13 @@ class hh_core(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int)extends Black
   addPath("hh_core.sv")}
 
 
-*/
+
 
 class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: Int)extends RawModule{
     val clk = IO(Input(Clock()))
     val rst = IO(Input(Bool()))
     //val tsqr_en = IO(Input(Bool()))
+    val columns = IO(Input(UInt(CNT_WIDTH.W)))
     val tile_no = IO(Input(UInt((CNT_WIDTH).W)))
     val e_upg = IO(Input(UInt((bw/2).W)))
     val e_ug = IO(Input(UInt((bw/2).W)))
@@ -171,6 +173,10 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
     val e_ug_ready = IO(Input(Bool()))
     val pg_i = IO(Input(UInt((bw * streaming_width/2).W)))
     val ug_i = IO(Input(UInt((bw * streaming_width/2).W)))
+    //val dma_mem_ena = IO(Input(UInt((core_count*3).W)))
+    //val dma_mem_addra = IO(Input(UInt(((log2Ceil(streaming_width)-1)).W)))
+    //val dma_mem_dina = IO(Input(UInt((streaming_width*bw/2).W)))
+    //val dma_mem_wea = IO(Input(UInt((streaming_width*4).W)))
     val dma_mem_enb = IO(Input(UInt((core_count*3).W)))
     val dma_mem_addrb = IO(Input(UInt(((log2Ceil(streaming_width)-1)).W)))
     val dma_mem_doutb = IO(Output(UInt((streaming_width*bw/2).W)))
@@ -1910,16 +1916,17 @@ class tile4(name:Int,bw:Int, streaming_width:Int, CNT_WIDTH: Int, core_count: In
        *
        * **************************************************************************/
 
-    //val fsms = Vector.fill(core_count)(Module(new fsm(bw, streaming_width, CNT_WIDTH)).io)
-    //val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)).io)
-
-      val fsms = Vector.fill(core_count)(Module(new fsm(bw, streaming_width, CNT_WIDTH)))
+      val fsms = Vector.fill(core_count)(Module(new fsm(bw, streaming_width, CNT_WIDTH)).io)
       val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)).io)
+
+      //val fsms = Vector.fill(core_count)(Module(new fsm(bw, streaming_width, CNT_WIDTH)))
+      //val cores = Vector.fill(core_count)(Module(new hh_core( name,bw, streaming_width, CNT_WIDTH)).io)
 
 
     for(i <- 0 until core_count){
         fsms(i).clk := clk
         fsms(i).rst := rst
+        fsms(i).cols := columns
         fsms(i).tsqr_en := tsqr_en_c(i)
         fsms(i).tile_no := tile_no_c(i)
         hh_cnt_c(i) := fsms(i).hh_cnt

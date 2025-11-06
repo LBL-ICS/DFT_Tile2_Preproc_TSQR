@@ -31,6 +31,7 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
     val clk = IO(Input(Clock()))
     val rst = IO(Input(Bool()))
     val tsqr_en = IO(Input(Bool()))
+    val cols = IO(Input(UInt(CNT_WIDTH.W)))
     val tile_no = IO(Input(UInt((CNT_WIDTH).W)))
     val hh_cnt = IO(Output((UInt((CNT_WIDTH).W))))
     val mx_cnt = IO(Output((UInt((CNT_WIDTH).W))))
@@ -139,7 +140,7 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
             nxt_cnt := cnt
         }
 
-        when((cnt === (hh_cy_count))&(hh_cnt === (streaming_width.U/2.U-1.U))){
+        when((cnt === (hh_cy_count))&(hh_cnt === (cols-1.U))){
             nxt_hh_cnt := 0.U
         }.elsewhen(hh_en & (cnt === (hh_cy_count))){
             nxt_hh_cnt := hh_cnt + 1.U
@@ -147,9 +148,9 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
             nxt_hh_cnt := hh_cnt
         }
 
-        when((hh_cnt === (streaming_width/2-1).U)&(mx_cnt === (tile_no ))&(cnt ===  (hh_cy_count))){//tile_no -1
+        when((hh_cnt === (cols-1.U))&(mx_cnt === (tile_no ))&(cnt ===  (hh_cy_count))){//tile_no -1
             nxt_mx_cnt := 0.U
-        }.elsewhen( (hh_cnt === (streaming_width/2-1).U)&(cnt === (hh_cy_count)-1.U )){//hh_en &//change 3/20/24
+        }.elsewhen( (hh_cnt === (cols-1.U))&(cnt === (hh_cy_count)-1.U )){//hh_en &//change 3/20/24
             nxt_mx_cnt := mx_cnt + 1.U
         }.otherwise{
             nxt_mx_cnt := mx_cnt
@@ -190,7 +191,7 @@ class fsm(bw:Int, streaming_width:Int, CNT_WIDTH: Int) extends RawModule{
 
 
         when(rd_mem_st){
-            tr_cy := ((streaming_width/2).U - hh_cnt)
+            tr_cy := ((cols) - hh_cnt)
         }.otherwise{
             tr_cy :=  tr_cy_reg
         }
